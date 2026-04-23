@@ -1,0 +1,24 @@
+wheeleg_vision_bridge:
+  ros__parameters:
+    image_topic: /espRos/esp32camera
+    image_type: compressed
+    transport: tcp
+    uart_port: /dev/ttyUSB0
+    uart_baud: 115200
+    tcp_host: wheeleg.local
+    tcp_port: 23
+    dry_run: true
+    mode: idle
+    debounce_frames: 5
+    command_rate_hz: 10.0
+    watchdog_ms: 1000
+    face_yaw_gain_mrad: 1500
+    face_deadband: 0.1
+    mediapipe_confidence: 0.6
+    frame_skip: 2
+    debug_window: false
+    debug_events: false
+    debug_event_rate_hz: 2.0
+    # Safety gate for stunt mode: JUMP / CROSSLEG are ignored unless this is set
+    # to true at runtime (ros2 param set /wheeleg_vision_bridge stunt_armed true).
+    stunt_armed: false
