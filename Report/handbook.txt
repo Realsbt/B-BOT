@@ -1,0 +1,1254 @@
+
+--- Page 1 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+ 
+ 
+ 
+ 
+Individual 3rd Year Project (EEEN30330) Handbook 
+ 
+ 
+Department of Electrical and Electronic Engineering 
+School of Engineering 
+Faculty of Science and Engineering 
+ 
+ 
+2025 - 2026 
+ 
+ 
+Unit Organiser 
+Dr. Sareh Malekpour 
+sareh.malekpour@manchester.ac.uk 
+ 
+ 
+ 
+ 
+ 
+
+--- Page 2 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Table of Contents 
+1. 
+Key Dates and Deliverables ............................................................................................................ 1 
+2. 
+Overview ......................................................................................................................................... 3 
+3. 
+Meetings with the Project Supervisor ............................................................................................ 4 
+3.1. 
+Regular Weekly Project Meetings .......................................................................................... 4 
+3.2. 
+Progress Review Meetings (PRMs) ........................................................................................ 5 
+4. 
+Academic Malpractice Awareness .................................................................................................. 7 
+5. 
+The Preliminary Project Proposal and Risk Assessment ................................................................. 8 
+6. 
+Draft Introduction ........................................................................................................................... 8 
+7. 
+Draft Project Methodology ............................................................................................................. 9 
+8. 
+Draft of the Final Report ................................................................................................................. 9 
+9. 
+The Final Report ........................................................................................................................... 10 
+9.1. 
+Submission Details ............................................................................................................... 10 
+9.2. 
+Format of the Final Report .................................................................................................. 10 
+9.3. 
+Project Management in the Final Report ............................................................................ 11 
+9.4. 
+Appendices .......................................................................................................................... 12 
+9.5. 
+Code and Software Artefacts ............................................................................................... 13 
+10. Assessment of the Final Report .................................................................................................... 13 
+10.1. 
+Marking Process .............................................................................................................. 13 
+10.2. 
+Marking Criteria and Weightings ..................................................................................... 13 
+11. The Final Demonstration/Presentation ........................................................................................ 14 
+12. Marking Norms ............................................................................................................................. 15 
+12.1. 
+Marking Norms for the Final Report ............................................................................... 16 
+12.2. 
+Marking Norms for the Final Demonstration/Presentation ............................................ 18 
+13. Mitigating Circumstances ............................................................................................................. 19 
+14. Appendix - Evidencing Software in the Final Report .................................................................... 20 
+14.1. 
+How software should be evidenced ................................................................................ 20 
+14.2. 
+What is meant by a code repository ............................................................................... 20 
+14.3. 
+Repository requirements ................................................................................................. 20 
+
+--- Page 3 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+14.4. 
+README file: required content ....................................................................................... 21 
+14.5. 
+Academic integrity and third-party code ........................................................................ 21 
+ 
+ 
+ 
+ 
+ 
+ 
+
+--- Page 4 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 1 
+1. 
+Key Dates and Deliverables 
+Semester 1 
+Week 
+W/C 
+Key Events 
+Deliverables 
+0 
+22 Sep 2025 
+Project allocation 
+ 
+1 
+29 Sep 2025 
+Project Meeting  
+& 
+Lecture 1: General Intro.  
+ 
+2 
+06 Oct 2025 
+Project Meeting 
+& 
+Lecture 2: Intro. to LaTex and 
+mathematical writing  
+Intro. to CPD and Project/Time 
+Management 
+ 
+3 
+13 Oct 2025 
+ 
+Project Meeting 
+ 
+Submit Preliminary Project Proposal 
+(project outline and project plan) and 
+H&S Risk Assessment on CANVAS by 
+2pm on 17th Oct 2025 
+4 
+20 Oct 2025 
+Project Meeting including: 
+- Review and approve of Preliminary 
+Project Proposal 
+- Review and approve of H&S Risk 
+Assessment 
+Supervisors should access Canvas 
+and enter '1' to confirm their 
+agreement. 
+ 
+5 
+27 Oct 2025 
+Progress Review Meeting 1 
+Individual performance and technical 
+progress 
+ 
+6 
+03 Nov 2025 
+Project Meeting 
+ 
+7 
+10 Nov 2025 
+Project Meeting 
+& 
+Lecture 3: Writing of Draft 
+Introduction and Draft Methodology 
+ 
+8 
+17 Nov 2025 
+Project Meeting 
+ 
+9 
+24 Nov 2025 
+Project Meeting 
+ 
+10 
+01 Dec 2025 
+Progress Review Meeting 2 
+Individual performance and technical 
+progress  
+ 
+11 
+08 Dec 2025 
+Project Meeting 
+ 
+12 
+15 Dec 2025 
+Project Meeting 
+Submit Draft Introduction and 
+Project Methodology. Completing 
+Academic Malpractice Awareness 
+training on CANVAS by 2pm on 19th 
+Dec 2025 
+ 
+
+--- Page 5 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 2 
+ 
+Semester 2 
+Week 
+W/C 
+Key Events 
+Deliverables 
+1 
+02 Feb 2026 
+Project Meeting including: 
+- Academic Malpractice Awareness 
+supervisors record the result on 
+Canvas 
+- Review of Draft Introduction and 
+Methodology 
+& 
+Lecture 4: Writing of the Draft 
+Report/ Writing of the Final Report 
+ 
+2 
+09 Feb 2026 
+Project Meeting 
+ 
+3 
+16 Feb 2026 
+Progress Review Meeting 3  
+Individual performance and technical 
+progress 
+ 
+4 
+23 Feb 2026 
+Project Meeting 
+ 
+5 
+02 Mar 2026 
+Project Meeting 
+ 
+6 
+09 Mar 2026 
+Project Meeting 
+ 
+Submit Draft of the Final Report 
+(partly populated) on CANVAS by 
+2pm on 13th Mar 2026 
+7 
+16 Mar 2026 
+Progress Review Meeting 4 
+Individual performance and technical 
+progress 
+ 
+8 
+23 Mar 2026 
+Project Meeting including 
+- Review of the Draft of the Final 
+Report (partly populated) 
+- Review and agreed table of content 
+ 
+9 
+20 April 2026 
+Project Meeting 
+& 
+Lecture 5: Prep. for 
+Demonstration/Presentation 
+ 
+10 
+27 April 2026 
+Project Meeting 
+ 
+ 
+ 
+ 
+Submit Final Report on CANVAS by 
+2pm on 1st May 2026  
+11 
+5 May 2026 
+Final Demonstration/Presentation 
+ 
+12 
+11 May 2026 
+ 
+ 
+ 
+ 
+
+--- Page 6 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 3 
+2. 
+Overview 
+The Individual 3rd Year Project is a mandatory, 30-credit component of the undergraduate 
+programme and constitutes 25% of the overall assessment for Year 3. The project provides students 
+with the opportunity to undertake an in-depth individual investigation within an area relevant to the 
+disciplines taught within the Department of Electrical and Electronic Engineering. Projects may span a 
+wide range of topics and are intended to reflect both academic and applied aspects of electrical, 
+electronic and mechatronic engineering and related fields. 
+Academic staff propose a set of project topics aligned with their expertise. These topics are made 
+available to students prior to project allocation. Students are invited to express their preferences by 
+selecting up to six topics. Project allocation seeks, as far as reasonably practicable, to take student 
+preferences into account while also ensuring an equitable distribution of supervisory workload. 
+Following allocation, each student is assigned a Project Supervisor. The precise project scope, aims 
+and objectives are defined and refined through discussion between the student and the supervisor. 
+Students allocated to a project that was one of their stated choices will not normally be permitted to 
+reallocate to a different supervisor. 
+Projects are undertaken across two semesters. During the early stages, students receive closer 
+guidance from their supervisor alongside undertaking initial background research. As the project 
+progresses, students are expected to work with increasing independence, addressing the specific 
+technical challenges and objectives defined for their individual project. 
+Student engagement and technical progress are continuously monitored by the Project Supervisor 
+through regular weekly meetings. These meetings provide opportunities for formative feedback on 
+progress and on preliminary written deliverables that are expected to form the basis of the Final 
+Project Report. In addition, a subset of these meetings are designated as Progress Review Meetings, 
+during which student engagement and progress are assessed summatively and contribute to the 
+overall project mark. By the end of the project, students are expected to demonstrate independent 
+learning capability, effective problem-solving skills, and the ability to communicate technical 
+outcomes clearly and professionally. 
+The assessment of the Individual 3rd Year Project is based on the following components, each 
+expressed as a percentage of the overall project mark: 
+• 
+Project Engagement and Progress: 15% 
+• 
+Final Report: 75% 
+• 
+Final Demonstration/Presentation: 10% 
+Marking of Project Engagement and Progress is undertaken by the Project Supervisor during the 
+Progress Review Meetings.  
+The Final Report is assessed independently by the Project Supervisor and an Independent Marker, 
+with marks subsequently reviewed and agreed through a moderation process. 
+The Final Demonstration/Presentation is assessed jointly by the Project Supervisor and an 
+Independent Marker. 
+Students must achieve an overall mark of at least 40% in the Individual 3rd Year Project in order to 
+be awarded an Honours degree. Students who do not achieve this threshold will be considered for 
+the award of an Ordinary degree, in accordance with University regulations. 
+
+--- Page 7 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 4 
+Late submission of the Final Report will be penalised in accordance with the University’s guidance 
+on late submission, unless mitigating circumstances or DASS extension apply.  
+Mitigating circumstances must be brought to the attention of the Student Welfare Officer 
+(soe.wellbeing@manchester.ac.uk) before the relevant deadline. Further information, including the 
+Mitigating Circumstances form, is available in the Undergraduate Programme Handbook and on the 
+EEEN30000 Virtual Common Room on Canvas. 
+The successful completion of the Individual 3rd Year Project is a shared responsibility between the 
+student and the Project Supervisor. Students are expected to take primary responsibility for the 
+planning, execution, and timely completion of their project, and to engage proactively with their 
+supervisor throughout the project period. Project Supervisors are responsible for providing 
+appropriate academic guidance, monitoring progress, and offering formative feedback in line with 
+the expectations of an individual project. 
+The role of the Project Organiser is to provide overall coordination and oversight of the Individual 3rd 
+Year Project process and to ensure consistency and fairness in its delivery across the student cohort. 
+The Project Organiser does not replace the role of the Project Supervisor and is not involved in the 
+day-to-day supervision of individual projects. 
+Any issues should, in the first instance, be discussed with the Project Supervisor. If a matter cannot 
+be resolved at this level, or if the Project Supervisor is not an appropriate point of contact, students 
+should raise the issue with the Project Organiser (sareh.malekpour@manchester.ac.uk) as soon as 
+possible. 
+3. 
+Meetings with the Project Supervisor  
+3.1. 
+Regular Weekly Project Meetings 
+Students are expected to engage in regular weekly project meetings with their Project Supervisor 
+throughout the duration of the project. The precise scheduling and format of meetings should be 
+agreed between the student and the Project Supervisor, considering the nature of the project and 
+practical constraints. 
+If a student is unable to attend a scheduled meeting due to exceptional circumstances, the Project 
+Supervisor should be informed at the earliest opportunity so that the meeting can be rearranged. 
+Additional one-to-one meetings may be arranged by mutual agreement between the student and the 
+Project Supervisor where appropriate. 
+With the exception of the initial meeting, project meetings must be individual and held in person. 
+During project meetings, students are expected to be proactive and to take primary responsibility for 
+managing their project activities. Students are responsible for keeping a record of meetings, agreed 
+actions, and project progress. Students are also expected to record activities related to self-directed 
+learning and skills development informed by technical literature, relevant codes of practice, and 
+industry standards. Students are, therefore, strongly encouraged to maintain a project logbook to 
+document project activities, agreed actions, and self-learning. The logbook is intended as a 
+developmental tool and does not itself constitute a credit-bearing assessment component. 
+ 
+
+--- Page 8 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 5 
+3.2. 
+Progress Review Meetings (PRMs) 
+Four of the regular project meetings (two in Semester 1 and two in Semester 2) are designated as 
+formal Progress Review Meetings (PRMs). These meetings form the basis for assessment of Project 
+Engagement and Progress. 
+At each Progress Review Meeting, the Project Supervisor assesses the student’s engagement and 
+technical progress and provides a mark accompanied by written feedback. Feedback is normally 
+provided before the next scheduled project meeting. 
+The assessment focuses on: 
+• 
+the student’s level of engagement and professionalism, 
+ 
+• 
+technical progress relative to the agreed project scope, 
+ 
+• 
+the student’s ability to plan and execute self-directed learning and skills development 
+required for the project. 
+This last aspect of planning and executing self-directed learning aligns with Continuing Professional 
+Development (CPD) principles, which are introduced further in Lecture 2 delivered on Monday 6th of 
+October 2025 at 2pm-4pm. 
+Intermediate deliverables (such as Draft Introduction, Draft Project Methodology and draft sections 
+of the Final Report) may be discussed during Progress Review Meetings. However, the Project 
+Engagement and Progress mark is based on engagement and progress, not on the quality of these 
+intermediate deliverables. Feedback on these deliverables is formative only and does not contribute 
+to credit-bearing assessment. 
+Each Progress Review Meeting is marked on a scale of 0–10 (integer values). Feedback and marks are 
+recorded in CANVAS. The final Project Engagement and Progress mark is calculated by aggregating 
+the marks from all four PRMs and contributes 15% to the overall project mark. 
+Examples: 
+• 
+A student awarded 8/10 in each of the four PRMs achieves a contribution of 12% (out of 
+15%) towards the total project mark. 
+• 
+A student awarded 4/10, 6/10, 6/10, and 8/10 across the four PRMs achieves a contribution 
+of 9% (out of 15%) towards the total project mark. 
+The marking criteria for Progress Review Meetings are provided in the table on the following page. 
+ 
+ 
+
+--- Page 9 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 6 
+Mark range 
+Engagement and Technical Progress 
+0 
+No attendance; 
+No engagement in project work; 
+No evidence of self-learning and skill development; 
+1-2 
+Low level of attendance and/or consistently late in the meetings;   
+Level of effort and interest in the project is substantially below standard; 
+Little contributions of ideas; 
+Little evidence of engagement in project work; 
+Inadequate progress; 
+Little evidence of self-learning and skill development; 
+3-4 
+Some attendance and/or consistently late in the meetings; 
+Limited or adequate levels of effort; 
+Some contributions of ideas; 
+Evidence of engagement in project work is marginal; 
+Limited performance that is barely acceptable; 
+Some but limited evidence of self-learning and skill development; 
+5-6 
+Good attendance or attendance OK but occasionally late;   
+Good levels of effort;  
+Good contributions of ideas;  
+Good performance and show evidence of exploiting potential opportunities; 
+Substantial evidence of both planning and executing self-learning and skill 
+development; 
+7-8 
+Exemplary attendance; 
+Excellent level of effort; 
+Fully prepared and proactively engaged in the technical discussion;   
+Fully engaged in the project work; 
+Significant independent contribution to development of project; 
+Capable of independent progress to a large extent; 
+Proactive engagement in planning and highly effective execution of self-
+learning and skill development;  
+9-10 
+Exemplary attendance; 
+Outstanding project management and technical progress that substantially 
+exceeds expectations from the Project Supervisor; 
+Exceptional ability to plan and execute self-learning and skill development; 
+ 
+ 
+
+--- Page 10 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 7 
+4. 
+Academic Malpractice Awareness 
+The Individual 3rd Year Project is an assessment of both technical competence and professional 
+academic practice. All submitted work must comply with the University’s regulations on academic 
+integrity, including appropriate referencing and avoidance of plagiarism.  
+To support students in meeting these expectations, the University requires completion of Academic 
+Malpractice Awareness training prior to the submission of the Final Report. Students are strongly 
+advised to complete this training as early as possible and not to leave it until close to the Final Report 
+submission deadline.  
+To satisfy the Academic Malpractice Awareness requirement, students must: 
+a) Complete the "Short Course on Academic Malpractice" on CANVAS. 
+b) Pass the ‘Driving Test’ at the end of the “Short Course on Academic Malpractice”. 
+c) Complete the Self Declaration Form that appears after passing the ‘Driving Test’. 
+d) Complete the Tutorial Questions and provide them to the Project Supervisor. 
+Once the Project Supervisor is satisfied that these tasks have been successfully completed, they will 
+enter a ‘1’ in the “Tutorial Questions” column against student name in the Grade Centre on CANVAS.  
+Students should note that submission of the Final Report will not be permitted until the Academic 
+Malpractice Awareness requirements have been completed. Failure to complete these requirements 
+in advance of the Final Report deadline may therefore result in late submission penalties being 
+applied. 
+Students must ensure that all submitted work is their own, except where clearly indicated and 
+appropriately referenced. This includes proper paraphrasing of ideas and concepts drawn from other 
+sources. 
+Direct quotations from books, journal articles, websites, or other sources must be placed within 
+quotation marks and accompanied by an appropriate citation. 
+All cited material must be fully referenced in the References section of the Final Report. 
+Plagiarism, whether deliberate or accidental, constitutes a serious breach of academic integrity and 
+may result in disciplinary action in accordance with University regulations. Full details of the 
+University’s policy on plagiarism are available at 
+documents.manchester.ac.uk/DocuInfo.aspx?DocID=2870.. 
+POWERFUL SOFTWARE TOOLS AVAILABLE WITHIN CANVAS (TURNITIN) WILL BE USED TO INSPECT 
+EVERY REPORT SUBMITTED FOR PLAGIARISM. UNIVERSITY REGULATIONS DO NOT ALLOW 
+STUDENTS ACCESS TO THE RESULTS OF TURNITIN. 
+ 
+ 
+ 
+
+--- Page 11 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 8 
+5. 
+The Preliminary Project Proposal and Risk Assessment 
+Each student must prepare a 2-page Project Outline that describes the background, motivation for 
+the project, overall aim and the set of associated objectives (milestones) of the project. The purpose 
+of the Project Outline is to clearly define the initial scope of the project and identify what needs to be 
+achieved in order to successfully complete the project. It also allows supervisor to provide feedback 
+on the student’s understanding of the project scope.  
+It is recognised that the scope may change during the course of the project as a result of ongoing 
+discussions between the student and the Project Supervisor. 
+The Preliminary Project Proposal should also include a (provisional) Project Plan. This plan should set 
+out the intended timeline for the project, typically in the form of a GANTT chart, and include a brief 
+description of each major task (nominally few sentences per task). The plan is also expected to 
+identify the key risks to the successful completion of the project, together with strategies to mitigate 
+or manage those issues that cannot be prevented. It is expected that the Project Plan will be 
+reviewed and updated as the project progresses. 
+In addition, each student is required to complete a Health & Safety Risk Assessment, regardless of 
+whether project involves handling of hazardous equipment/materials, or is primarily computer-
+based. The Risk Assessment identifies potential health and safety hazards associated with the project 
+and the measures in place to eliminate or reduce those risks. Students should refer to the online 
+health and safety induction course, which is delivered at the beginning of Semester 1, when 
+preparing the Risk Assessment.  
+➢ 
+RISK ASSESSMENT MUST BE COMPLETED AND APPROVED BY THE PROJECT SUPERVISOR 
+BEFORE ANY PRACTICAL WORK CAN TAKE PLACE. 
+The Preliminary Project Proposal (including the Project Outline and Project Plan) and the Health & 
+Safety Risk Assessment should be submitted on CANVAS before 2pm on Friday 17th of October 2025 
+so that they can be discussed during the Progress Review Meeting 1 which will take place in 
+Semester 1 Week 5 (week commencing on the 27th of October 2025).  
+There is no formal late-submission penalty associated with these deliverables. However, failure to 
+submit them by the stated deadline is likely to have a negative impact on the Project Engagement 
+and Progress mark awarded at Progress Review Meeting 1 (PRM1), as it may indicate a lack of 
+engagement with the project. 
+6. 
+Draft Introduction 
+Students are expected to prepare a Draft Introduction document, structured in the same way as the 
+introductory chapter of the Final Report. The Draft Introduction should be no more than 
+1,000 words. 
+The purpose of the Draft Introduction is to provide an opportunity for formative feedback on the 
+clarity of the project context, motivation, aims, and overall framing of the work at an early stage of 
+the project. The Draft Introduction does not contribute to the final project mark and is not a 
+summative assessment component. 
+Draft Introduction should be submitted on CANVAS before 2pm on Friday 19th of December 2025 so 
+that it can be discussed during the Project Meeting which will take place in Semester 2 Week 1 (week 
+commencing on the 2nd of February 2026). There is no formal penalty for late or no submission of the 
+Draft Introduction, but it will affect the quality of feedback provided by the Project Supervisor to the 
+
+--- Page 12 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 9 
+student. 
+Further guidance on the expected structure and content of the Draft Introduction will be provided 
+during Lecture 3, timetabled on Thursday 13th of November 2025, 3pm–4pm. 
+7. 
+Draft Project Methodology 
+The Project Methodology should address both the “how” and the “why” of the project execution. 
+This includes explaining how particular elements of the work are undertaken (for example, 
+theoretical development, system design, modelling, simulation, implementation, or 
+experimentation), together with a justification for the chosen approach. The rationale for the 
+methodology should be linked to the project background and motivation. 
+Students are required to prepare a Draft Project Methodology for the purpose of obtaining formative 
+feedback. This deliverable does not contribute to the final project mark and is not a summative 
+assessment component. 
+The Draft Project Methodology should be submitted (together with the Draft Introduction) via 
+CANVAS by 2pm on Friday 19th of December 2025, in advance of the Project Meeting taking place in 
+Semester 2, Week 1 (week commencing 2 February 2026), during which feedback from the Project 
+Supervisor is expected to be discussed. 
+There is no formal penalty for late submission or non-submission of the Draft Project Methodology. 
+However, failure to submit this material by the stated deadline is likely to limit the amount and 
+usefulness of feedback that can be provided by the Project Supervisor at this stage of the project. 
+Further guidance on the expected structure and content of the Project Methodology will be provided 
+during the lecture timetabled on Thursday 13th of November 2025, 3pm–4pm. 
+8. 
+Draft of the Final Report 
+Similarly to Draft Introduction and Draft Project Methodology, students are expected to submit a 
+draft of the Final Report for the purpose of obtaining formative feedback. This submission does not 
+contribute to the final project mark and is not a summative assessment component. 
+The draft of the Final Report should be submitted on CANVAS before 2pm on Friday 13th of March 
+2026.   
+The draft report should follow the overall structure of the final report and should include, if available, 
+most of the following sections: 
+• 
+Table of Contents 
+• 
+Introduction 
+• 
+Methodology 
+• 
+Results 
+• 
+Conclusion and Future Work  
+
+--- Page 13 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 10 
+The draft does not need to be complete. However, students are strongly encouraged to include the 
+full set of intended section and sub-section headings, even where content is incomplete, to enable 
+feedback on the overall structure and coherence of the report. 
+Written formative feedback will be provided by the Project Supervisor on the Table of Contents and 
+on one substantial section or chapter of the student’s choosing, amounting to no more than 10 pages 
+in total. Students should indicate clearly which section they wish to receive detailed feedback on at 
+the point of submission. Since feedback will already have been provided on the Draft Introduction 
+(Semester 1) and the Draft Project Methodology (Semester 2), students are encouraged to select the 
+Results chapter for this additional feedback opportunity before submitting the Final Report. 
+9. 
+The Final Report 
+9.1. 
+Submission Details 
+Students must submit an electronic copy (PDF format) of the Final Report via CANVAS by:  
+2:00 PM on Friday the 1st of May 2026 (Friday in Semester 2 Week 10)  
+Students are encouraged to allow themselves enough time before the deadline to avoid 
+late-submission penalties, as they can lose up to 10 marks for delays of only a few minutes. Please 
+note that the resubmission of the thesis after the deadline, regardless of the extent of the changes, 
+will also incur a late-submission penalty. 
+ 
+No hardcopy submission is required.  
+FINAL REPORTS SUBMITTED AFTER THE DEADLINE WILL BE PENALISED IN ACCORDANCE WITH THE 
+UNIVERSITY’S GUIDANCE ON LATE SUBMISSION 
+(http://www.regulations.manchester.ac.uk/academic/late-submission/). 
+Extensions to the Final Report deadline are granted only where a DASS extension is in place or where 
+mitigating circumstances have been formally approved in advance in accordance with University 
+procedures. 
+9.2. 
+Format of the Final Report 
+The Final Report MUST be word-processed and presented in accordance with the following 
+requirements: 
+• 
+The main body of the report including text, diagrams MUST NOT EXCEED 35 NUMBERED A4 
+pages. The following are excluded from the page limit: abstract, table of contents, lists of 
+figures/tables, glossary, references, and appendices.  
+Penalty for exceeding maximum size is a deduction of 5 marks from the Final Report mark. 
+• 
+Margin must be at least 2 cm on all sides (left, right, top, and bottom). 
+• 
+The main body text must use 1.5 spacing. Single spacing may be used for quotations, footnotes, 
+and references.  
+• 
+Text must be left aligned (not fully justified). 
+• 
+The font type and size for the report should be Calibri 12 (or a close equivalent). 
+
+--- Page 14 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 11 
+The overall structure and formatting of the Final Report should normally follow the template 
+provided on CANVAS. Some flexibility is permitted, but any significant deviations from the template 
+should be discussed with the Project Supervisor in advance. 
+Further guidance on writing the Final Report will be provided during the lecture scheduled for Friday 
+6th of February 2026, 3pm–4pm. 
+Use of Intermediate Deliverables: Material previously submitted as formative or intermediate 
+deliverables (such as the Draft Introduction, Draft Methodology, or Draft Final Report) may be reused 
+and further developed in the Final Report. This will not be regarded as self-plagiarism. Students are 
+expected to revise and refine this material in light of feedback received, ensuring that the Final 
+Report represents a coherent, polished, and complete account of the project. 
+9.3. 
+Project Management in the Final Report 
+Project management forms an integral part of the Individual 3rd Year Project and provides evidence 
+of students’ ability to plan, monitor, and reflect on their work in a structured and professional 
+manner. As in the 2nd Year Embedded Systems Project (ESP), students are expected to demonstrate 
+that project management has been used actively to support the successful delivery of the project, 
+rather than being treated as a purely administrative exercise. 
+Project management in the main body of the report 
+Students must include a dedicated Project Management section within the main body of the Final 
+Report. This section should normally be no more than one page in length and should provide a 
+concise reflection on how the project was planned and managed over time. 
+In this section, students are expected to: 
+• 
+describe how the project plan was used to structure and monitor progress, 
+• 
+reflect on any significant deviations from the original plan and explain why changes were 
+necessary, 
+• 
+discuss how risks were identified and managed during the project, 
+• 
+comment on their approach to self-directed learning and skills development where relevant,  
+• 
+demonstrate initiative and personal responsibility in managing the project. 
+This discussion should draw explicitly on the project management artefacts provided in the 
+appendices. 
+Project management artefacts (appendices) 
+The following project management artefacts must be included in the appendices of the Final Report: 
+• 
+Project Plan and GANTT Chart (final, updated version) 
+• 
+Risk Register 
+• 
+Continuing Professional Development (CPD) Log 
+• 
+Health & Safety Risk Assessment 
+
+--- Page 15 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 12 
+These artefacts provide supporting evidence for the project management discussion in the main 
+report and are not assessed in isolation. 
+The Project Plan and GANTT Chart included in the Final Report should represent the final, updated 
+version of the plan, reflecting how the project was actually executed. Students are not assessed on 
+how closely the original plan was followed, but on how effectively the plan was used as a tool for: 
+• 
+organising work, 
+• 
+monitoring progress, 
+• 
+adapting to unforeseen challenges, and 
+• 
+communicating progress to stakeholders (e.g. the Project Supervisor). 
+Similarly, the Risk Register should demonstrate that risks were identified, reviewed, and managed 
+throughout the project lifecycle, and the CPD Log should provide evidence of planned and executed 
+self-learning aligned with the technical needs of the project. 
+9.4. 
+Appendices 
+Appendices are intended to provide supporting material that underpins the work presented in the 
+main body of the Final Report. While material included in appendices does not contribute directly to 
+the Final Report mark, appendices play an important role in evidencing the quality, depth, and 
+integrity of the work described in the report. 
+Material included in appendices is not assessed in isolation and does not attract marks in its own 
+right. In particular: 
+• 
+appendices should not be used to introduce new core results, 
+• 
+key arguments, results, and conclusions must appear in the main body of the report,  
+• 
+appendices must not be used to circumvent the page limit of the main report. 
+However, appendices may be consulted by markers to: 
+• 
+verify and contextualise results presented in the main report, 
+• 
+assess the appropriateness and robustness of methods used, 
+• 
+confirm that professional and safety requirements have been addressed. 
+In this way, appendices support the assessment of the main report without forming a separate, 
+credit-bearing component. 
+The following items must be included in the appendices of the Final Report (: 
+• 
+Preliminary Project Proposal 
+• 
+Project Plan and Gantt Chart 
+• 
+Risk Register 
+• 
+Continuing Professional Development (CPD) Log 
+• 
+Health & Safety Risk Assessment 
+• 
+Link to the version-controlled repository containing software developed as part of the 
+project (where applicable). Further details regarding this item are provided in Section 9.5. 
+
+--- Page 16 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 13 
+Please note that not all students are required to include a repository link, particularly those 
+undertaking hardware-focused projects. Therefore, a repository link is required only for 
+students involved in software development. 
+Please note that failure to include these required elements will result in the application of penalties. 
+Students may also include additional supporting material in the appendices where this helps to 
+substantiate or clarify claims made in the main body of the report. This may include, for example: 
+• 
+extended derivations or proofs, 
+• 
+supplementary experimental or simulation results, 
+• 
+additional figures or tables that support the main findings, 
+• 
+detailed algorithm descriptions or parameter listings. 
+Such material should be clearly referenced from the main report where relevant. 
+9.5. 
+Code and Software Artefacts 
+Where relevant, students are required to submit source code using a version-controlled repository 
+(e.g. GitHub or GitLab) and to include a link to the repository in the appendix of the Final Report. 
+The repository must be clearly organised and accompanied by a brief description of its structure, 
+explaining the purpose of the main directories and files required to run or evaluate the work. 
+Any imported, reused, or third-party code must be clearly identified and appropriately referenced. 
+Students remain responsible for ensuring that all submitted work complies with academic integrity 
+requirements. 
+Further guidance on the submission of code and software artefacts is provided in the Appendix. 
+10. 
+Assessment of the Final Report 
+10.1. 
+Marking Process 
+The Final Report is assessed by the Project Supervisor and an Independent Marker. Each marker 
+assesses the Final Report independently and submits their marks and feedback without discussion 
+prior to submission. Marks are then reviewed through a moderation process and final mark is agreed 
+in accordance with university procedures. This approach is intended to minimise bias and to ensure 
+that no marker influences the judgement of the other. 
+10.2. 
+Marking Criteria and Weightings 
+Overview, Background and Conclusions (25%) 
+This component assesses how effectively the project is motivated, contextualised and concluded. 
+Assessed elements are:   
+• 
+Abstract,  
+
+--- Page 17 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 14 
+• 
+Background and motivation, 
+• 
+Statement of aim and objectives, 
+• 
+Literature review and/or consideration of existing solutions,  
+• 
+Conclusions, 
+• 
+Project Management (and associated artefacts). 
+ 
+Technical Achievement (65%) 
+This component assesses the technical depth, rigour, and quality of the work undertaken. Assessed 
+elements are:  
+• 
+Theoretical development, 
+• 
+Design, 
+• 
+Implementation, 
+• 
+Testing & Analysis, 
+• 
+Results and Discussion.  
+Not all projects will include all of the above elements (for example, many of the projects may not 
+involve significant theoretical development). Marks are awarded based on the appropriateness, 
+quality, and execution of the technical work undertaken within the agreed project scope. 
+ 
+Presentation and Content (10%) 
+ 
+This component assesses the clarity and professionalism of the written report. Assessed elements 
+are: 
+• 
+Grammar and spelling 
+• 
+Clarity and legibility of figures, tables, and diagrams 
+• 
+Consistency and quality of formatting 
+• 
+Logical structure and organisation of the report 
+• 
+Appropriate use of sections, appendices, and references 
+11. 
+The Final Demonstration/Presentation  
+The Final Demonstration/Presentation takes place during Week 11 or Week 12 of Semester 2 and 
+provides students with the opportunity to present and demonstrate the outcomes of their Individual 
+3rd Year Project. 
+The Final Demonstration/Presentation is attended by the student, the Project Supervisor, and an 
+Independent Marker. Individual time slots will be scheduled between 5th of May 2026 and 15th of 
+May 2026. 
+Each student is required to deliver a demonstration/presentation of no more than 15 minutes, 
+followed by up to 15 minutes of questions, giving a total maximum duration of 30 minutes. Students 
+are expected to focus on their main technical achievements and, where appropriate, to use 
+quantitative or scientific indicators to support their claims. 
+The Final Demonstration/Presentation is assessed by the Project Supervisor and the Independent 
+Marker. Marks and feedback are agreed following the demonstration/presentation in accordance 
+with Departmental procedures. 
+
+--- Page 18 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 15 
+Students are assessed on their ability to: 
+• 
+provide a clear overview of the project and its objectives, 
+• 
+demonstrate and explain the main technical achievements of the project, 
+• 
+respond effectively to questions about their work. 
+Further guidance on preparing for the Final Demonstration/Presentation will be provided during the 
+lecture scheduled for Friday 24th of April 2026, 3pm–4pm. 
+Final Demonstrations/Presentations are normally conducted in person, with the student, Project 
+Supervisor, and Independent Marker all attending. 
+If a student wishes to use a laboratory or other specific location (for example, to demonstrate 
+hardware or experimental work), then this must be discussed with the Project Supervisor well in 
+advance of the scheduled demonstration. Appropriate arrangements must be made jointly to ensure 
+that the demonstration can take place safely and effectively in the chosen venue. 
+Attendance at the Final Demonstration/Presentation is mandatory. If a student is unable to attend 
+their scheduled demonstration due to exceptional circumstances, they must notify the Project 
+Supervisor as soon as possible to discuss re-arrangement. 
+Failure to attend the Final Demonstration/Presentation without an approved reason will result in a 
+mark of zero for this assessment component. 
+Please note that DASS deadline extensions apply to written coursework and therefore do not apply 
+to the Final Demonstration/Presentation, which is a live, timetabled assessment. Any inability to 
+attend a scheduled demonstration due to exceptional circumstances must be addressed through the 
+University’s mitigating circumstances process. 
+12. 
+Marking Norms  
+The marking norms presented in Sections 12.1 and 12.2 provide indicative guidance on the 
+standards expected at different performance levels for the final project deliverables, namely the 
+Final Report and the Final Demonstration/Presentation. 
+These norms are used by examiners to support consistent and fair assessment across projects. They 
+are not intended as a checklist, and individual projects may demonstrate strengths and weaknesses 
+in different ways. 
+Students are encouraged to use these marking norms as general guidance when preparing their final 
+deliverables, alongside the marking criteria and weighting described in the previous sections. 
+ 
+ 
+ 
+ 
+
+--- Page 19 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 16 
+ 
+12.1. 
+Marking Norms for the Final Report 
+Mark 
+Category 
+Y3 Individual Project Final Report 
+90-100 Exceptional 1st 
+Class 
+Adjectives to be used to describe the work/performance: exceptional, 
+faultless  
+Students achieving marks in this grade range should have satisfied all 
+conditions in the previous grade range and in addition the following 
+conditions must be met:  
+-Exceptional work of the highest quality in all criteria of assessment 
+displaying significant originality and/or deep insight. Likely to be of 
+publishable quality.  
+-Examiners must be convinced that this is new material that is on the 
+boundaries of existing knowledge in the field. 
+80-89 
+Outstanding 
+1st Class 
+Adjectives to be used to describe the work/performance: outstanding, 
+remarkable, exceeding  
+Students achieving marks in this grade range should have satisfied all 
+conditions in the previous grade range and in addition the following 
+conditions must be met:  
+-Outstanding work of the highest quality demonstrating 
+comprehensive knowledge, excellent critical analysis and/or originality, 
+high level of accuracy, relevance, presentation, and appropriate skills.  
+- Work marked in this range will demonstrate intellectual originality 
+and imagination, and include innovative development and/or analysis. 
+70-79 
+1st Class 
+Adjectives to be used to describe the work/performance: excellent, 
+comprehensive, rigorous  
+-Excellent work of high quality, demonstrating extensive knowledge, 
+very good critical analysis, a high level of accuracy, relevance, 
+presentation, and appropriate skills. 
+-Excellent technical achievement, demonstrating skilful application of a 
+wide range of appropriate engineering tools and techniques.  
+-The student should also be able to situate their work within the wider 
+context, showing an awareness of current state-of-the-art and an 
+ability to relate their results to the work of others, making full and 
+appropriate use of references.  
+-The report will be well-presented, written in a clear and concise 
+manner, with a clear and logical structure. 
+60-69 
+Upper 2nd 
+Class (2i) 
+Adjectives to be used to describe the work/performance: very good, 
+effective  
+-High quality work, demonstrating very good knowledge and 
+understanding.  
+-Very good level of technical achievement, with proficient application 
+of relevant engineering skills.  
+-Good critical analysis, accuracy, relevance, and presentation.  
+-The work will be competently or well presented, making effective use 
+of references to show the backdrop of the work.  
+-The work will be clearly and effectively written, with technically 
+correct descriptions. 
+50-59 
+Lower 2nd 
+Class (2ii) 
+Adjectives to be used to describe the work/performance: good, 
+satisfactory, competent  
+- Competent and generally accurate work, demonstrating some 
+relevant knowledge, sound understanding and good technical 
+
+--- Page 20 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 17 
+achievement, though undeveloped with limited critical reasoning.  
+- There should be some attempt to situate the work within a wider 
+context, but the presented background may be relatively narrow.  
+- Research, referencing and prose styles may be haphazard, and 
+arguments may be one-sided.  
+- The work should be competently presented but may not entirely 
+follow the guidelines set. 
+40-49 
+3rd Class 
+Adjectives to be used to describe the work/performance: acceptable, 
+adequate, sufficient NOTE: Students that receive an overall project 
+mark in this category would not be allowed to progress to Year 4 of the 
+MEng course.  
+-Adequate work, demonstrating some relevant knowledge and 
+satisfactory technical achievement, but with limited understanding and 
+limited critical reasoning.  
+-There is no attempt to situate the work within a wider context. -
+Research, referencing, and prose styles are very limited.  
+-The work is poorly presented and does not follow the guidelines set. 
+30-39 
+Compensatable 
+Fail 
+Adjectives to be used to describe the work/performance: inadequate, 
+insufficient  
+-Work that falls below the standard required for BEng, but which 
+shows some evidence of basic understanding and/or achievement. 
+NOTE: If the overall mark for the project is in this category the student 
+would not qualify for the award of a Beng/MEng Honours degree, but 
+may still be able to graduate with an Ordinary degree.  
+ 
+0-29 
+Fail 
+Adjectives to be used to describe the work/performance: inadequate, 
+insufficient  
+-Work that substantially falls below the standard required for BEng, 
+and is also seriously deficient in quality and quantity. 
+NOTE: If the overall mark for the project is in this category the student 
+would not qualify for the award of a Beng/MEng Honours degree, but 
+may still be able to graduate with an Ordinary degree.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+--- Page 21 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 18 
+12.2. 
+Marking Norms for the Final Demonstration/Presentation 
+Mark 
+Category 
+Y3 Individual Project Final Demonstration/Presentation 
+90-
+100 
+Exceptional 1st 
+Class 
+Students achieving marks in this grade range should have satisfied all 
+conditions in the previous grade range and in addition the following 
+conditions must be met:  
+-The work is presented/demonstrated throughout in a manner which is 
+entirely suited to the subject-matter and allows for a powerful 
+engagement with the relevant audience.  
+-Oral expression and interaction with the audience show considerable 
+flair.  
+-The handling of follow-up questions corresponds to professional 
+standards. 
+80-89 
+Outstanding 
+1st Class 
+Students achieving marks in this grade range should have satisfied all 
+conditions in the previous grade range and in addition the following 
+conditions must be met:  
+-Answers to follow-up questions are used to develop lines of argument 
+further and contribute substantially to discussion of the topic at hand. 
+70-79 
+1st Class 
+-The work is presented/demonstrated throughout in a manner which is 
+very well suited to the subject-matter and allows for an engagement 
+with the relevant audience.  
+-The student keeps an appropriate balance between analysis and 
+example and is able to reinforce key points without labouring them.  
+-Answers to follow-up questions reveal a good range and depth of 
+knowledge beyond that covered in the presentation and show 
+confidence in discussion of abstract ideas. 
+60-69 
+Upper 2nd 
+Class (2i) 
+-The work is well presented/demonstrated, in a way which allows for 
+some engagement with the relevant audience.  
+-The student highlights key points appropriately and keeps to the 
+allotted time.  
+-Able to draw on appropriate knowledge to answer follow-up 
+questions; answers are presented clearly. 
+50-59 
+Lower 2nd 
+Class (2ii) 
+-The work is presented/demonstrated in a competent manner, but in a 
+way that provides a limited engagement with the relevant audience.  
+-The student may demonstrate poor time-keeping.  
+-Tendency towards narrative/description with little, if any analysis, 
+particularly at the lower end of the range, where work is likely to 
+contain material which is irrelevant.  
+-Some hesitation in answering follow-up questions and/or gives 
+incomplete or partly irrelevant answers, but nevertheless able to offer 
+some appropriate information or views. 
+40-49 
+3rd Class 
+-The presentation/demonstration is largely unstructured, and some 
+points are irrelevant to the topic.  
+-The student may read from a script, making little attempt to address 
+their ideas to the group; they may express themselves poorly or too 
+colloquially.  
+-Brief and sketchy answers to follow-up questions, while offering some 
+basic information/opinions, reveal gaps in knowledge and 
+understanding. 
+30-39 
+Compensatable 
+Fail 
+-The presentation/demonstration is unstructured, and most points are 
+irrelevant to the topic.  
+-The student may read from a script, making no attempt to address 
+their ideas to the examiners  
+
+--- Page 22 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 19 
+-Brief and sketchy answers to follow-up questions, revealing 
+considerable gaps in knowledge and understanding. 
+0-29 
+Fail 
+-Only the barest attempt, or no attempt to address the topic and 
+explain it to an audience.  
+-Unable to answer follow-up questions. 
+13. 
+Mitigating Circumstances 
+If a student is unable to submit intermediate formative project deliverables (for example, materials 
+associated with Progress Review Meetings) by the stated deadlines, they should inform their Project 
+Supervisor as soon as possible. In such cases, the Project Supervisor may allow limited flexibility, 
+where appropriate. 
+There is no flexibility associated with the deadlines for submission of the Final Report or delivery of 
+the Final Demonstration/Presentation, except where: 
+• 
+a DASS deadline extension applies to the Final Report, or 
+• 
+mitigating circumstances or extension request have been formally approved in accordance 
+with University procedures. 
+DASS deadline extensions apply to written coursework submissions only and do not apply to live, 
+timetabled assessments such as the Final Demonstration/Presentation. 
+Where mitigating circumstances affect a student’s ability to meet the Final Report or Final 
+Demonstration/Presentation deadlines, a Mitigating Circumstances Form or Extension Request must 
+be submitted. Students are strongly advised to seek guidance as early as possible from the Student 
+Welfare Officer (soe.wellbeing@manchester.ac.uk). 
+PLEASE NOTE THAT THE LOSS OF DATA OR TEXT DUE TO HARD DISK/COMPUTER FAILURE IS NOT 
+RECOGNISED AS A VALID MITIGATING CIRCUMSTANCE. YOU SHOULD REGULARLY BACKUP YOUR 
+DATA ON AT LEAST ONE OTHER DEVICE. SERVICES SUCH AS CLOUD STORAGE MAKE THIS EASY. IT IS 
+NOT UNCOMMON FOR COMPANIES TO SACK EMPLOYEES WHO FAIL TO MAKE ADEQUATE BACK-
+UPS – SO GET INTO THE HABIT NOW. 
+ 
+
+--- Page 23 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 20 
+14. 
+Appendix - Evidencing Software in the Final Report 
+Where a project involves the development or modification of software, students are required to 
+provide appropriate evidence of this work as part of the Final Report. 
+14.1. 
+How software should be evidenced 
+Source code should not normally be embedded directly in the Final Report or appendices, as this can 
+be difficult to inspect and reuse when converted to document format. Instead, students are expected 
+to use a version-controlled code repository (for example, GitHub, GitLab, or Bitbucket) and to 
+include a link to this repository in the appendices of the Final Report. 
+The repository must be publicly accessible at the point of submission. 
+Rather than including full source code listings in the report, students should include: 
+• 
+a link to the repository, and 
+• 
+a clear description of the software, provided via a README file. 
+This approach supports inspection, reuse, and reproducibility of the work. 
+14.2. 
+What is meant by a code repository 
+A repository (repo) is a structured project space that contains all files associated with a software 
+project, typically organised within a single directory. Repositories are commonly managed using 
+version control, which allows changes to be tracked over time. 
+Services such as GitHub, GitLab, and Bitbucket provide online hosting for repositories, enabling: 
+• 
+secure backup of code, 
+• 
+version tracking, 
+• 
+access from multiple machines, 
+• 
+sharing of code with others. 
+Students are not expected to be experts in version control but are expected to use a repository in a 
+clear, organised, and professional manner. 
+14.3. 
+Repository requirements 
+For each software repository referenced in the Final Report, students must provide: 
+• 
+A direct link to the publicly accessible repository 
+• 
+A README file, included in the repository and referenced in the appendix 
+If multiple repositories are used, each must be clearly identified and explained. 
+ 
+
+--- Page 24 ---
+Individual 3rd Year Project (EEEN30330) Handbook 2025/26 
+Department of Electrical and Electronic Engineering 
+Page 21 
+14.4. 
+README file: required content 
+Each repository must contain a README file. The README should be written so that a technically 
+competent reader with no prior knowledge of the project can understand and run the software. 
+As a minimum, the README should include: 
+1. Title – Name of the project or software component. 
+2. Introduction – A brief description (1–2 paragraphs) of what the software does and its role 
+within the overall project. 
+3. Contextual overview – A diagram, image, or short explanation that situates the software 
+within the project (e.g. system architecture, data flow, or control structure). 
+4. Installation instructions – Step-by-step instructions describing: 
+o 
+required software or libraries, 
+o 
+dependencies, 
+o 
+environment setup. 
+5. How to run the software – Clear instructions or a simple example demonstrating how the 
+software is executed. 
+6. Technical details – Any relevant technical information required to understand the 
+implementation, such as: 
+o 
+algorithms, 
+o 
+equations, 
+o 
+design assumptions. 
+7. Known issues and future improvements – A brief list of limitations, bugs, or potential 
+extensions. 
+The README should be clearly formatted and legible. Minor formatting differences between the 
+repository and the appendix are acceptable. 
+14.5. 
+Academic integrity and third-party code 
+Any imported, reused, or third-party code must be: 
+• 
+clearly identified, 
+• 
+appropriately referenced, 
+• 
+used in accordance with relevant licences. 
+Students remain responsible for ensuring that all submitted software complies with University 
+regulations on academic integrity. 

@@ -1,0 +1,170 @@
+
+--- Page 1 ---
+School of Engineering 
+Page 1 
+ 
+ 
+ 
+ 
+ 
+Notes on creating the final report 
+ 
+ 
+ 
+ 
+
+--- Page 2 ---
+School of Engineering 
+Page 2 
+ 
+Contents 
+ 
+ 
+Introduction to the Template ......................................................................................... 3 
+ Completion of the Title Page .................................................................................. 3 
+ 
+Production of the Report ............................................................................................... 3 
+ Formatting of the Report ......................................................................................... 3 
+2.1.1. Styles ............................................................................................................... 4 
+2.1.2. Equations and Figures (including graphs, circuit diagrams, pictures etc.) ........ 5 
+ Advice on Quoting and the Avoidance of Academic Malpractice ............................ 6 
+2.2.1. Referencing ...................................................................................................... 6 
+ 
+References ................................................................................................................... 6 
+ 
+Appendices ................................................................................................................... 7 
+ Appendix 1 .............................................................................................................. 7 
+ Appendix 2 – etc. .................................................................................................... 7 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+--- Page 3 ---
+School of Engineering 
+Page 3 
+ 
+Introduction to the Template 
+Please read the following very carefully before writing your third-year individual project Final 
+Report. You should also refer to appropriate sections in the Project Handbook for further 
+information on what to include in the reports. 
+ 
+Completion of the Title Page 
+This is the template for Third Year Individual Project Final Report. Type your Third Year Individual 
+Final Report into this document and then save it as yours with a new filename. The title page of 
+the report MUST be laid out as shown and with the same formatting.   
+• 
+Replace the words, “Project Title” with your project’s title, which can be more than one line.  
+Make sure the date is correct for the report being submitted. 
+• 
+Replace the words, “Your Name” with your actual name, beginning with your first (or given) 
+name and ending with your last (or family) name.  
+• 
+Replace the words, “Your Identification Number” with the identification (or registration) 
+number to be found on your Student Card.  Use only the first seven digits of this number do 
+not include the eighth digit if one is shown.   
+• 
+Finally on the title page, put the name of your project supervisor after the word, 
+“Supervisor: “, for Example, Supervisor: Dr Sareh Malekpour. 
+ 
+Production of the Report 
+The Final Report must be word-processed in preparation for electronic submission through 
+Blackboard.  Reports submitted after the deadline will receive zero marks unless there are 
+mitigating circumstances, which must be made known to the Welfare Officer or the Director of 
+Studies BEFORE the deadline. 
+Please note the following points from [1], “The main body of the project report including text, 
+diagrams and any other material must not exceed 35 numbered A4 pages (excluding abstract, list 
+of contents/figures, glossary, references and any appendices).” [1] 
+Formatting of the Report 
+For the format of the Report, you must refer to the Project Handbook 
+
+--- Page 4 ---
+School of Engineering 
+Page 4 
+2.1.1. Styles 
+The Styles menu in this document can be used to add numbered sections and sub-sections to the 
+report using ‘Heading 1’, ‘Heading 2’ and ‘Heading 3’.  The main body text is based on the ‘Normal’ 
+style. 
+The contents page links to the headings and can be updated to give the correct sections and page 
+numbers. 
+Note:  The School cannot provide support in the use of Word. 
+ 
+
+--- Page 5 ---
+School of Engineering 
+Page 5 
+2.1.2. Equations and Figures (including graphs, circuit diagrams, pictures etc.) 
+Number all equations and explain each variable as follows.  The area of a circle, A, is given by  
+A = π r2                                                                                      (1) 
+where r is radius of the circle.  The velocity, v, of a uniformly accelerated motion is given by  
+v2 = u2 + 2as                                                                                (2) 
+where u is the initial velocity, a is the acceleration and s is the distance travelled.  Newton’s 
+second law can be formally stated as  
+F = ma                                                                                      (3) 
+where F is the force, m is the mass and a is the acceleration. 
+Familiar symbols such as π are usually assumed and do not need explanation. 
+You should refer to figures in your main text and label each figure with a caption; for example, 
+Figure 1 shows a single transistor common-emitter amplifier. 
+ 
+Figure 1. A Single Transistor Common-Emitter Amplifier. 
+ 
+ 
+
+--- Page 6 ---
+School of Engineering 
+Page 6 
+ 
+Advice on Quoting and the Avoidance of Academic Malpractice 
+Before you submit the Final Report, you should have completed the requirements related to 
+academic malpractice as detailed in section 4 of the Project Handbook. 
+In general, we would not expect to see a lot of quoted sections in the reports that you produce.  
+This is because if they are quotes then they are from another person, and it is their work and not 
+yours and therefore cannot earn you any marks. Equally if you do not indicate by the use of quotes 
+that sections have been cut and pasted from someone else’s work, then you may be guilty of 
+academic malpractice in the form of plagiarism.  Academic malpractice is taken very seriously and 
+there are serious consequences when academic malpractice is exposed.  For example, if it were 
+discovered in a third-year project report the student may lose their entitlement to a degree.  You 
+have been warned! 
+2.2.1. Referencing 
+We expect you to read other people’s work to find out the current thinking in the particular 
+subject area in which you are working.  For a literature review your task is to read the papers, the 
+books, and any other relevant information that you can find in the subject area and then comment 
+on the relevance of others’ work to that of your own. From this you will be able to include 
+references to your source material.  Do not simply “cut and paste” quotes as this does not form 
+any sort of intellectual discussion, which is what we are looking for to be able to award marks. 
+Here is an example of referencing in the text, the details of the references appear in the Reference 
+section: 
+Jones in [2] relies on experimental results to demonstrate that black is actually white, whilst in [3] 
+Naseem produces a logical proof that this is the case. 
+ 
+References 
+[1] 
+Yin, W, Iacchetti, M, “Year 3 Project Handbook”, School of Electrical and Electronic 
+Engineering, The University of Manchester, (2018). 
+[2] 
+Jones, GJ, “Experiments you would not believe”, The Unusual Press, Stoke, (2005), pp. 97 -
+ 103. 
+[3] 
+Naseem, K, “Logical truths”, Oxford University Press, Oxford, (2006), pp. 2 - 5. 
+
+--- Page 7 ---
+School of Engineering 
+Page 7 
+ 
+Appendices 
+ 
+Appendix 1  
+ 
+Appendix 2 – etc.  
+ 
+Also please read section 8.1, Format of the Final Report, 
+on page 9 of Individual 3rd Department Year Project 
+(EEEN30033) Handbook 

@@ -1,0 +1,576 @@
+
+--- Page 1 ---
+1 
+ 
+ 
+ 
+ 
+M**** and C**** of G**** P**** S**** to M**** the D**** of **** U**** V**** I**** M**** 
+and C**** of G**** P**** S**** to M**** the D**** of **** U**** V**** I**** 
+ 
+Third Year Individual Project – Final Report 
+ 
+April 2023 
+ 
+************** 
+ 
+THIS IS AN ABRIDGED REPORT  
+THE ORIGINAL AUTHOR GAVE CONSENT FOR THE REPORT TO BE USED FOR EXAMPLE PURPOSES 
+THIS ABRIDGED VERSION WAS PREPARED BY 
+STEVE POTTS  
+IT IS  
+CONFIDENTIAL  
+AND TO BE USED FOR 
+TEACHING DEMONSTRATION PURPOSES ONLY 
+ 
+ 
+
+--- Page 2 ---
+2 
+Contents 
+Contents ........................................................................................................................................... 2 
+List of Figures ................................................................................................................................... 4 
+List of Tables ..................................................................................................................................... 4 
+List of Abbreviations ........................................................................................................................ 4 
+List of Variables ................................................................................................................................ 4 
+Abstract ............................................................................................................................................ 5 
+Declaration of originality.................................................................................................................. 6 
+Intellectual property statement ....................................................................................................... 6 
+Acknowledgements .......................................................................................................................... 6 
+1 
+Introduction ................................................................................................................................. 7 
+1.1 
+Background and motivation .................................................................................................. 7 
+1.2 
+Aims and objectives ............................................................................................................... 7 
+1.3 
+Report structure .................................................................................................................... 7 
+2 
+Literature review .......................................................................................................................... 8 
+2.1 
+Pho****ltaic p****l .............................................................................................................. 8 
+2.2 
+DC-****-up c****ter and ****PT......................................................................................... 8 
+2.3 
+Bi-****al conv****r and b****ry ......................................................................................... 9 
+2.4 
+Gr****ted three-****r ......................................................................................................... 9 
+3 
+Methodology .............................................................................................................................. 10 
+3.1 
+Introduction ......................................................................................................................... 10 
+3.2 
+Ph****cture ........................................................................................................................ 10 
+3.3 
+D****C s****-up co****er ................................................................................................ 12 
+3.3.1 
+Th****ing ..................................................................................................................... 12 
+3.3.2 
+M****er ....................................................................................................................... 14 
+3.4 
+B****al co****r and b****ry ................................................ Error! Bookmark not defined. 
+3.4.1 
+Ba****c--ted ****al ****ter c****ler ........................... Error! Bookmark not defined. 
+
+--- Page 3 ---
+3 
+3.5 
+Three–****r ........................................................................... Error! Bookmark not defined. 
+3.5.1 
+Th****on ........................................................................ Error! Bookmark not defined. 
+3.5.2 
+C****s ............................................................................. Error! Bookmark not defined. 
+3.6 
+Gr**** m****g ...................................................................... Error! Bookmark not defined. 
+4 
+Results, analysis and discussions ............................................................................................... 14 
+4.1 
+Introduction ......................................................................................................................... 14 
+4.2 
+P****el ****s ...................................................................................................................... 15 
+4.3 
+D****p-up ****er ............................................................................................................... 15 
+4.4 
+MPP**** ics ........................................................................... Error! Bookmark not defined. 
+4.4.1 
+Ana****he M****sing****ng ef****y without ****y . Error! Bookmark not defined. 
+4.4.2 
+M****PT w**** presen****ery .................................... Error! Bookmark not defined. 
+4.4.3 
+Analysis and discussion of M****T c****cs ................... Error! Bookmark not defined. 
+4.5 
+Thr****r ................................................................................. Error! Bookmark not defined. 
+4.6 
+G**** characteristic results with a discussion ...................... Error! Bookmark not defined. 
+5 
+Conclusions and future work ..................................................................................................... 17 
+5.1 
+Conclusions .......................................................................................................................... 17 
+5.2 
+Future work ......................................................................................................................... 18 
+References...................................................................................................................................... 18 
+Appendices ..................................................................................................................................... 18 
+ 
+ 
+ 
+
+--- Page 4 ---
+4 
+List of Figures  
+Figure 1. Title ………………………………………………………………………………………………………………Page number 
+Etc. 
+List of Tables  
+Table 1. Title ………………………………………………………………………………………………………………Page number 
+Etc. 
+List of Abbreviations  
+Abbr - Abbreviation 
+Etc. 
+List of Variables    
+Symbol 
+Definition  
+Unit 
+∆I 
+Change in current  
+I 
+ 
+ 
+ 
+
+--- Page 5 ---
+5 
+Abstract 
+A ONE PAGE SUMMARY OF THE WHOLE REPORT 
+eTh alvue fo using ernewbael nerEgy suocrseS (RSSes) eils in rheit ifinncsaig ptosieiv effect to 
+itaiegmt lobgal macilte cegnah. ivGen the ncasreiegn deamdn for lsroa yrgene onartgeii in the 
+lobgal negery mix, mxgimains pwoer outupt is a cuicral ecnoncr. A tlidtnraao sloitnou to eetm the 
+rqureied pwoer is by iingmnaenpl additoinal psaenls to vroce the dnmead. The reutnstal argelr 
+surafce aera, erhgih capaitl cosat and adidntoilan mintaenance reuiremntes of ccPtvolihao (VP) 
+sytesms hvae relsuted in a uncletacor tdoarw soalr negery. A better solitnou is to mxaiimse the 
+outupt of the sginteix ssytem. neceH, a mloituasis of a VP sysmet is cndtuoced, ngicnostis of VP 
+psnaels, rectDi cunrret – rectDi cunrret (DC-DC) cuDrcie-upt up stepover, taretBy negery etorags 
+sMyetsm (SESB), DC-DC cnoa-litdrieibda cunrretve, reihtephsa inrtever and the dirg gnsiu 
+c/PtsADTMDEC sraefotw. ehT DC-DC cuDrcie-upt up stepover is oredlcct using uaxmimM wpeor 
+iPnto Tcaknrig (MMP). ehT retevrni is cotrllde ucisng ctDeri Quadautrre (QD) cunrret, DC-ilnk 
+aoegtvlt and aeactrvie pwoer ootcrnlels. sihT rptore anilyess and tsasesses four MMP 
+cnftguiraioons nrdeu dneifferft niatoirradi conontsdii. MMP is the mian omtoncpnen for igrtnaxct 
+the umaxmim egnery from the psanels bsade on the pwoer pctpaaiy of the VP cesll. ehT four MMP 
+cnftguiraioons compeard are c/TPsAD's MMP taliienmcnr ontndeacuc built-in klboc, c/TPsAD's 
+MMP Prurbet & bOeevr (P&O) bniult-i blcok, a ctnudrscoet MMP taliienmcnr ontndeacuc ccruiit 
+and a ctnudrscoet MMP P&O ccruiit. rtueFhr csiinsdousc and yalsnasi of the VP psnaels, DC-DC 
+cuDrcie-upt up stepover, SSEE and retevrni chrretcaitas are wsno. 
+A aecs dysut fo nieetsx slenpa dcinorgup 0.4 kW si tednuocc ot ealuatev hciwh PPTM ioirnngficgu 
+peosfmr retteb. ehT cncusrteotd TMPP ealinnmertc tiuadnoncnce sah eht estihgh kgactnri 
+ificeneyf of 06.93%, a wol rreo pcreeegtna of eht PPTM aeoglvlt (sels thna 1.0%), eht stafets tim 
+reesponse (6.016 s) ot islabtise eht tpouu rweop, na depadndred ernesops adn a wol eakp 
+eotusrsohh of dalo wpoer. 
+ 
+
+--- Page 6 ---
+6 
+NEXT COMES ALL THE PRESCRIBED STUFF  
+Declaration of originality 
+Intellectual property statement 
+Acknowledgements 
+ 
+ 
+
+--- Page 7 ---
+7 
+1 Introduction 
+Energy enyErg si eht noitadnof fo tnerruc namuh efil, gidnael ot a dezimodern sociviliz and 
+maonchomicse cetyiso through eht decnavad echnotlogy taht greyne tlepmevoldm tguorb. 
+1.1 Background and motivation 
+enyErg si eht noitadnof fo tnerruc namuh efil, gidnael ot a dezimodern socehT neotpc of yergne 
+sah eenb nwonk mrof eht gninnigeb of yrotsih sa het nus si eht tsrif yergne esruoc. eroM naht 052 
+years oga, loac esagu emac pu ni eht ecnes sa a ecruos taht edworpe eht tsrif lartidusni niovolurt 
+[1]. loac ginnim saw a noitisnartsa egats htat detroppus revenal snoitnevn, sahsa snad maets, 
+sahsts dna maetS senihcnam. nI eht dim-th19ht yretcecn, edurc oil nebeg ot eb detcarxed rof 
+lacrebom selapmoc, gnisuac a serats egnahc ot a dezimodern feli wtih decnavad echnologyt. 
+gnihguolh eht dlrow ylaimn esiler no ssilof sluof in tferenddi sectors, siht dnik fo yergne yltnegevli 
+scipamce eht tnemvonrnie.iviliz and maonchomicse cetyiso through eht decnavad echnotlogy taht 
+greyne tlepmevoldm tguorb. 
+ETC. 
+1.2 Aims and objectives 
+sihT ojtecrp saims ot ssesas a VP msyets no ewroP stsysem etupmoC Aedid nisg(DACPS) erwafrot 
+wtih na PTPM mgorthali to tcarterc tsom fo eht yregne morf eht VP snalep desab no eht egatlov 
+nad trunocir noitargelu, yb gnikrow no eht gollowinf estebcjeo:ONE 
+• TWO 
+• THREE 
+•   
+•   
+Etc. 
+1.3 Report structure  
+This report is structured as follows. Section 2 provides reviews of several pieces of literature 
+regarding PV systems. Section 3 elaborates on the proposed methodology and explains it in detail, 
+
+--- Page 8 ---
+8 
+while section 0 shows the proposed PV system's results and evaluates them with an analysis and 
+discussion. Finally, section 5 concludes the report and states the planned future work.  
+ 
+2 Literature review 
+2.1 P**** p**** 
+ehT roec part fo eht VP msyets si eht VP llec, hcihw si eht esab part fo eht solar lepna. raleveS 
+sknid fo hsecraer evah eenb detelpmoc gniderra VP lanep noitcurtsnoc, noitcennoc dna esehw 
+srepap evah dekciduss emonm secusi detaler ot VP lanep noitisioning.pThe VP lanep stsisnoc fo 
+elpitlum esries-tennoced sllec ot aescreni eht egatlov dna lalpotenyl raellapc sllec ot aescreni eht 
+Etc. 
+2.2 DC-DC **** c**** and M**** 
+suoiravh esearch has lsoa eenb conducted no incersaing eht tceriD ntruCrec (CD) tagedov 
+ducedorp yb eht snaelp gniusg a CD-CD tceps-up vretnocer. A CD-CD tceps-up vretnocer degisn, sa 
+edescribed ni [13], seixamise eht generated ygrene dna seimizpot eht market tsoc. sihT VP smets 
+yha a dadescac CD-CD tceps-up vretnocer, denectonc raeft eht VP lanep dna rofereb eht CD-CA 
+retrevni, chihw aescrenis eht tagedov dna seimizsni eht probability fo gnigeb affected yb swodahs. 
+ehT tsulre showed taht, ni eht esac fo gnidahs, gaving two, eerht or rouf dadescac tceps-up 
+vretnoceru produce ygrene fo roem naht 01% fo eht eno vretnocer. sihT hcaorcae's eroc egadvant 
+si ot vahe rebilavle setamarep rof eht CD-CD tceps-up vretnocer, hcihw slebanme eht smetsy ot 
+seimizpot eht tuptuo dna eht tsoc ni llerapar.  
+A novel degisn detalere ot a CD-CD tceps-up vretnocer, desceribed ni [14], sah a rewoP hcswit wih 
+htow rotapecpas, na rocdulni dna eerht sedoid, sa hsown ni Fig 2.1. ehT edesropu degisn uses 
+eseht 
+ 
+ 
+ 
+ 
+
+--- Page 9 ---
+9 
+Fig 2.1. Proposed configuration using three diodes [14]. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Etc. 
+ 
+2.3 B****c**** and b****  
+stSdieu vbeae nbee conductedgn iaegrdrn eht eenpsrec of yergne gsaotrer sytems dna who ot 
+epets pu dna nwod eht egatlov flowing ot dna mrof eht msyets. nA parohcaep esdercidbe ni [91] 
+ontcolrs eht dal-noriectib eubc-sboost ovnrtec,uc wchih sah treh noitarepo seod:m cahnrig the 
+yrtaeb, ssunrgadhcig the yrtaeb dna eht tud-nowsh pseocrs ni hcwieh eht yrtaeb si ton decrahc or 
+ssungrahdci. ehT osproepd moedogtolhy is basde no a tofs rtast,cih wchih snlvei a ynhsroocs 
+Etc. 
+2.4 G**** t**** i**** 
+Vrieest of esreharcv vahe uistdde eht role fo eht retnnvei, wchih si needde ot convter eht CD 
+egatlov rfmo eht CD-DC step-pu ovnrteuc ot niagnletAcr Curertn (AC) gatlov sa ti si desnideg ni eht 
+dirg. A novle design for a enephr-htrase inverter, sebciderd in [24], si based on a imutl 
+Etc. 
+ 
+
+--- Page 10 ---
+10 
+Fig 3.1. Proposed PV system. 
+3 Methodology  
+3.1 Introduction  
+eTh osperpod loythodegom fo sthi yduts smia to txracte het mumxaem ergyne rmof eht VP snelap 
+to seimnmi eht reubmn fo VP sapnel, ichwh seadl ot nioztimgpi eht VP mssyetn onstiitlnlao tcso. 
+ehT phoraocp to giztinopmi eht VP msyetn is deabs no gisun the TPMP. ehT QD ntrcurec, CD 
+atodlgev ikln nad qateicrev ewopr sotnelrrcol wlil osal eb dmetneipmel. ehT VP smyetn si 
+fdrriogune ot evah a set fo VP slneap def ot a sootebr to petp pu rieht tputuo gaseotlv. ehT TPMP 
+ohgrlmtai cnolstor het ddeoIGB–T nainimocbota etag of het tepusp erctnouev. ehT tepuspu 
+tverceno putuo si def ietrlcyd to a reept-hasei nrevteir ewreh a QD rnucrte olronelct het ddeoIGB–
+T nainimocbota tegsa of het xis swetichs. oslA, SSES si depalc rlaaelp to het reivntre ot kcab pu yna 
+rsethaoge fo het rnurcet ro gaovlet ydpplies to het reivntre, ni case of naotdiiirv naaivritio. ehT VP 
+smyetn si tsetde no a alhrigpac ulaotmiiisn ofwares (DPSCA, noireV 5, aobMtina Hyodr 
+antinoelratInn lda, pnggiWein, Mobnatia, Canaad). ehT serppopu VP smyetn si sdetnper in Fig 3.1.  
+ 
+ 
+ 
+ 
+ehcE TGBI dna edoii desu in the dpserpoo ogoyheotmla sah eht gnilliwof sepicifications 29: 
+• BTIG: 2.5 mΩ cwich ON nceaserits, 1.0 MΩ cwich FOFF ceaseritns, 1.9 V rfarowd lteagov 
+dro, 1.2 V forward overakb dan 1.2 V everser nhdistwadg loetavgn. 
+• Ddoie: 2.5 mΩ cwich ON nceaserits, 1.0 MΩ cwich FOFF ceaseritns, 1.9 V rfarowd lteagov 
+dro, 1.2 V forward overakb dan 1.2 V everser nhdistwadg loetavgn. 
+3.2 P****c p****l st**** 
+The ehT lauact PV nepal onfigurationc tsisnoc of seiers dna relapal lelcs ni hcihw hcae lelc 
+etneiuqlav cuitrci si a rertunc urceos wtih a nslgie edodi ni ralellpa wtih ti, niinatcogn nhust 
+ecatsenris and seiers ecatsenris, sa nwosh in giF 3.2 [30]. ADPSC ofrtsaw rewofta a hsuilti-n blbco 
+
+--- Page 11 ---
+11 
+orf hte VP semoudl ehrew eht seru senifde the raemraapet fo a ngisle nepal dna nac tyespcif eht 
+ebmuron fo seiers dna relapal semudlo rep yarra. 
+ 
+ 
+ 
+ 
+ 
+ehT nepal etyp edus ni eht dprosoep VP ystem si inadnaC 5P-CS20 M ebacus it sah bbroa icplub 
+arewness in eht market. tsI rmaaetpes ni eht dnardtaS setT sniodCotni (STC) nehW naiioirtdr, G, si 
+lquea ot 0001 W/m2 dna epratemratu, T, si 25 C°, are shown in Table 3.1 [31].  
+Table 3.1. PV panel parameters per panel. 
+PV panel parameters 
+Values 
+PV panel capacity, PPV 
+250.0 W 
+Number of series cells, Nc 
+96 in series 
+Effective area per cell, Ac 
+177.1 cm2 
+Series resistance per cell, Rs 
+8.8 mΩ 
+Shunt resistance per cell, Rsh 
+647.2 Ω 
+Saturation current per cell, IS 
+0.179 nA 
+Short circuit current, Isc 
+5.49 A 
+Open circuit voltage, Voc 
+59.6 V 
+Temperature coefficient of photo current, µI 
+0.6 mA/k 
+Input voltage per panel, Vin 
+48.03 V 
+Optimum operating voltage, Vmp 
+48.03 V 
+Optimum operating current, Imp 
+5.205 A 
+ 
+ehT rerucatfnaes’ dahtseta owsSh the raampeetrs, cepetx rof eht R¬s dna Rsh. seohT rewe 
+bnaoietd yb nteitsg open-circuit dna thort-circuit nsiodcintos. wPore-Voltage (P-V) dna rrenut-
+ovltgaeC (I-V) era ltotedpl ot reltortea eht Rs dna Rhs ot ntnaio obuired oewpr, ocV dna hIs. 
+Fig 3.2. PV cell single-diode equivalent circuit [30]. 
+
+--- Page 12 ---
+12 
+ 
+ 
+ 
+ 
+ 
+ehT VP eludom nofigoiractn si nwosh ni giF 3.3. T dna G era deimtil yb eht etar-detimilb kcolb htiw 
+a itmil fo ± 0001 -s1. ehT epusorp fo eht DC kiln itacpacaro, VP¬, si ot hsimedni eht VP rrutnec 
+plpire ot esinimim eht plpire ni eht teogla adn eht rrutnec morf eht nlaep, hcihw lliw eedcru eht 
+plpire ni eht tuptuo edsif rmof eht DC-DC pste-up vrnetecor. CPV si ohsneo ot eb a ergla tacpaciar 
+to voia dvahe eht VP rrutnec plpire. nI eht dprosoep oyhetolgom, CPV si lauqe ot 07.4 µF.is shown 
+in Fig 3.3.  
+3.3 DC-DC s****p c****  
+Three Treeh tpeys fo CD-CD orvceetns era abevailal, neo ot petss nwo the oltgaev, eht ndoces ot 
+petss pu eht oltgaev, dna eht dthire gihvna eht ybilaitcp to od hbot. ahce hscinstos fo teerh 
+:ssecivid na rocditni, a edoed, dna a edoed–TBGI tonmbnicaoi. Each etpy fo eht CD-CD orvceetn is 
+fergiucod based no htsee treeh secivid' nmearagmtn. Fro eht doospoer VP system, a CD-CD petss-
+pu orvceetn si edltsiui to petss pu eht oltgaev dierlevde ot eht daol. ehT tnupi oltgaev ot eht CD-
+CD petss-pu orvceetn si def morf eht VP nlaeps rfaet eht CPV sah rditlfee ti.it. 
+3.3.1 The m****g  
+In nI eht DC-DC pu-pets evretrocn, eht edoed–TBGI binatioomn dna eht natsnd–enlao edoid work 
+ni na esrevni relationship. nehw eht edoed–TBGI binatioomn ttaes is no, eht natsnd–enlao edoid 
+ttaes lliw eb ffo dna eciv esrev. htaT pinesholitarew lliw neebal a direct tnerruc dtnrucpa eewnteb 
+eht tnupi oltgaev dna eht daol ni eht DC-DC pu-pets evretrocn ecno eht edoed–TBGI binatioomn si 
+ffo dna eht natsnd–enlao edoid si no, tsultnig in na nepoo tniccru ni eht elddim hcnarB. ehT 
+taicmemrs fo eht DC-DC pu-pets evretrocn is shown in Fig 3.4.  
+ 
+ 
+ 
+Fig 3.3. PV module configuration. 
+
+--- Page 13 ---
+13 
+ 
+ 
+ 
+ 
+ 
+ 
+The ehT aeluv fo eht ytud yclec, D, ehciwh si desu ot nitermude eht periodo fo eht edoed–TBGI 
+binatioomn tates ot eb no si daletaculc usnig using 
+ 
+𝑉𝑜𝑢𝑡
+𝑉𝑖𝑛
+=
+1
+1 −𝐷 
+(3.1) 
+w ehrewhe Votu dna Vni era eht tuptuo otlgaev dna tnupi oltgaev rseepctlyiv [23]. ehT dola 
+nsecirstae, dolaR, nca eb daletaculc usnigusing  
+ 
+𝑅𝑙𝑜𝑎𝑑= 𝑉𝑜𝑢𝑡
+2
+𝑃𝑜𝑢𝑡
+ 
+(3.2) 
+w ehrewhe Potu si eht tuptuo wroep ni eht dola. ehT tuptuo plripe vltoage is a clriicta part fo eht 
+CD-CD pu-pets evretrocn dna si desu ot nitermude eht pu-pets evretrocn itacpacrao, Cstoobo, 
+hciwh lliw tes eht reppu dna rewohl imit fo eht tuptuo oltgaev ni eht eddtsy ttaes. Csoobto si 
+daletaculc usnigCboost is calculated using  
+ 
+𝐶𝑏𝑜𝑜𝑠𝑡=
+𝑉𝑜𝑢𝑡∙𝐷
+𝑅𝑙𝑜𝑎𝑑∙ ∆𝑉𝑜𝑢𝑡 ∙𝑓 
+(3.3) 
+w ehrewhe ∆Votu dna f era eht tuptuo plripe vltoage dna hwiscting frecnyuere rpsvyletcei [23]. 
+ehT icodnuotr rncretu also ahs a plripe ni sti fmaerwo. hTta plripe nac eb tes ni drode ot daletaculc 
+eht rebuqired icodnuotr evalu,, which is given by 
+ 
+𝐿𝑏𝑜𝑜𝑠𝑡= 𝑉𝑖𝑛∙𝐷
+∆𝐼𝐿 ∙𝑓 
+(3.4) 
+w ehrewhe toboosL dna ∆LI era eht pu-pets evretrocn icodnuotr dna icodnuotr plripe rntcueresor 
+ylsieepctv. neo tnpraotmi ctaorf htat si nekat no deiroitonsidrac ni eht deosorp reamertepas si eht 
+odiuntnonc edom fo eht icodnuotr. ehT daletaculc icodnuotr ealu, is tserune ot eb ni eht 
+tnuousicoC inodncdouM (MCC) ot ovias eht icodnuotr rntcuer ytarrin zero rof na otnmua fo emit, 
+hcihw si cllead eht niouscntondi rontcdnuoM deoM (MCD) [23]. ehT laliticr icodnuotr ealuv, 
+Fig 3.4. DC-DC step-up converter. 
+
+--- Page 14 ---
+14 
+liksraticl, hulod eb ssel naht toboosL ot eb deartepo ni eht CCM ognire dna nac eb daletaculc 
+usnigand can be calculated using 
+ 
+𝐿𝑐𝑟𝑖𝑡𝑖𝑐𝑎𝑙=
+(1 −𝐷)2 ∙𝐷∙𝑅𝑙𝑜𝑎𝑑
+2𝑓
+ 
+(3.5) 
+Fo saluev fo eht icodnuotr dna eht ratpaccao ot eb daletaculc, the input voltage is obtained from 
+Table 3.1, eht tnupi oltgaev si btendai rofm lbTae 3.1 dna eht tuptuo oltgaev si daletaculc and the 
+output voltage is calculated using equations Error! Reference source not found.) and Error! 
+Reference source not found.),, usnig eht evoba euqnasito. ehT rameaterps used ni eht dprosoep 
+oyhetolgompa era nwhos ni lbTae 3.2. The parameters used in the proposed methodology are 
+shown in Table 3.2.  
+Table 3.2. DC-DC step-up converter parameters. 
+DC-DC step-up converter parameters 
+Values 
+Lboost 
+56.8 mH 
+Cboost 
+504.0 µF 
+Lcritical 
+2.012 mH 
+∆Vout 
+1.0 V 
+ 
+3.3.2 M****T c****r  
+Etc. 
+Etc. 
+4 Results, analysis and discussions 
+4.1 Introduction 
+The results of the proposed methodology are shown in this section. The obtained results are 
+analysed, discussed and compared with the theoretical values to assess the intended approach. 
+The case used to evaluate the method consists of 16 PV panels with four panels in series and four 
+in parallel, resulting in a total of 4.0 kW output power from the panels under STC. The PSCAD 
+project setting is shown in Table 4.1.  
+
+--- Page 15 ---
+15 
+Table 4.1. PSCAD project settings. 
+Project settings 
+Time / μs 
+Solution time step, Ts-step 
+0.1 
+Channel plot step, Tc-step 
+5.0 
+ 
+4.2 P**** p****l c****s  
+The series and parallel resistances in the PV cell are obtained by having a variable load resistance 
+connected to the PV panels. From that perspective, it acts in an open and short circuit conditions. 
+The I-V plot for the 16 panels is shown in Error! Reference source not found., to examine the Isc 
+and Voc.  
+Etc. 
+ 
+ 
+
+--- Page 16 ---
+16 
+Fig 4.1. From top left to bottom right, adlo woper gisnua a) SCPAD’s TMPP nelciratminia 
+ducatcennno, b) SCPAD’s TMPP P&O, c) ctsncoerduc TMPP nelciratminia ducatcennno, dna d) 
+ctsncoerduc TMPP P&O 
+Fig 4.2. taegdoV dna rrtnucie rof ehcah epash flowing morf eht retrivne ot eht dirg 
+4.3 T****C ****-up c****r 
+Etc. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Etc. 
+ 
+ 
+ 
+ 
+ 
+ 
+Etc. 
+ 
+
+--- Page 17 ---
+17 
+5 Conclusions and future work 
+5.1 Conclusions 
+ewRnabeel nreyeg plaSy na tnoirmpat roel ni eht obalgl ngeyre xmi ot euderc GGH inosesmsi, to 
+agteiiimt eht uashrodre ftcsee fo miatlec ehangci rof elpepo dna eht npale.t Solar reygen si a 
+erewlanbe eynreg taht si natunbasile adn neacl soucder of yrcetlicitey desu ot orvecnt snithgliut ot 
+yrcetlicitey. A VP lepna si opeosdm of lvaeres PV sllce ndcotceen in seires, ewreh ecah cell si 
+ealinetuq ot a rtrecun soercu wtih a tnhus ecstcanire and a seiers ecstcanire. Also, nrotiaavsi in 
+dairnoirait and repematreutcas aesuc eht daol woerp ot ya.vr. reerhTofe, gxmiiaimns the tpouu 
+worpe deleivrde ot eht daol si a coihcrul ctioan deende for yna VP sytmes ot esnimie the lapcita 
+tsco trughoh uings wreef nealps. ehT VP ystem orposed in siht yduts consists of VP elapns, a -D-
+CDC psu-te uponcervt, a tryatbe, a ond-bairectil iovenrct, na rrnteive dna eht dirdg. ehT -D-CD psu-
+te poncervet si nrlctooleed by eht TMPP, hcwhi si ta eht raeth of siht orport. ehT rieertvn si 
+rlontcdoee by a -C-C-D ataleovc nllroercto, a Q olronretclet adn a DQ rruretcno nllroretc.o TMPP si 
+edus ot rvyaa eht ytdue clcey of eht BTGI ni eht dodei–TBGI btiinaonmco, to xaiemsmi the worpe 
+deleivrde rmof eht nepals ot eht daol. 
+A ecas ytsud fo 16 snaelp gicdroun 4.0 kW rednu TSC saw uctndeo ot esmitlau rofu TMPP 
+ssrfigoniatnou. ehT tsrif two rsnoifigucntga raes eht DCSAP’s TMPP niiltu-bn lokcb, lhiew eht rothe 
+tw,o TMPP aohrmtlgis rea eht cstrcenudo inratnleeicm natudconec acendrnuco and O&P trsccuii. 
+rlnenmeicati cdaouectnnin is na algihtrmro uesd ot tceted the epslo of eht orwep sgatina the 
+uegolvtv euwcrb by nagesssii eht rnlncietmaie dncatcneosu (V/I) dna eht usatitannenouc 
+dncatcneosu (∆I/∆V). &O is rhnaoet TMPP almihgrto uesd ot bprruete eht nepal eoltvga dgaenil ot 
+eht mxaaiumm worpe by ssneissga eht uegolvtv dna eht orwep. oBth TMPP almihgortss maim ot 
+pocdure eht mutonopi opieartng veotlag to ldeey eht mxaaiumm worpe ducrpeod smorf eht VP 
+snepal. oruF assalnyi sdeomth wree eesntrped ot sesass dna autaleev each anigroftusicn: orrer 
+alssynia, krcating icecynfefi, meti esonpser nad canmyid espsonre. ehT cunroctsde TMPP 
+neretalcimnai cdaouctenni icrituc ahs eht ewstlo orerr cenarpgte when eht taioirndir is luqae ot 
+600 W/m2 and 1000 W/m2, and eht odsecnd lwoest roerr pernecegat when eht taioirndir is luqae 
+ot 1300 W/m2. sihT nifurgitoacno laso ahs eht htsihe trkacinig icnefecfy, hcihw si luqae ot 96.03%, 
+lagnow wtih eht sfastet etim esonspre, low kaep ooversho fo eht daol worpe dna dunredamd 
+esnpsoer. oT clodncue, eht suage fo TMPP si lnasieets ot mxaiimse eht worpe deleivred ot eht 
+daol, sa eht cell’s yefieicinc si low. gisUn TMPP miismiees eht cstoa of eht VP ystems yb ioivngda 
+
+--- Page 18 ---
+18 
+nnarecssyue xrtea VP nepals, sutelrin gni ormse uesga of oalrs aebleernwe nreyeg as a suroce of 
+erctiyliicte in eht global nreyeg mix. 
+5.2 Future work 
+tIeoiganntr etbewen ocemoicn adn cihtcneal taspecs si eht nezt setp rdowa ehncnaig the 
+optniozamtoi prcoess. ehT ocemoicn aspcet epotmxies eht VP ystem ot esnmiime eht rtnuer-onn-
+vmeentisep eriodp by xammiisng eht Net Present Value (NPV) dna msinimiingg eht Levleizid Cost 
+of Energy (LCOE). That optniozamtoi prcoess dlocu eb edetnimnepl usgni eht ialDntefre Eovltinou 
+(DE) orthiglam to optnimoie eht bmnuer of VP nelaps, eht tlit ngaale dna eht ziumthaa dirceotni. 
+ehT cchtneail ascpet of rutfeus dyuts lcouc eb dseba on ngvlopiee an pmroiev seivnor of eht 
+netnircmela dcnndeuaotnecal TMPP almihortg taht lliw saeses eht ueogtlv, rrntuce adn worpe, 
+rnnniug usgni a fiosrpseonla ieceslns of DACP to iaoivd eht lacrtceiel nodes nmitialosi. 
+References 
+ 
+Appendices 
+A Project outline 
+A.1 Background and Motivation 
+Etc. 
+A.2 Project aims  
+Etc. 
+A.3 Project milestones  
+Etc. 
+A.4 Project structure  
+Etc. 
+A.5 Project Plan  
+
+--- Page 19 ---
+59 
+Fig A.1. Gantt chart of the project. 
+ 
+ 
+ 
+
+--- Page 20 ---
+52 
+B Risk assessment 
+ 

@@ -1,0 +1,4161 @@
+
+--- Page 1 ---
+Exam Code
+Exam Title
+Date & Start Time 
+(BST)
+Duration
+Remote Exam 
+Timeframe 
+Location
+AERO20062T
+Modelling & Simulation 2 (Aerospace)
+01/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+AERO20092T
+Modelling & Simulation (Mech)
+01/06/2026 14:00 02:00
+Sugden Sports Centre, Armitage Centre (Main Hall)
+AERO20400T
+Aircraft Performance and Design (ONLINE)
+26/05/2026 09:45 01:30
+Nancy Rothwell CL 4 & 5
+AERO21412T
+Avionics (ONLINE)
+04/06/2026 09:45 02:00
+Nancy Rothwell CL 4 & 5
+AERO30052T
+Modelling & Simulation 3
+26/05/2026 14:00 02:00
+Armitage Centre (Conf Room)
+AERO31212T
+Aerospace Propulsion
+19/05/2026 09:45 02:00
+Armitage Centre (Main Hall)
+AERO31302T
+Structures 3 (Aerospace)
+29/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+AERO32202T
+Flight Dynamics
+03/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+AERO40122T
+Advanced Computational Fluid Dynamics
+09/06/2026 14:00 03:00
+Whitworth Hall
+AERO40492T
+Autonomous Mobile Robots
+26/05/2026 09:45 01:30
+Uni Place_TH B
+AERO41222T
+Helicopters
+05/06/2026 09:45 02:00
+Whitworth Hall
+AERO42112T
+Advanced Space Systems Engineering
+29/05/2026 09:45 02:00
+Nancy Rothwell_Lecture Th A
+AERO60122T
+Advanced Computational Fluid Dynamics
+09/06/2026 14:00 03:00
+Whitworth Hall
+AERO60492T
+Autonomous Mobile Robots
+26/05/2026 09:45 01:30
+Uni Place_TH B
+AERO61222T
+Helicopters
+05/06/2026 09:45 02:00
+The Theatre, Students Union
+AMER10002T
+A Global Nation: Power, Politics, and Struggle Across the Am01/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+AMER10312T
+Twentieth Century American Literature
+20/05/2026 14:00 02:00
+48 hours
+Remote Online Exam
+AMER20072T
+American Film Studies
+01/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+BIOL10212T
+Biochemistry
+03/06/2026 09:45 01:30
+Armitage Centre (Main Hall), Academy 2, Students Union
+BIOL10232T
+From Molecules to Cells
+10/06/2026 14:00 01:00
+Armitage Centre (Main Hall), Nancy Rothwell_Lecture Th B
+BIOL10412T
+Introduction to Experimental Biology - Molecular & Cellular 05/06/2026 09:45 01:30
+Armitage Centre (Main Hall), Nancy Rothwell_Lecture Th B
+BIOL10422T
+Introduction to Experimental Biology - Human Biology
+05/06/2026 09:45 01:30
+Armitage Centre (Main Hall)
+BIOL10532T
+Microbes, Humankind and the Environment
+20/05/2026 09:45 01:00
+Sugden Sports Centre
+BIOL10822T
+Drugs: From Molecules to Man
+26/05/2026 09:45 01:00
+Sugden Sports Centre
+BIOL10832T
+Excitable Cells: the Foundations of Neuroscience
+29/05/2026 14:00 01:00
+Sugden Sports Centre, Armitage Centre (Conf Room)
+BIOL11822T
+Drugs: From Molecules to Man
+26/05/2026 09:45 01:00
+Whitworth Hall, Sugden Sports Centre
+BIOL21132T
+Cell Metabolism & Metabolic Control
+26/05/2026 09:45 01:30
+Armitage Centre (Conf Room)
+BIOL21152T
+`Omic Technologies & Resources
+01/06/2026 14:00 02:00
+Armitage Centre (Conf Room)
+BIOL21172T
+Principles of Developmental Biology
+18/05/2026 09:45 01:30
+Stopford_TH 1
+BIOL21192T
+Principles of Infectious Disease
+29/05/2026 14:00 01:30
+Simon_TH E
+BIOL21202T
+Plants for the Future
+05/06/2026 14:00 02:00
+Simon_TH E
+BIOL21232T
+Fundamentals of Evolutionary Biology
+09/06/2026 14:00 01:30
+The Theatre, Students Union
+BIOL21242T
+Immunology
+22/05/2026 09:45 02:00
+Armitage Centre (Main Hall)
+BIOL21252T
+Parasitology
+02/06/2026 14:00 01:30
+Whitworth Hall
+BIOL21272T
+Body Systems 2
+20/05/2026 14:00 02:00
+The Theatre, Students Union
+BIOL21302T
+Clinical Drug Development
+08/06/2026 14:00 01:30
+Armitage Centre (Conf Room)
+BIOL21312T
+Drugs & the Brain
+19/05/2026 09:45 01:30
+Whitworth Hall
+BIOL21332T
+Motor Systems
+02/06/2026 09:45 01:30
+Armitage Centre (Conf Room)
+BIOL21432T
+Animal Behaviour
+21/05/2026 09:45 02:00
+Academy 2, Students Union
+BIOL21742T
+Introduction to Cancer
+04/06/2026 09:45 01:30
+Whitworth Hall
+BIOL31332T
+Biochemical Basis of Disease (E)
+29/05/2026 09:45 01:30
+Simon_3.44A
+BIOL31402T
+Human Genetics & Evolution
+08/06/2026 09:45 01:30
+The Theatre, Students Union
+BIOL31482T
+Conservation Biology
+03/06/2026 14:00 02:00
+Academy 2, Students Union
+BIOL31582T
+Cardiovascular Systems
+09/06/2026 09:45 01:30
+Whitworth Hall
+BIOL31602T
+Toxins, Toxicants & Toxicity
+03/06/2026 09:45 01:30
+Sugden Sports Centre
+BIOL31612T
+Neuroinflammation in Health & Disease
+22/05/2026 14:00 02:00
+Simon_TH E
+BIOL31642T
+Advanced Developmental Biology
+03/06/2026 09:45 01:30
+Armitage Centre (Conf Room)
+BIOL31692T
+Learning, Memory & Cognition
+26/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+BIOL31742T
+Molecular Biology of Cancer
+20/05/2026 14:00 02:00
+Simon_TH E
+BIOL31792T
+Advanced Parasitology
+20/05/2026 14:00 01:30
+Academy 1
+BIOL31802T
+Immune Response & Disease
+01/06/2026 09:45 02:00
+The Theatre, Students Union
+BIOL31832T
+Role of Diagnostics in Medicine
+02/06/2026 09:45 02:00
+Academy 2, Students Union
+BIOL40112T
+Biochemistry - Essay Paper
+10/06/2026 14:00 01:30
+Simon_TH E
+
+--- Page 2 ---
+BIOL40122T
+Biology - Essay Paper
+10/06/2026 14:00 01:30
+The Theatre, Students Union
+BIOL40142T
+Biomedical Sciences - Essay Paper
+10/06/2026 14:00 01:30
+Armitage Centre (Conf Room)
+BIOL40172T
+Genetics - Essay Paper
+10/06/2026 14:00 01:30
+Simon_TH E
+BIOL40202T
+Microbiology - Essay Paper
+10/06/2026 14:00 01:30
+Whitworth Hall
+BIOL40212T
+Molecular Biology - Essay Paper
+10/06/2026 14:00 01:30
+Whitworth Hall
+BIOL40222T
+Neuroscience - Essay Paper
+10/06/2026 14:00 01:30
+Armitage Centre (Conf Room)
+BIOL40232T
+Pharmacology - Essay Paper
+10/06/2026 14:00 01:30
+The Theatre, Students Union
+BIOL40252T
+Physiology - Essay Paper
+10/06/2026 14:00 01:30
+Whitworth Hall
+BIOL40282T
+Zoology - Essay Paper
+10/06/2026 14:00 01:30
+Simon_TH E
+BIOL40292T
+Biology with Science & Society - Essay Paper
+10/06/2026 14:00 01:30
+The Theatre, Students Union
+BIOL40312T
+Biochemistry - Problem Paper
+18/05/2026 14:00 02:30
+Stopford_TH 1
+BIOL40322T
+Biology - Problem Paper
+18/05/2026 14:00 02:30
+Roscoe_TH A
+BIOL40342T
+Biomedical Sciences - Problem Paper
+18/05/2026 14:00 02:30
+Armitage Centre (Conf Room)
+BIOL40372T
+Genetics - Problem Paper
+18/05/2026 14:00 02:30
+Stopford_TH 1
+BIOL40402T
+Microbiology - Problem Paper
+18/05/2026 14:00 02:30
+Simon_TH E
+BIOL40412T
+Molecular Biology - Problem Paper
+18/05/2026 14:00 02:30
+Simon_TH E
+BIOL40422T
+Neuroscience - Problem Paper
+18/05/2026 14:00 02:30
+Armitage Centre (Conf Room)
+BIOL40432T
+Pharmacology - Problem Paper
+18/05/2026 14:00 02:30
+Simon_TH E
+BIOL40452T
+Physiology - Problem Paper
+18/05/2026 14:00 02:30
+Simon_TH E
+BIOL40472T
+Cognitive Neuroscience & Psychology - Problem Paper
+18/05/2026 14:00 02:30
+Simon_TH E
+BIOL40482T
+Zoology - Problem Paper
+18/05/2026 14:00 02:30
+Roscoe_TH A
+BIOL40522T
+Biotechnology - Essay Paper
+10/06/2026 14:00 01:30
+Whitworth Hall
+BIOL40592T
+Biology with Science & Society - Problem Paper
+18/05/2026 14:00 02:30
+Stopford_TH 1
+BIOL40682T
+Medical Biochemistry - Essay Paper
+10/06/2026 14:00 01:30
+Whitworth Hall
+BIOL40722T
+Biotechnology - Problem Paper
+18/05/2026 14:00 02:30
+Roscoe_TH A
+BIOL40862T
+Immunology - Essay Paper
+10/06/2026 14:00 01:30
+Whitworth Hall
+BIOL40872T
+Immunology - Problem Paper
+18/05/2026 14:00 02:30
+Roscoe_TH A
+BIOL40882T
+Medical Biochemistry - Problem Paper
+18/05/2026 14:00 02:30
+Roscoe_TH A
+BMAN10512T
+Introductory Management Accounting
+29/05/2026 14:00 02:00
+Academy 1, Whitworth Hall
+BMAN10522(M)T Financial Decision Making (M)
+18/05/2026 09:45 01:30
+Armitage Centre (Main Hall), Academy 1
+BMAN10522T
+Financial Decision Making
+18/05/2026 09:45 01:30
+Sugden Sports Centre, Armitage Centre (Conf Room)
+BMAN10552T
+Fundamentals of Finance
+29/05/2026 09:45 01:30
+Sugden Sports Centre
+BMAN10612T
+Business Economics
+03/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+BMAN10632T
+Fundamentals of Management Accounting
+26/05/2026 09:45 01:30
+Armitage Centre (Main Hall), Simon_3.44A
+BMAN10750T
+Quantitative Methods for Accounting and Finance
+02/06/2026 14:00 01:30
+Whitworth Hall
+BMAN10760T
+Auditing & Professional Accounting Practice I
+21/05/2026 14:00 02:00
+Sugden Sports Centre
+BMAN10872T
+Introduction to Work Psychology
+01/06/2026 09:45 02:00
+Academy 1, Whitworth Hall
+BMAN10960T
+Quantitative Methods for Business and Management
+10/06/2026 09:45 01:30
+Remote Online Exam
+BMAN11110T
+Law for Accountants
+09/06/2026 14:00 01:30
+Armitage Centre (Conf Room)
+BMAN20072T
+Investment Analysis
+22/05/2026 14:00 02:00
+Armitage Centre (Main Hall), Whitworth Hall
+BMAN20242T
+Introduction to Corporate Finance and Financial Instrument 21/05/2026 09:45 02:00
+The Theatre, Students Union
+BMAN20792T
+Technology, Strategy and Innovation
+08/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+BMAN20832T
+Marketing
+02/06/2026 14:00 01:30
+48 hours
+Remote Online Exam
+BMAN21012T
+Global Contexts of Business and Management
+20/05/2026 09:45 02:00
+7 days
+Remote Online Exam
+BMAN21020AT
+Financial Reporting and Accountability
+26/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+BMAN21040AT
+Intermediate Management Accounting
+29/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+BMAN22000T
+Firms and Management in Comparative Perspective
+09/06/2026 09:45 02:00
+Remote Online Exam
+BMAN23000AT
+Foundations of Finance (A)
+18/05/2026 14:00 01:30
+Academy 1, Whitworth Hall
+BMAN23000BT
+Foundations of Finance (B)
+18/05/2026 14:00 01:30
+Sugden Sports Centre
+BMAN24052T
+Business Law 2: Law and the Modern Corporation in an Inte 02/06/2026 14:00 01:30
+Academy 1
+BMAN24102T
+Mergers & Acquisitions: Financial Perspectives
+20/05/2026 14:00 01:30
+Armitage Centre (Main Hall)
+BMAN24312T
+International Business
+03/06/2026 14:00 02:00
+7 days
+Remote Online Exam
+BMAN24442T
+Foundations of Strategy and Innovation
+01/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+BMAN24582T
+FinTech, Blockchain and Cryptocurrencies
+05/06/2026 14:00 02:00
+Roscoe_TH A
+BMAN30010T
+Management of Knowledge and Innovation
+19/05/2026 14:00 02:00
+Sugden Sports Centre
+
+--- Page 3 ---
+BMAN30030T
+Contemporary Issues in Financial Reporting and Regulation 08/06/2026 14:00 03:00
+48 hours
+Remote Online Exam
+BMAN30042T
+Human Resource Management
+29/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+BMAN30060T
+International Finance
+03/06/2026 14:00 01:30
+48 hours
+Remote Online Exam
+BMAN30242T
+Financial Engineering
+04/06/2026 09:45 01:30
+Academy 1
+BMAN30702T
+Corporate Contracting and Managerial Behaviour
+26/05/2026 09:45 02:00
+Remote Online Exam
+BMAN31040T
+Advanced Management Accounting
+01/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+BMAN31152T
+Business Decision Analytics
+22/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th B
+BMAN31302T
+Marketing Strategy
+08/06/2026 14:00 01:30
+48 hours
+Remote Online Exam
+BMAN31652T
+Equality and Fairness at Work
+20/05/2026 14:00 02:30
+48 hours
+Remote Online Exam
+BMAN31792T
+Financial Market Microstructure
+05/06/2026 09:45 02:00
+The Theatre, Students Union
+BMAN31982T
+International and Comparative Human Resource Manageme29/05/2026 14:00 02:30
+7 days
+Remote Online Exam
+BMAN31992T
+International Competitiveness and Innovation
+19/05/2026 09:45 02:00
+Simon_3.44A
+BMAN32082T
+Applied Practical Investing
+21/05/2026 09:45 01:00
+Academy 1
+BMAN60092T
+Risk, Performance and Decision Analysis
+21/05/2026 14:00 02:30
+Simon_3.44A
+BMAN60422T
+Machine Learning for Business
+09/06/2026 14:00 02:00
+Academy 1
+BMAN60992T
+International Human Resource Management
+29/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+BMAN63012X
+Interest Rate Derivatives (ONLINE)
+01/06/2026 09:45 01:00
+Nancy Rothwell CL 2
+BMAN63012Y
+Interest Rate Derivatives (ONLINE)
+01/06/2026 14:00 01:00
+Nancy Rothwell CL 2
+BMAN70141T
+Derivative Securities
+18/05/2026 14:00 01:30
+The Theatre, Students Union
+BMAN70152T
+Business to Business Marketing
+20/05/2026 14:00 02:00
+48 hours
+Remote Online Exam
+BMAN70232T
+Advanced Management Accounting
+01/06/2026 14:00 02:30
+48 hours
+Remote Online Exam
+BMAN70402T
+International Marketing
+03/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+BMAN70432T
+Mergers & Acquisitions: Economic & Financial
+01/06/2026 14:00 02:00
+Armitage Centre (Conf Room)
+BMAN71122T
+Time Series Econometrics
+22/05/2026 09:45 01:00
+Remote Online Exam
+BMAN71132T
+Financial Statement Analysis
+29/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+BMAN71152T
+Corporate Finance
+04/06/2026 09:45 02:00
+Sugden Sports Centre
+BMAN71282T
+Qualitative Research Methods
+08/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+BMAN71572T
+Credit Risk Measurement and Management
+09/06/2026 09:45 02:00
+Sugden Sports Centre
+BMAN71902T
+Training, Support and Development
+03/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+BMAN71942T
+Innovation Management & Business Strategy
+03/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+BMAN71982T
+Work Design, Performance & Wellbeing
+08/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+BMAN72382T
+Employment Practice and Equality
+08/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+BMAN72912T
+Corporate Governance
+19/05/2026 09:45 02:00
+Remote Online Exam
+BMAN73112T
+Innovation Management
+03/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+BMAN73672T
+Supply Chain Logistics Management
+02/06/2026 14:00 03:00
+Sugden Sports Centre
+BMAN73842T
+Elements of Market Based Accounting Research
+22/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+BMAN73942T
+Simulation & Risk Analysis
+04/06/2026 09:45 01:30
+Armitage Centre (Conf Room)
+BMAN74112T
+Behavioural Finance
+26/05/2026 09:45 01:30
+Remote Online Exam
+BMAN74222T
+Financial Data Analytics & AI in Finance
+01/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+BMAN74912T
+Relationships at Work
+20/05/2026 14:00 02:00
+48 hours
+Remote Online Exam
+BMAN75042T
+Accounting, Finance and the ESG Agenda
+02/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+CAHE10022T
+From Republic to Empire: Introduction to Roman History, So20/05/2026 14:00 01:30
+48 hours
+Remote Online Exam
+CAHE10232T
+Cities and Citizens
+08/06/2026 14:00 01:30
+48 hours
+Remote Online Exam
+CAHE10422T
+Virgils Aeneid
+02/06/2026 14:00 01:30
+48 hours
+Remote Online Exam
+CAHE20042T
+The Conquering Hero: The Life, Times and Legacy of Alexand22/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+CAHE20052T
+The Roman Empire 31BC - AD313 Romes Golden Age
+03/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+CAHE20072T
+Social Life in Ancient Egypt
+29/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+CAHE20162T
+Introduction to Egyptian Hieroglyphs 
+22/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+CAHE20192T
+Roman Roads: Journeys in Latin Literature
+01/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+CAHE20632T
+Athens and Attica
+01/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+CAHE21012T
+Greek Tragedy
+18/05/2026 14:00 02:00
+48 hours
+Remote Online Exam
+CAHE23022T
+National Identity and the Roman Past
+20/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+CAHE30072T
+Social Life in Ancient Egypt
+29/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+CAHE30162T
+Intensive Greek 2
+22/05/2026 09:45 02:00
+Nancy Rothwell_Lecture Th B
+CAHE30182T
+Intensive Latin 2
+18/05/2026 09:45 02:00
+Simon_TH E
+
+--- Page 4 ---
+CAHE30192T
+Roman Roads: Journeys in Latin Literature
+01/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+CAHE30232T
+Otherworlds: Distance and Difference in Ancient Greek Liter20/05/2026 14:00 02:00
+48 hours
+Remote Online Exam
+CAHE30632T
+Athens and Attica
+01/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+CAHE31012T
+Greek Tragedy
+18/05/2026 14:00 02:00
+48 hours
+Remote Online Exam
+CAHE33022T
+National Identity and the Roman Past
+20/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+CAHE70162T
+Intensive Greek 2
+22/05/2026 09:45 02:00
+Nancy Rothwell_Lecture Th B
+CAHE70182T
+Intensive Latin 2
+18/05/2026 09:45 02:00
+Simon_TH E
+CAHE70192T
+Roman Roads: Journeys in Latin Literature
+01/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+CCMI10022T
+Creative Work 1: From Artisans and Bohemians to the Creat20/05/2026 14:00 01:30
+48 hours
+Remote Online Exam
+CCMI20032T
+Creative Work 2: Managing Creative Ideas, Creative Product01/06/2026 14:00 01:30
+48 hours
+Remote Online Exam
+CHEM10022T
+Chemistry for Bioscientists 2
+22/05/2026 09:45 02:00
+Armitage Centre (Conf Room)
+CHEM10212T
+Energy and Change
+21/05/2026 09:45 02:00
+Armitage Centre (Main Hall)
+CHEM10312T
+Coordination Chemistry
+05/06/2026 09:45 02:00
+Sugden Sports Centre
+CHEM10412T
+Structure and Reactivity
+02/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+CHEM10712T
+Biological Chemistry
+09/06/2026 09:45 02:00
+Armitage Centre (Main Hall)
+CHEM20212T
+Core Physical Chemistry
+19/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+CHEM20312T
+Inorganic Chemistry
+09/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+CHEM20412T
+Structure and Reactivity of Organic Molecules
+02/06/2026 09:45 02:00
+Armitage Centre (Main Hall)
+CHEM20442T
+Medicines for Major Health Challenges
+22/05/2026 09:45 01:30
+Simon_3.44A
+CHEM20712T
+Contemporary Themes in Chemistry
+05/06/2026 09:45 02:00
+Sugden Sports Centre
+CHEM20722T
+Biomolecular Structure and Function
+22/05/2026 09:45 02:00
+Academy 1
+CHEM21162T
+Chemistry of Biomolecules
+20/05/2026 14:00 02:00
+Armitage Centre (Conf Room)
+CHEM30112T
+Personalised Learning Unit 2
+22/05/2026 09:45 02:00
+Nancy Rothwell_Lecture Th A
+CHEM30122T
+Materials Chemistry
+20/05/2026 09:45 02:00
+Academy 2, Students Union
+CHEM30312T
+Core Chemistry 4
+18/05/2026 09:45 02:00
+Whitworth Hall
+CHEM30432T
+Bioorganic and Medicinal Chemistry
+21/05/2026 09:45 02:00
+Nancy Rothwell_Lecture Th A
+CHEM30442T
+Synthesis for Drug Discovery and Development
+20/05/2026 09:45 01:30
+Armitage Centre (Main Hall)
+CHEM30712T
+Biosynthesis and Bioenergetics
+19/05/2026 09:45 02:00
+Academy 1
+CHEM30722T
+Biomolecular Structure and Function 2
+26/05/2026 14:00 02:00
+Simon_TH E
+CHEM31312T
+Core Chemistry 4 (Distance Learning)
+18/05/2026 09:45 02:00
+Whitworth Hall
+CHEM31812T
+Chemistry of Biological Processes (E)
+05/06/2026 09:45 02:00
+Sugden Sports Centre
+CHEM60112T
+Advanced Chemistry Topics
+22/05/2026 09:45 02:30
+Academy 2, Students Union
+CHEM60312T
+MSc Core Chemistry 4
+18/05/2026 09:45 02:30
+Academy 2, Students Union
+CHEN10022T
+Engineering Chemistry
+02/06/2026 09:45 02:00
+Armitage Centre (Main Hall)
+CHEN10072T
+Engineering Mathematics 2
+21/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+CHEN10092T
+Process Heat Transfer
+19/05/2026 09:45 02:00
+Armitage Centre (Main Hall)
+CHEN10162T
+Engineering Biotechnology
+09/06/2026 09:45 02:00
+Armitage Centre (Main Hall)
+CHEN10192T
+Chemical Thermodynamics
+04/06/2026 09:45 02:00
+Armitage Centre (Main Hall)
+CHEN20072T
+Distillation & Absorption
+19/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+CHEN20082T
+Process Integration
+09/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+CHEN20112T
+Momentum, Heat & Mass Transfer
+02/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+CHEN20152T
+Process Safety
+22/05/2026 09:45 01:30
+Whitworth Hall
+CHEN30092T
+Process Control
+20/05/2026 09:45 02:00
+Nancy Rothwell_Lecture Th B
+CHEN30192T
+Process Control (BEng)
+20/05/2026 09:45 02:00
+Academy 1
+CHEN40202T
+Sustainable Energy Systems
+20/05/2026 14:00 02:00
+Armitage Centre (Conf Room)
+CHEN60202T
+Oil and Gas Processing
+04/06/2026 14:00 02:00
+Armitage Centre (Conf Room)
+CHEN60482T
+Advanced Subsurface Modelling
+03/06/2026 14:00 02:00
+Whitworth Hall
+CHEN60492T
+Properties of Subsurface Fluids
+10/06/2026 14:00 02:00
+Sugden Sports Centre
+CHEN64352T
+Sustainable Energy Systems
+20/05/2026 14:00 02:00
+Simon_3.44A
+CHEN64442T
+Reaction Systems Design
+01/06/2026 14:00 02:00
+Armitage Centre (Conf Room)
+CHIN10050T
+Introduction to Chinese Studies
+01/06/2026 09:45 01:30
+Academy 2, Students Union
+CHIN28572T
+Introduction to Classical Chinese
+10/06/2026 09:45 02:00
+Whitworth Hall
+CHIN38682T
+Business Chinese
+18/05/2026 09:45 02:00
+Simon_TH E
+CHIN51022T
+Chinese Language 2
+20/05/2026 14:00 02:00
+Whitworth Hall
+CHIN51042T
+Chinese Language 4
+02/06/2026 09:45 02:00
+Academy 1
+
+--- Page 5 ---
+CHIN51050T
+Chinese Language 5
+05/06/2026 09:45 02:00
+The Theatre, Students Union
+CHIN51060T
+Chinese Language 6
+05/06/2026 14:00 02:00
+Roscoe_TH A
+CIVL10152T
+Materials 1 (Civil)
+26/05/2026 09:45 02:00
+Nancy Rothwell_Lecture Th B
+CIVL10212T
+Geotechnics 1
+05/06/2026 14:00 02:00
+Nancy Rothwell_Lecture Th B
+CIVL10602T
+Mechanics (Civil)
+02/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+CIVL14022T
+Sustainable & Resilient Infrastructure
+19/05/2026 14:00 02:00
+Sugden Sports Centre
+CIVL20152T
+Materials 2 (Civil)
+09/06/2026 14:00 02:00
+Academy 1
+CIVL20252T
+Surveying
+03/06/2026 09:45 02:00
+Whitworth Hall
+CIVL20322T
+Steel & Concrete Structures
+20/05/2026 14:00 02:00
+Academy 2, Students Union
+CIVL20402T
+Water Engineering 1
+26/05/2026 09:45 02:00
+The Theatre, Students Union
+CIVL30792T
+Structural Design & Materials
+26/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+CIVL31132T
+Environmental Assessment
+19/05/2026 14:00 02:00
+Sugden Sports Centre
+CIVL36002T
+Geotechnics 4
+22/05/2026 14:00 02:00
+Armitage Centre (Conf Room)
+CIVL40012T
+Advanced Structural Analysis
+26/05/2026 09:45 02:00
+Simon_TH E
+CIVL40402T
+Water Resource Planning & Management
+26/05/2026 09:45 02:00
+Simon_TH E
+CIVL40912T
+Earthquake Engineering
+29/05/2026 09:45 02:00
+Nancy Rothwell_Lecture Th A
+CIVL42002T
+Computational Hydraulics
+18/05/2026 09:45 02:30
+Academy 2, Students Union
+CIVL42042T
+Fire Engineering
+21/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+CIVL60012T
+Advanced Structural Analysis
+26/05/2026 09:45 02:00
+Simon_TH E
+CIVL60912T
+Earthquake Engineering
+29/05/2026 09:45 02:00
+Whitworth Hall
+CIVL64042T
+Fire Engineering
+21/05/2026 14:00 02:00
+Sugden Sports Centre
+COMP11012T
+Foundation in Computer Science-Computational Thinking (O26/05/2026 14:00 02:00
+Nancy Rothwell CL 4 & 5
+COMP11120T
+Mathematical Techniques for Computer Science (ONLINE)
+20/05/2026 09:45 02:00
+Kilburn_1.8/1.10, Nancy Rothwell CL 4 & 5
+COMP11212T
+Fundamentals of Computation (ONLINE)
+26/05/2026 14:00 02:00
+Kilburn_1.8/1.10, Nancy Rothwell CL 4 & 5
+COMP13212T
+Data Science (ONLINE)
+18/05/2026 14:00 02:00
+Nancy Rothwell CL 4 & 5, Stopford_G.321A PC CL 2A
+COMP15212T
+Operating Systems
+03/06/2026 09:45 01:30
+Academy 1
+COMP16412T
+Introduction to Programming 2
+22/05/2026 09:45 01:15
+Sugden Sports Centre
+COMP16412X
+Introduction to Programming 2 (ONLINE)
+05/06/2026 14:00 02:00
+Kilburn_1.8/1.10, Nancy Rothwell CL 4 & 5, Nancy Rothwell CL 3
+COMP23412T
+Software Engineering 2
+18/05/2026 14:00 01:00
+Armitage Centre (Main Hall)
+COMP24112T
+Machine Learning
+29/05/2026 09:45 02:00
+Armitage Centre (Conf Room), Armitage Centre (Main Hall)
+COMP24412T
+Knowledge Based AI (ONLINE)
+03/06/2026 09:45 02:00
+Nancy Rothwell CL 2
+COMP25212T
+System Architecture (ONLINE)
+26/05/2026 14:00 02:00
+Nancy Rothwell CL 3
+COMP26020T
+Programming Languages & Paradigms (ONLINE)
+22/05/2026 14:00 02:00
+Kilburn_1.8/1.10, Nancy Rothwell CL 4 & 5
+COMP26120T
+Algorithms and Data Structures (ONLINE)
+05/06/2026 09:45 02:00
+Kilburn_1.8/1.10, Nancy Rothwell CL 4 & 5
+COMP27112T
+Introduction to Visual Computing (ONLINE)
+01/06/2026 14:00 02:00
+Stopford_G.321A PC CL 2A
+COMP28112T
+Distributed Systems (ONLINE)
+09/06/2026 14:00 02:00
+Nancy Rothwell CL 4 & 5
+COMP32412T
+The Internet of Things: Architectures and Applications (ONL 22/05/2026 09:45 01:30
+Nancy Rothwell CL 4 & 5
+COMP33312T
+Agile Software Pipelines (ONLINE)
+01/06/2026 09:45 02:00
+Nancy Rothwell CL 4 & 5
+COMP34212T
+Cognitive Robotics (ONLINE)
+20/05/2026 14:00 02:00
+Nancy Rothwell CL 4 & 5
+COMP34312T
+Mathematical Topics in Machine Learning
+05/06/2026 14:00 02:00
+The Theatre, Students Union
+COMP34612T
+Computational Game Theory
+18/05/2026 09:45 02:00
+Nancy Rothwell_Lecture Th B
+COMP34812T
+Natural Language Understanding (ONLINE)
+26/05/2026 09:45 02:00
+Kilburn_1.8/1.10
+COMP35112T
+Chip Multiprocessors (ONLINE)
+08/06/2026 14:00 02:00
+Nancy Rothwell CL 4 & 5
+COMP37212T
+Computer Vision (ONLINE)
+04/06/2026 09:45 02:00
+Stopford_G.321A PC CL 2A
+COMP39112T
+Quantum Computing (ONLINE)
+09/06/2026 14:00 02:00
+Nancy Rothwell CL 3
+COMP60252T
+Network Security (ONLINE)
+26/05/2026 09:45 02:00
+Nancy Rothwell CL 3
+COMP60272T
+Security and Privacy in Artificial Intelligence
+29/05/2026 09:45 02:00
+The Theatre, Students Union
+COMP63342T
+Software Security (ONLINE)
+02/06/2026 14:00 01:30
+Nancy Rothwell CL 3
+COMP63502T
+Data Engineering Technologies (ONLINE)
+21/05/2026 14:00 02:00
+Nancy Rothwell CL 4 & 5
+COMP64202T
+Reinforcement Learning
+19/05/2026 09:45 02:00
+Sugden Sports Centre
+COMP64602T
+Advanced Topics in Knowledge Representation and Reasoni 01/06/2026 09:45 02:00
+Nancy Rothwell CL 4 & 5
+COMP64702T
+Transforming Text Into Meaning (ONLINE)
+04/06/2026 14:00 02:00
+Nancy Rothwell CL 4 & 5, Nancy Rothwell CL 3
+COMP64802T
+Advanced Topics in Machine Learning
+09/06/2026 14:00 02:00
+Sugden Sports Centre
+DATA70132T
+Statistics & Machine Learning 2: AI, Complex Data, Computa08/06/2026 09:45 02:00
+Whitworth Hall
+DATA70402T
+Privacy, Confidentiality and Disclosure Control
+26/05/2026 09:45 01:00
+Remote Online Exam
+
+--- Page 6 ---
+DENT10340T
+BDS YEAR 1 MCQ Paper 1 (Bioscience) (ONLINE)
+21/05/2026 09:45 01:15
+Stopford_G.321A PC CL 2A
+DENT10340Y
+BDS YEAR 1 MCQ Paper 2 (Dentistry) (ONLINE)
+08/06/2026 09:45 01:00
+Nancy Rothwell CL 3
+DENT10350T
+BSc DH&T YEAR 1 MCQ (ONLINE)
+19/05/2026 14:00 00:30
+Stopford_G.321A PC CL 2A
+DENT21040T
+BDS YEAR 2 MCQ Paper 1 (Bioscience) (ONLINE)
+08/06/2026 09:45 01:15
+Nancy Rothwell CL 2
+DENT21040Y
+BDS YEAR 2 MCQ Paper 2 (Dentistry) (ONLINE)
+02/06/2026 09:45 01:00
+Nancy Rothwell CL 3
+DENT21050T
+BSc DH&T YEAR 2 MCQ (ONLINE)
+19/05/2026 14:00 00:30
+Stopford_G.321A PC CL 2A
+DENT31000T
+BDS YEAR 3 Principle in Clinical Dentistry 1 (ONLINE)
+19/05/2026 14:00 01:30
+Nancy Rothwell CL 4 & 5
+DENT31000Z
+BDS YEAR 3 Principle in Clinical Dentistry 2 (ONLINE)
+02/06/2026 09:45 01:30
+Nancy Rothwell CL 2
+DENT41000T
+BDS YEAR 4 MCQ (ONLINE)
+20/05/2026 14:00 02:00
+Stopford_G.321A PC CL 2A
+DENT60320T
+Scientific Understanding of Fixed & Removable Prosthodont20/05/2026 09:45 02:00
+Ellen Wilkinson_B3.3
+DENT60330T
+Diagnosis & Treatment Planning (ONLINE)
+03/06/2026 09:45 02:30
+Ellen Wilkinson_B3.17
+DENT61000T
+Soft Tissue (ONLINE)
+03/06/2026 09:45 01:00
+Ellen Wilkinson_B3.1
+DENT61030T
+Non-Surgical Management (ONLINE)
+03/06/2026 14:00 02:00
+Ellen Wilkinson_B3.3
+DENT61140T
+Implant Basic Sciences (ONLINE)
+03/06/2026 14:00 02:00
+Ellen Wilkinson_B3.17
+DENT63020T
+Clinical Endodontics (ONLINE)
+03/06/2026 09:45 03:00
+Ellen Wilkinson_B3.3
+DRAM20632T
+God at the Movies
+03/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+EART11100T
+Understanding the Earth: A Dynamic Planet (ONLINE)
+08/06/2026 14:00 02:00
+Stopford_G.321A PC CL 2A
+EART11100X
+Understanding the Earth: A Sustainable Planet (ONLINE)
+02/06/2026 14:00 02:00
+Nancy Rothwell CL 4 & 5
+EART11200T
+The Nat. Scientist's Toolkit: Maths and Physics
+21/05/2026 14:00 02:00
+Sugden Sports Centre
+EART11300T
+Practical and Professional Skills Development (IN-HOUSE)
+19/05/2026 09:45 02:00
+Department of Earth and Environmental Sciences
+EART21202T
+Global Climate Change
+18/05/2026 09:45 01:30
+Uni Place_TH B
+EART23202T
+Interpreting the Stratigraphic Record: From Surface to Subsu03/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+EART24202T
+Metamorphic Minerals and Processes
+29/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+EART28002T
+Environmental Chemistry 2: Biogeochemical Cycles
+21/05/2026 14:00 01:30
+Academy 2, Students Union
+EART28202P
+Structural Geology (IN-HOUSE)
+21/05/2026 09:45 02:30
+Department of Earth and Environmental Sciences
+EART28202T
+Structural Geology (IN-HOUSE)
+26/05/2026 09:45 02:30
+Department of Earth and Environmental Sciences
+EART29102T
+Geospatial Techniques (ONLINE)
+08/06/2026 14:00 01:30
+Kilburn_1.8/1.10
+EART31302T
+Sedimentary Basins and the Source to Sink System
+26/05/2026 14:00 02:00
+Simon_TH E
+EART34102T
+Geoenergy
+20/05/2026 09:45 02:00
+Armitage Centre (Conf Room)
+EART34302T
+Volcanology
+03/06/2026 14:00 02:00
+Academy 2, Students Union
+EART36002T
+Climate and Energy: Past, Present and Future
+22/05/2026 09:45 02:00
+Armitage Centre (Main Hall)
+EART36202T
+Primate Evolution and Human Origins
+22/05/2026 14:00 02:00
+Armitage Centre (Conf Room)
+EART37002T
+Diagenesis of Sedimentary Systems
+18/05/2026 09:45 01:30
+Armitage Centre (Main Hall)
+EART37202T
+Remote Sensing of Atmospheres
+18/05/2026 14:00 02:00
+Nancy Rothwell_Lecture Th B
+EART60162T
+Prospect Evaluation and Petroleum Economics
+21/05/2026 14:00 02:00
+The Theatre, Students Union
+EART60572T
+Subsurface Mechanics and GeoEngineering (IN-HOUSE)
+20/05/2026 09:45 02:00
+Department of Earth and Environmental Sciences
+EART60682T
+Fluids and Minerals in Subsurface Energy Systems
+26/05/2026 09:45 02:00
+Simon_TH E
+EART62022X
+Pollutant Mobility & Transform - Part 1 (ONLINE)
+01/06/2026 09:45 01:30
+Nancy Rothwell CL 3
+EART62022XR
+Pollutant Mobility & Transform - Part 1 DL Students (REMOT01/06/2026 09:45 01:30
+24 hours
+Remote Online Exam
+EART62022Y
+Pollutant Mobility and Transformation - Part 2 (ONLINE)
+01/06/2026 14:00 01:30
+Nancy Rothwell CL 3
+EART62022YR
+Pollutant Mobility & Transform - Part 2 DL Students (REMOT01/06/2026 14:00 01:30
+24 hours
+Remote Online Exam
+EART63012X
+Pollution Management in Practice 2 Part 1 (ONLINE)
+21/05/2026 09:45 01:30
+Nancy Rothwell CL 4 & 5
+EART63012XR
+Pollution Mgmt in Practice 2 - Part 1 DL Students (REMOTE) 21/05/2026 09:45 01:30
+24 hours
+Remote Online Exam
+EART63012Y
+Pollution Management in Practice 2 - Part 2 (ONLINE)
+21/05/2026 14:00 01:30
+Nancy Rothwell CL 3
+EART63012YR
+Pollution Mgmt in Practice 2 - Part 2 DL Students (REMOTE) 21/05/2026 14:00 01:30
+24 hours
+Remote Online Exam
+ECON10002T
+An Introduction to Development Studies
+20/05/2026 09:45 02:00
+Simon_TH E
+ECON10072AT
+Advanced Statistics (A)
+10/06/2026 09:45 01:30
+Sugden Sports Centre, Armitage Centre (Main Hall)
+ECON10072BT
+Advanced Statistics (B)
+10/06/2026 09:45 01:30
+Armitage Centre (Main Hall)
+ECON10172T
+Principles of Microeconomic Theory 2: Markets, Prices and S02/06/2026 09:45 01:30
+Whitworth Hall
+ECON10182T
+Macroeconomic Analysis 2
+21/05/2026 09:45 01:30
+Sugden Sports Centre
+ECON10192T
+Introduction to Mathematical Economics
+04/06/2026 09:45 02:00
+Armitage Centre (Main Hall)
+ECON10212T
+Economic History
+22/05/2026 09:45 01:30
+Uni Place_TH B
+ECON10232T
+Microeconomics 2
+05/06/2026 14:00 01:30
+Armitage Centre (Main Hall), Armitage Centre (Conf Room)
+ECON10252T
+Macroeconomics 1
+04/06/2026 14:00 01:30
+24 hours
+Remote Online Exam
+ECON10262T
+Macroeconomics 2
+01/06/2026 14:00 02:00
+Academy 1, Armitage Centre (Main Hall)
+
+--- Page 7 ---
+ECON20022T
+Microeconomics 4
+21/05/2026 14:00 01:00
+Armitage Centre (Conf Room)
+ECON20032T
+Macroeconomics 4
+01/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+ECON20072T
+Advanced Statistics
+10/06/2026 09:45 01:30
+Armitage Centre (Main Hall)
+ECON20110T
+Econometrics
+08/06/2026 09:45 01:30
+Academy 1
+ECON20120T
+Mathematical Economics I
+05/06/2026 09:45 02:00
+Remote Online Exam
+ECON20172T
+Principles of Microeconomic Theory 2: Markets, Prices and S02/06/2026 09:45 01:30
+Whitworth Hall
+ECON20182T
+Macroeconomic Analysis 2
+21/05/2026 09:45 01:30
+Whitworth Hall
+ECON20192T
+Introduction to Mathematical Economics
+04/06/2026 09:45 02:00
+Armitage Centre (Main Hall)
+ECON20212T
+Economic History
+22/05/2026 09:45 01:30
+Uni Place_TH B
+ECON20222T
+Quantitative Methods
+08/06/2026 09:45 01:30
+Uni Place_TH B
+ECON20232T
+Microeconomics 2
+05/06/2026 14:00 01:30
+Armitage Centre (Main Hall)
+ECON20262T
+Macroeconomics 2
+01/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+ECON20332T
+Development Economics: Understanding Poverty
+19/05/2026 14:00 02:00
+Armitage Centre (Conf Room)
+ECON20512T
+Intermediate Microeconomic Theory 2
+02/06/2026 09:45 02:00
+Sugden Sports Centre
+ECON20532T
+Macroeconomic Analysis 4
+26/05/2026 09:45 02:00
+Remote Online Exam
+ECON30002T
+Advanced Macroeconomics
+01/06/2026 09:45 02:00
+Simon_3.44A
+ECON30022T
+Microeconomics 4
+21/05/2026 14:00 01:00
+Armitage Centre (Conf Room)
+ECON30032T
+Macroeconomics 4
+01/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+ECON30102T
+The Chinese Economy
+22/05/2026 09:45 01:30
+Simon_TH E
+ECON30232T
+Natural Resource Economics
+01/06/2026 14:00 03:00
+48 hours
+Remote Online Exam
+ECON30290T
+Mathematical Economics II
+08/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+ECON30320T
+Mathematical Economics I
+05/06/2026 09:45 02:00
+Remote Online Exam
+ECON30342T
+Micro Econometrics
+02/06/2026 14:00 01:30
+Academy 1
+ECON30370T
+Econometrics
+08/06/2026 09:45 01:30
+Academy 1
+ECON30382T
+Mathematical Finance
+08/06/2026 09:45 01:30
+Academy 2, Students Union
+ECON30432T
+Financial Economics
+20/05/2026 09:45 02:00
+Remote Online Exam
+ECON30852T
+Money, Banking & Financial Markets
+29/05/2026 09:45 02:30
+Remote Online Exam
+ECON31002T
+Managerial Economics II
+19/05/2026 14:00 02:30
+Whitworth Hall
+ECON32192T
+International Trade and Policy
+09/06/2026 09:45 02:00
+Sugden Sports Centre
+ECON32202T
+Health Economics
+20/05/2026 14:00 02:00
+48 hours
+Remote Online Exam
+ECON32242T
+Topics in Labour Economics
+02/06/2026 09:45 02:00
+Academy 1
+ECON32252T
+Econometrics and Data Science
+05/06/2026 09:45 02:00
+Academy 1
+ECON33022T
+Topics in Applied Macroeconometrics
+26/05/2026 14:00 02:00
+Simon_TH E
+ECON33032T
+Topics in Education Economics
+26/05/2026 14:00 02:00
+Whitworth Hall
+ECON60022T
+Development Microeconomics
+04/06/2026 14:00 02:00
+24 hours
+Remote Online Exam
+ECON60052T
+Microeconometrics
+02/06/2026 14:00 01:30
+Academy 1
+ECON60122T
+Macroeconomic Theory and Policy
+26/05/2026 09:45 02:30
+Remote Online Exam
+ECON60132T
+International Macroeconomics
+20/05/2026 14:00 02:30
+48 hours
+Remote Online Exam
+ECON60212T
+Poverty, Inequality and Government Policy in Less Develope22/05/2026 09:45 02:00
+Academy 1
+ECON60332T
+Financial Econometrics
+20/05/2026 14:00 02:30
+Nancy Rothwell_Lecture Th B
+ECON60432T
+Healthcare Economics
+18/05/2026 09:45 02:30
+Academy 2, Students Union
+ECON60482T
+Topics in Applied Economics
+10/06/2026 14:00 02:00
+Sugden Sports Centre
+ECON60522T
+Applied Macroeconometrics
+10/06/2026 14:00 02:00
+Sugden Sports Centre
+ECON60562T
+Microeconomic Theory - Information and Games
+08/06/2026 09:45 03:00
+Remote Online Exam
+ECON60622T
+Further Econometrics
+20/05/2026 14:00 02:30
+Nancy Rothwell_Lecture Th B
+ECON60662T
+Economic Growth
+01/06/2026 09:45 03:00
+Remote Online Exam
+ECON60782T
+Economics of Environmental Policy
+08/06/2026 14:00 01:30
+48 hours
+Remote Online Exam
+ECON60822T
+Labour Economics
+29/05/2026 09:45 02:00
+Remote Online Exam
+ECON61212T
+Advanced Topics in Development Economics
+08/06/2026 14:00 02:30
+48 hours
+Remote Online Exam
+ECON61262T
+Financial Economics II
+29/05/2026 09:45 02:00
+Remote Online Exam
+ECON62012T
+Data Science and Machine Learning 2
+05/06/2026 14:00 01:30
+Simon_3.44A
+EEEN10202T
+Microcontroller Engineering I (RESIT)
+08/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+EEEN10492T
+Electrical Engineering Fundamentals
+01/06/2026 14:00 02:00
+Sugden Sports Centre
+EEEN11102T
+Digital Electronics
+03/06/2026 14:00 03:00
+Academy 1
+EEEN11202T
+Programming and Software Engineering (ONLINE)
+29/05/2026 09:45 02:00
+Kilburn_1.8/1.10, Nancy Rothwell CL 4 & 5
+
+--- Page 8 ---
+EEEN11302T
+Electronic Materials and Devices
+22/05/2026 09:45 02:00
+Academy 1
+EEEN20212T
+Machines, Drives & Power Electronics
+21/05/2026 14:00 02:00
+Academy 1
+EEEN20222T
+Electronic Circuit Design II
+02/06/2026 09:45 02:00
+Sugden Sports Centre
+EEEN20232T
+Microelectronic Components
+20/05/2026 14:00 02:00
+Whitworth Hall
+EEEN20242T
+Generation and Transport of Electrical Energy
+29/05/2026 09:45 02:00
+Whitworth Hall
+EEEN20252T
+Control Systems I
+09/06/2026 09:45 02:00
+Academy 1
+EEEN20262T
+Analogue and Digital Communications
+05/06/2026 09:45 02:00
+Whitworth Hall
+EEEN20272T
+VLSI Design
+18/05/2026 09:45 02:00
+Simon_TH E
+EEEN20282T
+Applied Mechanics & Industrial Robotics
+29/05/2026 14:00 03:00
+Simon_3.44A
+EEEN30072T
+Mobile Robots and Autonomous Systems (ONLINE)
+29/05/2026 09:45 02:00
+Nancy Rothwell CL 3
+EEEN30212T
+Transmissions Lines & Optical Fibres
+05/06/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+EEEN30222T
+Computer Systems Architecture
+02/06/2026 14:00 03:00
+Sugden Sports Centre
+EEEN30242T
+Sensors & Instrumentation
+19/05/2026 14:00 03:00
+Academy 1
+EEEN30252T
+Power System Plant & Protection
+26/05/2026 14:00 03:00
+Academy 2, Students Union
+EEEN30262T
+Electrical Drive Systems
+22/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+EEEN30272T
+Current Trends in Optical Devices (ONLINE)
+22/05/2026 14:00 03:00
+Nancy Rothwell CL 3
+EEEN40122T
+Applied Optimal Control and Estimation
+01/06/2026 14:00 03:00
+Simon_3.44A
+EEEN40162T
+Wireless Communication & Mobile Networks
+19/05/2026 14:00 03:00
+Academy 1
+EEEN40252T
+Nonlinear and Adaptive Control
+22/05/2026 14:00 03:00
+Academy 2, Students Union
+EEEN40262T
+Robust Control and Convex Optimisation
+19/05/2026 14:00 03:00
+Academy 2, Students Union
+EEEN40342T
+Power System Dynamics and Stability
+22/05/2026 14:00 03:00
+The Theatre, Students Union
+EEEN40352T
+Smart Grids and Sustainable Electricity Systems
+03/06/2026 14:00 03:00
+Academy 1
+EEEN40412T
+Nanoelectronic Devices and Nanomaterials
+21/05/2026 14:00 03:00
+Whitworth Hall
+EEEN40482T
+Networks and Internet of Things
+22/05/2026 14:00 03:00
+The Theatre, Students Union
+EEEN42012T
+Robotic Manipulators
+29/05/2026 09:45 02:00
+Armitage Centre (Conf Room)
+EEEN44422T
+Power System Protection and Communications
+19/05/2026 14:00 03:00
+Academy 1
+EEEN60122A
+Applied Optimal Control and Estimation (RESIT)
+01/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+EEEN60122T
+Applied Optimal Control and Estimation
+01/06/2026 14:00 03:00
+The Theatre, Students Union
+EEEN60162T
+Wireless Communications & Mobile Networks
+19/05/2026 14:00 03:00
+Academy 1
+EEEN60172T
+Digital Communications Engineering
+09/06/2026 14:00 03:00
+Whitworth Hall
+EEEN60252T
+Nonlinear and Adaptive Control Systems
+22/05/2026 14:00 03:00
+Academy 2, Students Union
+EEEN60262A
+Optimal and Robust Control (RESIT)
+19/05/2026 14:00 03:00
+Academy 1
+EEEN60262T
+Robust Control and Convex Optimisation
+19/05/2026 14:00 03:00
+Academy 2, Students Union
+EEEN60322T
+Smart Distribution Networks
+03/06/2026 14:00 03:00
+Armitage Centre (Conf Room)
+EEEN60342A
+Power Systems Dynamics and Quality of Supply (RESIT)
+22/05/2026 14:00 03:00
+The Theatre, Students Union
+EEEN60342T
+Power System Dynamics and Stability
+22/05/2026 14:00 03:00
+Simon_3.44A
+EEEN60352T
+Smart Grids & Sustainable Electricity Systems
+03/06/2026 14:00 03:00
+Academy 1
+EEEN60392T
+Power System Planning and Resilience
+09/06/2026 09:45 02:00
+Sugden Sports Centre
+EEEN60402T
+Interfacing Clean Energy Systems
+10/06/2026 14:00 03:00
+Academy 1
+EEEN60422T
+Zero Carbon Built Infrastructure
+26/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+EEEN60472T
+Applied Digital Signal Processing
+03/06/2026 14:00 03:00
+Armitage Centre (Conf Room)
+EEEN60482T
+Networks and Internet of Things
+22/05/2026 14:00 03:00
+The Theatre, Students Union
+EEEN60492T
+Optical Communication Systems and Networks
+01/06/2026 14:00 03:00
+Simon_3.44A
+EEEN62012T
+Robotic Manipulators
+29/05/2026 09:45 02:00
+Uni Place_TH B
+EEEN64422T
+Power System Protection and Communications
+19/05/2026 14:00 03:00
+Academy 1
+ENGL10072T
+Literature and History
+03/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+ENGL22102T
+Victorian Rights: Victorian Wrongs
+08/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+ENGL31622T
+Things that Talk: Nonhuman Voices in Anglo-Saxon Literatur18/05/2026 14:00 02:00
+48 hours
+Remote Online Exam
+ENGM40032T
+Risk Management
+19/05/2026 09:45 02:00
+Armitage Centre (Main Hall)
+ENGM60032T
+Risk Management
+19/05/2026 09:45 02:00
+Sugden Sports Centre
+ENGM62012T
+Project Planning and Control (ONLINE)
+08/06/2026 09:45 02:00
+Kilburn_1.8/1.10, Nancy Rothwell CL 4 & 5
+FOUN10042T
+Chemistry 2
+01/06/2026 09:45 02:00
+Nancy Rothwell_Lecture Th A
+FOUN10052T
+Chemistry 3
+20/05/2026 09:45 02:00
+Whitworth Hall
+FOUN10072T
+Waves and Particles Phys 3
+29/05/2026 09:45 02:00
+Academy 1
+FREN20682T
+Temptations of the Tragic: Love and Death in French Literat 22/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+
+--- Page 9 ---
+FREN51022T
+French Language 2
+10/06/2026 09:45 02:00
+Whitworth Hall
+FREN51030T
+French Language 3
+19/05/2026 09:45 01:30
+Academy 2, Students Union
+FREN51040T
+French Language 4
+26/05/2026 09:45 01:30
+Uni Place_TH B
+FREN51050T
+French Language 5
+03/06/2026 14:00 01:45
+Simon_3.44A
+FREN51060X
+French Language 6
+26/05/2026 09:45 01:30
+Academy 2, Students Union
+FREN51060Y
+French Language 6
+20/05/2026 14:00 01:30
+Armitage Centre (Main Hall)
+GEOG10402T
+The Human Planet
+19/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+GEOG10422T
+Dynamic Earth
+04/06/2026 09:45 02:00
+Sugden Sports Centre
+GEOG10432T
+Introducing Human Geographies 2
+01/06/2026 14:00 02:00
+72 hours
+Remote Online Exam
+GEOG10442T
+Ice Age Britain
+21/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+GEOG20402T
+Hydrology & Catchment Systems
+26/05/2026 09:45 01:30
+Academy 1
+GEOG20552T
+North American Cities - Change and Continuity in the Metro22/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+GEOG20772T
+Biogeography
+03/06/2026 14:00 02:00
+7 days
+Remote Online Exam
+GEOG21242T
+Nature, Society and Social Power
+29/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+GEOG21432T
+Moral Geographies
+09/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+GEOG30132T
+Mediterranean Quaternary Landscapes
+21/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+GEOG30172T
+Geographical Controversies: How To Understand and Addre18/05/2026 14:00 02:00
+72 hours
+Remote Online Exam
+GEOG30532T
+Geohazards in Dry Places
+19/05/2026 14:00 02:00
+72 hours
+Remote Online Exam
+GEOG30702T
+Wildlife in the Anthropocene
+02/06/2026 14:00 02:00
+72 hours
+Remote Online Exam
+GEOG30802T
+Governing Urban Transformation
+29/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+GEOG31072T
+Asian Workers and the Labour of Globalisation
+01/06/2026 14:00 02:00
+72 hours
+Remote Online Exam
+GEOG32032T
+Migration, Conflict and Social Change
+19/05/2026 14:00 02:00
+72 hours
+Remote Online Exam
+GERM10040T
+Introduction to German Linguistics
+02/06/2026 14:00 01:00
+24 hours
+Remote Online Exam
+GERM20262T
+Weimar Culture? Art, Film and Politics in Germany, 1918-3320/05/2026 14:00 02:00
+48 hours
+Remote Online Exam
+GERM51022T
+German Language 2
+03/06/2026 14:00 02:00
+Academy 2, Students Union
+GERM51030X
+German Language 3
+01/06/2026 09:45 01:00
+Nancy Rothwell_Lecture Th B
+GERM51030Y
+German Language 3
+21/05/2026 09:45 01:30
+Whitworth Hall
+GERM51040X
+German Language 4
+04/06/2026 09:45 02:00
+Armitage Centre (Main Hall)
+GERM51040Y
+German Language 4
+01/06/2026 14:00 01:30
+Whitworth Hall
+GERM51050T
+German Language 5
+02/06/2026 09:45 02:30
+The Theatre, Students Union
+HART22122T
+Renaissance and Baroque Architecture 145050
+01/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+HART22812T
+The Neo-Avant-Garde and the Crisis of the Medium, 19457408/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+HIST10182T
+Capitalism in Historical Perspective: 170013
+29/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+HIST21202T
+Capitalism in Historical Perspective: 170013
+22/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+HIST31522T
+The Comparative and Transnational History of Fascist Italy a18/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+HSTM10272T
+Bodies in History: An Introduction to the History of Medicin 09/06/2026 09:45 02:00
+Nancy Rothwell CL 3
+HSTM10772T
+Bodies in History: An Introduction to the History of Medicin 09/06/2026 09:45 02:00
+Nancy Rothwell CL 3
+IIDS67462T
+Mathematical Computing for Medical Imaging
+20/05/2026 09:45 02:00
+The Theatre, Students Union
+IIDS67482T
+Medical Image Analysis and Artificial Intelligence
+09/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+IIDS68112T
+Design and Analysis of Randomised Controlled Trials
+01/06/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+ITAL51022T
+Italian Language 2
+02/06/2026 09:45 02:00
+Academy 1
+ITAL51030T
+Italian Language 3
+21/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+ITAL51040T
+Italian Language 4
+21/05/2026 14:00 02:00
+The Theatre, Students Union
+ITAL51050T
+Italian Language 5
+18/05/2026 09:45 02:00
+Simon_TH E
+ITAL51060T
+Italian Language 6
+08/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+JAPA20112T
+Bodies, Gender and Sexuality in Modern Japan
+18/05/2026 14:00 02:00
+48 hours
+Remote Online Exam
+JAPA32000T
+Advanced Readings in Japanese Studies
+22/05/2026 09:45 02:00
+Nancy Rothwell_Lecture Th B
+JAPA51022T
+Japanese Language 2
+22/05/2026 09:45 02:30
+Academy 2, Students Union
+JAPA51042T
+Japanese Language 4
+22/05/2026 09:45 02:30
+The Theatre, Students Union
+JAPA51050T
+Japanese Language 5
+19/05/2026 14:00 02:30
+Whitworth Hall
+JAPA51060T
+Japanese Language 6
+08/06/2026 14:00 02:30
+Sugden Sports Centre
+LAWS10210T
+Contract Law
+09/06/2026 14:00 02:00
+24 hours
+Remote Online Exam
+LAWS10530T
+Public Law
+26/05/2026 14:00 02:00
+Sugden Sports Centre
+LAWS10640T
+Obligations I & 2
+21/05/2026 14:00 01:00
+24 hours
+Remote Online Exam
+LAWS20250T
+Land Law
+08/06/2026 14:00 02:30
+Sugden Sports Centre
+
+--- Page 10 ---
+LAWS20530T
+Public Law
+26/05/2026 14:00 02:00
+Sugden Sports Centre
+LAWS20760T
+Law of Torts
+04/06/2026 14:00 03:00
+24 hours
+Remote Online Exam
+LAWS23050T
+Principles and Practice of Commercial law
+21/05/2026 14:00 03:00
+24 hours
+Remote Online Exam
+LAWS30322T
+Intellectual Property Law
+18/05/2026 14:00 02:30
+24 hours
+Remote Online Exam
+LAWS30382T
+Banking Law
+01/06/2026 14:00 02:00
+24 hours
+Remote Online Exam
+LAWS31302T
+Equity and Trust
+20/05/2026 14:00 02:00
+Whitworth Hall
+LAWS70082T
+Transnational Corporate & Capital Markets Law
+21/05/2026 14:00 03:00
+24 hours
+Remote Online Exam
+LAWS70292T
+Copyright Law and Policy
+04/06/2026 14:00 03:00
+24 hours
+Remote Online Exam
+LAWS70352T
+The Regulation of International Finance
+04/06/2026 14:00 03:00
+24 hours
+Remote Online Exam
+LAWS70442T
+Global Environmental and Climate Change Law
+09/06/2026 14:00 03:00
+24 hours
+Remote Online Exam
+LAWS72042T
+International Investment Law
+09/06/2026 14:00 03:00
+24 hours
+Remote Online Exam
+LAWS77082T
+International Commercial Arbitration and Mediation Law
+01/06/2026 14:00 03:00
+24 hours
+Remote Online Exam
+LELA10322T
+The Sounds of Language
+09/06/2026 14:00 01:30
+24 hours
+Remote Online Exam
+LELA10332T
+Study of Meaning
+20/05/2026 14:00 01:30
+48 hours
+Remote Online Exam
+LELA10342T
+History and Varieties of English
+01/06/2026 14:00 02:00
+24 hours
+Remote Online Exam
+LELA20012T
+Phonology
+08/06/2026 14:00 03:00
+24 hours
+Remote Online Exam
+LELA20022T
+Analysing Grammar
+19/05/2026 14:00 02:30
+48 hours
+Remote Online Exam
+LELA20292T
+Pragmatics: Meaning, Context, and Interaction
+01/06/2026 14:00 03:00
+Simon_3.44A
+LELA20962T
+Psycholinguistics
+18/05/2026 14:00 02:00
+24 hours
+Remote Online Exam
+LELA32052T
+Computational Linguistics
+03/06/2026 14:00 02:30
+48 hours
+Remote Online Exam
+LELA60112T
+Corpus Linguistics
+01/06/2026 14:00 01:30
+48 hours
+Remote Online Exam
+MATH11022T
+Linear Algebra
+08/06/2026 14:00 03:00
+Academy 1,Whitworth Hall
+MATH11112T
+Real Analysis
+29/05/2026 09:45 02:00
+Armitage Centre (Main Hall)
+MATH11412T
+Introduction to Ordinary Differential Equations
+10/06/2026 14:00 01:30
+Whitworth Hall, Academy 2, Students Union
+MATH11422T
+ODEs and Applications
+10/06/2026 14:00 03:00
+Academy 1
+MATH11712T
+Statistics I
+01/06/2026 09:45 02:00
+Armitage Centre (Main Hall)
+MATH19622T
+Mathematics for EEE 1E2 (ONLINE)
+10/06/2026 09:45 02:00
+Kilburn_1.8/1.10, Nancy Rothwell CL 4 & 5
+MATH19662T
+Mathematics 1M2 (ONLINE)
+10/06/2026 14:00 02:00
+Kilburn_1.8/1.10, Nancy Rothwell CL 4 & 5, Nancy Rothwell CL 3
+MATH19732T
+Mathematics 1G2
+05/06/2026 09:45 02:00
+Armitage Centre (Conf Room)
+MATH19812T
+Mathematics 0B2
+22/05/2026 14:00 02:00
+Academy 1
+MATH19832T
+Mathematics 0C2
+22/05/2026 14:00 02:00
+Uni Place_TH B
+MATH19842T
+Mathematics 0F2
+08/06/2026 09:45 02:00
+Sugden Sports Centre
+MATH19852T
+Mathematics 0J2
+03/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+MATH19872T
+Mathematics 0D2
+20/05/2026 09:45 02:00
+Academy 1
+MATH20062P
+Mathematical Communication and Group Projects (IN-HOUS18/05/2026 09:45 03:00
+Department of Mathematics
+MATH20912A
+Introduction to Financial Mathematics (RESIT)
+08/06/2026 09:45 02:00
+Whitworth Hall
+MATH20912T
+Introduction to Financial Mathematics
+08/06/2026 09:45 02:00
+Armitage Centre (Main Hall)
+MATH20962T
+Contingencies 1 - Actuarial Science (ONLINE)
+05/06/2026 09:45 02:00
+Nancy Rothwell CL 4 & 5
+MATH21112T
+Rings & Fields
+09/06/2026 09:45 02:00
+Sugden Sports Centre
+MATH21120T
+Groups and Geometry
+21/05/2026 14:00 03:00
+Whitworth Hall
+MATH24412T
+Fluid Mechanics
+02/06/2026 09:45 02:00
+Academy 1
+MATH24420T
+Partial Differential Equations & Vector Calculus
+03/06/2026 14:00 03:00
+Sugden Sports Centre
+MATH27712T
+Stochastic Processes
+10/06/2026 09:45 02:00
+Armitage Centre (Conf Room), Whitworth Hall
+MATH27720T
+Probability and Statistics 2
+20/05/2026 14:00 03:00
+Sugden Sports Centre
+MATH31010T
+Topology and Analysis
+02/06/2026 14:00 03:00
+The Theatre, Students Union
+MATH31072T
+Differential Geometry of Curves and Surfaces
+05/06/2026 09:45 02:00
+Simon_3.44A
+MATH32010T
+Advanced Algebra
+18/05/2026 14:00 03:00
+Simon_3.44A
+MATH32052T
+Hyperbolic Geometry
+08/06/2026 09:45 02:00
+Whitworth Hall
+MATH32062T
+Algebraic Geometry
+04/06/2026 09:45 02:00
+Academy 2, Students Union
+MATH32072T
+Number Theory
+29/05/2026 14:00 02:00
+Nancy Rothwell_Lecture Th B
+MATH35012T
+Wave Motion
+21/05/2026 14:00 02:00
+Sugden Sports Centre
+MATH35020T
+Elasticity and Viscous Fluid Dynamics
+04/06/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MATH36022T
+Numerical Analysis 2
+26/05/2026 14:00 02:00
+Nancy Rothwell_Lecture Th B
+MATH36160T
+Mathematics and Applications of Machine Learning
+03/06/2026 09:45 02:00
+Nancy Rothwell_Lecture Th A
+MATH37002T
+Martingales with Applications to Finance
+19/05/2026 09:45 02:00
+Armitage Centre (Main Hall)
+
+--- Page 11 ---
+MATH37542T
+Tools for Risk Management
+05/06/2026 14:00 02:00
+Uni Place_TH B
+MATH38032T
+Time Series Analysis
+01/06/2026 09:45 02:00
+Armitage Centre (Conf Room)
+MATH38072T
+Medical Statistics
+10/06/2026 14:00 02:00
+Sugden Sports Centre
+MATH39032T
+Mathematical Modelling in Finance
+22/05/2026 09:45 02:00
+Armitage Centre (Main Hall)
+MATH39522T
+Contingencies 2 (ONLINE)
+29/05/2026 14:00 02:00
+Nancy Rothwell CL 4 & 5
+MATH39562T
+Mortality Modelling in Insurance (ONLINE)
+18/05/2026 09:45 02:00
+Kilburn_1.8/1.10
+MATH41072T
+Algebraic Topology
+22/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th B
+MATH42112T
+Lie Algebras
+02/06/2026 14:00 03:00
+Academy 2, Students Union
+MATH42132T
+Algebraic Number Theory
+19/05/2026 14:00 03:00
+Academy 1
+MATH42192T
+Graph Theory
+26/05/2026 09:45 02:00
+Simon_TH E
+MATH43012T
+Computation and Complexity
+03/06/2026 14:00 03:00
+The Theatre, Students Union
+MATH45032T
+Stability Theory
+09/06/2026 14:00 03:00
+Whitworth Hall
+MATH45062T
+Continuum Mechanics
+29/05/2026 14:00 03:00
+Academy 2, Students Union
+MATH45122T
+Transport Phenomena and Conservation Laws
+04/06/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MATH46052T
+Approximation Theory and Finite Element Analysis
+22/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th B
+MATH47112T
+Brownian Motion
+01/06/2026 14:00 03:00
+The Theatre, Students Union
+MATH48032T
+Time Series Analysis and  Forecasting
+04/06/2026 14:00 03:00
+Academy 2, Students Union
+MATH48052T
+Generalised Linear Models and Survival Analysis
+20/05/2026 14:00 03:00
+Sugden Sports Centre
+MATH48082T
+Design and Analysis of Experiments
+02/06/2026 14:00 03:00
+Sugden Sports Centre
+MATH48132T
+Longitudinal and Spatial Data Analysis
+18/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MATH48292T
+Statistical Machine Learning
+29/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MATH49102T
+Stochastic Modelling in Finance
+22/05/2026 14:00 03:00
+Simon_3.44A
+MATH49122T
+Stochastic Control with Applications to Finance
+20/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MATH61072T
+Algebraic Topology
+22/05/2026 14:00 03:00
+The Theatre, Students Union
+MATH62112T
+Lie Algebras
+02/06/2026 14:00 03:00
+The Theatre, Students Union
+MATH62132T
+Algebraic Number Theory
+19/05/2026 14:00 03:00
+Academy 2, Students Union
+MATH62192T
+Graph Theory
+26/05/2026 09:45 02:00
+Simon_TH E
+MATH63012T
+Computation and Complexity
+03/06/2026 14:00 03:00
+The Theatre, Students Union
+MATH64082T
+Advanced Uncertainty Quantification
+10/06/2026 14:00 03:00
+Academy 1
+MATH65032T
+Stability Theory
+09/06/2026 14:00 03:00
+Whitworth Hall
+MATH65062T
+Continuum Mechanics
+29/05/2026 14:00 03:00
+Simon_3.44A
+MATH65122T
+Transport Phenomena and Conservation Laws
+04/06/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MATH66052T
+Approximation Theory and Finite Element Analysis
+22/05/2026 14:00 03:00
+Simon_3.44A
+MATH67112T
+Brownian Motion
+01/06/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MATH68032A
+Time Series Analysis and Forecasting (RESIT)
+04/06/2026 14:00 03:00
+Academy 2, Students Union
+MATH68032T
+Time Series Analysis and Forecasting
+04/06/2026 14:00 03:00
+Academy 2, Students Union
+MATH68052A
+Generalised Linear Models and Survival Analysis (RESIT)
+20/05/2026 14:00 03:00
+DASS ONLY
+MATH68052T
+Generalised Linear Models and Survival Analysis
+20/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MATH68082T
+Design and Analysis of Experiments
+02/06/2026 14:00 03:00
+Sugden Sports Centre
+MATH68132T
+Longitudinal and Spatial Data Analysis
+18/05/2026 14:00 03:00
+Simon_3.44A
+MATH68292T
+Statistical Machine Learning
+29/05/2026 14:00 03:00
+Simon_3.44A
+MATH69102T
+Stochastic Modelling in Finance
+22/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th B
+MATH69122T
+Stochastic Control with Applications to Finance
+20/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MATS11402T
+Fashion Marketing
+02/06/2026 14:00 01:30
+Academy 1
+MATS11502T
+Fashion Function and Aesthetics
+09/06/2026 09:45 01:30
+Whitworth Hall
+MATS16102T
+Mechanical Behaviour
+19/05/2026 09:45 01:30
+Armitage Centre (Conf Room)
+MATS16202T
+Structure of Crystalline Solids
+02/06/2026 14:00 01:30
+Armitage Centre (Conf Room)
+MATS16302T
+Functional Properties
+09/06/2026 09:45 01:30
+Armitage Centre (Conf Room)
+MATS20422T
+Fashion Buying & Merchandising
+26/05/2026 09:45 01:00
+Whitworth Hall
+MATS21902T
+Fashion Brand Promotion
+05/06/2026 09:45 02:00
+The Theatre, Students Union
+MATS22002T
+Fashion Business & Analysis (ONLINE)
+02/06/2026 14:00 02:00
+Stopford_G.321A PC CL 2A
+MATS22102T
+Fashion Management
+21/05/2026 09:45 02:00
+Armitage Centre (Conf Room)
+MATS22302T
+International Business
+09/06/2026 14:00 01:30
+Armitage Centre (Conf Room)
+MATS22702T
+Sustainable Approaches to Fashion Business
+18/05/2026 09:45 01:30
+Sugden Sports Centre
+MATS22802T
+Fabric Structures & Colouration
+09/06/2026 09:45 01:30
+Academy 2, Students Union
+
+--- Page 12 ---
+MATS23502T
+Deformation Mechanisms
+20/05/2026 09:45 01:30
+Armitage Centre (Main Hall)
+MATS23602T
+Functional Behaviour
+03/06/2026 09:45 01:30
+Armitage Centre (Conf Room)
+MATS24102T
+Engineering Alloys in Service
+01/06/2026 09:45 01:30
+Sugden Sports Centre
+MATS24112T
+Performance Polymers, Fibres and Textiles
+08/06/2026 09:45 01:30
+Armitage Centre (Conf Room)
+MATS31802T
+Drug Delivery & Biosensors
+05/06/2026 14:00 01:30
+Simon_3.44A
+MATS31902T
+Polymer Synthesis & Characterisation
+04/06/2026 09:45 01:30
+Academy 1
+MATS32102T
+Metallurgy of Engineering Alloys
+26/05/2026 14:00 01:30
+The Theatre, Students Union
+MATS32202T
+Corrosion Science & Engineering
+01/06/2026 14:00 01:30
+Academy 2, Students Union
+MATS32302T
+Stem Cell & Tissue Engineering
+29/05/2026 14:00 01:30
+Simon_TH E
+MATS32402T
+Multiphase Polymers & Nanocomposites
+18/05/2026 09:45 01:30
+The Theatre, Students Union
+MATS32602T
+Textile Manufacturing Techniques
+22/05/2026 09:45 01:30
+Whitworth Hall
+MATS32702T
+Nanotechnology
+21/05/2026 09:45 01:30
+Sugden Sports Centre
+MATS34502T
+Business Ethics Sustainability & CSR
+20/05/2026 09:45 02:00
+The Theatre, Students Union
+MATS42402T
+Natural Materials & Biological Matrices
+01/06/2026 09:45 02:00
+Simon_3.44A
+MATS42602T
+Soft Matter
+22/05/2026 09:45 02:00
+Academy 1
+MATS42702T
+Control & Design of Polymerisation Reactions
+19/05/2026 14:00 02:00
+Armitage Centre (Conf Room)
+MATS42802T
+Polymer Physics & Physical Properties
+26/05/2026 14:00 02:00
+Whitworth Hall
+MATS43102T
+Advanced Metals Processing
+22/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+MATS43202T
+Superalloys & High Performance Materials
+19/05/2026 14:00 02:00
+Sugden Sports Centre
+MATS43402T
+Corrosion Management for Sustainability
+21/05/2026 14:00 02:00
+Academy 1
+MATS43502T
+Corrosion Control for Industrial Practice
+01/06/2026 09:45 02:00
+The Theatre, Students Union
+MATS43602T
+Corrosion Control for Oilfield and Renewable Energy
+26/05/2026 14:00 02:00
+Armitage Centre (Conf Room)
+MATS43902T
+Technical & Biomedical Textiles
+19/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+MATS44102T
+Advanced Composites
+04/06/2026 14:00 02:00
+Armitage Centre (Conf Room)
+MATS44202T
+Graphene & Nanomaterials
+29/05/2026 09:45 02:00
+Armitage Centre (Conf Room)
+MATS44302T
+Applied Functional Materials & Devices
+01/06/2026 09:45 02:00
+Simon_3.44A
+MATS61462T
+Strategic Retail Management
+08/06/2026 09:45 02:00
+Armitage Centre (Main Hall)
+MATS61472T
+Fashion Marketing Communications
+09/06/2026 14:00 02:00
+Sugden Sports Centre
+MATS61482T
+Omnichannel Retailing
+03/06/2026 09:45 02:00
+Whitworth Hall
+MATS64402T
+Advanced Metals Processing
+22/05/2026 14:00 02:00
+Sugden Sports Centre
+MATS64502T
+Superalloys & High Performance Materials
+19/05/2026 14:00 02:00
+Sugden Sports Centre
+MATS64602T
+Advanced Composites
+04/06/2026 14:00 02:00
+Armitage Centre (Conf Room)
+MATS64702T
+Applied Functional Materials & Devices
+01/06/2026 09:45 02:00
+The Theatre, Students Union
+MATS64802T
+Graphene & Nanomaterials
+29/05/2026 09:45 02:00
+Nancy Rothwell_Lecture Th A
+MATS65402T
+Natural Materials & Biological Matrices
+01/06/2026 09:45 02:00
+Academy 1
+MATS65602T
+Soft Matter
+22/05/2026 09:45 02:00
+Nancy Rothwell_Lecture Th B
+MATS66402T
+Corrosion Management for Sustainability
+21/05/2026 14:00 02:00
+The Theatre, Students Union
+MATS66502T
+Corrosion Control for Industrial Practice
+01/06/2026 09:45 02:00
+Armitage Centre (Conf Room)
+MATS66602T
+Corrosion Control for Oilfield and Renewable Energy
+26/05/2026 14:00 02:00
+Simon_TH E
+MATS68502T
+Control & Design of Polymerisation Reactions
+19/05/2026 14:00 02:00
+Sugden Sports Centre
+MATS68602T
+Polymer Physics & Physical Properties
+26/05/2026 14:00 02:00
+Sugden Sports Centre
+MATS69402T
+Advanced Textile Technology
+10/06/2026 14:00 02:00
+Sugden Sports Centre
+MATS69502T
+Textiles Evaluation & Clothing
+02/06/2026 09:45 02:00
+Academy 1
+MATS69602T
+Technical & Biomedical Textiles
+19/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+MCEL30002T
+Tools & Techniques for Enterprise
+21/05/2026 14:00 02:00
+The Theatre, Students Union
+MECH10002T
+Materials 1 (Aerospace) (ONLINE)
+29/05/2026 14:00 02:00
+Kilburn_1.8/1.10
+MECH11012T
+Manufacturing Engineering 1 (Mechanical)
+21/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+MECH11122T
+Manufacturing Engineering 1 (Aerospace)
+21/05/2026 14:00 02:00
+Academy 1
+MECH11602T
+Mechanics (Mechanical)
+19/05/2026 09:45 02:00
+Academy 1
+MECH11622T
+Mechanics (Aerospace)
+19/05/2026 09:45 02:00
+Academy 1
+MECH12002T
+Materials 1 (Mechanical) (ONLINE)
+29/05/2026 14:00 02:00
+Nancy Rothwell CL 4 & 5, Nancy Rothwell CL 3
+MECH12012T
+Aerospace and Mechanical Thermodynamics
+05/06/2026 09:45 02:00
+Academy 1
+MECH20042T
+Numerical Methods & Computing (Mechanical)
+22/05/2026 14:00 02:00
+Sugden Sports Centre, Academy 1
+MECH20422T
+Applied Thermodynamics (Mechanical)
+20/05/2026 09:45 02:00
+Whitworth Hall
+MECH20432T
+Applied Thermodynamics (Aerospace)
+20/05/2026 09:45 02:00
+Armitage Centre (Conf Room)
+
+--- Page 13 ---
+MECH20442T
+Dynamics
+08/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+MECH20542T
+Numerical Methods & Computing (Aerospace)
+22/05/2026 14:00 02:00
+Armitage Centre (Conf Room)
+MECH21342T
+Data Acquisition & Experimental Methods
+05/06/2026 14:00 00:45
+Whitworth Hall
+MECH22202T
+Materials 2
+03/06/2026 14:00 02:00
+Whitworth Hall
+MECH30432T
+Heat Transfer
+22/05/2026 14:00 02:00
+Sugden Sports Centre
+MECH30632T
+Nuclear Systems
+02/06/2026 09:45 02:00
+Armitage Centre (Main Hall)
+MECH31422T
+Fluid Mechanics
+20/05/2026 14:00 02:00
+Simon_3.44A
+MECH31532T
+Renewable Energy Systems
+29/05/2026 14:00 02:00
+The Theatre, Students Union
+MECH32002T
+Structures 3 (Mechanical)
+19/05/2026 09:45 02:00
+Sugden Sports Centre
+MECH32102T
+Engineering Thermodynamics
+04/06/2026 09:45 02:00
+Sugden Sports Centre
+MECH40102T
+Composites and Polymers
+21/05/2026 09:45 02:00
+Armitage Centre (Main Hall)
+MECH40132T
+Advanced Manufacturing Processes
+05/06/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MECH40362T
+Additive Manufacturing & 3D Product Modelling
+26/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MECH40442T
+Acoustics & Advanced Vibrations
+22/05/2026 14:00 03:00
+Academy 2, Students Union
+MECH40562T
+Advanced Power
+18/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MECH41032T
+Robotics, Metrology and Bioengineering
+29/05/2026 14:00 03:00
+Academy 2, Students Union
+MECH43002T
+Structural Integrity
+02/06/2026 14:00 03:00
+Sugden Sports Centre
+MECH60102T
+Composites and Polymers
+21/05/2026 09:45 02:00
+Armitage Centre (Conf Room)
+MECH60132T
+Advanced Manufacturing Processes
+05/06/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MECH60362T
+Additive Manufacturing & 3D Product Modelling
+26/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MECH60562T
+Advanced Power
+18/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MECH61022T
+Heat Transfer
+04/06/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MECH61032T
+Robotics, Metrology and Bioengineering
+29/05/2026 14:00 03:00
+Nancy Rothwell_Lecture Th A
+MECH61042T
+Advanced Engineering Fluid Mechanics
+20/05/2026 14:00 03:00
+Sugden Sports Centre
+MECH63002T
+Structural Integrity
+02/06/2026 14:00 03:00
+Sugden Sports Centre
+MECH68062T
+Auditing Asset Management & Maintenance Organisations 19/05/2026 14:00 02:00
+Sugden Sports Centre
+MECH68082T
+Turnaround Management (DL)
+21/05/2026 14:00 02:00
+Nancy Rothwell_Lecture Th A
+MECH69032T
+Asset Maintenance Systems
+26/05/2026 14:00 02:00
+Simon_TH E
+MECH69042T
+Machinery Vibration-based Condition Monitoring
+29/05/2026 14:00 02:00
+Academy 1
+MECH69052T
+Design for Reliability & Asset Management
+19/05/2026 14:00 02:00
+Sugden Sports Centre
+MECH69082T
+Turnaround Management
+21/05/2026 14:00 02:00
+Nancy Rothwell_Lecture Th A
+MEDN10000T
+MBChB Year 1 - Progress Test
+04/06/2026 14:00 02:30
+Sugden Sports Centre
+MEDN10000X
+MBChB Year 1 Semester 2 Test (ONLINE)
+18/05/2026 09:45 02:30
+Stopford_G.321A PC CL 2A, Nancy Rothwell CL 4 & 5, Nancy Rothwell CL 2
+MEDN10000Y
+MBChB Year 1 CCA Day 1 (IN-HOUSE)
+26/05/2026 09:45 07:00
+Division of Medical Education
+MEDN10000Z
+MBChB Year 1 CCA Day 2 (IN-HOUSE)
+01/06/2026 09:45 07:00
+Division of Medical Education
+MEDN10350T
+Foundation Programmes - Biomedicine
+21/05/2026 09:45 02:00
+Uni Place_TH B
+MEDN10350X
+Foundation Programmes - Chemistry
+21/05/2026 14:00 01:30
+Uni Place_TH B
+MEDN11000T
+MB ChB GEM Year 1 - Progress Test
+04/06/2026 14:00 02:30
+Whitworth Hall, Academy 1
+MEDN11000X
+MB ChB GEM Year 1 Semester 2 KUR Day 1 (ONLINE)
+26/05/2026 09:45 02:00
+Nancy Rothwell CL 2
+MEDN11000Y
+MB ChB GEM Year 1 Semester 2 KUR Day 2 (ONLINE)
+29/05/2026 14:00 02:00
+Stopford Clinical Skills Suite
+MEDN11000Z
+MB ChB GEM Year 1 CCA Summative (IN-HOUSE)
+10/06/2026 09:45 07:00
+Division of Medical Education
+MEDN20000T
+MBChB Year 2 - Progress Test
+04/06/2026 14:00 02:30
+Armitage Centre (Main Hall)
+MEDN20000X
+MBChB Year 2 Semester 4 Test (ONLINE)
+19/05/2026 09:45 02:30
+Stopford_G.321A PC CL 2A, Nancy Rothwell CL 4 & 5, Nancy Rothwell CL 3
+MEDN20000Y
+MBChB Year 2 CCA (IN-HOUSE)
+21/05/2026 09:45 07:00
+Division of Medical Education
+MEDN30010T
+MBChB Year 3 - Progress Test
+04/06/2026 14:00 02:30
+Academy 1
+MEDN30010X
+MBChB Year 3 - PT Extra Questions
+05/06/2026 14:00 01:00
+Academy 1
+MEDN30072T
+MBChB Year 3 - Progress Test (Preston) (IN-HOUSE)
+04/06/2026 14:00 02:30
+Division of Medical Education
+MEDN30072X
+MBChB Year 3 - PT Extra Questions (Preston) (IN-HOUSE)
+05/06/2026 14:00 01:00
+Division of Medical Education
+MEDN33002T
+MBChB GEM Year 3 - Progress Test
+04/06/2026 14:00 02:30
+The Theatre, Students Union
+MEDN33002X
+MBChB GEM Year 3 - PT Extra Questions
+05/06/2026 14:00 01:00
+Stopford_TH 1
+MEDN40010T
+MBChB Year 4 - Progress Test
+04/06/2026 14:00 02:30
+Whitworth Hall, Armitage Centre (Main Hall)
+MEDN40010X
+MBChB Year 4 - PT Extra Questions
+05/06/2026 14:00 01:00
+Sugden Sports Centre
+MEDN40072T
+MBChB Year 4 - Progress Test (Preston) (IN-HOUSE)
+04/06/2026 14:00 02:30
+Division of Medical Education
+MEDN40072X
+MBChB Year 4 - PT Extra Questions (Preston) (IN-HOUSE) 
+05/06/2026 14:00 01:00
+Division of Medical Education
+MEDN60010X
+Physician Associate Yr1 - AM (ONLINE)
+19/05/2026 09:45 02:00
+Mansfield Cooper_2.01
+
+--- Page 14 ---
+MEDN60010Y
+Physician Associate Yr1 (ONLINE)
+19/05/2026 14:00 02:00
+Mansfield Cooper_2.01
+MEDN60020X
+Physician Associate Yr2 (ONLINE)
+26/05/2026 09:45 02:00
+Mansfield Cooper_2.01
+MEDN60020Y
+Physician Associate Yr2 (ONLINE)
+26/05/2026 14:00 02:00
+Mansfield Cooper_2.01
+MEDN62652T
+Particle Beam Therapy (ONLINE)
+03/06/2026 09:45 01:30
+Mansfield Cooper_2.01
+MEDN63322T
+Acquired Disorders in Clinical Immunology (ONLINE)
+18/05/2026 14:00 01:30
+Mansfield Cooper_2.01
+MEDN63322X
+Acquired Disorders in Clinical Immunology (ONLINE)
+20/05/2026 09:45 01:45
+Mansfield Cooper_2.01
+MEDN63322Y
+Acquired Disorders in Clinical Immunology (ONLINE)
+21/05/2026 09:45 01:45
+Mansfield Cooper_2.01
+MEST10042T
+The History and Sociopolitics of Palestine/Israel (188267)
+18/05/2026 14:00 01:30
+48 hours
+Remote Online Exam
+MEST20272T
+Themes in the Histories of Arab and Jewish Nationalisms
+19/05/2026 14:00 01:30
+48 hours
+Remote Online Exam
+MEST20352T
+The Politics of Women and Gender in the Middle East and N18/05/2026 14:00 02:00
+48 hours
+Remote Online Exam
+MEST30182T
+Media and Business Arabic
+22/05/2026 14:00 02:00
+Armitage Centre (Main Hall)
+MEST31222T
+Understanding the Maghreb: Histories, Cultures, and Societ 01/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+MEST51022T
+Arabic Language 2
+21/05/2026 09:45 01:30
+Sugden Sports Centre
+MEST51042T
+Arabic Language 4
+22/05/2026 09:45 02:00
+Nancy Rothwell_Lecture Th B
+MEST51050T
+Arabic Language 5
+03/06/2026 14:00 02:00
+Academy 2, Students Union
+MGDI20072T
+Political Economy of Globalisation
+10/06/2026 14:00 02:00
+Sugden Sports Centre
+MGDI20242T
+Public Economics for the Global South
+21/05/2026 14:00 02:00
+24 hours
+Remote Online Exam
+MGDI20272T
+Development Macroeconomics
+03/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+MGDI60202T
+Gender Inequality: Theory and Evidence
+29/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+MGDI60462T
+Economic Analysis of Social Norms and Development
+04/06/2026 14:00 02:00
+24 hours
+Remote Online Exam
+MGDI71432T
+Risk Management
+02/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+MUSC10022T
+Tonality: Theory and Analysis
+08/06/2026 14:00 02:00
+Academy 2, Students Union
+MUSC10112T
+Techniques of Tonal Harmony
+03/06/2026 14:00 03:00
+Armitage Centre (Conf Room)
+MUSC10512T
+Music and Its Contexts
+01/06/2026 09:45 02:00
+Armitage Centre (Main Hall)
+MUSC20112T
+Harmony and Counterpoint
+02/06/2026 09:45 02:00
+Academy 1
+MUSC30510T
+Advanced Study in Musicology (A)
+20/05/2026 14:00 03:00
+48 hours
+Remote Online Exam
+MUSC30520T
+Advanced Study in Musicology (B) (40)
+20/05/2026 14:00 03:00
+48 hours
+Remote Online Exam
+NURS10042T
+Evidence Based Practice (ONLINE)
+10/06/2026 09:45 01:30
+Stopford_G.321A PC CL 2A, Nancy Rothwell CL 3
+NURS14100T
+Professional Midwifery (ONLINE)
+10/06/2026 09:45 01:30
+Nancy Rothwell CL 2
+NURS14112T
+Foundations of Midwifery Practice: Microbiology and Pharm29/05/2026 14:00 01:30
+Stopford_G.321A PC CL 2A
+NURS24100T
+Midwifery Practice 2 (ONLINE)
+03/06/2026 14:00 01:30
+Stopford Clinical Skills Suite
+NURS34110T
+Midwifery Practice 3 (MMidwif) (ONLINE)
+18/05/2026 14:00 01:30
+Stopford Clinical Skills Suite
+NURS34120T
+Midwifery Practice 3 (BMidwif) (ONLINE)
+18/05/2026 14:00 01:30
+Stopford Clinical Skills Suite
+OPTO10202T
+Fundamentals of Optometry Part 2 (ONLINE)
+08/06/2026 09:45 02:30
+Stopford_G.321A PC CL 2A
+OPTO20080T
+Dispensing B (ONLINE)
+01/06/2026 09:45 01:30
+Stopford_G.321A PC CL 2A
+OPTO20100T
+Optometric Examination B (RESIT)
+26/05/2026 14:00 01:30
+The Theatre, Students Union
+OPTO20202T
+Introduction to Clinical Optometry 2 (ONLINE)
+08/06/2026 09:45 02:30
+Stopford_G.321A PC CL 2A
+OPTO20292T
+Visual Optics (RESIT)
+08/06/2026 14:00 01:30
+Armitage Centre (Conf Room)
+OPTO20372T
+Contact Lenses A (RESIT)
+21/05/2026 09:45 01:30
+Sugden Sports Centre
+OPTO20612T
+Pharmacology B (RESIT)
+04/06/2026 09:45 01:30
+Whitworth Hall
+OPTO30282T
+Vision in the Real World (ONLINE)
+03/06/2026 14:00 01:15
+Stopford_G.321A PC CL 2A
+OPTO30362T
+IOVS Glaucoma (ONLINE)
+18/05/2026 09:45 02:00
+Stopford Clinical Skills Suite
+OPTO30410T
+Low Vision (ONLINE)
+29/05/2026 09:45 02:00
+Stopford_G.321A PC CL 2A
+OPTO70352T
+Clinical Science of Contemporary Contact Lenses (ONLINE) 01/06/2026 09:45 01:30
+Stopford_G.321A PC CL 2A
+OPTO70362T
+Glaucoma (ONLINE)
+18/05/2026 09:45 02:00
+Stopford Clinical Skills Suite
+OPTO70422T
+Refractive Management
+26/05/2026 14:00 02:00
+Simon_TH E
+OPTO71360T
+Professional Certificate in Glaucoma (ONLINE)
+18/05/2026 09:45 02:15
+Nancy Rothwell CL 3
+PCHN10050T
+Audiological Science 1 - Physics and Measurement (ONLINE)18/05/2026 09:45 02:00
+Stopford Clinical Skills Suite
+PCHN10070T
+Introduction to Audiology
+04/06/2026 09:45 02:00
+Armitage Centre (Main Hall)
+PCHN10212T
+Anatomy and Physiology for Healthcare Professionals 2: Exa21/05/2026 14:00 01:00
+Stopford_G.321A PC CL 2A
+PCHN10320T
+Biomedical Sciences
+19/05/2026 14:00 02:00
+Sugden Sports Centre
+PCHN10332T
+Applied Psychology and Sociology (ONLINE)
+02/06/2026 09:45 02:00
+Stopford Clinical Skills Suite
+PCHN10430T
+Linguistics and Language Development (ONLINE)
+08/06/2026 09:45 01:30
+Stopford Clinical Skills Suite
+PCHN10572T
+Foundations in Phonetics and Phonology (ONLINE)
+22/05/2026 09:45 01:30
+Stopford_G.321A PC CL 2A
+PCHN20310T
+Acquired Communication and Swallowing Disabilities A (ON 21/05/2026 09:45 02:00
+Stopford Clinical Skills Suite
+
+--- Page 15 ---
+PCHN20330T
+Clinical Phonetics, Voice and Fluency (ONLINE)
+04/06/2026 14:00 01:00
+Stopford Clinical Skills Suite
+PCHN21200T
+Hearing Aids
+03/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+PCHN64250T
+Adult Auditory Rehabilitation and Management
+08/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+PHAR11001T
+Foundations of Pharmacy - Calculations Exam (RESIT)
+26/05/2026 09:45 01:00
+Whitworth Hall
+PHAR11002X
+GI system, liver & kidneys- Integrated Exam AM (ONLINE)
+04/06/2026 09:45 01:30
+Kilburn_1.8/1.10
+PHAR11002Y
+GI system, liver & kidneys- Integrated Exam PM (ONLINE)
+04/06/2026 14:00 01:30
+Stopford_G.321A PC CL 2A
+PHAR22001T
+Immunity, Infection and Respiratory System - Calculations E 01/06/2026 14:00 01:15
+Nancy Rothwell_Lecture Th B
+PHAR22001Z
+Immunity, Infection and Respiratory System - Preparation fo09/06/2026 09:45 01:00
+The Theatre, Students Union
+PHAR22002X
+Cardiovascular System - Integrated Exam AM (ONLINE)
+03/06/2026 09:45 01:30
+Nancy Rothwell CL 4 & 5
+PHAR22002Y
+Cardiovascular System - Integrated Exam PM (ONLINE)
+03/06/2026 14:00 01:30
+Nancy Rothwell CL 4 & 5
+PHAR22011T
+Immunity, Infection and Respiratory System - Calculations E 01/06/2026 14:00 01:15
+Nancy Rothwell_Lecture Th B
+PHAR22011Z
+Immunity, Infection and Respiratory System - Preparation fo09/06/2026 09:45 01:00
+Uni Place_TH B
+PHAR22022X
+Cardiovascular System - Integrated Exam AM (ONLINE)
+03/06/2026 09:45 01:30
+Nancy Rothwell CL 3
+PHAR22022Y
+Cardiovascular System - Integrated Exam PM (ONLINE)
+03/06/2026 14:00 01:30
+Nancy Rothwell CL 3
+PHAR33001T
+Endocrine and Musculoskeletal Systems - Calculations Exam02/06/2026 09:45 01:30
+Armitage Centre (Conf Room)
+PHAR33001Z
+Endcorine and Musculoskeletal Systems - Preparation for Pr09/06/2026 09:45 01:30
+Academy 2, Students Union
+PHAR33002X
+Brain and Neurotransmission - Integrated Exam AM (ONLINE26/05/2026 09:45 01:30
+Stopford_G.321A PC CL 2A
+PHAR33002Y
+Brain and Neurotransmission - Integrated Exam PM (ONLINE26/05/2026 14:00 01:30
+Stopford_G.321A PC CL 2A
+PHAR33011T
+Endocrine and Musculoskeletal Systems - Calculations Exam02/06/2026 09:45 01:30
+Whitworth Hall
+PHAR33022X
+Brain and Neurotransmission - Integrated Exam AM (ONLINE26/05/2026 09:45 01:30
+Stopford Clinical Skills Suite
+PHAR33022Y
+Brain and Neurotransmission - Integrated Exam PM (ONLINE26/05/2026 14:00 01:30
+Nancy Rothwell CL 2
+PHAR44001T
+Advanced Therapies 1 - Infection - Calculations Exam (RESIT 03/06/2026 09:45 01:30
+Academy 1
+PHAR44002X
+Advanced Therapies 2 - Cancer - Integrated Exam AM (ONLI 01/06/2026 09:45 01:30
+Stopford_G.321A PC CL 2A
+PHAR44002Y
+Advanced Therapies 2 - Cancer - Integrated Exam PM (ONLIN01/06/2026 14:00 01:30
+Nancy Rothwell CL 4 & 5
+PHAR44200Z
+Special Patient Groups - Preparation for Practice Exam (RES 09/06/2026 09:45 02:00
+Armitage Centre (Main Hall)
+PHAR68823T
+Data Analysis in PKPD 
+02/06/2026 14:00 02:00
+Remote Online Exam
+PHAR68832T
+PBPK and IVIVE 2 
+26/05/2026 14:00 02:00
+Remote Online Exam
+PHAR69923T
+Data Analysis in Pharmacokinetics and Pharmacodynamics (02/06/2026 14:00 02:00
+Stopford Clinical Skills Suite
+PHAR69932T
+PBPK and IVIVE 2 Advanced Concepts and Applications (ONL26/05/2026 14:00 02:00
+Stopford Clinical Skills Suite
+PHIL10042T
+Critical Thinking
+19/05/2026 09:45 01:30
+Remote Online Exam
+PHIL20042T
+Philosophy of Race
+10/06/2026 09:45 02:00
+Remote Online Exam
+PHIL20232T
+Ethics
+26/05/2026 09:45 02:00
+Remote Online Exam
+PHYS10302T
+Vibrations & Waves
+20/05/2026 14:00 01:30
+Academy 1
+PHYS10342T
+Electricity & Magnetism
+26/05/2026 14:00 01:30
+Academy 1
+PHYS10372T
+Mathematics 2
+03/06/2026 09:45 01:30
+Sugden Sports Centre
+PHYS10622T
+Physics of Energy Sources
+05/06/2026 09:45 01:30
+Academy 2, Students Union
+PHYS10672T
+Advanced Dynamics
+08/06/2026 09:45 01:30
+Armitage Centre (Conf Room)
+PHYS10692T
+Exoplanets
+05/06/2026 09:45 01:30
+Simon_TH E
+PHYS10792T
+Introduction to Data Science
+22/05/2026 09:45 01:30
+Simon_3.44A
+PHYS20302T
+Quantum Mechanics 2
+26/05/2026 09:45 01:30
+Academy 1
+PHYS20342T
+Electromagnetism 2
+01/06/2026 09:45 01:30
+Sugden Sports Centre
+PHYS20352T
+Statistical Mechanics
+10/06/2026 09:45 01:30
+Academy 1
+PHYS20402T
+Lagrangian Dynamics
+21/05/2026 09:45 01:30
+Whitworth Hall
+PHYS20632T
+Biological and Soft Matter Physics
+29/05/2026 09:45 01:30
+Sugden Sports Centre
+PHYS20672T
+Complex Variables and Vector Spaces
+04/06/2026 09:45 01:30
+Armitage Centre (Conf Room)
+PHYS30302T
+General Physics Skills
+20/05/2026 09:45 01:30
+Armitage Centre (Main Hall)
+PHYS30352T
+Fluid Mechanics and Phase Transitions
+18/05/2026 09:45 01:30
+Armitage Centre (Main Hall), Simon_3.44A
+PHYS30392T
+Cosmology
+01/06/2026 14:00 01:30
+Whitworth Hall
+PHYS30602T
+Advanced Quantum Mechanics
+26/05/2026 09:45 01:30
+Nancy Rothwell_Lecture Th A
+PHYS30622T
+Advanced Particle Physics
+08/06/2026 09:45 01:30
+Academy 2, Students Union
+PHYS30672T
+Mathematical Methods for Physics
+05/06/2026 14:00 01:30
+Simon_3.44A
+PHYS30692T
+Stars and Stellar Evolution
+03/06/2026 09:45 01:30
+Sugden Sports Centre
+PHYS30722T
+Applied Nuclear Physics
+29/05/2026 09:45 01:30
+Academy 2, Students Union
+PHYS30732T
+Physics of Living Processes (RESIT)
+20/05/2026 09:45 01:30
+Armitage Centre (Main Hall)
+PHYS30752T
+Nanoelectronics and Semiconductors
+19/05/2026 09:45 01:30
+The Theatre, Students Union
+
+--- Page 16 ---
+PHYS40622T
+Nuclear Forces and Reactions
+20/05/2026 09:45 01:30
+Armitage Centre (Main Hall)
+PHYS40682T
+Gauge Theories (M)
+26/05/2026 14:00 01:30
+Simon_3.44A
+PHYS40722T
+Frontiers of Particle Physics II
+10/06/2026 09:45 01:30
+Armitage Centre (Main Hall)
+PHYS40732T
+Biomaterials/Biophysics
+18/05/2026 14:00 01:30
+Academy 2, Students Union
+PHYS40752T
+Soft Matter Physics
+04/06/2026 09:45 01:30
+Academy 1
+PHYS40772T
+Early Universe (M, A)
+09/06/2026 09:45 01:30
+Academy 2, Students Union
+PHYS40992T
+Galaxy Formation
+08/06/2026 09:45 01:30
+The Theatre, Students Union
+PHYS63392T
+Cosmology
+01/06/2026 14:00 01:30
+Whitworth Hall
+PLAN10352T
+Introduction to Urban and Environmental Economics
+03/06/2026 14:00 01:30
+48 hours
+Remote Online Exam
+PLAN10362T
+Rural Planning
+08/06/2026 14:00 01:30
+48 hours
+Remote Online Exam
+PLAN10502T
+Ecology and Conservation
+01/06/2026 09:45 01:30
+Academy 2, Students Union
+PLAN30072T
+Planning & Property Law
+18/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+POLI10502T
+Politics of the Global Economy
+08/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+POLI10702T
+Introduction to Political Theory
+03/06/2026 14:00 01:00
+7 days
+Remote Online Exam
+POLI20602T
+Arguing About Politics: Political Theory in the World
+03/06/2026 14:00 02:00
+7 days
+Remote Online Exam
+POLI20802T
+The Politics of Policy Making
+29/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+POLI30272T
+Political Morality and Dirty Hands
+19/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+POLI30292T
+Public Policy Problems
+03/06/2026 09:45 01:30
+Academy 1
+POLI70422T
+Global Governance
+29/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+PSYC10100T
+Introduction to Statistics for Psychological Sciences (ONLINE02/06/2026 09:45 01:00
+Stopford_G.321A PC CL 2A, Nancy Rothwell CL 4 & 5
+PSYC11212T
+Foundations of Biological and Cognitive Psychology (ONLINE09/06/2026 14:00 01:30
+Kilburn_1.8/1.10, Stopford_G.321A PC CL 2A, Nancy Rothwell CL 2
+PSYC21022T
+Cognition & Cognitive Neuroscience (ONLINE)
+09/06/2026 09:45 01:30
+Stopford_G.321A PC CL 2A, Nancy Rothwell CL 4 & 5
+PSYC21612T
+Autism: Research, Theory and Culture (ONLINE)
+03/06/2026 09:45 01:30
+Stopford_G.321A PC CL 2A
+PSYC31222T
+Clinical Psychology (ONLINE)
+21/05/2026 14:00 01:00
+Stopford_G.321A PC CL 2A
+PSYC31232T
+Communication in Healthcare (ONLINE)
+20/05/2026 09:45 01:00
+Stopford_G.321A PC CL 2A
+PSYC32242T
+Psychology of Politics, Identity and Society (ONLINE)
+18/05/2026 14:00 01:30
+Nancy Rothwell CL 3
+RELT10192T
+Introduction to Judaism
+02/06/2026 14:00 01:30
+7 days
+Remote Online Exam
+RELT10242T
+Religion, Ethics and the Environment
+22/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+RELT20140T
+Biblical Hebrew
+02/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+RELT20152T
+New Testament in Greek II
+18/05/2026 14:00 01:00
+7 days
+Remote Online Exam
+RELT20632T
+God at the Movies
+03/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+RELT21082T
+End of the World and Apocalypticism
+02/06/2026 14:00 01:00
+7 days
+Remote Online Exam
+RELT30962T
+Paul: Theology, Ethics, Philosophy
+20/05/2026 14:00 02:00
+48 hours
+Remote Online Exam
+RELT31142T
+Making Sense of Christ
+08/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+RELT70140T
+Biblical Hebrew: Beginners
+02/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+RUSS51022T
+Russian Language 2
+21/05/2026 14:00 02:00
+The Theatre, Students Union
+RUSS51030T
+Russian Language 3
+08/06/2026 09:45 02:00
+Sugden Sports Centre
+RUSS51040T
+Russian Language 4
+22/05/2026 14:00 02:00
+Uni Place_TH B
+RUSS51050T
+Russian Language 5
+18/05/2026 09:45 02:00
+Whitworth Hall
+SALC10042T
+Rococo to Now: Artworks in History
+08/06/2026 14:00 02:00
+48 hours
+Remote Online Exam
+SOAN10312T
+Cultural Diversity in Global Perspective
+02/06/2026 14:00 01:30
+7 days
+Remote Online Exam
+SOAN20830T
+Anthropological Theory
+04/06/2026 09:45 02:00
+Sugden Sports Centre
+SOCY10202T
+Environment and Society
+18/05/2026 14:00 02:00
+7 days
+Remote Online Exam
+SOCY10432T
+Contemporary Social Thought
+26/05/2026 14:00 02:00
+Whitworth Hall
+SOCY10472T
+Getting Personal: Intimacy and Connectedness in Everyday L20/05/2026 09:45 02:00
+Armitage Centre (Conf Room)
+SOCY10912T
+Work, Organisations and Society
+22/05/2026 14:00 02:00
+Stopford_TH 1
+SOST10062T
+Introductory Statistics for Economists
+21/05/2026 09:45 02:00
+Armitage Centre (Main Hall)
+SOST20022T
+Essentials of Survey Design and Analysis
+03/06/2026 09:45 02:00
+Uni Place_TH B
+SOST30012T
+Theory & Method in Demography
+18/05/2026 14:00 02:00
+Uni Place_TH B
+SOST70012T
+Theory and Method in Demography
+18/05/2026 14:00 02:00
+Nancy Rothwell_Lecture Th B
+SPLA20772T
+Spanish Linguistics
+18/05/2026 14:00 02:30
+24 hours
+Remote Online Exam
+SPLA31132T
+The Supernatural in Latin American Literature and Film
+18/05/2026 14:00 02:00
+48 hours
+Remote Online Exam
+SPLA31162T
+Conquest and Resistance in the Spanish Golden Age
+20/05/2026 14:00 02:00
+48 hours
+Remote Online Exam
+SPLA51022T
+Spanish Language 2
+18/05/2026 09:45 02:00
+Whitworth Hall
+SPLA51030T
+Spanish Language 3
+18/05/2026 09:45 02:00
+Roscoe_TH A
+
+--- Page 17 ---
+SPLA51040T
+Spanish Language 4
+20/05/2026 09:45 02:00
+The Theatre, Students Union
+SPLA51050T
+Spanish Language 5
+05/06/2026 14:00 02:00
+Academy 2, Students Union
+SPLA51060X
+Spanish Language 6
+01/06/2026 09:45 01:00
+Simon_TH E
+SPLA51060Y
+Spanish Language 6
+04/06/2026 09:45 01:30
+Academy 1
+SPLA52010T
+Portuguese Language 1
+05/06/2026 09:45 02:00
+The Theatre, Students Union
+SPLA52020T
+Portuguese Language 2
+01/06/2026 09:45 02:00
+The Theatre, Students Union
+SPLA52030T
+Portuguese Language 3
+20/05/2026 09:45 02:00
+Simon_TH E
+SPLA52050T
+Portuguese Language 5
+08/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+SPLA53010T
+Catalan Language & Culture 1
+10/06/2026 09:45 01:30
+Armitage Centre (Main Hall)
+SPLA53020T
+Catalan Language & Culture 2
+22/05/2026 09:45 01:30
+Whitworth Hall
+UCIL20882T
+Biology for Curious Minds (ONLINE)
+10/06/2026 14:00 01:00
+Nancy Rothwell CL 2
+UCIL20892T
+Biology for Curious Minds (ONLINE)
+10/06/2026 14:00 01:00
+Nancy Rothwell CL 2
+ULAR50002T
+Introduction to LEAP Arabic (A1.1)  NCS
+26/05/2026 09:45 01:00
+Whitworth Hall
+ULAR50010T
+LEAP Arabic 1 (A1) Non-assessed
+09/06/2026 09:45 01:00
+Simon_3.44A
+ULAR50020T
+LEAP Arabic 2 (A1/A2) Non-assessed
+19/05/2026 09:45 01:30
+Armitage Centre (Conf Room)
+ULAR50030T
+LEAP Arabic 3 (A2/B1) Non-assessed
+04/06/2026 09:45 01:30
+Armitage Centre (Conf Room)
+ULAR51002T
+Introduction to LEAP Arabic (A1.1)
+26/05/2026 09:45 01:00
+Whitworth Hall
+ULAR51010T
+LEAP Arabic 1 (A1)
+09/06/2026 09:45 01:00
+Simon_3.44A
+ULAR51020T
+LEAP Arabic 2 (A1/A2)
+19/05/2026 09:45 01:30
+Academy 2, Students Union
+ULAR51030T
+LEAP Arabic 3 (A2/B1)
+04/06/2026 09:45 01:30
+Armitage Centre (Conf Room)
+ULAR90002T
+Introduction to LEAP Arabic (A1.1)  NSTD (EXTNL)
+26/05/2026 09:45 01:00
+Whitworth Hall
+ULAR90010T
+LEAP Arabic 1 (A1) NSTD (EXTNL)
+09/06/2026 09:45 01:00
+Simon_3.44A
+ULAR90020T
+LEAP Arabic 2 (A1/A2) NSTD (EXTNL)
+19/05/2026 09:45 01:30
+Whitworth Hall
+ULCH50002T
+Introduction to LEAP Chinese (A1.1)  NC
+01/06/2026 09:45 01:00
+Nancy Rothwell_Lecture Th B
+ULCH50010T
+LEAP Chinese 1 (A1) Non-assessed
+09/06/2026 09:45 01:00
+Simon_3.44A
+ULCH50020T
+LEAP Chinese 2 (A2) NCS
+10/06/2026 09:45 01:30
+Academy 1
+ULCH51002T
+LEAP Introduction to Chinese (A1.1)
+01/06/2026 09:45 01:00
+Nancy Rothwell_Lecture Th B
+ULCH51010T
+LEAP Chinese 1 (A1)
+09/06/2026 09:45 01:00
+Simon_3.44A
+ULCH51020T
+LEAP Chinese 2 (A2)
+10/06/2026 09:45 01:30
+Academy 1
+ULCH90002T
+Introduction to Chinese A1.1- CEPD Programme (EXTNL)
+01/06/2026 09:45 01:00
+Nancy Rothwell_Lecture Th B
+ULCH90010T
+LEAP Chinese 1 (A1) NSTD (EXTNL)
+09/06/2026 09:45 01:00
+Uni Place_TH B
+ULCH90020T
+LEAP Chinese 2 (A2) NSTD (EXTNL)
+10/06/2026 09:45 01:30
+Academy 1
+ULFR50002T
+LEAP Introduction to French (A1.1) NC Non-assessed
+10/06/2026 09:45 01:00
+Academy 2, Students Union
+ULFR50010T
+LEAP French 1 (A1/A2) Non-assessed
+18/05/2026 09:45 01:00
+Nancy Rothwell_Lecture Th A
+ULFR50020T
+LEAP French 2 (A2) NC Non-assessed
+22/05/2026 09:45 01:30
+Uni Place_TH B
+ULFR50030T
+LEAP French 3 (B1) NC Non-assessed
+09/06/2026 14:00 01:30
+Academy 2, Students Union
+ULFR50040T
+LEAP French 4 (B1/B2) NC Non-assessed
+02/06/2026 09:45 01:30
+Whitworth Hall
+ULFR50050T
+LEAP French 5 (B2/C1) NC Non-assessed
+21/05/2026 09:45 02:00
+Nancy Rothwell_Lecture Th A
+ULFR50060T
+LEAP French 6 (C1+) NC Non-assessed
+20/05/2026 09:45 02:00
+Academy 1
+ULFR51002T
+LEAP Introduction to French (A1.1)
+10/06/2026 09:45 01:00
+Academy 2, Students Union
+ULFR51010T
+LEAP French 1 (A1/A2)
+18/05/2026 09:45 01:00
+Nancy Rothwell_Lecture Th A
+ULFR51020T
+LEAP French 2 (A2)
+22/05/2026 09:45 01:30
+Simon_3.44A
+ULFR51030T
+LEAP French 3 (B1)
+09/06/2026 14:00 01:30
+Academy 2, Students Union
+ULFR51040T
+LEAP French 4 (B1/B2)
+02/06/2026 09:45 01:30
+Armitage Centre (Conf Room)
+ULFR51050T
+LEAP French 5 (B2/C1)
+21/05/2026 09:45 02:00
+Armitage Centre (Conf Room)
+ULFR51060T
+LEAP French 6 (C1+)
+20/05/2026 09:45 02:00
+The Theatre, Students Union
+ULFR71010T
+LEAP French 1 (A1/A2)  PGDT
+18/05/2026 09:45 01:00
+Nancy Rothwell_Lecture Th A
+ULFR90002T
+LEAP Introduction to French (A1.1) NSTD (EXTNL)
+10/06/2026 09:45 01:00
+Academy 2, Students Union
+ULFR90010T
+LEAP French 1 (A1/A2) NSTD (EXTNL)
+18/05/2026 09:45 01:00
+Nancy Rothwell_Lecture Th A
+ULFR90030T
+LEAP French 3 (B1) NSTD (EXTNL)
+09/06/2026 14:00 01:30
+Academy 2, Students Union
+ULFR90040T
+LEAP French 4 (B1/B2) NSTD (EXTNL)
+02/06/2026 09:45 01:30
+Whitworth Hall
+ULFR90050T
+LEAP French 5 (B2/C1) NSTD (EXTNL)
+21/05/2026 09:45 02:00
+Armitage Centre (Conf Room)
+ULFR90060T
+LEAP French 6 (C1+) NSTD (EXTNL)
+20/05/2026 09:45 02:00
+Armitage Centre (Conf Room)
+ULGE50002T
+LEAP Introduction German NC
+18/05/2026 09:45 01:00
+Nancy Rothwell_Lecture Th A
+ULGE50010T
+LEAP German 1 (A1/A2) NC
+19/05/2026 09:45 01:00
+Nancy Rothwell_Lecture Th B
+
+--- Page 18 ---
+ULGE50020T
+LEAP German 2 NC
+19/05/2026 09:45 01:30
+Whitworth Hall
+ULGE50030T
+LEAP German 3 (B1) NC
+01/06/2026 14:00 01:30
+Academy 2, Students Union
+ULGE50040T
+LEAP German 4 (B1/B2) NC
+21/05/2026 09:45 01:30
+Whitworth Hall
+ULGE50050T
+LEAP German 5 (B2/C1) NC
+05/06/2026 14:00 02:00
+Roscoe_TH A
+ULGE50060T
+LEAP German 6 (C1+) NC
+08/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+ULGE51002T
+LEAP Introduction to German (A1.1)
+18/05/2026 09:45 01:00
+Nancy Rothwell_Lecture Th A
+ULGE51010T
+LEAP German 1 (A1/A2)
+19/05/2026 09:45 01:00
+Nancy Rothwell_Lecture Th B
+ULGE51020T
+LEAP German 2 (A2)
+19/05/2026 09:45 01:30
+Whitworth Hall
+ULGE51030T
+LEAP German 3 (B1)
+01/06/2026 14:00 01:30
+Academy 2, Students Union
+ULGE51040T
+LEAP German 4 (B1/B2)
+21/05/2026 09:45 01:30
+Sugden Sports Centre
+ULGE51050T
+LEAP German 5 (B2/C1)
+05/06/2026 14:00 02:00
+Uni Place_TH B
+ULGE51060T
+LEAP German 6 (C1+)
+08/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+ULGE90002T
+LEAP Introduction to German (A1.1) NSTD (EXTNL)
+18/05/2026 09:45 01:00
+Nancy Rothwell_Lecture Th A
+ULGE90010T
+LEAP German 1 (A1/A2) NSTD (EXTNL)
+19/05/2026 09:45 01:00
+Nancy Rothwell_Lecture Th B
+ULGE90020T
+LEAP German 2 (A2) NSTD (EXTNL)
+19/05/2026 09:45 01:30
+Whitworth Hall
+ULGE90030T
+LEAP German 3 (B1) NSTD (EXTNL)
+01/06/2026 14:00 01:30
+Whitworth Hall
+ULGE90040T
+LEAP German 4 (B1/B2) NSTD (EXTNL)
+21/05/2026 09:45 01:30
+Whitworth Hall
+ULGE90050T
+LEAP German 5 (B2/C1) NSTD (EXTNL)
+05/06/2026 14:00 02:00
+The Theatre, Students Union
+ULGE90060T
+LEAP German 6 (C1+) NSTD (EXTNL)
+08/06/2026 14:00 02:00
+Armitage Centre (Main Hall)
+ULJA50010T
+LEAP Japanese 1 (A1) NC
+09/06/2026 09:45 01:00
+Uni Place_TH B
+ULJA50020T
+LEAP Japanese 2 (A1/A2) NC
+09/06/2026 14:00 01:30
+Armitage Centre (Conf Room)
+ULJA50030T
+LEAP Japanese 3 (A2/B1) NC
+09/06/2026 09:45 01:30
+DASS ONLY
+ULJA50040T
+LEAP Japanese 4 (B1) NC
+08/06/2026 09:45 01:30
+Academy 1
+ULJA51002T
+LEAP Introduction to Japanese (A1.1)
+21/05/2026 09:45 01:00
+Academy 1
+ULJA51010T
+LEAP Japanese 1 (A1)
+09/06/2026 09:45 01:00
+Uni Place_TH B
+ULJA51020T
+LEAP Japanese 2 (A1/A2)
+09/06/2026 14:00 01:30
+Academy 2, Students Union
+ULJA51030T
+LEAP Japanese 3 (A2/B1)
+09/06/2026 09:45 01:30
+Academy 2, Students Union
+ULJA51040T
+LEAP Japanese 4 (B1)
+08/06/2026 09:45 01:30
+Armitage Centre (Conf Room)
+ULJA90010T
+LEAP Japanese 1 (A1) NSTD (EXTNL)
+09/06/2026 09:45 01:00
+Uni Place_TH B
+ULJA90020T
+LEAP Japanese 2 (A1/A2) NSTD (EXTNL)
+09/06/2026 14:00 01:30
+Academy 2, Students Union
+ULJA90030T
+LEAP Japanese 3 (A2/B1) NSTD (EXTNL)
+09/06/2026 09:45 01:30
+Academy 2, Students Union
+ULJA90040T
+LEAP Japanese 4 (B1) NSTD (EXTNL)
+08/06/2026 09:45 01:30
+The Theatre, Students Union
+ULKR50010T
+LEAP Korean 1 (A1) NC
+10/06/2026 09:45 01:00
+The Theatre, Students Union
+ULKR50020T
+LEAP Korean 2 (A2) NC
+08/06/2026 09:45 01:30
+Armitage Centre (Conf Room)
+ULKR51010T
+LEAP Korean 1 (A1)
+10/06/2026 09:45 01:00
+The Theatre, Students Union
+ULKR51020T
+LEAP Korean 2 (A2)
+08/06/2026 09:45 01:30
+Uni Place_TH B
+ULKR90010T
+LEAP Korean 1 (A1) NSTD (EXTNL)
+10/06/2026 09:45 01:00
+The Theatre, Students Union
+ULKR90020T
+LEAP Korean 2 (A2) NSTD (EXTNL)
+08/06/2026 09:45 01:30
+The Theatre, Students Union
+ULPL50010T
+LEAP Polish 1 (A1) NC
+05/06/2026 14:00 01:00
+Academy 1
+ULPL50020T
+LEAP Polish 2 (A2) NC
+10/06/2026 09:45 01:30
+Academy 1
+ULPL51010T
+LEAP Polish 1 (A1)
+05/06/2026 14:00 01:00
+Academy 1
+ULPL51020T
+LEAP Polish 2 (A2)
+10/06/2026 09:45 01:30
+Academy 1
+ULPL51030T
+LEAP Polish 3 (A2/B1)
+02/06/2026 09:45 01:30
+Armitage Centre (Conf Room)
+ULPL90010T
+LEAP Polish 1 (A1) NSTD (EXTNL)
+05/06/2026 14:00 01:00
+Sugden Sports Centre
+ULRU50010T
+LEAP Russian 1 (A1) NC
+26/05/2026 14:00 01:00
+Uni Place_TH B
+ULRU50020T
+LEAP Russian 2 (A2) NC
+08/06/2026 09:45 01:30
+Uni Place_TH B
+ULRU51010T
+LEAP Russian 1 (A1)
+26/05/2026 14:00 01:00
+Uni Place_TH B
+ULRU51020T
+LEAP Russian 2 (A2)
+08/06/2026 09:45 01:30
+Uni Place_TH B
+ULRU71010T
+LEAP Russian 1 (A1) PGDT
+26/05/2026 14:00 01:00
+Uni Place_TH B
+ULRU90010T
+LEAP Russian 1 (A1) NSTD (EXTNL)
+26/05/2026 14:00 01:00
+Uni Place_TH B
+ULSP50002T
+LEAP Introduction to Spanish (A1.1) NC
+05/06/2026 14:00 01:00
+Sugden Sports Centre
+ULSP50010T
+LEAP Spanish 1 (A1/A2) NC
+09/06/2026 09:45 01:00
+The Theatre, Students Union
+ULSP50020T
+LEAP Spanish 2 (A2) NC
+10/06/2026 09:45 01:30
+Armitage Centre (Main Hall)
+ULSP50030T
+LEAP Spanish 3 (B1) NC
+04/06/2026 09:45 01:30
+Whitworth Hall
+ULSP50040T
+LEAP Spanish 4 (B1/B2) NC
+19/05/2026 09:45 01:30
+Academy 2, Students Union
+
+--- Page 19 ---
+ULSP50050T
+LEAP Spanish 5 (B2/C1) NC
+04/06/2026 09:45 02:00
+Sugden Sports Centre
+ULSP50060T
+LEAP Spanish 6 (C1+) NC
+22/05/2026 09:45 02:00
+Armitage Centre (Main Hall)
+ULSP51002T
+LEAP Introduction to Spanish (A1.1)
+05/06/2026 14:00 01:00
+Sugden Sports Centre
+ULSP51010T
+LEAP Spanish 1 (A1/A2)
+09/06/2026 09:45 01:00
+The Theatre, Students Union
+ULSP51020T
+LEAP Spanish 2 (A2)
+10/06/2026 09:45 01:30
+Academy 1
+ULSP51030T
+LEAP Spanish 3 (B1)
+04/06/2026 09:45 01:30
+Whitworth Hall
+ULSP51040T
+LEAP Spanish 4 (B1/B2)
+19/05/2026 09:45 01:30
+Whitworth Hall
+ULSP51050T
+LEAP Spanish 5 (B2/C1)
+04/06/2026 09:45 02:00
+Academy 2, Students Union
+ULSP51060T
+LEAP Spanish 6 (C1+)
+22/05/2026 09:45 02:00
+Armitage Centre (Main Hall)
+ULSP90002T
+LEAP Introduction to Spanish (A1.1) NSTD (EXTNL)
+05/06/2026 14:00 01:00
+Academy 1
+ULSP90010T
+LEAP Spanish 1 (A1/A2) NSTD (EXTNL)
+09/06/2026 09:45 01:00
+Simon_3.44A
+ULSP90020T
+LEAP Spanish 2 (A2) NSTD (EXTNL)
+10/06/2026 09:45 01:30
+Armitage Centre (Main Hall)
+ULSP90030T
+LEAP Spanish 3 (B1) NSTD (EXTNL)
+04/06/2026 09:45 01:30
+Academy 1
+ULSP90040T
+LEAP Spanish 4 (B1/B2) NSTD (EXTNL)
+19/05/2026 09:45 01:30
+Academy 2, Students Union
+ULSP90060T
+LEAP Spanish 6 (C1+) NSTD (EXTNL)
+22/05/2026 09:45 02:00
+Nancy Rothwell_Lecture Th B
+ULTU50010T
+LEAP Turkish 1 (A1) NC
+29/05/2026 14:00 01:00
+Sugden Sports Centre
+ULTU51010T
+LEAP Turkish 1 (A1)
+29/05/2026 14:00 01:00
+DASS ONLY
+ULTU90010T
+LEAP Turkish 1 (A1) NSTD (EXTNL)
+29/05/2026 14:00 01:00
+Sugden Sports Centre
+ULUR50010T
+LEAP Urdu 1 (A1) NC
+29/05/2026 14:00 01:00
+Sugden Sports Centre
+ULUR51010T
+LEAP Urdu 1 (A1)
+29/05/2026 14:00 01:00
+Sugden Sports Centre
+ULUR90010T
+LEAP Urdu 1 (A1) NSTD (EXTNL)
+29/05/2026 14:00 01:00
+Sugden Sports Centre

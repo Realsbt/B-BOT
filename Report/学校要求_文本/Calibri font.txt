@@ -1,0 +1,11 @@
+
+--- Page 1 ---
+There is no support for the Calibri font under PDFLaTeX. I'm afraid you will have to use 
+XeLaTeX unless you manage to convert the font for use with PDFLaTeX. There is a set of 
+LaTex files for MSc Dissertation Template. However, for compiling, you must use 
+LuaLaTeX and biber. It does not use the older LaTex/PDFLaTeX or BibTeX (The fonts, 
+Calibri, won't work correctly). 
+ 
+PLEASE NOTE: 
+The students bear the responsibility of ensuring that the final output aligns with all the 
+presentation requirements specified in the handbook. 
