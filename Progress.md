@@ -751,3 +751,34 @@
   - 日志输出：`vision bridge ready: topic=/espRos/esp32camera type=compressed mode=idle dry_run=True`
   - dry_run=True 下不尝试 TCP 连接，无异常
 - 验证本次改动（DRIVE gesture、stunt_armed、arms_up bug 修复、config 切 TCP）未破坏包的启动路径
+
+#### 2026-04-23 10:59:56 CST GitHub 初始提交与推送 / GitHub initial sync
+- 目标仓库 / Target repo：`https://github.com/Realsbt/B-BOT.git`
+- 本地目录 / Local workspace：`/home/yahboom/Desktop/esp32-wheeleg-A-main`
+- 本地 Git 初始化结果：
+  - 当前分支：`main`
+  - 远程仓库：`origin -> https://github.com/Realsbt/B-BOT.git`
+  - 初始提交：`3a9f2c4 Initial B-BOT vision control workspace`
+- 推送结果 / Push result：
+  - 已执行：`git push -u origin main`
+  - 成功创建远程分支：`main -> main`
+  - 本地 `main` 已设置为跟踪 `origin/main`
+- 已纳入 GitHub 的主要内容：
+  - ESP32 机器人固件、WiFi/TCP 控制相关代码、串口命令扩展
+  - `host/ros2_ws/src/wheeleg_vision_bridge` ROS2 + MediaPipe 视觉桥
+  - `host/tools/keyboard_drive.py` PC WiFi 键盘控制工具
+  - 视觉桥、摄像头、键盘控制、WiFi 架构相关文档和 plan
+- 没有提交的本地/生成/敏感内容：
+  - `include/wifi_config.h`（本地 WiFi SSID/PASS 配置）
+  - `.pio/`
+  - `host/ros2_ws/build/`
+  - `host/ros2_ws/install/`
+  - `host/ros2_ws/log/`
+  - `.claude/`
+  - `.codex`
+  - `.vscode/`
+  - `__pycache__/`
+- 以后确认同步状态的方法：
+  - `git status --short --branch`
+  - `git log --oneline --decorate -3`
+  - `git remote -v`
