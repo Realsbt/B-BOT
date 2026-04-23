@@ -15,7 +15,7 @@ wheeleg_vision_bridge:
     face_yaw_gain_mrad: 1500
     face_deadband: 0.1
     mediapipe_confidence: 0.6
-    frame_skip: 2
+    frame_skip: 1
     debug_window: false
     debug_events: false
     debug_event_rate_hz: 2.0

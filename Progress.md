@@ -819,3 +819,94 @@
   - 指令协议
   - 安全注意事项和验证记录
 - 这次只改文档展示结构，没有改动固件或 ROS2 代码
+
+#### 2026-04-24 CST +0800 USB+WiFi-only 视觉链路复核 / vision pipeline re-check before motor hookup
+- 范围约束：
+  - ESP32 主控仅通过 USB 供电/串口观察，同时连手机热点 WiFi
+  - 摄像头模组单独上电并连同一热点 WiFi
+  - 本轮不连接电机、不装腿、不进入 `BALANCE_ON`
+- 已确认的主控链路：
+  - `wheeleg.local` 可解析并连通 `TCP :23`
+  - 已通过 `nc wheeleg.local 23` 发送安全命令：
+    - `QUEUE_STATUS`
+    - `BLE_STATUS`
+    - `DRIVE,0,0`
+    - `YAWRATE,0`
+    - `QUEUE_STOP`
+  - 结论：`PC -> WiFi TCP -> ESP32 命令入口` 已通
+- 视觉链路验证结果：
+  - micro-ROS Agent 可在 `UDP 9999` 收到摄像头会话
+  - 摄像头话题确认出现：
+    - `/espRos/esp32camera [sensor_msgs/msg/CompressedImage]`
+  - 图像消息格式：
+    - `jpeg`
+  - 实测原始输入频率：
+    - `ros2 topic hz /espRos/esp32camera`
+    - 稳定约 `5.0 Hz` 到 `5.2 Hz`
+  - `wheeleg_vision_bridge` 在 `gesture + dry_run=true` 下验证通过：
+    - 日志出现 `gesture label=Five stable=Five`
+    - 随后输出 `dry-run command: DRIVE,250,0`
+  - 结论：`camera -> micro-ROS -> ROS2 -> vision_bridge -> command encoding` 已通
+- 配置改动：
+  - `host/ros2_ws/src/wheeleg_vision_bridge/config/config.yaml`
+    - `frame_skip: 2` -> `frame_skip: 1`
+  - 已执行：
+    - `colcon build --packages-select wheeleg_vision_bridge`
+  - install 目录中的配置已同步为 `frame_skip: 1`
+  - 影响：视觉桥现在处理每一帧输入；这不会提升摄像头原始 FPS，只消除了桥端额外丢帧
+- 关于 Yahboom 原生 `sub_img` 左上角 FPS 的结论：
+  - `sub_img.py` 的 FPS 不是严格按 ROS 消息实际到达频率计算
+  - 它把 `msg.header.stamp` 的差值与本地解码耗时混合计算，公式不适合作为真实链路 FPS 指标
+  - 因此窗口里看到的十几 FPS 不能直接等价为 `/espRos/esp32camera` 的真实输入帧率
+  - 后续判断真实输入速度应以 `ros2 topic hz /espRos/esp32camera` 为准
+- 当前结论：
+  - 在不接电机的前提下，已经完成了从摄像头到命令编码、从 PC 到 ESP32 TCP 命令入口的关键链路验证
+  - 下一阶段可进入 `dry_run=false` 的真发 TCP 验证，但仍保持"不装腿 / 不起平衡 / 不接电机或至少不让系统产生实际运动"的安全约束
+
+#### 2026-04-24 CST +0800 gesture 真发 TCP 调试 / gesture TCP live-send debugging
+- 目标：
+  - 在不接电机、不装腿的前提下，验证 `camera -> ROS2 -> vision_bridge(dry_run=false) -> TCP -> ESP32` 是否已经形成真实命令链路
+- 调试前提：
+  - 主控网络状态确认：
+    - `avahi-resolve-host-name wheeleg.local` -> `172.20.10.4`
+    - `nc -vz wheeleg.local 23` -> 成功
+  - 本执行环境依然看不到 `/dev/ttyUSB*` / `/dev/ttyACM*`
+  - 因此 ESP32 USB 串口日志需要由本机人工观察
+- 相机侧步骤与结果：
+  - 启动 micro-ROS Agent：
+    - `ros2 run micro_ros_agent micro_ros_agent udp4 --port 9999 -v4`
+  - Agent 成功建立摄像头会话：
+    - 摄像头地址 `172.20.10.3`
+  - ROS2 图像话题确认在线：
+    - `/espRos/esp32camera [sensor_msgs/msg/CompressedImage]`
+  - 本轮原始输入频率：
+    - `ros2 topic hz /espRos/esp32camera`
+    - 约 `6.1 Hz`
+- 视觉桥真发步骤：
+  - 启动命令：
+    - `ros2 run wheeleg_vision_bridge bridge_node --ros-args --params-file ... -p mode:=gesture -p dry_run:=false -p debug_events:=true`
+  - 节点启动日志：
+    - `vision bridge ready: topic=/espRos/esp32camera type=compressed mode=gesture dry_run=False`
+- 真发行为观测：
+  - 空场景：
+    - 连续发送 `sent: DRIVE,0,0`
+    - 启动初期曾发送 `sent: QUEUE_STOP`
+  - 张掌（`Five`）识别到后：
+    - 日志出现 `debug event: gesture label=Five ...`
+    - 随后连续发送 `sent: DRIVE,250,0`
+  - 手离开画面：
+    - 重新回到 `debug event: gesture label=None stable=None`
+    - 命令回到 `sent: DRIVE,0,0`
+- 结论：
+  - `camera -> micro-ROS -> ROS2 -> vision_bridge -> TCP` 已完成真实命令发送验证
+  - 桥端已确认能把手势 `Five` 编码并发送为真实 TCP 命令 `DRIVE,250,0`
+  - 手离开后能恢复到 `DRIVE,0,0`
+  - 剩余唯一未由本执行环境直接观测的部分是：
+    - `ESP32 TCP server -> USB 串口日志`
+    - 该项需用户本机串口窗口确认 `WiFi命令: DRIVE,250,0` / `DRIVE set: 250 mm/s, 0 mrad/s`
+- 收尾：
+  - 测试结束后已停止：
+    - `wheeleg_vision_bridge`
+    - `micro_ros_agent`
+  - 停止 `wheeleg_vision_bridge` 时出现 `rcl_shutdown already called` 退出异常
+    - 属于清理阶段重复 shutdown，不影响本轮链路验证结论
