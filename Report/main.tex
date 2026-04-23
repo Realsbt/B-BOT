@@ -5,8 +5,17 @@
 % 字体与排版设置 (完全遵循 Handbook 要求)
 % ==========================================
 \usepackage{fontspec}
-% 设定主字体为 Windows 自带的 Calibri
-\setmainfont{Calibri}
+% Handbook §9.2 允许 "Calibri 12 or a close equivalent"。
+% Linux 下使用 Google 开源的 Carlito —— 专为与 Calibri metric-compatible 设计，官方认可的等效字体。
+% 如在 Windows/macOS 最终出稿，可改回 \setmainfont{Calibri}。
+\setmainfont{Carlito}[
+    Path = /home/botao/.TinyTeX/texmf-dist/fonts/truetype/google/carlito/,
+    Extension = .ttf,
+    UprightFont = Carlito-Regular,
+    BoldFont = Carlito-Bold,
+    ItalicFont = Carlito-Italic,
+    BoldItalicFont = Carlito-BoldItalic,
+]
 
 % 页边距设置：四周均至少 2cm
 \usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
@@ -43,7 +52,7 @@
     \centering
     \vspace*{2cm}
     
-    {\fontsize{24pt}{28pt}\selectfont \textbf{B-BOT: A micro-ROS and WiFi Enabled Self-Balancing Wheel-Legged Robot}\par}
+    {\fontsize{24pt}{28pt}\selectfont \textbf{B-BOT: A WiFi-Enabled Self-Balancing Wheel-Legged Robot with ROS 2 Vision Teleoperation}\par}
     
     \vspace{2cm}
     {\Large \textbf{Third Year Individual Project – Final Report}\par}
@@ -52,10 +61,11 @@
     {\large May 2026\par}
     
     \vspace{3cm}
-    {\large Your Identification Number: \textbf{XXXXXXX} (仅填前7位)\par}
-    
+    % TODO: 把 XXXXXXX 替换为学号的前 7 位（不含第 8 位）
+    {\large Your Identification Number: \textbf{XXXXXXX}\par}
+
     \vspace{3cm}
-    {\large Supervisor: \textbf{Dr. Sareh Malekpour}\par}
+    {\large Supervisor: \textbf{Dr Liam Marsh}\par}
     
     \vfill
 \end{titlepage}
@@ -100,7 +110,7 @@ Write report structure here.
 Discuss how you planned and managed the project using Gantt charts, CPD, etc.
 
 \section{Literature review}
-Compare LQR, PID, VMC and embedded ROS architectures \cite{example_ref}.
+Compare LQR, PID, VMC and embedded ROS architectures~\cite{grasser2002joe,chan2013review,klemm2019ascento,han2009adrc,pratt2001vmc,madgwick2011imu,mahony2008complementary,macenski2022ros2}.
 
 \section{Methods}
 Discuss the system architecture, hardware, and algorithms.

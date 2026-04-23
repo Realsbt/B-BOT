@@ -1,8 +1,240 @@
-@article{example_ref,
-  author = {Smith, John and Doe, Jane},
-  title = {Self-balancing Control Strategies for Wheel-Legged Robots},
-  journal = {IEEE Transactions on Robotics},
-  year = {2025},
-  volume = {41},
-  pages = {123-145}
+% ============================================================
+% B-BOT Final Report — 参考文献
+% ------------------------------------------------------------
+% 所有 @article / @inproceedings 条目下方的 DOI 与年份卷期均于
+% 2026-04-23 在 IEEE Xplore / Springer / Nature / SAGE / OMG 官网
+% 交叉核验过。提交前仍请在 IEEE Xplore 上复核一次（尤其是页码范围，
+% 不同源有时差 1 页）。
+%
+% 带 [TODO] 标记的是推荐补充槽位，需你根据实际写作填入。
+% ============================================================
+
+% -----------------------------
+% 1. 两轮 / 轮腿自平衡机器人
+% -----------------------------
+
+% 经典两轮倒立摆工程实现（Grasser JOE）
+@article{grasser2002joe,
+  author  = {Grasser, Felix and D'Arrigo, Aldo and Colombi, Silvio and Rufer, Alfred C.},
+  title   = {{JOE}: A Mobile, Inverted Pendulum},
+  journal = {IEEE Transactions on Industrial Electronics},
+  volume  = {49},
+  number  = {1},
+  pages   = {107--114},
+  year    = {2002},
+  doi     = {10.1109/41.982254}
 }
+
+% 两轮自平衡机器人建模/控制综述（Annual Reviews in Control）
+@article{chan2013review,
+  author  = {Chan, Ronald P. M. and Stol, Karl A. and Halkyard, C. Roger},
+  title   = {Review of Modelling and Control of Two-Wheeled Robots},
+  journal = {Annual Reviews in Control},
+  volume  = {37},
+  number  = {1},
+  pages   = {89--103},
+  year    = {2013},
+  doi     = {10.1016/j.arcontrol.2013.03.004}
+}
+
+% 两轮倒立摆动力学建模（Kim & Kwon, IJCAS）
+@article{kim2015dynamic,
+  author  = {Kim, Sangtae and Kwon, SangJoo},
+  title   = {Dynamic Modeling of a Two-Wheeled Inverted Pendulum Balancing Mobile Robot},
+  journal = {International Journal of Control, Automation and Systems},
+  volume  = {13},
+  number  = {4},
+  pages   = {926--933},
+  year    = {2015},
+  doi     = {10.1007/s12555-014-0564-8}
+}
+
+% 轮腿机器人代表工作：Ascento（ICRA 2019）
+@inproceedings{klemm2019ascento,
+  author    = {Klemm, Victor and Morra, Alessandro and Salzmann, Ciro and Tschopp, Florian and Bodie, Karen and Gulich, Lionel and K{\"u}ng, Nicola and Mannhart, Dominik and Pfister, Corentin and Vierneisel, Marcus and Weber, Florian and Deuber, Robin and Siegwart, Roland},
+  title     = {{Ascento}: A Two-Wheeled Jumping Robot},
+  booktitle = {Proc. IEEE Int. Conf. Robotics and Automation (ICRA)},
+  address   = {Montreal, Canada},
+  pages     = {7515--7521},
+  year      = {2019},
+  doi       = {10.1109/ICRA.2019.8793792}
+}
+
+% 直接对标你项目：LQR + ADRC 控制的轮腿机器人（Scientific Reports 2023）
+% ⭐ 这是 Lit Review 和 Discussion 都应该引用的核心对比文献
+@article{feng2023wheellegged,
+  author  = {Feng, Xujiong and Liu, Shuaishuai and Yuan, Qiang and Xiao, Junbo and Zhao, Daxu},
+  title   = {Research on Wheel-Legged Robot Based on {LQR} and {ADRC}},
+  journal = {Scientific Reports},
+  volume  = {13},
+  pages   = {15122},
+  year    = {2023},
+  doi     = {10.1038/s41598-023-41462-1}
+}
+
+% 统一 LQR 控制框架，应用于轮腿机器人与自平衡轮椅（MDPI Sensors 2025）
+% ⭐ 近期在线模型更新 LQR 方法，适合做对比基线
+@article{xin2025unified,
+  author  = {Xin, Guiyang and Jin, Boyu and Liu, Chen and Jiang, Mian},
+  title   = {A Unified Control Framework for Self-Balancing Robots: Addressing Model Variations in Wheel-Legged Platforms and Human-Carrying Wheelchairs},
+  journal = {Sensors},
+  volume  = {25},
+  number  = {23},
+  pages   = {7144},
+  year    = {2025},
+  doi     = {10.3390/s25237144}
+}
+
+% -----------------------------
+% 2. 控制方法（ADRC / VMC）
+% -----------------------------
+
+% ADRC 理论奠基（Han, IEEE TIE 2009）
+@article{han2009adrc,
+  author  = {Han, Jingqing},
+  title   = {From {PID} to Active Disturbance Rejection Control},
+  journal = {IEEE Transactions on Industrial Electronics},
+  volume  = {56},
+  number  = {3},
+  pages   = {900--906},
+  year    = {2009},
+  doi     = {10.1109/TIE.2008.2011621}
+}
+
+% Virtual Model Control 理论来源（Pratt, IJRR 2001）
+@article{pratt2001vmc,
+  author  = {Pratt, Jerry and Chew, Chee-Meng and Torres, Ann and Dilworth, Peter and Pratt, Gill},
+  title   = {Virtual Model Control: An Intuitive Approach for Bipedal Locomotion},
+  journal = {International Journal of Robotics Research},
+  volume  = {20},
+  number  = {2},
+  pages   = {129--143},
+  year    = {2001},
+  doi     = {10.1177/02783640122067309}
+}
+
+% [TODO] 若需要经典 LQR 教科书，可补 Anderson & Moore "Optimal Control: Linear Quadratic Methods" (Dover, 2007)
+
+% -----------------------------
+% 3. 姿态估计 / IMU 滤波
+% -----------------------------
+
+% Madgwick 梯度下降姿态解算（ICORR 2011）
+@inproceedings{madgwick2011imu,
+  author    = {Madgwick, Sebastian O. H. and Harrison, Andrew J. L. and Vaidyanathan, Ravi},
+  title     = {Estimation of {IMU} and {MARG} Orientation Using a Gradient Descent Algorithm},
+  booktitle = {Proc. IEEE Int. Conf. Rehabilitation Robotics (ICORR)},
+  address   = {Zurich, Switzerland},
+  pages     = {1--7},
+  year      = {2011},
+  doi       = {10.1109/ICORR.2011.5975346}
+}
+
+% 互补滤波器经典（Mahony et al., IEEE TAC 2008）
+@article{mahony2008complementary,
+  author  = {Mahony, Robert and Hamel, Tarek and Pflimlin, Jean-Michel},
+  title   = {Nonlinear Complementary Filters on the Special Orthogonal Group},
+  journal = {IEEE Transactions on Automatic Control},
+  volume  = {53},
+  number  = {5},
+  pages   = {1203--1218},
+  year    = {2008},
+  doi     = {10.1109/TAC.2008.923738}
+}
+
+% -----------------------------
+% 4. ROS 2 / micro-ROS / DDS-XRCE
+% -----------------------------
+
+% ROS 2 综述（Science Robotics 2022）
+@article{macenski2022ros2,
+  author  = {Macenski, Steven and Foote, Tully and Gerkey, Brian and Lalancette, Chris and Woodall, William},
+  title   = {Robot Operating System 2: Design, Architecture, and Uses in the Wild},
+  journal = {Science Robotics},
+  volume  = {7},
+  number  = {66},
+  pages   = {eabm6074},
+  year    = {2022},
+  doi     = {10.1126/scirobotics.abm6074}
+}
+
+% OMG DDS-XRCE 正式规范（2020-02 formal/20-02-01）
+% 用于说明 micro-ROS 底层协议依据
+@techreport{omg_ddsxrce,
+  author      = {{Object Management Group}},
+  title       = {{DDS} for Extremely Resource Constrained Environments ({DDS-XRCE}), Version 1.0},
+  institution = {Object Management Group},
+  number      = {formal/20-02-01},
+  year        = {2020},
+  month       = {2},
+  url         = {https://www.omg.org/spec/DDS-XRCE/1.0/}
+}
+
+% micro-ROS 官方项目文档（在线资源）
+@online{microros_docs,
+  author = {{micro-ROS Project}},
+  title  = {{micro-ROS}: {ROS} 2 for Microcontrollers --- Features and Architecture},
+  url    = {https://micro.ros.org/docs/overview/features/},
+  year   = {2026},
+  note   = {Accessed: 2026-04-23}
+}
+
+% eProsima Micro XRCE-DDS 实现文档（agent/client 的 transport 配置参考）
+@online{eprosima_microxrcedds,
+  author = {{eProsima}},
+  title  = {{Micro XRCE-DDS} Documentation --- Transport},
+  url    = {https://micro-xrce-dds.docs.eprosima.com/en/latest/transport.html},
+  year   = {2026},
+  note   = {Accessed: 2026-04-23}
+}
+
+% ROS 2 官方 QoS 设置文档（Humble LTS，若使用 Iron/Jazzy/Rolling 请改相应分支）
+@online{ros2_qos_concepts,
+  author = {{Open Robotics}},
+  title  = {About Quality of Service Settings --- {ROS} 2 Documentation (Humble)},
+  url    = {https://docs.ros.org/en/humble/Concepts/Intermediate/About-Quality-of-Service-Settings.html},
+  year   = {2026},
+  note   = {Accessed: 2026-04-23}
+}
+
+% ROS 2 官方 QoS 设计文档（讨论 best_effort vs reliable 在有损链路下的取舍）
+@online{ros2_qos_design,
+  author = {{Open Robotics}},
+  title  = {{ROS} 2 Design: Quality of Service Policies},
+  url    = {https://design.ros2.org/articles/qos.html},
+  year   = {2026},
+  note   = {Accessed: 2026-04-23}
+}
+
+% ROS 2 官方 tutorial：在有损网络下使用 QoS（可用于 Methods §3.6 的实证引用）
+@online{ros2_qos_tutorial,
+  author = {{Open Robotics}},
+  title  = {Using Quality-of-Service Settings to Handle Lossy Networks --- {ROS} 2 Tutorial},
+  url    = {https://docs.ros.org/en/humble/Tutorials/Demos/Quality-of-Service.html},
+  year   = {2026},
+  note   = {Accessed: 2026-04-23}
+}
+
+% -----------------------------
+% 5. [TODO] 第三方代码/库（Handbook §9.5 & §14.5 学术诚信声明）
+% -----------------------------
+% 这些条目用于附录 F 的 "Third-party code & license" 声明。
+% 候选清单（请根据你仓库 git submodule / include / platformio.ini 的实际依赖补全）：
+%   - micro-ROS Agent / Yahboom camera image pipeline（当前底盘 ESP32 不是 micro-ROS client）
+%   - esp32-arduino (arduino-esp32)
+%   - FreeRTOS kernel
+%   - MPU6050 / DMP driver (InvenSense / I2Cdev)
+%   - Xbox BLE HID library
+%   - Adafruit ADS1X15
+%   - MediaPipe (Google)
+%   - OpenCV / cv_bridge / ROS 2 Python dependencies
+%   - 任何电机 SDK（达妙 / 大疆 M3508 / 官方例程）
+%
+% 条目模板：
+% @online{lib_xyz,
+%   author = {{组织名}},
+%   title  = {{库名称}},
+%   url    = {https://github.com/.../...},
+%   year   = {2026},
+%   note   = {Version vX.Y.Z, License: Apache-2.0. Accessed: 2026-04-XX}
+% }
