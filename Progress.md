@@ -782,3 +782,22 @@
   - `git status --short --branch`
   - `git log --oneline --decorate -3`
   - `git remote -v`
+
+#### 2026-04-23 11:07:33 CST GitHub README 中英文首页 / bilingual GitHub README
+- 按用户要求先遍历并提炼项目重点：
+  - 用 `rg --files` 扫描仓库文件清单
+  - 读取 `platformio.ini`、`src/main.cpp`、`src/serial.cpp`、`src/wifi_cmd.cpp`
+  - 读取 `host/README_vision.md`、`keyboard_drive.py`、`wheeleg_vision_bridge` 的 `bridge_node.py`、`mediapipe_runner.py`、`command_encoder.py`、`transport.py`、`config.yaml`
+  - 读取 `introduction.md`、`.gitignore` 等文档/配置
+- 新增 `README.md`：
+  - 中英文同页，适合 GitHub 项目首页
+  - 包含当前控制架构：Xbox BLE、摄像头 → PC ROS2/MediaPipe → WiFi TCP → ESP32、小车 WiFi 键盘控制、可选 UART
+  - 包含程序结构树，说明 `src/`、`include/`、`host/`、ROS2 包、工具脚本、文档文件的职责
+  - 包含固件配置/编译/烧录方法：`include/wifi_config.example.h` → `include/wifi_config.h`、`pio run`、`pio run -t upload`
+  - 包含摄像头 micro-ROS agent、ROS2 视觉桥 build/run、dry-run、mode 切换、关闭 dry-run 的方法
+  - 包含 gesture/face/stunt 模式说明、手势映射、`stunt_armed` 安全门
+  - 包含 `keyboard_drive.py` WASD WiFi 控制方法
+  - 包含 `DRIVE`、`YAWRATE`、队列命令、仲裁命令、安全注意事项、已验证内容、更多文档链接
+- 注意：
+  - `README.md` 明确说明 `include/wifi_config.h` 是本地敏感配置，不提交 GitHub
+  - 这次是文档新增，没有改动固件或 ROS2 代码
