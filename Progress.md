@@ -801,3 +801,21 @@
 - 注意：
   - `README.md` 明确说明 `include/wifi_config.h` 是本地敏感配置，不提交 GitHub
   - 这次是文档新增，没有改动固件或 ROS2 代码
+
+#### 2026-04-23 11:13:53 CST README 语言入口重排 / README language selector layout
+- 按用户反馈调整 `README.md`：
+  - 去掉逐段"中文 + English"混排方式
+  - 顶部新增两个 GitHub 可点击徽章按钮：`中文` / `English`
+  - `中文` 按钮跳转到完整中文说明区
+  - `English` 按钮跳转到完整英文 README 区
+  - 中文内容和英文内容现在各自成段，便于 GitHub 页面直接选择阅读语言
+- 保留上一版提炼出的重点：
+  - 当前控制架构
+  - 程序结构
+  - 固件配置/编译/烧录
+  - 摄像头 micro-ROS + ROS2 视觉桥
+  - gesture/face/stunt 模式
+  - WiFi 键盘控制
+  - 指令协议
+  - 安全注意事项和验证记录
+- 这次只改文档展示结构，没有改动固件或 ROS2 代码
