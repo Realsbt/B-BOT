@@ -7,15 +7,9 @@
 \usepackage{fontspec}
 % Handbook §9.2 允许 "Calibri 12 or a close equivalent"。
 % Linux 下使用 Google 开源的 Carlito —— 专为与 Calibri metric-compatible 设计，官方认可的等效字体。
-% 如在 Windows/macOS 最终出稿，可改回 \setmainfont{Calibri}。
-\setmainfont{Carlito}[
-    Path = /home/botao/.TinyTeX/texmf-dist/fonts/truetype/google/carlito/,
-    Extension = .ttf,
-    UprightFont = Carlito-Regular,
-    BoldFont = Carlito-Bold,
-    ItalicFont = Carlito-Italic,
-    BoldItalicFont = Carlito-BoldItalic,
-]
+% 已通过 apt 包 fonts-crosextra-carlito 系统安装，fontspec 自动通过 fontconfig 查找。
+% 如在 Windows/macOS 最终出稿，可改为 \setmainfont{Calibri}。
+\setmainfont{Carlito}
 
 % 页边距设置：四周均至少 2cm
 \usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
@@ -32,13 +26,21 @@
 % ==========================================
 % 常用宏包
 % ==========================================
-\usepackage{graphicx}    % 用于插入图片
-\usepackage{hyperref}    % 用于超链接
-\usepackage{titlesec}    % 用于调整标题样式
+\usepackage{graphicx}                                          % 插入图片
+\graphicspath{{figures/}{figures/provisional/}}                % 图片搜索路径
+\usepackage{float}                                             % 图/表 [H] 强制定位
+\usepackage{placeins}                                          % \FloatBarrier 卡住图不跨章
+\usepackage[font=small,labelfont=bf,labelsep=period]{caption}  % 图题：粗 "Fig. 4.1."  + 小号描述
+\usepackage{subcaption}                                        % 多子图 (a)(b)(c)
+\usepackage{booktabs}                                          % 三线表 \toprule \midrule \bottomrule
+\usepackage{siunitx}                                           % \SI{15000}{\hertz} 等 SI 单位
+\usepackage{titlesec}                                          % 调整标题样式
 
 % 参考文献设置 (要求使用 biber 和 IEEE 格式)
 \usepackage[backend=biber, style=ieee]{biblatex}
 \addbibresource{references.bib}
+
+\usepackage{hyperref}                                          % 超链接 (放在最后)
 
 % ==========================================
 % 文档正文开始

@@ -1557,3 +1557,305 @@
 - 报告解释重点：
   - clean matrix 支撑 presentation / supervisory gesture command 可行
   - audit failures 更重要：它们支撑 vision 不能进入 4 ms balance loop，必须依赖 `dry_run`、`stunt_armed`、watchdog、preview guidance
+
+#### 2026-04-24 CST +0800 Report real references added
+- 新增真实引用到 `Report/references.bib`：
+  - `lugaresi2019mediapipe`：MediaPipe perception pipeline framework
+  - `zhang2020mediapipehands`：MediaPipe Hands real-time hand tracking
+  - `espressif_freertos_idf`：ESP-IDF FreeRTOS task/runtime documentation
+  - `espressif_arduino_esp32`：Arduino-ESP32 documentation
+  - `platformio_core_docs`：PlatformIO Core documentation
+  - `bradski2000opencv`：canonical OpenCV citation
+- 已在 `Report/workspace/report_draft.md` 中把这些 key 接到相关段落：
+  - Literature review: ROS 2 / micro-ROS / MediaPipe 分层
+  - Methods: ESP32 FreeRTOS + Arduino/PlatformIO 工具链
+  - Vision bridge: OpenCV image handling + MediaPipe Hands gesture inference
+- 目的：
+  - 后续迁移到 `Report/main.tex` 时可直接使用 bib key
+  - 支撑 80+ 目标中对真实文献、第三方工具链和技术选择依据的要求
+
+#### 2026-04-24 CST +0800 Report Chapter 4 drafting pass started
+- 主要修改文件：
+  - `Report/workspace/report_draft.md`
+- 已把 Chapter 4 从提纲/占位语气改成更接近 final report 的正文语气：
+  - `4.1 Evaluation Strategy`
+    - 明确 Chapter 4 的三条评价线：embedded control、communication/safety、vision teleoperation
+    - 明确 measured evidence 与 `* [PROVISIONAL]` synthetic planning placeholders 的边界
+  - `4.2 System Bring-up & Baseline`
+    - 写入 bring-up evidence 逻辑
+    - E1 继续保留 provisional static balance structure
+    - E8 改写为 measured FreeRTOS loop jitter discussion，突出 mean/p50 接近 4 ms，同时诚实讨论 p99/p99.9/max outliers
+  - `4.3 Balance and Motion Control Performance`
+    - E2/E3/E4b/E9 保留 provisional 数据，但正文明确需要 final measured hardware data 替换
+    - E4a 写入 measured TCP teleoperation command-entry result：step ACK median `74.09-125.95 ms`，worst p95 `167.92 ms`，non-ACK `0`
+    - 加强文献对比口径：只对比 recovery time / overshoot / failure rate，不夸大不同平台间的直接等价性
+  - `4.4 WiFi TCP, Camera micro-ROS & Vision Teleop Performance`
+    - E5 写成 measured command-entry latency discussion：n `300`, median `37.41 ms`, p95 `88.31 ms`, p99 `143.47 ms`, max `368.89 ms`, unmatched `0`
+    - E6 写成 measured watchdog/disconnect safety discussion：direct watchdog median `517.93 ms`, close median `33.35 ms`, idle median `1481.08 ms`, all `10/10`
+    - E10/E11 写成 vision supervisory-control evidence：clean matrix `6/6`, frame accuracy `85.3%`, audit failures retained, E11 median `66.13 ms`, p95 `301.93 ms`
+- 当前写作原则：
+  - final report 可以继续推进，不需要等所有物理实验实测完成
+  - 但所有 synthetic/provisional 数据必须在最终提交前替换或删除
+
+#### 2026-04-24 CST +0800 Report Chapter 3 methods drafting pass
+- 主要修改文件：
+  - `Report/workspace/report_draft.md`
+- 已继续推进 Chapter 3 Methods：
+  - `3.1 Introduction / Top-level Requirements`
+    - 增加 Methods 与 Results 的对应关系：E8 验证 4 ms control period，E6 验证 watchdog，E10/E11 验证 vision safety defaults。
+  - `3.2 System Architecture`
+    - 清理 `Fig. to add` / `Recommended blocks` 施工语气，改为正式 Figure 3.1 / 3.2 caption-style 说明。
+    - 强化系统边界：ESP32 本地闭环，ROS 2/MediaPipe/WiFi 只更新 target 或 queue，不替代 local feedback。
+  - `3.3 Mechanical & Electrical Design`
+    - Figure 3.3 / 3.4 改成正式说明。
+    - 明确 camera-to-ROS 2 path 与底盘 ESP32 控制链路分离。
+  - `3.5 Control Architecture & Algorithms`
+    - 增加控制设计与 E2/E3/E9 的实验对应关系。
+    - Figure 3.5 / 3.6 改成正式说明，保留 hierarchical control 和 state/safety behaviour 两张图的内容要求。
+  - `3.6 ROS 2 Vision, WiFi TCP & Input Arbitration`
+    - 增加 TCP `HELLO` / `ACK` / `NACK` / event line 方法说明。
+    - 明确 ACK 机制用于 E4/E5/E11 latency measurement 和 E6 fault-injection verification。
+- 当前状态：
+  - Chapter 3 和 Chapter 4 已形成一条较完整证据链：Methods 解释设计，Results 用 E4/E5/E6/E8/E10/E11 实测验证。
+  - 物理 balance/motion 部分仍等待 final hardware data 替换 provisional rows。
+
+#### 2026-04-25 CST +0800 Report Chapter 2 literature review high-score pass
+- 主要修改文件：
+  - `Report/workspace/report_draft.md`
+- 已重写 Chapter 2 核心段落，目标是从普通综述提升为 high-score critical synthesis：
+  - `2.2 From Two-wheeled Balancing to Wheel-legged Robots`
+    - 删除中文施工笔记。
+    - 强调 wheel-legged robot 不是普通 two-wheeled inverted pendulum 加执行器，而是 leg length / centre of mass / support force 改变 dynamics。
+    - 明确 B-BOT 与 Ascento/Feng/Xin 等文献的关系：不做直接性能等价，而是借用 recovery / leg-length / ablation 的评价逻辑。
+  - `2.3 Control Strategy Selection`
+    - 把 PID/LQR/ADRC/VMC 写成设计取舍，而不是方法罗列。
+    - Table 2.1 新增 `Evaluation link` 列，把 PID/LQR/gain-scheduled LQR/VMC 与 E1/E2/E3/E4b/E9 连接。
+    - 明确 ADRC 是 literature comparator，不是已实现控制器，避免 over-claim。
+  - `2.4 Embedded Robot Software, ROS 2 and Vision Teleoperation`
+    - 强化 ROS 2/micro-ROS 的边界：bottom ESP32 controller 不是 micro-ROS node，micro-ROS 只在 camera image path。
+    - MediaPipe 引用改成“工具合理性”，不把 MediaPipe 文献当作 B-BOT 手势可靠性的证据；可靠性由 E10 live confusion matrix 验证。
+    - 明确 WiFi/vision command 必须是 temporary target request with watchdog expiry，不是 hard real-time control signal。
+  - `2.5 Gap Analysis and Design Implications`
+    - Table 2.2 新增 `Evidence used later` 列，将 literature gap → B-BOT design choice → later experiment 串起来。
+- 检查：
+  - `git diff --check` 通过。
+  - Chapter 2 中新增/保留的 cite keys 已检查出现在 `references.bib`。
+- 当前 report 质量进展：
+  - Chapter 2/3/4 已经形成：literature gap → method design → experimental evidence 的主线。
+  - 下一步单纯写 report 时建议处理 Chapter 1 Introduction，使 objectives 与 Chapter 2/3/4 完全锁定。
+
+#### 2026-04-25 CST +0800 Report Chapter 1 high-score alignment + 思路 sync rule
+- 用户要求：
+  - 如果写作过程中发现更好的高分思路，可以边写边微调。
+  - 主要思路变化必须同步到 `Report/workspace/思路.md` 和 `Progress.md`。
+- 已同步长期规则：
+  - `/home/yahboom/.codex/memories/bbot_progress_rule.md`
+    - 新增：report-writing refinements / argument changes also sync to `Report/workspace/思路.md` as well as `Progress.md`。
+- `Report/workspace/思路.md` 更新：
+  - 新增 `2026-04-25 写作微调规则：边写边优化，但必须同步`。
+  - 锁定当前高分主线：
+    - problem is not simply making a wheel-legged robot move
+    - problem is safely connecting non-deterministic WiFi/vision inputs to an unstable real-time balancing system
+    - solution is local ESP32 stabilisation + watchdog-protected supervisory target requests
+- `Report/workspace/report_draft.md` Chapter 1 更新：
+  - `1.1 Background and motivation`
+    - 删除中文施工提示。
+    - 改成 thesis-driven introduction：核心问题是把 non-real-time command sources 安全接入 self-balancing robot，而不是只让机器人站起来。
+    - 明确 vision/WiFi 不是 stabilising feedback loop。
+  - `1.2 Aims and objectives`
+    - 删除中文施工提示。
+    - 重新收紧 O1/O2/O3，使其与 Chapter 2/3/4 的 evidence chain 对齐。
+    - O1 加入 teleoperation step response；O2 加入 camera topic / vision bridge ACK / live gesture tests；O3 加入 watchdog / disconnect / dry_run / stunt gate。
+  - `1.3 Report structure`
+    - 明确 Chapter 2 用于导出 architecture gap，Chapter 4 直接映射 objectives。
+  - `1.4 Project Management`
+    - 删除标题中的中文说明，保留正文高分叙事：iterative engineering build、risk management、CPD 对 architecture decision 的影响。
+- 检查：
+  - `git diff --check` 通过。
+- 下一步建议：
+  - 继续写 Chapter 5 Conclusion / Future Work，但 final conclusions 中 O1 的最终达成状态需等待 E1/E2/E3/E4b/E9 实测替换 provisional 数据。
+
+#### 2026-04-25 CST +0800 Report Chapter 5 conclusions/future work draft
+- 主要修改文件：
+  - `Report/workspace/report_draft.md`
+  - `Report/workspace/思路.md`
+- `Report/workspace/report_draft.md` Chapter 5 更新：
+  - `5.1 Conclusions`
+    - 删除中文施工提示。
+    - 改成 objective closure 写法，逐项回应 O1/O2/O3。
+    - O1 保守表述为 implemented and timing-validated，但 final balance-performance closure 仍等待 E1/E2/E3/E4b/E9 实测替换 provisional 数据。
+    - O2 写入已测证据：E5 median `37.41 ms` / p95 `88.31 ms` / n `300` / unmatched `0`；E11 median `66.13 ms`；E10 clean `6/6` command classes and `85.3%` frame-label accuracy。
+    - O3 写入已测安全证据：E6 direct watchdog / TCP close / TCP idle 均 `10/10`，并把 E10 audit failures 作为 safety gate justification。
+    - 新增 Table 5.1 objective closure summary。
+  - `5.2 Future work`
+    - 扩展为 5 条基于当前限制的 future work：
+      1. stronger control tuning and logging toolchain
+      2. state-estimation and contact robustness
+      3. formal safety and communication protocol
+      4. vision robustness and supervisory autonomy
+      5. higher-level wheel-legged locomotion
+    - 强调 future work 不应把 balance loop 移入 ROS 2，而应保持 local embedded stabilisation 原则。
+- `Report/workspace/思路.md` 更新：
+  - 新增 `2026-04-25 Future Work 高分写法`
+  - 记录 future work 必须从 Chapter 4 limitation 自然推出，并能转化为下一阶段可验证实验。
+- 检查：
+  - 本轮后续执行 `git diff --check`。
+- 下一步建议：
+  - 写/收紧 Abstract，但 Abstract 的 final key results 仍要等真实 O1 物理实验数据替换。
+
+#### 2026-04-25 CST +0800 Future work companion-computer refinement
+- 用户提出：
+  - 是否可以加入 Raspberry Pi / Jetson Nano 这类上位机作为 future work。
+- `Report/workspace/report_draft.md` 更新：
+  - 在 `5.2 Future work` 中新增/改写为 onboard companion-computer architecture。
+  - 表述为 Raspberry Pi or Jetson-class single-board computer mounted on the robot。
+  - 明确职责：
+    - ROS 2
+    - MediaPipe/perception
+    - preview display
+    - telemetry logging
+    - high-level planning
+  - 明确边界：
+    - companion computer 仍不能进入 balance loop
+    - ESP32 继续负责 4 ms stabilising controller 和 final safety stop behaviour
+  - 增加验证风险：
+    - power draw
+    - boot time
+    - thermal behaviour
+    - WiFi reliability
+    - serial/TCP latency
+    - crash/reboot fail-safe
+- `Report/workspace/思路.md` 更新：
+  - Future Work 高分表新增 `Onboard companion computer (Raspberry Pi / Jetson-class)`。
+  - 记录写法注意：可以作为 onboard companion computer，但不能写成 Jetson 接管 balance loop。
+- 高分理由：
+  - 这个 future work 比泛泛“加 AI/SLAM”更合理，因为它从当前 laptop/hotspot 依赖和 vision/logging limitation 自然推出，同时保持本文最强架构主线。
+
+#### 2026-04-24 CST +0800 LaTeX 工具链安装与画图管线切矢量
+- 系统环境：
+  - 本机（Ubuntu，用户 `yahboom`）之前没有任何 TeX 发行版；`main.tex` 中字体路径写死为 `/home/botao/.TinyTeX/...`（上一台机器的用户），无法在本机解析。
+  - 磁盘：安装前 `/dev/sda3` 59 GB 中剩 16 GB；安装后剩 13 GB（实际占用约 3 GB）。
+- 安装方案 A（apt，~1.5 GB 估计 / ~3 GB 实际）：
+  - 命令：`sudo apt install texlive-luatex texlive-latex-extra texlive-science texlive-bibtex-extra texlive-fonts-extra biber fonts-crosextra-carlito`
+  - 验证结果：
+    - `lualatex` → LuaHBTeX 1.14.0 (TeX Live 2022/dev/Debian)
+    - `biber` → 2.17
+    - Carlito → Regular/Bold/Italic/BoldItalic 四字重（`/usr/share/fonts/truetype/crosextra/`）
+- `Report/main.tex` 修改：
+  - 删除 `\setmainfont{Carlito}[Path = /home/botao/...]` 的硬编码路径块，改为 `\setmainfont{Carlito}`（由 fontspec/fontconfig 自动解析）。
+  - 新增宏包：`float` / `placeins` / `caption[font=small,labelfont=bf,labelsep=period]` / `subcaption` / `booktabs` / `siunitx`。
+  - `hyperref` 移到 biblatex 之后（推荐顺序）。
+  - 新增 `\graphicspath{{figures/}{figures/provisional/}}`，`\includegraphics` 不再需要目录前缀。
+- `Report/appendices/E_data/make_provisional_plots.py` 修改：
+  - 输出格式从 PNG @ 180 dpi 改为 PDF 矢量（`bbox_inches='tight', pad_inches=0.02`）。
+  - 引入 `scienceplots` 样式 `['science', 'ieee', 'no-latex']`。
+  - `font.family = ['Carlito', 'Liberation Sans', 'DejaVu Sans']` 与正文 Calibri 等效字体一致。
+  - `pdf.fonttype=42` / `ps.fonttype=42`：保持 TrueType，使 PDF 内字体可搜索/可编辑。
+  - `save()` 改为接受无扩展名的 stem，自动加 `.pdf`。
+- 产出：
+  - 5 张矢量 PDF：`e2_disturbance_recovery_provisional.pdf` / `e3_leg_length_sensitivity_provisional.pdf` / `e6_watchdog_fault_injection_provisional.pdf` / `e8_control_loop_jitter_provisional.pdf` / `e9_controller_ablation_provisional.pdf`
+  - 位于 `Report/figures/provisional/`，旧的 PNG 版本暂保留（`workspace/report_draft.md` 仍引用）。
+- 编译验证：
+  - 跑 `lualatex main → biber main → lualatex main → lualatex main` 序列。
+  - `main.pdf` 生成，10 页，65 KB，Carlito 正常加载（从 TeX Live bundled 路径 `typoland/carlito/`），bibliography 正常渲染，无编译错误。
+- 清理：
+  - 删除 10 个中间文件：`.aux` `.bbl` `.bcf` `.blg` `.lof` `.log` `.lot` `.out` `.run.xml` `.toc`。
+  - 目录只剩 `main.tex` 和 `main.pdf`。
+- 文档同步：
+  - `Report/workspace/思路.md` 末尾的「LaTeX 工具链安装」章节更新为「已安装 ✓」，记录所有改动细节与未处理事项。
+- 已知未处理：
+  - `Report/workspace/report_draft.md` 里 8 处图片引用仍为 `.png`（4 处 provisional PDF 可直接切扩展名，4 处固定日期 PNG 需要找对应画图脚本一并切矢量）。本轮未做，用户指示先不管。
+  - `figures/provisional/*.png` 旧文件未删（draft 仍引用，删了会断）。
+- 目的：
+  - 让字体路径与机器解耦（fontconfig 解析，换机器不用改 tex）。
+  - 矢量 PDF + 正文一致字体：满足 Handbook 「Clarity and legibility of figures」评分项，直接拉高 presentation quality 分数。
+  - scienceplots IEEE 样式：与 biblatex IEEE 引用格式一致，整体呈现更像学术论文。
+
+#### 2026-04-25 CST +0800 Project management Gantt and weekly log reconstruction
+- 用户要求：
+  - 补从 2025 年 10 月第一周到目前为止的 Gantt chart 和每周工作记录。
+  - 明确 2025-12-15 to 2026-01-05 为 Christmas vacation，2026-01-05 to 2026-01-27 为 exam period，2026-03-30 to 2026-04-18 为 Easter vacation。
+  - 不能只参考 git/progress，因为实际工作还包括制作计划、3D 建模、PCB 绘制、打印修改、焊接电路板、制作线束、电机焊接和大量软件开发。
+- 新增文件：
+  - `Report/planning/Project_Management_Gantt_and_Weekly_Log.md`
+- 文件内容：
+  - Appendix B draft: Project Plan, Gantt Chart and Weekly Activity Log。
+  - 状态明确写为 reconstructed draft，不伪装成当时逐日同步写下来的 diary。
+  - Gantt 覆盖 2025-10-06 to 2026-04-25，并按 Planning / Mechanical and Electrical Build / Embedded Firmware and Control / Host Software, ROS 2 and Vision / Testing, Data and Report 分组。
+  - Weekly log 覆盖 Week 1 到 Week 29，补入了 git 之外的大量物理制造和集成工作：
+    - 3D modelling and printed bracket iteration
+    - PCB schematic/layout and soldering
+    - wiring harness construction
+    - motor lead soldering and connector checks
+    - mechanical/electrical reliability cleanup
+    - ESP32 firmware, PID/LQR/VMC, ROS 2, MediaPipe, TCP safety, experiments and report writing
+  - 新增 schedule deviation / response table，用于解释为什么项目从更宽泛的 autonomy/vision route 收敛到 local ESP32 balance + supervisory teleoperation architecture。
+- `Report/workspace/思路.md` 同步：
+  - 新增 Project Management / Gantt 补写原则。
+  - 明确 final report 里应把 Appendix B 写成 reconstructed project management evidence，而不是虚假的 contemporaneous diary。
+  - 强调 Project Management 正文要写计划偏差、物理制造工作量、scope shift、risk response 和为什么 ROS 2/MediaPipe 不进入 4 ms balance loop。
+- 下一步建议：
+  - 后续可以继续补 Appendix C Risk Register、Appendix D CPD Log、Appendix E H&S Assessment，使 `1.4 Project Management` 的附录引用全部有实物支撑。
+
+#### 2026-04-25 CST +0800 Rendered project management Gantt chart
+- 用户要求：
+  - “画出来让我看看”。
+- 新增/更新文件：
+  - `Report/planning/render_project_gantt.py`
+  - `Report/figures/project_management_gantt.png`
+  - `Report/figures/project_management_gantt.pdf`
+  - `Report/planning/Project_Management_Gantt_and_Weekly_Log.md`
+- 实现：
+  - 本机没有 Mermaid CLI `mmdc`，所以用 `matplotlib` 画出可复现 Gantt。
+  - PNG 用于快速预览，PDF 用于后续放进 LaTeX report。
+  - 图中按颜色区分 Planning、Mechanical/Electrical、Embedded Firmware/Control、Host Software/ROS 2/Vision、Testing/Data/Report。
+  - 用斜线灰色背景标出 Christmas vacation、Exam period、Easter vacation 三段 reduced-development period。
+- 检查：
+  - 已预览 `project_management_gantt.png`，排版可读，legend 和日期轴不再重叠。
+
+#### 2026-04-25 CST +0800 Gantt Testing/Data/Report start adjusted to March second week
+- 用户要求：
+  - Testing/Data/Report 这部分的时间可以从 3 月第二周开始。
+- 修改文件：
+  - `Report/planning/Project_Management_Gantt_and_Weekly_Log.md`
+  - `Report/planning/render_project_gantt.py`
+  - `Report/figures/project_management_gantt.png`
+  - `Report/figures/project_management_gantt.pdf`
+  - `Report/workspace/思路.md`
+- 修改内容：
+  - 将 Testing/Data/Report section 的起点提前到 `2026-03-09`。
+  - 新增/拆分为：
+    - Early test matrix and report outline (`2026-03-09` to `2026-03-23`)
+    - Data-template and evidence planning (`2026-03-16` to `2026-03-30`)
+    - Easter report catch-up and appendix planning (`2026-03-30` to `2026-04-19`)
+    - Final experiment design and 80+ evidence planning (`2026-04-20` to `2026-04-25`)
+  - 保留真正的数据采集 E4/E5/E6/E8/E10/E11 在 4 月下旬，避免把实际测量时间提前写成已完成。
+  - Weekly log 的 Week 23-25 同步改成 testing/data/report planning 已经开始。
+- 检查：
+  - 已重新渲染 Gantt PNG/PDF 并预览，红色 Testing/Data/Report 从 3 月第二周开始。
+
+#### 2026-04-25 CST +0800 Project management risk wording corrected
+- 用户指出：
+  - 此处 risk management 应该重点是做项目对学生的 risk。
+- 学校要求核对：
+  - Handbook 区分 Project Plan 中的 project-completion risks 和单独的 Health & Safety Risk Assessment。
+  - Final Report appendices 同时要求 `Risk Register` 和 `Health & Safety Risk Assessment`。
+- 修改文件：
+  - `Report/workspace/report_draft.md`
+  - `Report/workspace/思路.md`
+- 修改内容：
+  - `1.4 Project Management` 中把 risk management 改成两部分：
+    1. H&S risks to the student/others during practical work
+    2. project-delivery risks to successful completion
+  - H&S risks 明确包括：
+    - high-torque moving joints
+    - falling self-balancing robot
+    - soldering burns/fumes
+    - battery and wiring faults
+    - sharp printed/machined parts
+    - trailing cables
+    - unexpected motion during wireless/vision testing
+  - Project-delivery risks 再单独连接到 watchdog、full-stop、dry_run、data loss、integration delays 等。
+- 原则：
+  - 后续 Appendix E 写人身/实验安全风险。
+  - Appendix C 写项目交付/进度/技术完成风险。

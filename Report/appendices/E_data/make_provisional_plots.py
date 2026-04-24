@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""Provisional figure generation for the B-BOT final report.
+
+输出矢量 PDF 供 lualatex 直接 \\includegraphics。字体与正文一致使用 Carlito
+(Handbook §9.2 允许的 Calibri 等效字体)，样式沿用 scienceplots 的 IEEE 预设。
+"""
 import csv
 from collections import defaultdict
 from pathlib import Path
@@ -7,6 +12,23 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib import rcParams
+
+try:
+    import scienceplots  # noqa: F401
+    plt.style.use(["science", "ieee", "no-latex"])
+except ImportError:
+    pass
+
+rcParams["font.family"] = ["Carlito", "Liberation Sans", "DejaVu Sans"]
+rcParams["font.size"] = 9
+rcParams["axes.labelsize"] = 9
+rcParams["axes.titlesize"] = 9
+rcParams["legend.fontsize"] = 8
+rcParams["xtick.labelsize"] = 8
+rcParams["ytick.labelsize"] = 8
+rcParams["pdf.fonttype"] = 42
+rcParams["ps.fonttype"] = 42
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -26,9 +48,9 @@ def mean(values):
     return sum(values) / len(values)
 
 
-def save(fig, name):
+def save(fig, stem):
     fig.tight_layout()
-    fig.savefig(FIGS / name, dpi=180)
+    fig.savefig(FIGS / f"{stem}.pdf", bbox_inches="tight", pad_inches=0.02)
     plt.close(fig)
 
 
@@ -46,7 +68,7 @@ def plot_e2():
     ax.set_ylabel("Settling time (s)")
     ax.set_title("E2 disturbance recovery (PROVISIONAL)")
     ax.set_ylim(0, 1.2)
-    save(fig, "e2_disturbance_recovery_provisional.png")
+    save(fig, "e2_disturbance_recovery_provisional")
 
 
 def plot_e3():
@@ -72,7 +94,7 @@ def plot_e3():
     ax2.plot(x, peak, marker="s", color="#E45756", label="Peak pitch")
     ax2.set_ylabel("Peak pitch (deg)", color="#E45756")
     ax1.set_title("E3 leg-length sensitivity (PROVISIONAL)")
-    save(fig, "e3_leg_length_sensitivity_provisional.png")
+    save(fig, "e3_leg_length_sensitivity_provisional")
 
 
 def plot_e9():
@@ -88,7 +110,7 @@ def plot_e9():
     ax.bar(labels, values, color=["#54A24B", "#B279A2", "#F58518"])
     ax.set_ylabel("Response time (s)")
     ax.set_title("E9 controller ablation (PROVISIONAL)")
-    save(fig, "e9_controller_ablation_provisional.png")
+    save(fig, "e9_controller_ablation_provisional")
 
 
 def plot_e6():
@@ -103,7 +125,7 @@ def plot_e6():
     ax.bar(labels, values, color=["#4C78A8", "#72B7B2", "#E45756"])
     ax.set_ylabel("Stop latency (ms)")
     ax.set_title("E6 watchdog / fault injection (PROVISIONAL)")
-    save(fig, "e6_watchdog_fault_injection_provisional.png")
+    save(fig, "e6_watchdog_fault_injection_provisional")
 
 
 def plot_e8():
@@ -117,7 +139,7 @@ def plot_e8():
     ax.set_ylabel("Loop period (ms)")
     ax.set_title("E8 control-loop timing (PROVISIONAL)")
     ax.legend()
-    save(fig, "e8_control_loop_jitter_provisional.png")
+    save(fig, "e8_control_loop_jitter_provisional")
 
 
 def main():
@@ -126,7 +148,7 @@ def main():
     plot_e6()
     plot_e8()
     plot_e9()
-    print(f"wrote provisional plots to {FIGS}")
+    print(f"wrote provisional PDF plots to {FIGS}")
 
 
 if __name__ == "__main__":

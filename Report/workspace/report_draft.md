@@ -33,49 +33,45 @@ The system was evaluated using static balance, disturbance recovery, leg-length 
 ## 1. Introduction  *(≈3–4 pages)*
 
 ### 1.1 Background and motivation
-*Wheel-legged platform 的工程价值 + 引入 WiFi / ROS 2 vision 的动机（ESP32 实时底环 vs. PC 视觉识别与命令生成分层）。明确：底盘 ESP32 当前不是 micro-ROS 节点；micro-ROS 只用于 Yahboom camera → ROS 2 image topic。*
 
-Self-balancing robots are useful engineering platforms because they combine unstable dynamics, embedded sensing, real-time control and actuator coordination in a compact system. A conventional two-wheeled balancing robot mainly regulates body pitch while moving through wheel torque. A wheel-legged robot extends this concept by adding controllable leg geometry, which can change body height, support dynamic actions and improve mobility. The additional mechanical capability also increases the control challenge because body pitch, wheel motion, leg length and joint torque become strongly coupled.
+Self-balancing robots are useful engineering platforms because they combine unstable dynamics, embedded sensing, real-time control and actuator coordination in a compact system. A conventional two-wheeled balancing robot mainly regulates body pitch while moving through wheel torque. A wheel-legged robot extends this concept by adding controllable leg geometry, allowing the body height, support force and dynamic posture to be changed. This improves mobility but also makes the control problem harder because body pitch, wheel motion, leg length and joint torque become strongly coupled.
 
-This project developed B-BOT, a WiFi-enabled self-balancing wheel-legged robot based on an ESP32 embedded controller. The main engineering problem was not only to make the robot stand and move, but to do so while integrating multiple command sources safely. The robot can receive input from an Xbox BLE controller, UART scripted commands, WiFi TCP commands from a host computer, and a ROS 2 / MediaPipe vision bridge. These inputs all affect the same physical robot, so the system must avoid conflicting commands and must fail safely when a command source disappears.
+This project developed B-BOT, a WiFi-enabled self-balancing wheel-legged robot based on an ESP32 embedded controller. The main engineering problem was not simply to make the robot stand. The harder problem was to integrate real-time embedded balance control with multiple non-real-time command sources without allowing those sources to destabilise the robot. B-BOT can receive input from an Xbox BLE controller, UART scripted commands, WiFi TCP commands from a host computer, and a ROS 2 / MediaPipe vision bridge. These inputs all affect the same physical machine, so the system must avoid conflicting commands and must fail safely when a command source disappears.
 
-The central design decision was to keep the stabilising control loop local to the ESP32. The robot's pitch, wheel and leg feedback are processed on the embedded controller, and the LQR/PID/VMC control computation is executed in FreeRTOS tasks. Host-side software is deliberately kept outside the balance loop. This is necessary because WiFi latency, camera frame rate, ROS 2 scheduling and MediaPipe inference are not deterministic at the 4 ms timescale required by the balance controller.
+The central design decision was to keep the stabilising control loop local to the ESP32. Pitch, wheel and leg feedback are processed on the embedded controller, and the LQR/PID/VMC control computation is executed in FreeRTOS tasks. Host-side software is deliberately kept outside the balance loop. This is necessary because WiFi latency, camera frame rate, ROS 2 scheduling and MediaPipe inference are not deterministic at the 4 ms timescale targeted by the balance controller.
 
 The ROS 2 part of the project is therefore used as a supervisory perception layer rather than as the low-level control bus. The Yahboom camera provides images to the host ROS 2 system through a camera-side micro-ROS path. The host-side `wheeleg_vision_bridge` processes those images and converts recognised visual events into text commands. Those commands are then sent to the ESP32 over a WiFi TCP line protocol. In the current implementation, the bottom ESP32 robot controller is not a micro-ROS node.
 
-The motivation for this architecture is practical safety. Vision teleoperation is useful for demonstration and human interaction, but an incorrect gesture classification or network delay should not directly destabilise the robot. By treating vision and WiFi commands as temporary target requests with watchdog expiry, B-BOT can combine real-time embedded balance control with higher-level remote inputs in a controlled way.
+The motivation for this architecture is practical safety. Vision teleoperation is useful for demonstration and human interaction, but an incorrect gesture classification or network delay should not directly destabilise the robot. By treating vision and WiFi commands as temporary target requests with watchdog expiry, B-BOT combines local real-time balance control with higher-level remote inputs in a controlled and testable way. The project contribution is therefore an integrated safety-aware embedded robot architecture, not a claim that vision or WiFi are suitable for closing the stabilising feedback loop.
 
 ### 1.2 Aims and objectives
-*总目标一句话 + 3 条可测 objectives：*
-*  O1 — LQR/PID/VMC 融合底层平衡控制*
-*  O2 — ROS 2 视觉输入链路 + WiFi TCP 机器人命令通道*
-*  O3 — 多源输入（Xbox / TCP / 视觉）安全仲裁*
 
-The aim of the project was to design, implement and evaluate a self-balancing wheel-legged robot that combines real-time embedded balance control with safe wireless and vision-based teleoperation.
+The aim of the project was to design, implement and evaluate a self-balancing wheel-legged robot that combines real-time embedded balance control with safe wireless and vision-based supervisory teleoperation.
 
 The project objectives were:
 
 **O1 — Embedded wheel-legged balance control.**  
-Develop an ESP32-based control system that combines LQR, PID loops and VMC to stabilise the robot, regulate leg geometry and command wheel/joint torques. This objective is evaluated through static balance, disturbance recovery, leg-length variation and control-loop jitter tests.
+Develop an ESP32-based control system that combines LQR, PID loops and VMC to stabilise the robot, regulate leg geometry and command wheel/joint torques. This objective is evaluated through static balance, disturbance recovery, leg-length variation, teleoperation step response and control-loop jitter tests.
 
 **O2 — ROS 2 vision input and WiFi TCP command channel.**  
-Implement a host-side ROS 2 vision pipeline and WiFi TCP command path that can generate and transmit supervisory robot commands without entering the stabilising feedback loop. This objective is evaluated through TCP command-entry latency, watchdog/disconnect testing and camera/vision event logs.
+Implement a host-side ROS 2 vision pipeline and WiFi TCP command path that can generate and transmit supervisory robot commands without entering the stabilising feedback loop. This objective is evaluated through TCP command-entry latency, camera topic checks, vision bridge ACK latency and live gesture-recognition tests.
 
 **O3 — Safe multi-source input arbitration.**  
-Support Xbox BLE, UART scripted commands, WiFi TCP commands and vision-generated commands without allowing uncontrolled conflicts between input sources. This objective is evaluated through teleoperation response tests, command queue behaviour, `dry_run` vision tests, stunt arming behaviour and disconnect-stop validation.
+Support Xbox BLE, UART scripted commands, WiFi TCP commands and vision-generated commands without allowing uncontrolled conflicts between input sources. This objective is evaluated through command queue behaviour, direct-command watchdogs, TCP disconnect/idle fault injection, `dry_run` vision tests, stunt arming behaviour and stop-command validation.
 
-The success criteria are not based on maximum speed or fully autonomous navigation. Instead, the project is judged by whether the implemented robot demonstrates stable embedded balancing, predictable command handling and evidence-based safety behaviour under realistic communication failures.
+The success criteria are not based on maximum speed or fully autonomous navigation. Instead, the project is judged by whether the implemented robot demonstrates stable embedded balancing, predictable command handling and evidence-based safety behaviour under realistic communication and perception failures.
 
 ### 1.3 Report structure
 
-Chapter 2 reviews the relevant literature on two-wheeled and wheel-legged balancing robots, control strategies for unstable mobile robots, and ROS 2 / micro-ROS communication in non-deterministic networks. Chapter 3 presents the implemented system design, including hardware integration, embedded task structure, sensing, state estimation, control algorithms, WiFi TCP communication and input arbitration. Chapter 4 evaluates the system using experiments mapped to the three objectives. Chapter 5 concludes the report by summarising the technical contribution, identifying limitations and proposing future work.
+Chapter 2 reviews the relevant literature on two-wheeled and wheel-legged balancing robots, control strategies for unstable mobile robots, and ROS 2 / micro-ROS communication in non-deterministic networks. It is used to identify the gap that motivates the selected architecture. Chapter 3 presents the implemented system design, including hardware integration, embedded task structure, sensing, state estimation, control algorithms, WiFi TCP communication and input arbitration. Chapter 4 evaluates the system using experiments mapped directly to the three objectives. Chapter 5 concludes the report by summarising the technical contribution, identifying limitations and proposing future work.
 
-### 1.4 Project Management  *(≤1 页，Handbook §9.3 强制)*
-*Draw on appendices: Gantt, Risk Register, CPD Log. Discuss plan deviations, risks, CPD, initiative.*
+### 1.4 Project Management
 
 The project was managed as an iterative engineering build rather than as a single linear implementation. The initial plan separated the work into hardware bring-up, embedded control, communication integration, host-side vision, testing and final reporting. Appendix B contains the project plan and Gantt chart, including the final schedule used during the report-writing phase. The main deviation from the original plan was that low-level balance control and safety handling required more time than expected, while the ROS 2 vision layer had to be scoped as a supervisory teleoperation feature rather than as part of the stabilising control loop.
 
-Risk management was important because the project involved an unstable robot, high-torque motors, batteries, WiFi control and vision-triggered actions. Appendix C contains the risk register, and Appendix E contains the health and safety risk assessment. The most important technical risks were uncontrolled motor output, stale remote commands, IMU calibration error and mechanical damage during disturbance testing. These risks directly influenced the design: balance-disabled states produce zero torque, direct commands expire through watchdogs, WiFi disconnects inject a full-stop command sequence, and the vision bridge defaults to `dry_run`.
+Risk management was treated in two parts. First, the Health and Safety Risk Assessment in Appendix E covers risks to the student and other people during practical work, including high-torque moving joints, a falling self-balancing robot, soldering burns and fumes, battery and wiring faults, sharp printed or machined parts, trailing cables, and unexpected motion during wireless or vision testing. These hazards were managed through supervised/lab-appropriate working, low-energy bench tests before free-standing tests, keeping hands clear of joints and wheels, using appropriate soldering practice and ventilation, securing the robot during software tests, and keeping power isolation available.
+
+Second, the Risk Register in Appendix C covers risks to successful project delivery, such as hardware availability, motor wiring reliability, IMU calibration errors, unstable tuning, loss of experiment data and integration delays. These project risks influenced the technical design: balance-disabled states produce zero torque, direct commands expire through watchdogs, WiFi disconnects inject a full-stop command sequence, and the vision bridge defaults to `dry_run`. This separation avoids treating safety paperwork as a purely technical design list while still showing how safety and delivery risks shaped the project.
 
 The project also required continuing professional development across embedded control, FreeRTOS scheduling, ROS 2, micro-ROS camera integration, MediaPipe and experimental data analysis. Appendix D contains the CPD log. This self-directed learning affected the final architecture: instead of attempting to place the whole robot inside ROS 2, the design separates the hard real-time ESP32 controller from the host-side perception pipeline. This was a practical project-management decision as well as a technical one, because it reduced integration risk while preserving a clear demonstration of vision-based teleoperation.
 
@@ -89,73 +85,68 @@ This literature review is organised by design problem rather than by individual 
 
 Section 2.2 reviews the development from two-wheeled inverted-pendulum robots to wheel-legged robots. Section 2.3 compares the main control approaches relevant to this project, including PID, LQR, ADRC and VMC. Section 2.4 reviews ROS 2, micro-ROS and lossy-network communication from the perspective of safe teleoperation. Section 2.5 then summarises the technical gaps that motivate the design choices presented in Chapter 3.
 
-### 2.2 Wheel-legged & Self-balancing Robotics
-*Two-wheeled → wheel-legged 演进；地形适应、高度调节、重心变化的代价。*
-*Cite: `grasser2002joe`, `chan2013review`, `klemm2019ascento`, `feng2023wheellegged`, `xin2025unified`.*
+### 2.2 From Two-wheeled Balancing to Wheel-legged Robots
 
-Two-wheeled self-balancing robots are commonly modelled as mobile inverted pendulums. A representative early example is JOE, which demonstrated that a compact two-wheeled robot can balance and move using feedback control around an unstable upright equilibrium \cite{grasser2002joe}. Later reviews show that this class of robot is attractive because the mechanical structure is simple, but the control problem is non-trivial: the robot must regulate body pitch while simultaneously responding to wheel motion and external disturbances \cite{chan2013review}.
+Two-wheeled self-balancing robots are commonly modelled as mobile inverted pendulums. A representative early example is JOE, which demonstrated that a compact two-wheeled robot can balance and move using feedback control around an unstable upright equilibrium \cite{grasser2002joe}. Later reviews show that this class of robot is attractive because the mechanical structure is simple, but the control problem is non-trivial: the robot must regulate body pitch while also responding to wheel motion, actuator limits and external disturbances \cite{chan2013review}.
 
-Wheel-legged robots extend this problem by adding controllable leg geometry. This increases mobility because the robot can change height, absorb impacts, step over small obstacles or perform dynamic actions. However, the additional degrees of freedom also change the balance dynamics. Leg length changes the centre of mass and the effective inverted-pendulum geometry, while joint motion introduces coupling between support force, body pitch and wheel torque. For this reason, a wheel-legged robot cannot be treated as only a two-wheeled inverted pendulum with extra actuators.
+Wheel-legged robots extend this problem by adding controllable leg geometry. This increases capability because the robot can change body height, absorb impacts, step over small obstacles or perform dynamic actions. The cost is that the balance dynamics are no longer fixed. Leg length changes the centre of mass and the effective inverted-pendulum geometry, while joint motion couples support force, body pitch and wheel torque. For this reason, a wheel-legged robot cannot be treated as only a two-wheeled inverted pendulum with extra actuators.
 
-Ascento is a useful reference point because it shows the mobility benefit of a two-wheeled jumping wheel-legged platform \cite{klemm2019ascento}. Its design demonstrates that wheel-legged morphology can provide behaviours beyond ordinary two-wheeled balancing, but it also highlights the need for careful coordination between wheel control, leg actuation and body stabilisation. More recent wheel-legged studies have investigated combined control structures, including LQR with disturbance rejection and unified control frameworks for model variations \cite{feng2023wheellegged,xin2025unified}.
+Ascento is a useful reference point because it demonstrates the mobility benefit of a two-wheeled jumping wheel-legged platform \cite{klemm2019ascento}. Its relevance to this project is not that B-BOT has the same actuator power or dynamic performance, but that it shows why wheel and leg actuation must be coordinated rather than controlled independently. More recent work on wheel-legged balancing has investigated combined control structures, including LQR with disturbance rejection and unified control frameworks for model variation \cite{feng2023wheellegged,xin2025unified}. These studies support the idea that a wheel-legged controller should be evaluated under disturbance and changing leg configuration, not only in a static standing pose.
 
-The relevance to B-BOT is the trade-off between capability and implementation complexity. The project uses a small ESP32-based platform rather than a high-power research robot. This means the design must prioritise a controller that is computationally light, robust enough for demonstration, and compatible with the available sensors and motor feedback. The wheel-legged structure motivates the use of leg kinematics and virtual leg forces, but the embedded hardware motivates keeping the implementation simple and deterministic.
+The implication for B-BOT is a specific trade-off. The platform is a small ESP32-based robot rather than a high-power research platform, so the controller must be computationally light and robust enough for repeated demonstration. At the same time, the wheel-legged mechanism still requires leg kinematics, leg-length-dependent behaviour and measured recovery performance. This motivates the E2 disturbance recovery test, the E3 leg-length sensitivity test and the E9 controller ablation used later in the report.
 
-### 2.3 Control Strategies Comparison
-*PID / LQR / ADRC / VMC 的假设、算力、鲁棒性对比。*
-*Cite: `han2009adrc`, `pratt2001vmc`, `kim2015dynamic`.*
-*⭐ 建议表：Representative Systems — Metrics Baselines（为 §4 的对比留锚点）*
+### 2.3 Control Strategy Selection
 
-Control methods for balancing robots can be compared by asking what part of the system they control well. PID control is attractive for embedded implementation because it is simple, computationally cheap and easy to tune on individual variables. It is well suited to local objectives such as yaw-rate correction, roll correction or leg-length regulation. Its weakness is that it does not naturally account for the coupled dynamics between body pitch, wheel position, wheel velocity and leg geometry.
+The relevant control methods can be compared by asking what part of the system they control well and what assumptions they introduce. PID control is attractive for embedded implementation because it is simple, computationally cheap and easy to tune on individual variables. It is suitable for local objectives such as yaw correction, roll correction and leg-length regulation. Its weakness is that independent PID loops do not naturally capture the coupled relationship between body pitch, wheel position, wheel velocity and leg geometry.
 
-LQR is commonly used for inverted-pendulum and wheel-legged balance problems because it controls a vector of coupled states through a single feedback gain. Dynamic models of two-wheeled inverted pendulum robots show why body pitch, pitch rate, wheel position and wheel velocity should be considered together rather than as independent loops \cite{kim2015dynamic}. For B-BOT, this makes LQR a suitable core controller for the sagittal balance problem. The limitation is that the quality of LQR depends on the model, gain tuning and operating point. A fixed gain may work over a narrow range, while a wheel-legged platform benefits from gain scheduling as leg length changes.
+LQR is more appropriate for the sagittal balancing problem because it controls a coupled state vector through a single feedback gain. Dynamic models of two-wheeled inverted-pendulum robots show why body pitch, pitch rate, wheel position and wheel velocity should be considered together rather than as independent loops \cite{kim2015dynamic}. For B-BOT, this makes LQR a suitable core controller for pitch and wheel balance. The limitation is that LQR quality depends on the model, operating point and gain tuning. A fixed gain may work near one leg length, while a wheel-legged platform benefits from scheduling the gain by virtual leg length.
 
-ADRC addresses disturbance and model uncertainty by estimating and rejecting the total disturbance acting on a system \cite{han2009adrc}. This is attractive for wheel-legged robots because contact changes, modelling errors and external pushes are difficult to model exactly. However, ADRC also introduces additional observer dynamics and tuning parameters. For this project, the implementation risk and tuning effort were higher than the expected benefit within the available development time. ADRC is therefore treated as a literature comparator rather than as the selected embedded controller.
+ADRC addresses disturbance and model uncertainty by estimating and rejecting the total disturbance acting on a system \cite{han2009adrc}. This is attractive for wheel-legged robots because contact changes, modelling errors and external pushes are difficult to model exactly. However, ADRC introduces observer dynamics and additional tuning parameters. In this project, the implementation risk and tuning time were higher than the expected benefit for the available hardware and schedule. ADRC is therefore used as a literature comparator rather than as the selected embedded controller.
 
-VMC provides a different abstraction. Instead of commanding each joint directly, the controller defines virtual forces and torques acting on the robot body or leg, then maps those virtual quantities to actuator torques \cite{pratt2001vmc}. This is particularly useful for a wheel-legged mechanism because leg support force and hip torque are more meaningful for balance than individual joint torques. In B-BOT, VMC is used after the LQR and PID layers: LQR and PID determine the desired virtual support and body effects, and VMC maps them to the two joint motors on each side.
+VMC provides a complementary abstraction. Instead of commanding each joint directly, the controller defines virtual forces and torques acting on the robot body or leg, then maps those virtual quantities to actuator torques \cite{pratt2001vmc}. This is useful for B-BOT because virtual leg force and hip torque are more meaningful for balancing than individual joint torques. In the implemented design, LQR and PID determine the desired whole-body effects, and VMC maps those effects to the two joint motors on each side.
 
 **Table 2.1. Control strategy comparison for B-BOT.**
 
-| Strategy | Strength | Limitation | Role in this project |
-|---|---|---|---|
-| PID | Simple, fast, easy to tune locally | Weak for strongly coupled whole-body dynamics | Used for yaw, roll, leg length and auxiliary regulation |
-| LQR | Handles coupled state feedback in one controller | Depends on model quality and operating point | Main sagittal balance controller with leg-length gain scheduling |
-| ADRC | Robust to unmodelled disturbances | More observer and tuning complexity | Literature comparator, not implemented |
-| VMC | Maps meaningful virtual forces to joint torques | Requires kinematic mapping and careful force limits | Used to convert virtual leg force/torque to joint motor commands |
+| Strategy | Strength | Limitation | Role in this project | Evaluation link |
+|---|---|---|---|---|
+| PID | Simple, fast, easy to tune locally | Weak for strongly coupled whole-body dynamics | Yaw, roll, leg length and auxiliary regulation | E1/E4b stability and response |
+| LQR | Handles coupled state feedback in one controller | Depends on model quality and operating point | Main sagittal balance controller | E2 disturbance recovery |
+| Gain-scheduled LQR | Adapts feedback to changing leg length | Requires leg-length estimate and scheduled gains | Adjusts balance behaviour as body height changes | E3 leg-length sensitivity and E9 ablation |
+| ADRC | Robust to unmodelled disturbances | More observer and tuning complexity | Literature comparator, not implemented | Used for discussion, not direct claim |
+| VMC | Maps meaningful virtual forces to joint torques | Requires kinematic mapping and force limits | Converts support force and hip torque to joint torques | E2/E3 recovery behaviour |
 
-The resulting design choice is a hybrid controller rather than a single-method controller. LQR is used where coupling is strongest, PID is used where local regulation is sufficient, and VMC bridges the gap between high-level virtual forces and actuator-level torques.
+The selected controller is therefore hybrid rather than method-pure. LQR is used where coupling is strongest, PID is used where local regulation is sufficient, and VMC bridges the gap between whole-body virtual forces and actuator-level torques. This is a pragmatic engineering choice: it is less theoretically complete than a full nonlinear whole-body controller, but it is feasible on the ESP32 and produces testable design claims.
 
-### 2.4 Embedded ROS & Lossy-Network Communication
-*Camera micro-ROS agent → ROS 2 host → MediaPipe → WiFi TCP robot command 的分层；TCP 延迟、断线检测、watchdog；ROS 2 QoS 只用于图像/状态 topic 背景，不写成底盘控制链路。*
-*Cite: `macenski2022ros2`, `omg_ddsxrce`, `microros_docs`, `eprosima_microxrcedds`, `ros2_qos_design`.*
+### 2.4 Embedded Robot Software, ROS 2 and Vision Teleoperation
 
-ROS 2 is widely used for robot software because it provides a modular communication model, standard message types, launch tooling and integration with perception libraries \cite{macenski2022ros2}. Its middleware design includes quality-of-service policies that allow developers to choose trade-offs such as reliability, history depth and durability for different data streams \cite{ros2_qos_design}. These features are useful for camera images, status topics and host-side processing, but they do not remove the real-time constraints of a balancing controller.
+ROS 2 is widely used for robot software because it provides modular communication, standard message types, launch tooling and integration with perception libraries \cite{macenski2022ros2}. Its middleware design includes quality-of-service policies that allow developers to choose trade-offs such as reliability, history depth and durability for different data streams \cite{ros2_qos_design}. These features are useful for camera images, status topics and host-side processing, but they do not remove the real-time requirements of a balancing controller.
 
-micro-ROS extends ROS 2 concepts to resource-constrained embedded devices through the DDS-XRCE model \cite{omg_ddsxrce,microros_docs}. In a typical micro-ROS system, a microcontroller communicates with a host-side agent, and the agent bridges between DDS-XRCE and the ROS 2 graph. eProsima's Micro XRCE-DDS documentation describes the transport-layer options used by such systems \cite{eprosima_microxrcedds}. This architecture is valuable when a microcontroller needs to publish or subscribe to ROS 2 topics directly.
+micro-ROS extends ROS 2 concepts to resource-constrained embedded devices through the DDS-XRCE model \cite{omg_ddsxrce,microros_docs}. In a typical micro-ROS system, a microcontroller communicates with a host-side agent, and the agent bridges between DDS-XRCE and the ROS 2 graph. eProsima's Micro XRCE-DDS documentation describes the transport-layer options used by such systems \cite{eprosima_microxrcedds}. This architecture is valuable when a microcontroller needs to publish or subscribe to ROS 2 topics directly, but it is not automatically the best choice for a time-critical balancing loop on a small platform.
 
-The B-BOT implementation uses a narrower boundary. The bottom ESP32 controller is not a micro-ROS node. Instead, micro-ROS is used only in the camera image path: the Yahboom camera publishes images to the host ROS 2 system, and the host-side vision bridge processes those images. Robot commands are then transmitted to the ESP32 over a WiFi TCP line protocol. This distinction is important because it avoids overstating the role of ROS 2 in the balance-critical path.
+B-BOT uses a narrower and safer boundary. The bottom ESP32 controller is not a micro-ROS node. Instead, micro-ROS is used only in the camera image path: the Yahboom camera publishes images to the host ROS 2 system, and the host-side vision bridge processes those images. Robot commands are then transmitted to the ESP32 over a WiFi TCP line protocol. This distinction is important because it avoids overstating the role of ROS 2 in the balance-critical path and keeps the stabilising loop dependent only on local IMU and motor feedback.
 
-Wireless command links introduce failure modes that are not present in a local feedback loop. Packets can be delayed, TCP clients can disconnect, the host process can crash, and a vision algorithm can output stale or incorrect events. For a self-balancing robot, these failures should not be allowed to hold a non-zero motion command indefinitely. The literature on ROS 2 and micro-ROS supports the idea of modular distributed robot software, but the safety requirement in this project is more direct: remote commands must be treated as temporary target requests with watchdog expiry, not as hard real-time control signals.
+MediaPipe is relevant to the host-side perception layer because it provides a graph-based framework for real-time perception pipelines \cite{lugaresi2019mediapipe}. The hand-gesture component in B-BOT is aligned with MediaPipe Hands, which was designed for real-time hand landmark tracking \cite{zhang2020mediapipehands}. These references justify MediaPipe as a practical perception tool, but they do not prove reliable robot control in B-BOT's specific camera, lighting and gesture conditions. This is why the report includes E10 as a live gesture confusion matrix rather than treating vision recognition as a demonstrated fact.
 
-This motivates the command architecture used in Chapter 3. WiFi TCP and vision commands update target variables or enqueue scripted actions, while the local ESP32 balance loop continues to use local IMU and motor feedback. Watchdogs, disconnect handling, `dry_run` mode and explicit stunt arming are therefore not secondary features; they are required to make remote and vision-based control acceptable for a physically unstable robot.
+Wireless command links introduce failure modes that are not present in a local feedback loop. Packets can be delayed, TCP clients can disconnect, the host process can crash, and a vision algorithm can output stale or incorrect events. For a self-balancing robot, these failures cannot be allowed to hold a non-zero command indefinitely. The literature supports modular distributed robot software, but the safety requirement in this project is more direct: remote commands must be temporary target requests with watchdog expiry, not hard real-time control signals.
 
-### 2.5 Summary
-*Gap → Design Choice 表；把综述收束到本文方法。*
+This motivates the command architecture used in Chapter 3. WiFi TCP and vision commands update target variables or enqueue scripted actions, while the local ESP32 balance loop continues to use local IMU and motor feedback. Watchdogs, disconnect handling, `dry_run` mode and explicit stunt arming are therefore not secondary features. They are required to make remote and vision-based control acceptable for a physically unstable robot.
 
-The literature shows that B-BOT sits between two established areas. From balancing-robot work, it inherits the need for fast local feedback around an unstable body. From ROS 2 and micro-ROS work, it inherits the opportunity to use modular host-side perception and communication. The main engineering challenge is to combine these areas without allowing non-deterministic host-side processing to destabilise the robot.
+### 2.5 Gap Analysis and Design Implications
 
-**Table 2.2. Literature gap to design choice.**
+The literature shows that B-BOT sits between two established areas. From balancing-robot work, it inherits the need for fast local feedback around an unstable body. From wheel-legged robot work, it inherits the need to consider changing leg geometry and support forces. From ROS 2, micro-ROS and MediaPipe work, it inherits the opportunity to use modular host-side perception and communication. The main engineering challenge is to combine these areas without allowing non-deterministic host-side processing to destabilise the robot.
 
-| Gap identified from literature | Design choice in B-BOT |
-|---|---|
-| Wheel-legged robots have coupled pitch, wheel and leg dynamics | Use LQR for sagittal balance, PID for auxiliary loops and VMC for joint torque mapping |
-| Leg length changes the operating point | Schedule the LQR gain using the virtual leg length |
-| Embedded hardware has limited computation and timing margin | Keep the balance loop local to ESP32 FreeRTOS tasks |
-| Host-side vision and wireless communication are non-deterministic | Treat ROS 2 vision and WiFi TCP as supervisory command inputs only |
-| Remote commands can become stale after host or network failure | Add direct-command watchdogs, TCP idle/disconnect full-stop and command arbitration |
-| Vision-generated actions can be unsafe if misclassified | Default the bridge to `dry_run` and block high-risk actions unless armed |
+**Table 2.2. Literature gap to B-BOT design choice.**
 
-These design choices define the Methods chapter. The report does not claim that B-BOT solves general autonomous wheel-legged locomotion. Its contribution is a practical embedded wheel-legged balancing system with a safety-aware wireless and vision teleoperation layer.
+| Gap identified from literature | Design choice in B-BOT | Evidence used later |
+|---|---|---|
+| Wheel-legged robots have coupled pitch, wheel and leg dynamics | Use LQR for sagittal balance, PID for auxiliary loops and VMC for joint torque mapping | E2 disturbance recovery |
+| Leg length changes the operating point | Schedule the LQR gain using virtual leg length | E3 leg-length sensitivity and E9 ablation |
+| Embedded hardware has limited computation and timing margin | Keep the balance loop local to ESP32 FreeRTOS tasks | E8 control-loop jitter |
+| ROS 2 and MediaPipe are useful but non-deterministic relative to a 4 ms control loop | Treat ROS 2 vision and WiFi TCP as supervisory command inputs only | E5/E11 latency and E10 confusion matrix |
+| Remote commands can become stale after host or network failure | Add direct-command watchdogs and TCP idle/disconnect full-stop | E6 fault injection |
+| Vision-generated actions can be unsafe if misclassified | Default the bridge to `dry_run` and block high-risk actions unless armed | E10 audit failures and stunt gate test |
+
+This gap analysis defines the Methods chapter. The report does not claim that B-BOT solves general autonomous wheel-legged locomotion or that vision is suitable for stabilising feedback. Its contribution is narrower and more defensible: a practical embedded wheel-legged balancing system with a safety-aware wireless and vision teleoperation layer, evaluated through timing, safety and perception-reliability experiments.
 
 ---
 
@@ -165,7 +156,7 @@ These design choices define the Methods chapter. The report does not claim that 
 
 The system was designed around one primary constraint: the balance loop must remain local to the ESP32 controller and must not depend on WiFi, ROS 2, camera processing, or any host-side software. Wireless communication and vision processing were therefore treated as supervisory command inputs rather than components of the stabilising feedback loop. This separation reduces the risk that variable WiFi latency, camera frame-rate variation, or MediaPipe inference delay can directly destabilise the robot.
 
-The top-level requirements used to guide the implementation are summarised in Table 3.1. The timing values are implementation targets from the firmware task structure and are later checked experimentally where possible.
+The top-level requirements used to guide the implementation are summarised in Table 3.1. The timing values are implementation targets from the firmware task structure and are later checked experimentally where possible. The table is also used to keep the Methods and Results chapters aligned: the 4 ms control period is evaluated by E8, the WiFi watchdogs by E6, and the vision safety defaults by E10 and E11.
 
 **Table 3.1. Top-level implementation requirements.**
 
@@ -185,18 +176,18 @@ These requirements define the structure of this chapter. Section 3.2 introduces 
 
 ### 3.2 System Architecture
 
-The implemented system uses a layered architecture, shown conceptually in Fig. 3.1. The lowest layer consists of the physical robot: the ESP32 controller, MPU6050 inertial measurement unit (IMU), CAN-connected wheel and joint motors, battery monitoring circuitry, and the wheel-leg mechanism. The middle layer is the ESP32 firmware, which performs motor feedback processing, leg kinematics, state estimation, balance control, command parsing, and safety handling. The upper layer consists of optional command sources: Xbox BLE manual control, UART2 scripted commands, WiFi TCP commands from a PC tool, and ROS 2 / MediaPipe vision commands generated on the host computer.
+The implemented system uses a layered architecture, shown conceptually in Figure 3.1. The lowest layer consists of the physical robot: the ESP32 controller, MPU6050 inertial measurement unit (IMU), CAN-connected wheel and joint motors, battery monitoring circuitry, and the wheel-leg mechanism. The middle layer is the ESP32 firmware, which performs motor feedback processing, leg kinematics, state estimation, balance control, command parsing, and safety handling. The upper layer consists of optional command sources: Xbox BLE manual control, UART2 scripted commands, WiFi TCP commands from a PC tool, and ROS 2 / MediaPipe vision commands generated on the host computer.
 
-**Fig. 3.1 to add: System architecture and data flow.**  
-Recommended blocks: robot hardware, ESP32 firmware tasks, BLE input, UART2 command input, WiFi TCP server, Yahboom camera, micro-ROS agent, ROS 2 vision bridge, MediaPipe, command encoder.
+**Figure 3.1. System architecture and data flow.**
+This figure shows the physical robot, ESP32 firmware tasks, BLE input, UART2 command input, WiFi TCP server, Yahboom camera, camera-side micro-ROS agent, ROS 2 vision bridge, MediaPipe perception, and command encoder.
 
 The key architectural decision is that the ESP32 is not used as a micro-ROS node in the current implementation. Instead, micro-ROS is used only in the camera-to-host image path: the Yahboom camera publishes compressed image messages to the ROS 2 host via a micro-ROS agent. The host-side `wheeleg_vision_bridge` subscribes to the camera topic, runs MediaPipe-based perception, encodes the resulting visual event into the same textual command protocol used by other tools, and sends the command to the robot over WiFi TCP. The robot therefore receives vision commands through the same parser as keyboard or scripted commands.
 
 This architecture keeps the fast balance loop isolated. The ESP32 control loop uses local IMU, wheel, and leg states. Host-side vision can request a target velocity, yaw rate, jump, or other high-level action, but it cannot directly close the balance loop. This is important because the camera frame rate, ROS 2 scheduling, MediaPipe inference time, and WiFi latency are all non-deterministic relative to the 4 ms control period.
 
-Fig. 3.2 should show the firmware execution model. The most time-critical tasks are the CAN feedback/output tasks, the leg kinematics task, the IMU task, the target update task, and the main control task. Lower-priority tasks handle BLE input, UART2 commands, WiFi TCP command reception, motor calibration, and diagnostic logging.
+Figure 3.2 shows the firmware execution model. The most time-critical tasks are the CAN feedback/output tasks, the leg kinematics task, the IMU task, the target update task, and the main control task. Lower-priority tasks handle BLE input, UART2 commands, WiFi TCP command reception, motor calibration, and diagnostic logging.
 
-**Fig. 3.2 to add: Firmware execution and communication timing.**
+**Figure 3.2. Firmware execution and communication timing.**
 
 | Firmware component | Main function | Nominal timing / behaviour |
 |---|---|---|
@@ -211,20 +202,20 @@ Fig. 3.2 should show the firmware execution model. The most time-critical tasks 
 | `WiFiCmdTask` | Accepts TCP client, parses command lines, handles disconnects | 10 ms loop delay when connected |
 | `Serial_Task` | Applies direct-command watchdogs | 50 ms loop delay |
 
-The data flow inside the firmware is deliberately simple. Sensor and motor tasks update global state variables. The target update task smooths external target commands. The control task reads the current state and target values, calculates wheel and joint torque commands, and writes them to the motor abstraction. Command sources do not drive actuators directly; they only update target values or enqueue scripted actions.
+The data flow inside the firmware is deliberately simple. Sensor and motor tasks update global state variables. The target update task smooths external target commands. The control task reads the current state and target values, calculates wheel and joint torque commands, and writes them to the motor abstraction. Command sources do not drive actuators directly; they only update target values or enqueue scripted actions. This separation is what makes the communication experiments in Chapter 4 meaningful: a delayed WiFi command can change a target, but it cannot replace the local feedback path.
 
 ### 3.3 Mechanical & Electrical Design
 
 The robot platform is based on a Yahboom ESP32 wheel-legged balancing robot that was extended with additional firmware, host-side software, and safety logic. The mechanical layout consists of two wheel modules and two articulated legs. Each side has one wheel motor and two leg joint motors, giving six motors in total: four joint motors for changing the virtual leg geometry and two wheel motors for ground contact and balance control.
 
-The ESP32 was selected as the embedded controller because it provides sufficient processing capability for the control loop while also supporting Bluetooth Low Energy (BLE), WiFi, FreeRTOS tasks, and Arduino/PlatformIO development. The firmware is built using PlatformIO for the `esp32doit-devkit-v1` board with the Arduino framework. This choice reduced the development overhead for integrating the MPU6050 IMU, ADS1115 battery monitoring, BLE controller support, and WiFi command server.
+The ESP32 was selected as the embedded controller because it provides sufficient processing capability for the control loop while also supporting Bluetooth Low Energy (BLE), WiFi, FreeRTOS tasks, and Arduino/PlatformIO development \cite{espressif_freertos_idf,espressif_arduino_esp32,platformio_core_docs}. The firmware is built using PlatformIO for the `esp32doit-devkit-v1` board with the Arduino framework. This choice reduced the development overhead for integrating the MPU6050 IMU, ADS1115 battery monitoring, BLE controller support, and WiFi command server.
 
 The MPU6050 IMU provides body attitude and angular-rate feedback. The motor controllers communicate with the ESP32 over CAN, allowing joint and wheel angle/speed feedback to be used by the leg kinematics and balance controller. Battery voltage is monitored through an ADC path, allowing the firmware to observe the supply condition and support future output compensation or low-voltage safety logic.
 
-**Fig. 3.3 to add: Photograph of the assembled robot with labelled components.**
+**Figure 3.3. Assembled robot with labelled components.**
 
-**Fig. 3.4 to add: Electrical and communication block diagram.**  
-Recommended blocks: ESP32, MPU6050 over I2C, ADS1115 / battery monitoring, CAN bus to six motors, BLE controller, WiFi AP/host PC, UART2 optional input.
+**Figure 3.4. Electrical and communication block diagram.**
+This diagram shows the ESP32, MPU6050 over I2C, ADS1115 / battery monitoring, CAN bus to the six motor drivers, BLE controller, WiFi AP / host PC, UART2 optional input, and the separate camera-to-ROS 2 path.
 
 **Table 3.2. Main hardware components.**
 
@@ -270,7 +261,7 @@ The state estimation design is intentionally lightweight. It uses the MPU6050 DM
 
 ### 3.5 Control Architecture & Algorithms
 
-The balance controller uses a hierarchical structure. LQR provides the main sagittal-plane balance control, PID loops handle auxiliary objectives such as leg length, roll and yaw, and virtual model control (VMC) maps desired virtual leg forces and torques into individual joint motor torques. This structure was chosen because the robot is strongly coupled, but the ESP32 implementation must remain simple enough to run at a 4 ms control period.
+The balance controller uses a hierarchical structure. LQR provides the main sagittal-plane balance control, PID loops handle auxiliary objectives such as leg length, roll and yaw, and virtual model control (VMC) maps desired virtual leg forces and torques into individual joint motor torques. This structure was chosen because the robot is strongly coupled, but the ESP32 implementation must remain simple enough to run at a 4 ms control period. The design also creates clear experimental questions: E2 tests recovery of the full controller, E3 tests sensitivity to leg length, and E9 tests whether gain scheduling and target ramping improve behaviour compared with reduced variants.
 
 The main control task first constructs the LQR state vector:
 
@@ -299,11 +290,11 @@ The controller also includes state-dependent safety behaviour. When balance is d
 
 Several action states are implemented as separate behaviours on top of the stabilising controller. Stand-up preparation commands the legs into a suitable starting posture. Jump preparation briefly lowers the body and then applies joint torques for extension and retraction. Cross-step behaviour applies a controlled left-right virtual leg angle offset. These behaviours are useful for demonstration, but the report treats them as auxiliary states rather than the primary control contribution.
 
-**Fig. 3.5 to add: Hierarchical control block diagram.**  
-Recommended blocks: target command processing, state estimation, LQR, yaw PID, roll PID, leg length PID, leg angle PID, VMC, motor torque output.
+**Figure 3.5. Hierarchical control block diagram.**
+This diagram shows target command processing, state estimation, LQR, yaw PID, roll PID, leg length PID, leg angle PID, VMC, and motor torque output.
 
-**Fig. 3.6 to add: Control state and safety behaviour diagram.**  
-Recommended states: balance disabled, stand-up preparation, balance enabled, airborne / cushioning, jump, cross-step, protection / stop.
+**Figure 3.6. Control state and safety behaviour diagram.**
+This diagram shows the main state-dependent behaviours: balance disabled, stand-up preparation, balance enabled, airborne / cushioning, jump, cross-step, protection and stop.
 
 ### 3.6 ROS 2 Vision, WiFi TCP & Input Arbitration
 
@@ -330,6 +321,8 @@ QUEUE_STOP
 
 This full-stop sequence is necessary because `DRIVE` bypasses the queue; a queue stop alone would not necessarily clear a stale direct target. The WiFi command task also uses a non-blocking connection strategy with a connection timeout and retry interval, so a missing WiFi network does not permanently block the rest of the firmware from running.
 
+The TCP server returns a short `HELLO` message on connection and then replies to each received command line with `ACK` or `NACK`, a firmware timestamp and the echoed command. Disconnect and watchdog actions are also reported as event lines where possible. These acknowledgements were added for safety and measurement rather than convenience: they make it possible to quantify command-entry latency in E4/E5/E11 and to verify the fault-injection sequence in E6.
+
 The host-side vision path is implemented as a ROS 2 Python package named `wheeleg_vision_bridge`. The node subscribes to the Yahboom camera image topic, which is expected as `/espRos/esp32camera` using `sensor_msgs/msg/CompressedImage`. The camera image reaches the host through a camera-side micro-ROS agent. The robot controller itself does not publish or subscribe to ROS 2 topics in the current implementation.
 
 The vision bridge supports several operating modes:
@@ -343,7 +336,7 @@ The vision bridge supports several operating modes:
 
 The bridge includes two safety parameters. First, `dry_run` defaults to `true`, meaning detected commands are printed but not transmitted. This allows camera, ROS 2 and MediaPipe behaviour to be tested without moving the robot. Second, `stunt_armed` defaults to `false`, blocking high-risk stunt commands such as `JUMP` and `CROSSLEG,0,5` unless explicitly armed at runtime.
 
-The gesture mode uses continuous command refresh to match the robot-side direct-command watchdog. For example, an open palm (`Five`) is encoded as `DRIVE,250,0`, pointing left is encoded as `DRIVE,0,600`, and losing the hand returns the command to `DRIVE,0,0`. This behaviour makes vision teleoperation fail-safe with respect to hand detection: if the hand disappears from the image stream, the bridge stops commanding motion rather than holding the previous non-zero target.
+The gesture mode uses OpenCV for image decoding, display and diagnostic overlays, and MediaPipe Hands for gesture inference \cite{bradski2000opencv,lugaresi2019mediapipe,zhang2020mediapipehands}. It then applies continuous command refresh to match the robot-side direct-command watchdog. For example, an open palm (`Five`) is encoded as `DRIVE,250,0`, pointing left is encoded as `DRIVE,0,600`, and losing the hand returns the command to `DRIVE,0,0`. This behaviour makes vision teleoperation fail-safe with respect to hand detection: if the hand disappears from the image stream, the bridge stops commanding motion rather than holding the previous non-zero target.
 
 **Table 3.3. Command source arbitration summary.**
 
@@ -365,21 +358,20 @@ This chapter has described the implemented design rather than an idealised archi
 
 ## 4. Results and Discussion  *(≈8–10 pages，65% 权重主战场)*
 
-*⚠️ 每张图 → 现象 / 原因 / 意义 三层解释；至少对照 §2 文献基线做一次量化比较。*
+### 4.1 Evaluation Strategy
 
-### 4.1 Introduction — Test Plan
-*Experiment matrix (E1–E11) 与 pass criteria。引用 `D2_Experiment_Plan.md`。*
+This chapter evaluates the implemented B-BOT system against the objectives defined in Section 1.2. The evaluation is deliberately split into embedded control evidence, communication and safety evidence, and vision-teleoperation evidence. This structure follows the system architecture in Chapter 3: the ESP32 is responsible for the time-critical balance loop, while WiFi TCP and ROS 2 / MediaPipe are supervisory command layers outside the stabilising feedback loop.
 
-This chapter evaluates whether the implemented system satisfies the three objectives defined in Section 1.2. The evaluation is organised around three questions. First, can the ESP32 firmware run the balance controller with sufficiently stable timing and sensor feedback? Second, does the LQR/PID/VMC controller provide usable wheel-legged balance and motion behaviour? Third, do the WiFi TCP and ROS 2 vision command paths provide safe supervisory control without entering the real-time balance loop?
+The evaluation is organised around three questions. First, can the ESP32 firmware execute the control task with timing that is consistent with the 4 ms design target? Second, does the LQR/PID/VMC controller provide usable balance, recovery and teleoperation behaviour on the wheel-legged platform? Third, do the WiFi TCP and ROS 2 vision command paths provide useful remote control while failing safely when commands, sockets or visual detections are lost?
 
-The experiments were designed before the final measurement campaign so that each result maps directly to an objective. Table 4.1 summarises the experiment matrix, the evidence expected from each test, and the pass criterion used to interpret the result.
+Table 4.1 maps each experiment to these questions. The measured communication, watchdog, loop-jitter and vision-confusion results are treated as final evidence. The physical balance and motion rows marked `* [PROVISIONAL]` are synthetic planning placeholders and must be replaced with repeated hardware measurements before final submission.
 
 **Table 4.1. Evaluation matrix.**
 
 | ID | Experiment | Objective | Main evidence | Pass criterion |
 |---|---|---|---|---|
 | E1 | Static balance drift | O1 | Pitch/roll time series, RMS and peak drift | Pitch RMS below 0.5 deg and no protection trigger |
-| E2 | Impulse disturbance recovery | O1 | Pitch recovery curves, settling time, overshoot | Recovery within 1.5 s and no failed trial |
+| E2 | Impulse disturbance recovery | O1 | Pitch recovery curves, settling time, overshoot | Recovery within 1.5 s and no repeated protection trigger |
 | E3 | Leg-length variation | O1 | Recovery time at minimum, middle and maximum leg length | Stable recovery across all tested leg lengths |
 | E4 | Teleoperation step response | O1/O3 | Command step, pitch deviation and wheel response | Controlled response without excessive pitch excursion |
 | E5 | WiFi TCP command-entry latency | O2 | Host-send to ESP32 command-entry acknowledgement latency CDF | Median below 50 ms and p95 below 150 ms |
@@ -390,49 +382,49 @@ The experiments were designed before the final measurement campaign so that each
 | E10 | Vision confusion matrix | O2/O3 | Actual gesture vs generated command matrix | False motion/stunt commands quantified and safety gates justified |
 | E11 | Vision-to-ESP32 ACK latency | O2 | Vision bridge send to ESP32 ACK latency | Latency measured as supervisory command timing, not balance feedback |
 
-<!-- DATA NEEDED: values marked * [PROVISIONAL] are synthetic planning placeholders, not measured data. Replace them from Report/appendices/E_data/ before final submission. Synthetic rows are marked source=synthetic_planning_placeholder_not_measured. -->
+The analysis uses time-series plots for balance behaviour, cumulative distribution functions for communication latency, and pass/fail tables for safety arbitration. For latency distributions, the median, p95, p99 and maximum values are more informative than the arithmetic mean because long-tail delays are what a human operator experiences as sluggishness or uncertainty.
 
-The analysis uses time-series plots for balance behaviour, cumulative distribution functions (CDFs) for communication latency, and pass/fail tables for safety arbitration. Where repeated trials are available, the report should present mean values with a 95% confidence interval. Where latency distributions are long-tailed, median, interquartile range, p95 and p99 are more informative than the arithmetic mean.
-
-The most important limitation of the evaluation method is that the WiFi TCP latency measurement is not a pure one-way network latency measurement. The planned method records the host send timestamp and matches it to an ESP32 serial acknowledgement. This includes TCP delivery, firmware parsing, serial printing and USB serial logging. It should therefore be interpreted as a conservative host-to-command-entry acknowledgement latency, which is the practically relevant metric for teleoperation.
+The WiFi TCP latency measurements are not pure one-way network latency measurements. They record the host send timestamp and match it to an ESP32 acknowledgement or serial event. This includes TCP delivery, firmware parsing, serial printing and USB serial logging. The metric is therefore interpreted as host-to-command-entry acknowledgement latency, which is conservative but directly relevant to teleoperation.
 
 ### 4.2 System Bring-up & Baseline
-*E1 静态漂移；E8 FreeRTOS 调度抖动；bring-up checklist。*
 
-The first stage of testing verified that the full embedded and host-side system could be started consistently. The firmware was built using PlatformIO for the ESP32 target, the IMU calibration routine was executed, the CAN motor feedback loop was checked, and the WiFi TCP command server was tested from the host PC. On the ROS 2 side, the Yahboom camera image stream was checked on `/espRos/esp32camera`, and the `wheeleg_vision_bridge` node was run in `dry_run` mode before any live command transmission was enabled.
+The first stage of testing verified that the embedded and host-side software could be started consistently. The firmware was built with PlatformIO for the ESP32 target, uploaded to the controller over USB serial, and then exercised through the WiFi TCP command server. On the ROS 2 side, the Yahboom camera image stream was checked on `/espRos/esp32camera`, and the `wheeleg_vision_bridge` node was run in `dry_run` mode before any live command transmission was enabled \cite{platformio_core_docs,lugaresi2019mediapipe}.
+
+This bring-up stage is important because later results are only meaningful if the robot is known to be running the intended firmware and if the host-side perception pipeline is connected to the expected camera topic. Table 4.2 records the evidence used to separate system bring-up from performance evaluation. Items that still require a final hardware log are marked as such rather than treated as measured performance claims.
 
 **Table 4.2. Bring-up checklist.**
 
 | Check | Evidence to report | Result |
 |---|---|---|
-| ESP32 firmware build | PlatformIO build log and git commit hash | [pass/fail, commit hash] |
-| IMU calibration | Stored offset values and stable yaw/pitch/roll output | [pass/fail] |
-| CAN motor feedback | Six motor feedback streams visible in firmware logs | [pass/fail] |
-| Balance mode safety | Balance disabled produces zero torque output | [pass/fail] |
-| WiFi TCP server | Host can connect to robot command port and send line commands | [pass/fail] |
-| Camera ROS 2 topic | `/espRos/esp32camera` visible on host | [pass/fail, mean FPS] |
-| Vision bridge dry-run | Gesture events produce printed commands without transmission | [pass/fail] |
+| ESP32 firmware build | PlatformIO build log | pass: repeated `pio run` records in project log |
+| Firmware upload | USB serial upload to ESP32 controller | pass: upload recorded on `/dev/ttyUSB0`; final commit hash to be frozen before submission |
+| IMU calibration | Stored offset values and stable yaw/pitch/roll output | to be finalised from final hardware log |
+| CAN motor feedback | Six motor feedback streams visible in firmware logs | to be finalised from final hardware log |
+| Balance mode safety | Balance disabled produces zero torque output | to be finalised from final hardware log |
+| WiFi TCP server | Host can connect to robot command port and send line commands | pass: E4/E5/E6/E11 used TCP acknowledgements from `172.20.10.4:23` |
+| Camera ROS 2 topic | `/espRos/esp32camera` visible on host | pass: camera stream used for E10/E11 |
+| Vision bridge dry-run | Gesture events produce printed commands without transmission | pass: E10 dry-run and clean confusion matrix collected |
 
-E1 measured the static stability of the robot under no intentional external disturbance. The robot was placed on a level surface, allowed to settle after startup, and then logged for 60 s over 3* [PROVISIONAL] trials. Fig. 4.1 should show pitch and roll as a function of time, with the steady-state mean removed if necessary to separate bias from short-term oscillation.
+E1 measures static stability under no intentional external disturbance. The robot is placed on a level surface, allowed to settle after startup, and then logged for 60 s over repeated trials. The current dataset is synthetic and is used only to reserve the analysis structure. In the final measured version, Figure 4.1 will show pitch and roll as functions of time, with the steady-state mean removed if necessary to separate sensor bias from short-term oscillation.
 
-**Fig. 4.1 to add: `Report/figures/provisional/e1_static_balance_drift_provisional.png`.* [PROVISIONAL]**
+**Figure 4.1. Static balance drift over a 60 s window: `Report/figures/provisional/e1_static_balance_drift_provisional.png`.* [PROVISIONAL]**
 
-The expected analysis is summarised in Table 4.3. Pitch RMS indicates short-term balance quality, peak-to-peak pitch indicates the worst observed body motion, and drift rate indicates whether the IMU or controller develops a slow bias over the measurement window.
+Table 4.3 gives the provisional analysis fields. Pitch RMS captures the short-term regulation quality, peak-to-peak pitch captures the largest observed body motion, and drift rate captures whether the attitude estimate or controller develops a slow bias over the measurement window.
 
 **Table 4.3. Static balance metrics.**
 
 | Metric | Value | Interpretation |
 |---|---:|---|
-| Pitch RMS | 0.291 deg* [PROVISIONAL] | Should be below 0.5 deg for the planned pass criterion |
+| Pitch RMS | 0.291 deg* [PROVISIONAL] | Planned pass criterion is below 0.5 deg |
 | Roll RMS | 0.231 deg* [PROVISIONAL] | Indicates lateral body stability |
 | Pitch peak-to-peak | 1.37 deg* [PROVISIONAL] | Captures worst short-term body motion |
 | Roll peak-to-peak | 1.04 deg* [PROVISIONAL] | Captures lateral oscillation |
-| Pitch drift rate | 0.0138 deg/s* [PROVISIONAL] | Should remain close to zero after IMU calibration |
+| Pitch drift rate | 0.0138 deg/s* [PROVISIONAL] | Expected to remain close to zero after IMU calibration |
 | Failed/protected trials | 0/3* [PROVISIONAL] | Any protection event must be discussed |
 
-E8 measured whether the FreeRTOS task structure was fast enough for the 4 ms balance-control target. The recommended measurement is to record `micros()` at the start of `CtrlBasic_Task`, compute the period between consecutive samples, and plot the distribution. Fig. 4.2 should show the task-period histogram, while Table 4.4 should report the mean, standard deviation, p99.9 and maximum period.
+E8 measured whether the FreeRTOS task structure was consistent with the 4 ms balance-control target. The firmware-side logger recorded loop-period statistics for `CtrlBasic_Task` and exported a 15,000-sample summary and histogram. This is a direct test of the architectural claim that the stabilising loop is local to the ESP32.
 
-**Fig. 4.2 to add: `Report/figures/e8_loop_jitter_15000_2026-04-24.png`.**
+**Figure 4.2. Control-loop timing distribution: `Report/figures/e8_loop_jitter_15000_2026-04-24.png`.**
 
 **Table 4.4. Control-loop timing jitter.**
 
@@ -447,18 +439,17 @@ E8 measured whether the FreeRTOS task structure was fast enough for the 4 ms bal
 | Maximum observed period | 53.365 ms |
 | Samples | 15000 |
 
-The E8 result shows that the mean and median loop period are very close to the 4 ms design target, which supports the decision to keep the stabilising control loop on the ESP32. However, the p99, p99.9 and maximum values show occasional scheduling outliers. This should be discussed as a real-time limitation of the current FreeRTOS task structure and logging configuration rather than hidden. The result is still useful because the outliers occur in the embedded loop measurement, while WiFi and vision are kept outside the balance feedback path.
+The E8 result is mixed but useful. The mean period of 3.9998 ms and the p50 value of 4.000 ms show that the nominal scheduler behaviour matches the 4 ms design target. The p95 value of 4.300 ms is also close to the target and supports the use of the ESP32 for the local balance loop. However, the p99, p99.9 and maximum values show occasional scheduling outliers, including a maximum observed interval of 53.365 ms. These outliers should not be hidden: they are a real limitation of the current task structure, logging configuration and shared embedded workload.
 
-These baseline tests are important because they validate the assumptions used in the Methods chapter. If the measured control period remains close to 4 ms and the static attitude remains bounded, the later disturbance and communication experiments can be interpreted as system-level performance tests rather than basic bring-up failures. If either E1 or E8 fails, the discussion should prioritise timing interference, IMU noise, motor feedback freshness and task priority allocation before interpreting higher-level teleoperation results.
+The significance of E8 is that the outliers are measured inside the embedded controller, while WiFi and vision remain outside the balance feedback path. This means the architecture does not rely on ROS 2, MediaPipe or WiFi to meet the 4 ms control timing. The remaining engineering risk is local: task priorities, logging load, CAN feedback freshness and IMU handling must be checked during the final physical balance tests.
 
 ### 4.3 Balance and Motion Control Performance
-*E2 脉冲扰动恢复（pitch 曲线 ± 3σ）；E3 变腿长；E4 遥控响应。*
-*对照 `feng2023wheellegged` / `klemm2019ascento` 的恢复时间与超调指标。*
 
-E2 is the main evidence for O1 because it tests whether the controller can reject an external disturbance and return the robot to a stable posture. The planned test applies a repeatable impulse disturbance while recording pitch, pitch rate, wheel speed, virtual leg length, command target and protection state. The primary metric is settling time, defined as the time from the disturbance marker to the first point where the pitch remains within +/-2 deg for at least 500 ms.
+E2, E3, E4 and E9 evaluate the balance and motion-control contribution of the project. These experiments are the main evidence for O1 because they test the behaviour of the LQR/PID/VMC hierarchy under disturbance, changing leg geometry and teleoperation commands. At this stage, the physical balance and motion values in this section are marked `* [PROVISIONAL]` because they are synthetic planning placeholders. They define the intended analysis and table structure, but they must be replaced by measured data from the final robot before submission.
 
-**Fig. 4.3 to add: `Report/figures/provisional/e2_recovery_curves_synthetic_provisional.png`.* [PROVISIONAL]**
-Recommended plot: all trials aligned at the impact marker, mean curve, and +/-3 sigma envelope.
+E2 tests whether the controller can reject an external disturbance and return the robot to a stable posture. The final measured test will apply a repeatable impulse disturbance while recording pitch, pitch rate, wheel speed, virtual leg length, command target and protection state. The primary metric is settling time, defined as the time from the disturbance marker to the first point where pitch remains within +/-2 deg for at least 500 ms.
+
+**Figure 4.3. Impulse disturbance recovery curves: `Report/figures/provisional/e2_recovery_curves_synthetic_provisional.png`.* [PROVISIONAL]**
 
 **Table 4.5. Impulse recovery metrics.**
 
@@ -471,13 +462,13 @@ Recommended plot: all trials aligned at the impact marker, mean curve, and +/-3 
 | Maximum wheel speed | 19.17 rad/s mean* [PROVISIONAL] | 17.65 rad/s mean* [PROVISIONAL] |
 | Protection triggers | 1* [PROVISIONAL] | 0* [PROVISIONAL] |
 
-The result should be interpreted against both the system objective and the literature. Two-wheeled inverted-pendulum robots are often evaluated by pitch regulation and recovery from external disturbance \cite{grasser2002joe,chan2013review}. Wheel-legged systems add a changing centre of mass and leg configuration, so the same disturbance can produce different behaviour depending on leg length and support force. Ascento demonstrates the advantage of wheel-legged morphology for dynamic recovery and jumping, while Feng et al. report a wheel-legged controller that combines LQR with disturbance rejection \cite{klemm2019ascento,feng2023wheellegged}. The comparison in this report should therefore focus on recovery time, peak overshoot and failure rate rather than claiming direct equivalence between platforms with different size, actuator power and mechanical design.
+The provisional E2 result shows the type of evidence required from the final test: peak pitch deviation, settling time, wheel-speed response and protection state are reported together. Two-wheeled inverted-pendulum robots are commonly evaluated through pitch regulation and recovery from disturbance \cite{grasser2002joe,chan2013review}. Wheel-legged systems add a changing centre of mass and leg geometry, so the same disturbance can produce different behaviour depending on leg length and support force. Ascento demonstrates the mobility benefit of wheel-legged morphology, while Feng et al. report a wheel-legged controller combining LQR with disturbance rejection \cite{klemm2019ascento,feng2023wheellegged}. The final comparison will therefore focus on recovery time, peak overshoot and failure rate rather than claiming direct equivalence with platforms that have different actuator power, mass and mechanical design.
 
-If the measured settling time is below [1.5] s and no protection state is triggered, the result supports the claim that the LQR/PID/VMC hierarchy provides usable balance recovery on the ESP32 platform. If recovery is slower than the literature examples, the discussion should link that limitation to the smaller hardware platform, manually tuned gains, IMU vibration, motor saturation, mechanical compliance, or limited repeatability of the disturbance input.
+If the final measured settling time remains below 1.5 s and no repeated protection state is triggered, E2 will support the claim that the LQR/PID/VMC hierarchy provides usable balance recovery on the ESP32 platform. If recovery is slower than the literature examples, the discussion should link that limitation to the smaller hardware platform, manually tuned gains, IMU vibration, motor saturation, mechanical compliance or limited repeatability of the manual disturbance input.
 
-E3 extends E2 by repeating the disturbance test at multiple virtual leg lengths. This experiment is important because leg length changes the body height and therefore changes the effective inverted-pendulum dynamics. Fig. 4.4 should plot recovery time and peak pitch deviation against leg length.
+E3 extends E2 by repeating the disturbance test at multiple virtual leg lengths. This experiment is important because leg length changes body height and therefore changes the effective inverted-pendulum dynamics. A taller configuration increases the gravitational moment for a given pitch angle and is expected to increase the difficulty of recovery.
 
-**Fig. 4.4 to add: `Report/figures/provisional/e3_leg_length_synthetic_provisional.png`.* [PROVISIONAL]**
+**Figure 4.4. Leg-length sensitivity of recovery time and peak pitch: `Report/figures/provisional/e3_leg_length_synthetic_provisional.png`.* [PROVISIONAL]**
 
 **Table 4.6. Leg-length sensitivity.**
 
@@ -487,13 +478,13 @@ E3 extends E2 by repeating the disturbance test at multiple virtual leg lengths.
 | Middle | 0.070 m* [PROVISIONAL] | 0.828 s* [PROVISIONAL] | 7.99 deg* [PROVISIONAL] | 0/5* [PROVISIONAL] |
 | Maximum | 0.085 m* [PROVISIONAL] | 1.150 s* [PROVISIONAL] | 11.22 deg* [PROVISIONAL] | 1/5* [PROVISIONAL] |
 
-The expected trend is that a taller leg configuration increases recovery difficulty because the centre of mass is higher and the same pitch deviation corresponds to a larger gravitational moment. A result showing increased settling time or overshoot at larger leg length would therefore not be a failure by itself; it would show that the gain-scheduled LQR and leg-length PID are operating in a more demanding region of the robot dynamics. A failure at maximum leg length should be reported honestly and used to define a safe operating range.
+The provisional trend shows increased settling time and peak pitch at larger leg length. If this trend appears in the measured data, it will be useful evidence rather than only a weakness. It would show that the controller is being evaluated across a changing dynamics range, not only at one convenient posture. A protection event at maximum leg length will be used to define a safe operating envelope and to motivate future gain retuning.
 
-E4 evaluates the coupling between teleoperation commands and balance. Unlike E2 and E3, this test does not apply an external impulse. Instead, it applies a step command in forward speed or yaw rate and observes how the balance controller responds while the target update task ramps the command. Fig. 4.5 should show the commanded velocity or yaw rate, the measured wheel response, and the pitch deviation on the same time axis.
+E4 evaluates the coupling between teleoperation commands and balance. Unlike E2 and E3, this test does not apply an external impulse. Instead, it applies a step command in forward speed or yaw rate and observes whether the command path and target update task produce a controlled response.
 
-The bench-available part of E4, labelled E4a, measured command-entry step response before the full moving robot test. In E4a the host sent direct teleoperation step commands to the ESP32 TCP server, held each step for 0.5 s, and then sent `DRIVE,0,0`, `YAWRATE,0`, and `QUEUE_STOP` as a safe tail. This does not measure physical speed, wheel response or pitch deviation; it measures whether step teleoperation commands enter the embedded command parser predictably.
+The bench-available part of E4, labelled E4a, was measured before the full moving-robot test. In E4a the host sent direct teleoperation step commands to the ESP32 TCP server, held each step for 0.5 s, and then sent `DRIVE,0,0`, `YAWRATE,0`, and `QUEUE_STOP` as a safe tail. This does not measure physical speed, wheel response or pitch deviation; it measures whether step teleoperation commands enter the embedded command parser predictably.
 
-**Fig. 4.5a to add: `Report/figures/e4_tcp_step_response_2026-04-24.png`.**
+**Figure 4.5a. TCP teleoperation command-entry step response: `Report/figures/e4_tcp_step_response_2026-04-24.png`.**
 
 **Table 4.7a. E4a TCP teleoperation command-entry step response.**
 
@@ -504,7 +495,11 @@ The bench-available part of E4, labelled E4a, measured command-entry step respon
 | Yaw step left | `DRIVE,0,600` | 5 | 125.95 ms | 132.27 ms | 115.93 ms | 0 |
 | Yaw step right | `DRIVE,0,-600` | 5 | 82.59 ms | 101.39 ms | 123.87 ms | 0 |
 
-**Fig. 4.5b to add: `Report/figures/provisional/e4b_physical_step_synthetic_provisional.png`.* [PROVISIONAL]**
+The measured E4a result shows that all four safe step-command cases produced acknowledgements and zero non-ACK responses. Median step ACK latency ranged from 74.09 ms to 125.95 ms across the four cases, with the worst p95 value equal to 167.92 ms. This is suitable for supervisory teleoperation command entry, but it is still far slower than the 4 ms embedded balance-control period. The result therefore supports the architecture: remote commands can update targets, while attitude stabilisation remains local.
+
+E4b is the final moving-robot version of the same test. It will report rise time, steady-state tracking error and peak pitch deviation for forward-speed and yaw-rate steps.
+
+**Figure 4.5b. Physical teleoperation response: `Report/figures/provisional/e4b_physical_step_synthetic_provisional.png`.* [PROVISIONAL]**
 
 **Table 4.7b. E4b physical teleoperation response metrics.**
 
@@ -516,11 +511,11 @@ The bench-available part of E4, labelled E4a, measured command-entry step respon
 | Yaw rate | +1.00 rad/s* [PROVISIONAL] | 0.36 s* [PROVISIONAL] | [not measured separately]* [PROVISIONAL] | 3.2 deg* [PROVISIONAL] |
 | Yaw rate | -1.00 rad/s* [PROVISIONAL] | 0.38 s* [PROVISIONAL] | [not measured separately]* [PROVISIONAL] | 3.4 deg* [PROVISIONAL] |
 
-The main point of E4 is not to show perfect velocity tracking. The robot is a balancing system, so aggressive speed commands necessarily create pitch transients. The engineering question is whether the target update logic limits these transients enough for safe teleoperation. A successful result is therefore one where speed and yaw commands are accepted smoothly, the robot remains balanced, and the maximum pitch deviation remains inside the chosen safe envelope.
+The main point of E4b is not to show perfect velocity tracking. The robot is a balancing system, so aggressive speed commands necessarily create pitch transients. The engineering question is whether the target update logic limits these transients enough for safe teleoperation. A successful result is one where speed and yaw commands are accepted smoothly, the robot remains balanced, and the maximum pitch deviation remains inside the chosen safe envelope.
 
-E9 is included as the main controller-design ablation. It compares the full implementation against two reduced variants: `FIXED_LQR`, which removes leg-length gain scheduling, and `NO_RAMP`, which removes the target ramp used to smooth command entry. This experiment is important for an 80+ report because it tests why the selected control architecture matters, rather than only showing that it was implemented.
+E9 is included as the controller-design ablation. It compares the full implementation against two reduced variants: `FIXED_LQR`, which removes leg-length gain scheduling, and `NO_RAMP`, which removes the target ramp used to smooth command entry. This experiment is important because it tests why the selected control architecture matters, rather than only showing that it was implemented.
 
-**Fig. 4.5c to add: `Report/figures/provisional/e9_ablation_synthetic_provisional.png`.* [PROVISIONAL]**
+**Figure 4.5c. Controller ablation comparison: `Report/figures/provisional/e9_ablation_synthetic_provisional.png`.* [PROVISIONAL]**
 
 **Table 4.7c. E9 controller ablation metrics.**
 
@@ -530,15 +525,13 @@ E9 is included as the main controller-design ablation. It compares the full impl
 | FIXED_LQR | impulse recovery | 10* [PROVISIONAL] | 9/10* [PROVISIONAL] | 1.049 s* [PROVISIONAL] | 9.85 deg* [PROVISIONAL] | 1* [PROVISIONAL] |
 | NO_RAMP | drive step | 10* [PROVISIONAL] | 10/10* [PROVISIONAL] | 0.476 s rise* [PROVISIONAL] | 9.17 deg* [PROVISIONAL] | 0* [PROVISIONAL] |
 
-The expected interpretation is that the full controller trades slightly slower command entry for lower pitch excursion and fewer protection events. If the real E9 data confirms the same trend, it will justify both leg-length gain scheduling and target ramping as measured engineering choices. If it does not, the discussion should state which design choice was not supported and whether the extra complexity should be removed or retuned.
+The provisional E9 interpretation is that the full controller trades slightly slower command entry for lower pitch excursion and fewer protection events. If the final measured data confirms the same trend, it will justify both leg-length gain scheduling and target ramping as measured engineering choices. If it does not, the report will state which design choice was not supported and whether the extra complexity should be removed or retuned. This is stronger than only presenting the final controller, because it turns the control design into a testable engineering decision.
 
 ### 4.4 WiFi TCP, Camera micro-ROS & Vision Teleop Performance
-*E5 WiFi TCP 命令入口延迟 CDF；E6 watchdog/断线停止验证；E7 摄像头 `/espRos/esp32camera` 帧率与视觉桥 dry-run/live TCP 事件日志。*
-*讨论 TCP/watchdog 的安全价值、camera micro-ROS 图像链路的实际帧率，以及为何视觉只作为遥操作/事件触发，不进入底层闭环控制。*
 
 E5 evaluates the direct WiFi TCP command path used by both keyboard teleoperation and the ROS 2 vision bridge. The host sends safe command lines to the robot and records the host-side send timestamp. The ESP32 prints an acknowledgement when the command line reaches the parser or when the resulting direct target is updated. Matching these events gives the host-to-command-entry acknowledgement latency.
 
-**Fig. 4.6 to add: WiFi TCP command-entry acknowledgement latency CDF.**
+**Figure 4.6. WiFi TCP command-entry acknowledgement latency CDF.**
 
 **Table 4.8. WiFi TCP command-entry latency.**
 
@@ -553,11 +546,11 @@ E5 evaluates the direct WiFi TCP command path used by both keyboard teleoperatio
 | Maximum | 368.89 ms |
 | Lost / unmatched commands | 0 |
 
-The p95 and p99 values are more important than the mean because teleoperation quality is usually affected by tail latency rather than average latency. If p95 remains below [150] ms, the WiFi TCP path is adequate for supervisory teleoperation commands such as `DRIVE` and `YAWRATE`. However, even a good E5 result should not be used to justify closing the balance loop over WiFi. The balance loop runs at a 4 ms target period, while the WiFi, TCP stack, host scheduling and serial acknowledgement path have non-deterministic delay. This supports the architectural decision in Section 3.2: WiFi commands should update targets, not replace local attitude feedback.
+The E5 result shows that the basic TCP command path is responsive enough for supervisory teleoperation. The median command-entry ACK latency was 37.41 ms, p95 was 88.31 ms, and p99 was 143.47 ms across 300 samples, with zero unmatched or non-ACK command lines. These values are acceptable for human-issued target updates such as `DRIVE` and `YAWRATE`. However, the maximum observed value of 368.89 ms also shows why the WiFi link cannot be treated as deterministic control infrastructure. The balance loop runs at a 4 ms target period, while the WiFi stack, TCP buffering, host scheduling and serial acknowledgement path have variable delay. E5 therefore supports the design decision in Section 3.2: WiFi commands update targets, but local IMU and motor feedback remain responsible for stabilisation.
 
-E6 tests the failure behaviour of the command path. Three fault types should be evaluated: the host stops sending commands while keeping the socket open, the TCP socket is closed, and the WiFi link is interrupted or becomes unavailable. The expected robot-side response is that direct `DRIVE` and `YAWRATE` commands are cleared by their 500 ms watchdogs, while the TCP layer applies a full stop on idle timeout, client drop or WiFi loss.
+E6 tests the failure behaviour of the command path. Three fault types were evaluated: the host stops refreshing a direct `DRIVE` command, the TCP socket is closed, and the TCP client remains connected but idle. The expected robot-side response is that direct speed/yaw commands are cleared by their 500 ms watchdogs, while the TCP layer applies a full stop on idle timeout or client drop.
 
-**Fig. 4.7 to add: Watchdog and disconnect fault-injection timeline.**
+**Figure 4.7. Watchdog and disconnect fault-injection timeline.**
 
 **Table 4.9. Watchdog and disconnect response.**
 
@@ -567,13 +560,13 @@ E6 tests the failure behaviour of the command path. Three fault types should be 
 | TCP socket close | 10 | N/A | median 33.35 ms; p95 85.47 ms | 10/10 |
 | TCP idle | 10 | N/A | median 1481.08 ms; p95 1510.11 ms | 10/10 |
 
-This experiment is a safety result rather than a performance result. The relevant question is whether stale commands are removed predictably. The direct-command watchdog protects the robot from a lost refresh stream, while the TCP full-stop sequence protects against a disconnected or idle client. The combination is necessary because `DRIVE` bypasses the command queue; stopping the queue alone would not necessarily clear a non-zero direct speed target.
+This is a safety result rather than a speed result. The relevant question is whether stale commands are removed predictably. The direct-command watchdog fired in all 10 trials with a median ACK-to-watchdog time of 517.93 ms, close to the intended 500 ms timeout once acknowledgement and logging delay are included. TCP socket close was detected in all 10 trials with a median close-to-event time of 33.35 ms, and TCP idle timeout produced full-stop events in all 10 trials with a median latency of 1481.08 ms. The combination is necessary because direct `DRIVE` targets bypass the command queue; stopping the queue alone would not necessarily clear a non-zero direct speed target.
 
-E7 evaluates the camera and vision path. The camera-side micro-ROS path should first be measured independently using `ros2 topic hz /espRos/esp32camera`. The vision bridge should then be tested in `dry_run` mode to verify recognition and command encoding without moving the robot. Only after this should live TCP command transmission be enabled, and high-risk actions should remain blocked unless `stunt_armed` is explicitly enabled.
+E7, E10 and E11 evaluate the camera and vision path. The camera-side micro-ROS path was first checked independently using the `/espRos/esp32camera` topic. The vision bridge was then run in `dry_run` mode to verify recognition and command encoding without moving the robot. Only safe TCP transmission was enabled during latency testing, and high-risk actions remained blocked unless `stunt_armed` was explicitly enabled.
 
-**Fig. 4.8 to add: Vision event timeline from camera frame to command output.**  
-**Fig. 4.8b to add: `Report/figures/e10_vision_confusion_live_2026-04-24.png`.**
-**Fig. 4.9 to add: `Report/figures/e11_vision_bridge_ack_latency_2026-04-24.png`.**
+**Figure 4.8a. Vision event timeline from camera frame to command output.**
+**Figure 4.8b. E10 live gesture confusion matrix: `Report/figures/e10_vision_confusion_live_2026-04-24.png`.**
+**Figure 4.9. E11 vision bridge to ESP32 ACK latency: `Report/figures/e11_vision_bridge_ack_latency_2026-04-24.png`.**
 
 **Table 4.10. Camera and vision bridge metrics.**
 
@@ -595,31 +588,30 @@ E7 evaluates the camera and vision path. The camera-side micro-ROS path should f
 | Vision bridge-to-ESP32 ACK max | 392.95 ms |
 | Blocked stunt commands with `stunt_armed=false` | stable `Thumb_up` retest blocked `JUMP` once |
 
-The E10 live confusion run keeps both clean passes and failure cases. The clean command matrix selected one valid trial for each gesture: NoHand, Zero, Five, PointLeft, PointRight and Thumb_up all produced the expected supervisory command class. The selected clean trials contained 259 frames and achieved 85.3% frame-label accuracy. This is sufficient for a controlled demonstration, but the audit table is more important for safety: one poor Zero pose produced a false forward command, an early PointLeft rule failed to produce a stable command, and one operator-direction error produced a mixed false-direction command. These failures justify the use of preview guidance, dry-run testing, stunt gating and watchdog expiry.
+The E10 live confusion run keeps both clean passes and failure cases. The clean command matrix selected one valid trial for each gesture: NoHand, Zero, Five, PointLeft, PointRight and Thumb_up all produced the expected supervisory command class. The selected clean trials contained 259 frames and achieved 85.3% frame-label accuracy. This is sufficient for a controlled demonstration, but the audit table is more important for safety: one poor Zero pose produced a false forward command, an early PointLeft trial failed to produce a stable command, and one operator-direction error produced a mixed false-direction command. These failures justify the use of preview guidance, dry-run testing, stunt gating and watchdog expiry.
 
-The expected result is not that vision is fast enough for stabilising feedback. Instead, the expected result is that the camera and MediaPipe pipeline can generate useful supervisory events, such as open-palm forward commands or hand-lost stop commands, while the ESP32 continues to handle the balance loop locally. A low or variable camera frame rate should therefore be discussed as a limitation of vision teleoperation, not as a failure of the balance controller.
+The intended conclusion is not that vision is fast enough for stabilising feedback. Instead, E10 shows that the camera and MediaPipe pipeline can generate useful supervisory events, such as open-palm forward commands or hand-lost stop commands, while also producing enough false or unstable cases to require safety layers. A low or variable camera rate is therefore a limitation of vision teleoperation, not a failure of the balance controller.
 
-The E11 ACK result should be interpreted as bridge-command-to-ESP32 acknowledgement latency, not full perception latency. During the E11 run, the camera topic was approximately 4.85 Hz, corresponding to a frame period of about 206 ms. Combining one frame period with the measured median bridge-to-ACK latency gives a minimum camera-frame-to-ACK estimate of about 272 ms. Stable gesture recognition can require additional debounced frames, so the full human-gesture-to-command latency is slower than the TCP ACK metric. This supports the architectural decision that vision remains supervisory and does not enter the 4 ms balance loop.
+E11 measured the latency from the vision bridge sending a safe command to receiving an ESP32 acknowledgement. Across 71 ACK-logged commands, the median bridge-to-ACK latency was 66.13 ms, p95 was 301.93 ms and p99 was 361.15 ms, with zero non-ACK commands. This result is not full human-gesture-to-robot latency. During the E11 run, the camera topic was approximately 4.85 Hz, corresponding to a frame period of about 206 ms. Combining one frame period with the measured median bridge-to-ACK latency gives a minimum camera-frame-to-ACK estimate of about 272 ms. Stable gesture recognition can require additional debounced frames, so the full human-gesture-to-command latency is slower than the TCP ACK metric. This supports the architectural decision that vision remains supervisory and does not enter the 4 ms balance loop.
 
-The input arbitration behaviour should be reported as a short pass/fail table because it is a major engineering contribution of the system. Table 4.11 should be filled from direct tests of conflicting input sources.
+The input arbitration behaviour is reported as a short pass/fail table because it is a major engineering contribution of the system. Some entries are already supported by E6 and E10/E11, while simultaneous BLE/PC arbitration still requires final hardware confirmation.
 
 **Table 4.11. Command arbitration tests.**
 
 | Scenario | Expected behaviour | Result |
 |---|---|---|
-| PC tool starts while BLE controller is active | `BLE_DISABLE` prevents BLE from overwriting PC targets | [pass/fail] |
-| Command queue is running and `DRIVE` is received | Direct drive command is rejected or suppressed | [pass/fail] |
+| PC tool starts while BLE controller is active | `BLE_DISABLE` prevents BLE from overwriting PC targets | to be finalised |
+| Command queue is running and `DRIVE` is received | Direct drive command is rejected or suppressed | to be finalised |
 | TCP client closes during non-zero command | Robot logs `client_drop` and injects `DRIVE,0,0`, `YAWRATE,0`, `QUEUE_STOP` | pass: 10/10 close trials |
 | TCP client becomes idle | Robot emits `FULL_STOP,idle_timeout` and injects `DRIVE,0,0`, `YAWRATE,0`, `QUEUE_STOP` | pass: 10/10 idle trials |
 | Vision bridge runs with `dry_run=true` | Commands are printed but not transmitted | pass |
 | `stunt_armed=false` and a stunt event is detected | High-risk command is blocked | pass: stable `Thumb_up` blocked `JUMP` |
 
-These results close the loop for O2 and O3. O2 is supported if the camera topic, vision bridge and WiFi TCP command path operate with acceptable latency and predictable failure handling. O3 is supported if conflicting command sources are suppressed in a deterministic way and if safety gates prevent unverified vision events from directly triggering risky robot actions.
+Taken together, E5, E6, E10 and E11 support O2 and much of O3. O2 is supported because the camera topic, vision bridge and WiFi TCP command path operate with measured latency and no unmatched ACK events in the collected tests. O3 is supported by the watchdog, disconnect handling, `dry_run` mode and stunt gate. The remaining O3 gap is simultaneous multi-source arbitration under live BLE and TCP input, which should be checked in the final hardware session.
 
 ### 4.5 Summary
-*Objective vs Evidence vs Limitation 表。*
 
-Table 4.12 summarises the evidence from the results chapter against the three objectives.
+Table 4.12 summarises the evidence from the results chapter against the three objectives. The strongest measured evidence at this stage is the communication, watchdog, embedded timing and vision-reliability evidence. The remaining physical balance and motion results are structured in the report but still depend on final measured hardware data replacing the provisional values.
 
 **Table 4.12. Objective, evidence and limitation summary.**
 
@@ -636,26 +628,40 @@ Overall, the results should be interpreted as a system-level validation of the a
 ## 5. Conclusions and Future Work  *(≈2–3 pages)*
 
 ### 5.1 Conclusions
-*逐项回答 §1.2 的 O1/O2/O3 是否达成；强调工程化贡献。*
 
 This project designed and implemented B-BOT, a WiFi-enabled self-balancing wheel-legged robot with an ESP32-based real-time control layer and a host-side ROS 2 / MediaPipe vision teleoperation layer. The main contribution is the integration of embedded wheel-legged balance control with safety-aware wireless command handling, rather than the use of vision as a replacement for local stabilising feedback.
 
-For O1, the project implemented an embedded control architecture combining LQR, PID and VMC. The ESP32 firmware estimates attitude from the MPU6050 DMP, computes virtual leg state from motor feedback, schedules the LQR gain by leg length, and maps virtual support forces to joint torques through VMC. The evidence for this objective is provided by the static balance, disturbance recovery, leg-length variation and control-loop jitter tests in Chapter 4. The final measured conclusion should state: [O1 achieved / partially achieved], supported by [key E1/E2/E8 metrics].
+The strongest conclusion is architectural. The project demonstrates that a physically unstable wheel-legged robot can be structured so that time-critical stabilisation remains local to an embedded controller, while non-deterministic host-side functions are restricted to supervisory target updates. This boundary is central to the design: WiFi TCP, ROS 2 and MediaPipe improve interaction and demonstration value, but they are not treated as components of the balance feedback loop.
 
-For O2, the project implemented a ROS 2 vision input pipeline and a WiFi TCP robot command channel while keeping the ESP32 outside the ROS 2 control graph. The Yahboom camera image stream is processed on the host, MediaPipe events are encoded as text commands, and the commands are transmitted to the robot over TCP. The evidence for this objective is provided by the command-entry latency, watchdog/disconnect and camera/vision event tests. The final measured conclusion should state: [O2 achieved / partially achieved], supported by [key E5/E6/E7 metrics].
+For O1, the project implemented an embedded control architecture combining LQR, PID and VMC. The ESP32 firmware estimates attitude from the MPU6050 DMP, computes virtual leg state from motor feedback, schedules the LQR gain by leg length, and maps virtual support forces to joint torques through VMC. The E8 control-loop measurement supports the timing feasibility of this approach: the 15,000-sample loop log showed a mean period of 3.9998 ms and a median period of 4.000 ms. However, the final O1 performance judgement depends on replacing the provisional static balance, disturbance recovery, leg-length sensitivity, physical teleoperation and ablation results with measured hardware data. O1 is therefore best stated as implemented and timing-validated, with final balance-performance closure pending the completed physical experiment set.
 
-For O3, the project implemented multi-source input handling across Xbox BLE, UART commands, WiFi TCP commands and vision-generated commands. The command queue, direct-command watchdogs, BLE suppression, TCP full-stop behaviour, `dry_run` default and `stunt_armed` gate reduce the chance that two sources command the robot unsafely at the same time. The final measured conclusion should state: [O3 achieved / partially achieved], supported by [queue/arbitration pass-fail evidence].
+For O2, the project implemented a ROS 2 vision input pipeline and a WiFi TCP robot command channel while keeping the ESP32 outside the ROS 2 control graph. The Yahboom camera image stream is processed on the host, MediaPipe events are encoded as text commands, and the commands are transmitted to the robot over TCP. The measured TCP command-entry test achieved a median ACK latency of 37.41 ms and p95 of 88.31 ms across 300 samples, with zero unmatched commands. The vision bridge ACK test achieved a median bridge-to-ESP32 ACK latency of 66.13 ms across 71 safe commands, and the live gesture confusion run produced a clean 6/6 command-class matrix with 85.3% selected-frame label accuracy. These results support O2 as achieved for supervisory teleoperation, while also showing that the camera and vision path is too slow and variable to be used for stabilising feedback.
 
-The most important engineering lesson is that unstable mobile robots require a strict boundary between real-time stabilisation and non-deterministic supervisory software. In B-BOT, WiFi and vision improve usability and demonstration value, but they are not suitable for the balance loop. The implemented architecture reflects this constraint by keeping the feedback controller local and treating remote inputs as temporary, watchdog-protected target requests.
+For O3, the project implemented multi-source input handling across Xbox BLE, UART commands, WiFi TCP commands and vision-generated commands. The command queue, direct-command watchdogs, BLE suppression, TCP full-stop behaviour, `dry_run` default and `stunt_armed` gate reduce the chance that two sources command the robot unsafely at the same time. The E6 fault-injection tests showed that direct `DRIVE` commands expired in all 10 watchdog trials, TCP socket close produced a full-stop response in all 10 close trials, and TCP idle produced a full-stop response in all 10 idle trials. The E10 audit failures further justify the safety gates: false or unstable vision detections can occur, so vision commands must be previewed, debounced, blocked when risky, or expired by watchdogs. O3 is therefore substantially achieved for the tested command paths, with the remaining limitation that every possible simultaneous-input race condition could not be exhaustively tested.
+
+**Table 5.1. Objective closure summary.**
+
+| Objective | Current closure | Main evidence | Remaining limitation |
+|---|---|---|---|
+| O1: Embedded wheel-legged balance control | Implemented and timing-validated; final dynamic performance pending measured physical data | E8 loop jitter, controller implementation, provisional E1/E2/E3/E4b/E9 analysis structure | Final static, recovery, leg-length and ablation results must replace provisional values |
+| O2: ROS 2 vision input and WiFi TCP command channel | Achieved for supervisory teleoperation | E5 TCP latency, E10 gesture confusion, E11 vision bridge ACK latency | Vision latency and frame-rate variability prevent use as balance feedback |
+| O3: Safe multi-source input arbitration | Substantially achieved for tested paths | E6 watchdog/disconnect fault injection, `dry_run`, `stunt_armed`, command queue design | Remaining simultaneous-input race cases require further testing |
+
+The most important engineering lesson is that unstable mobile robots require a strict boundary between real-time stabilisation and non-deterministic supervisory software. In B-BOT, WiFi and vision improve usability and presentation value, but they are not suitable for the balance loop. The implemented architecture reflects this constraint by keeping the feedback controller local and treating remote inputs as temporary, watchdog-protected target requests.
 
 ### 5.2 Future work
-*基于当前局限的 3 条：(1) 控制参数在线整定工具链；(2) 更鲁棒的状态估计融合；(3) 步态规划与非平整地面适应。*
 
-The first area for future work is a stronger control tuning and logging toolchain. The current controller depends on manually tuned gains and manually designed experiments. A more systematic workflow would include a unified CSV telemetry logger, event markers, parameter versioning, automatic plot generation and repeatable gain-sweep scripts. This would make it easier to compare controller changes and would reduce the risk of relying on subjective demonstration performance.
+The first area for future work is a stronger control tuning and logging toolchain. The current controller depends on manually tuned gains and manually designed experiments. A more systematic workflow would include a unified CSV telemetry logger, event markers, parameter versioning, automatic plot generation and repeatable gain-sweep scripts. This would make it possible to compare controller changes quantitatively and would reduce the risk of relying on subjective demonstration performance. The most valuable extension would be an automated test mode that runs repeated disturbance, leg-length and teleoperation trials while recording the exact controller version and parameter set.
 
-The second area is state-estimation robustness. The current implementation uses the MPU6050 DMP and joint-based leg kinematics, which is suitable for the present embedded platform. Future work should investigate better vibration isolation, wheel-speed and leg-state fusion, and a more explicit attitude-estimation comparison against complementary or gradient-based filters. This would be especially useful during jumping, fast leg-length changes and high-vibration ground contact.
+The second area is state-estimation and contact robustness. The current implementation uses the MPU6050 DMP and joint-based leg kinematics, which is suitable for the present embedded platform, but it is vulnerable to vibration, IMU bias, contact transients and motor-feedback noise. Future work should investigate better vibration isolation, wheel-speed and leg-state fusion, and an explicit attitude-estimation comparison against complementary or gradient-based filters. Contact estimation should also be improved so that airborne, cushioning and ground-contact states are detected from measured dynamics rather than only from force and acceleration heuristics.
 
-The third area is higher-level locomotion and autonomy. The current vision layer is mainly a teleoperation and event-triggering interface. Future work could add ROS 2 telemetry from the robot, authenticated command transport, structured command sequencing, terrain-aware gait planning and safer autonomous behaviours. These additions should preserve the same architectural principle used in this project: perception and planning may run on the host, but the balance-critical feedback loop should remain local to the embedded controller.
+The third area is formal safety and communication robustness. The current TCP line protocol is simple and useful for experiments, but it does not include authentication, message integrity checking, explicit source priority or a formal state machine for all possible input combinations. Future work should define a structured command protocol with sequence numbers, source identifiers, acknowledgements, timeout classes and a clear arbitration policy. This would make the system safer if it were used outside a controlled lab demonstration.
+
+The fourth area is an onboard companion-computer architecture. The current implementation relies on an external host computer for ROS 2, MediaPipe, preview display, logging and command transmission. A future version could move these host-side functions onto a Raspberry Pi or Jetson-class single-board computer mounted on the robot. This would reduce dependence on a separate laptop and make the robot more self-contained for demonstrations. The companion computer should still remain outside the balance loop: it would run ROS 2, perception, telemetry logging and high-level planning, while the ESP32 would continue to own the 4 ms stabilising controller and final safety stop behaviour. This change would need careful validation of power draw, boot time, thermal behaviour, WiFi reliability, serial/TCP latency and fail-safe behaviour when the companion computer crashes or reboots.
+
+The fifth area is vision robustness and supervisory autonomy. The current vision layer is mainly a teleoperation and event-triggering interface. The E10 audit failures show that gesture commands can be affected by hand pose, lighting and operator direction. Future work should improve the vision interface using confidence thresholds, temporal smoothing, calibration prompts and explicit preview feedback before any motion command is accepted. A stronger version could use vision only for slow supervisory tasks, such as gesture-based mode selection, target direction selection or assisted demonstration sequencing.
+
+The final area is higher-level wheel-legged locomotion. B-BOT currently demonstrates the foundation of embedded balance plus safe supervisory command handling. Further work could extend this into terrain-aware leg-length planning, repeated jump/cushioning experiments, step-over behaviours and more systematic mechanical optimisation. These additions should preserve the architectural principle used throughout this project: perception and planning may run on a host or onboard companion computer, but balance-critical feedback should remain local to the embedded controller.
 
 ---
 
