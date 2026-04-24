@@ -19,6 +19,28 @@ from .transport import TcpTransport, TransportError, UartTransport
 
 STUNT_COMMANDS = {"JUMP", "CROSSLEG,0,5"}
 
+LABEL_TEXT = {
+    "None": "No hand",
+    "Zero": "Fist / Stop",
+    "Five": "Open Palm / Forward",
+    "PointLeft": "Point Left / Turn",
+    "PointRight": "Point Right / Turn",
+    "Thumb_up": "Thumb Up / Jump",
+    "idle": "Idle",
+    "skipped": "Frame skipped",
+}
+
+COMMAND_TEXT = {
+    "None": "Robot command: DRIVE,0,0",
+    "Zero": "Robot command: DRIVE,0,0",
+    "Five": "Robot command: DRIVE,250,0",
+    "PointLeft": "Robot command: DRIVE,0,600",
+    "PointRight": "Robot command: DRIVE,0,-600",
+    "Thumb_up": "Robot command: JUMP (safety gated)",
+    "idle": "Robot command: none",
+    "skipped": "Robot command: unchanged",
+}
+
 
 class VisionBridge(Node):
     def __init__(self):
@@ -42,6 +64,10 @@ class VisionBridge(Node):
         self.declare_parameter("mediapipe_confidence", 0.6)
         self.declare_parameter("frame_skip", 2)
         self.declare_parameter("debug_window", False)
+        self.declare_parameter("presentation_window", False)
+        self.declare_parameter("presentation_fullscreen", False)
+        self.declare_parameter("presentation_mirror", False)
+        self.declare_parameter("presentation_title", "B-BOT Vision Teleoperation")
         self.declare_parameter("debug_events", False)
         self.declare_parameter("debug_event_rate_hz", 2.0)
         self.declare_parameter("stunt_armed", False)
@@ -51,6 +77,10 @@ class VisionBridge(Node):
         self.image_type = self.get_parameter("image_type").value
         self.frame_skip = max(1, int(self.get_parameter("frame_skip").value))
         self.debug_window = bool(self.get_parameter("debug_window").value)
+        self.presentation_window = bool(self.get_parameter("presentation_window").value)
+        self.presentation_fullscreen = bool(self.get_parameter("presentation_fullscreen").value)
+        self.presentation_mirror = bool(self.get_parameter("presentation_mirror").value)
+        self.presentation_title = str(self.get_parameter("presentation_title").value)
         self.debug_events = bool(self.get_parameter("debug_events").value)
         self.debug_event_period = 1.0 / max(0.1, float(self.get_parameter("debug_event_rate_hz").value))
         self.dry_run = bool(self.get_parameter("dry_run").value)
@@ -82,6 +112,10 @@ class VisionBridge(Node):
         self._last_command_time = 0.0
         self._last_debug_event_time = 0.0
         self._frame_count = 0
+        self._preview_frame_count = 0
+        self._preview_fps_start = time.monotonic()
+        self._preview_fps = 0.0
+        self._preview_window_configured = False
         self._last_face_command = "YAWRATE,0"
         self._current_gesture_drive = "DRIVE,0,0"
         self._ack_log_header_written = False
@@ -110,6 +144,19 @@ class VisionBridge(Node):
             elif param.name == "debug_events" and param.type_ == Parameter.Type.BOOL:
                 self.debug_events = bool(param.value)
                 self.get_logger().info(f"debug_events={self.debug_events}")
+            elif param.name == "debug_window" and param.type_ == Parameter.Type.BOOL:
+                self.debug_window = bool(param.value)
+                self.get_logger().info(f"debug_window={self.debug_window}")
+            elif param.name == "presentation_window" and param.type_ == Parameter.Type.BOOL:
+                self.presentation_window = bool(param.value)
+                self.get_logger().info(f"presentation_window={self.presentation_window}")
+            elif param.name == "presentation_fullscreen" and param.type_ == Parameter.Type.BOOL:
+                self.presentation_fullscreen = bool(param.value)
+                self._preview_window_configured = False
+            elif param.name == "presentation_mirror" and param.type_ == Parameter.Type.BOOL:
+                self.presentation_mirror = bool(param.value)
+            elif param.name == "presentation_title" and param.type_ == Parameter.Type.STRING:
+                self.presentation_title = str(param.value)
             elif param.name == "stunt_armed" and param.type_ == Parameter.Type.BOOL:
                 self.stunt_armed = bool(param.value)
                 self.get_logger().warning(f"stunt_armed={self.stunt_armed}")
@@ -137,16 +184,24 @@ class VisionBridge(Node):
         self._last_frame_time = time.monotonic()
         self._frame_count += 1
         if self.mode == "idle" or self._frame_count % self.frame_skip != 0:
+            if self.debug_window or self.presentation_window:
+                frame = self._decode_frame(msg)
+                self._show_debug_window(frame, label="idle" if self.mode == "idle" else "skipped")
             return
 
         frame = self._decode_frame(msg)
         event = self.runner.process(frame, self.mode)
+        debug_label = None
+        debug_stable = None
+        debug_command = None
 
         if self.mode == "gesture":
             label = event.get("label") if event else None
             stable = self.debouncer.update(label)
             self._debug_event(f"gesture label={label} stable={stable}")
             command = self.encoder.encode_gesture(stable) if stable else None
+            debug_label = label if label else "None"
+            debug_stable = stable if stable else ""
             if label is None:
                 # hand lost this frame → stop continuous teleop immediately
                 self._current_gesture_drive = "DRIVE,0,0"
@@ -155,23 +210,118 @@ class VisionBridge(Node):
             elif command:
                 # impulse command (e.g. JUMP): send once on the stabilising edge
                 self._send_guarded(command, force=True)
+            debug_command = command if command else self._current_gesture_drive
         elif self.mode == "stunt":
             self._debug_event(f"stunt event={event}")
             command = self.encoder.encode_stunt(event)
+            debug_label = event.get("kind") if event else "None"
+            debug_command = command if command else ""
             if command:
                 self._send_guarded(command)
         elif self.mode == "face":
             self._last_face_command = self.encoder.encode_face(event)
             self._debug_event(f"face event={event} command={self._last_face_command}")
+            debug_label = "face" if event else "None"
+            debug_command = self._last_face_command
 
-        if self.debug_window:
-            cv.imshow("wheeleg_vision_bridge", frame)
-            cv.waitKey(1)
+        if self.debug_window or self.presentation_window:
+            self._show_debug_window(
+                frame,
+                label=debug_label,
+                stable=debug_stable,
+                command=debug_command,
+            )
 
     def _decode_frame(self, msg):
         if self.image_type == "compressed":
             return self.bridge.compressed_imgmsg_to_cv2(msg)
         return self.bridge.imgmsg_to_cv2(msg, "bgr8")
+
+    def _show_debug_window(self, frame, label=None, stable=None, command=None):
+        self._preview_frame_count += 1
+        now = time.monotonic()
+        elapsed = now - self._preview_fps_start
+        if elapsed >= 1.0:
+            self._preview_fps = self._preview_frame_count / elapsed
+            self._preview_frame_count = 0
+            self._preview_fps_start = now
+
+        display = frame.copy()
+        if self.presentation_window and self.presentation_mirror:
+            display = cv.flip(display, 1)
+        h, w = display.shape[:2]
+        if self.presentation_window:
+            self._draw_presentation_monitor(display, label, command)
+            self._configure_preview_window()
+            cv.imshow("wheeleg_vision_bridge monitor", display)
+            key = cv.waitKey(1) & 0xFF
+            if key in (27, ord("q")):
+                cv.destroyWindow("wheeleg_vision_bridge monitor")
+                self.debug_window = False
+                self.presentation_window = False
+            return
+
+        cv.line(display, (w // 2, 0), (w // 2, h), (0, 255, 255), 1)
+        cv.line(display, (0, h // 2), (w, h // 2), (0, 255, 255), 1)
+        margin_x = int(w * 0.18)
+        margin_y = int(h * 0.14)
+        cv.rectangle(display, (margin_x, margin_y), (w - margin_x, h - margin_y), (0, 255, 0), 1)
+
+        label_text = label if label is not None else "None"
+        stable_text = stable if stable else ""
+        command_text = command if command else ""
+        lines = [
+            f"mode: {self.mode}  dry_run: {self.dry_run}  fps: {self._preview_fps:.2f}",
+            f"label: {label_text}  stable: {stable_text}",
+            f"command: {command_text}",
+            "q/esc: close monitor",
+        ]
+        y = 22
+        for line in lines:
+            cv.putText(display, line, (10, y), cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 3, cv.LINE_AA)
+            cv.putText(display, line, (10, y), cv.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1, cv.LINE_AA)
+            y += 20
+        self._configure_preview_window()
+        cv.imshow("wheeleg_vision_bridge monitor", display)
+        key = cv.waitKey(1) & 0xFF
+        if key in (27, ord("q")):
+            cv.destroyWindow("wheeleg_vision_bridge monitor")
+            self.debug_window = False
+
+    def _draw_presentation_monitor(self, display, label, command):
+        h, w = display.shape[:2]
+        label_text = LABEL_TEXT.get(label if label else "None", label if label else "No hand")
+        command_text = COMMAND_TEXT.get(label if label else "None", f"Robot command: {command}" if command else "Robot command: waiting")
+        if command and command not in command_text:
+            command_text = f"Robot command: {command}"
+
+        margin_x = int(w * 0.16)
+        margin_y = int(h * 0.12)
+        cv.rectangle(display, (margin_x, margin_y), (w - margin_x, h - margin_y), (0, 220, 0), 2)
+        self._draw_panel(display, 0, 0, w, 86, alpha=0.58)
+        self._draw_panel(display, 0, h - 136, w, 136, alpha=0.62)
+
+        cv.putText(display, self.presentation_title, (28, 54), cv.FONT_HERSHEY_SIMPLEX, 1.35, (0, 0, 0), 5, cv.LINE_AA)
+        cv.putText(display, self.presentation_title, (28, 54), cv.FONT_HERSHEY_SIMPLEX, 1.35, (255, 255, 255), 2, cv.LINE_AA)
+        cv.putText(display, label_text, (28, h - 78), cv.FONT_HERSHEY_SIMPLEX, 1.45, (0, 0, 0), 5, cv.LINE_AA)
+        cv.putText(display, label_text, (28, h - 78), cv.FONT_HERSHEY_SIMPLEX, 1.45, (255, 255, 255), 2, cv.LINE_AA)
+        cv.putText(display, command_text, (30, h - 30), cv.FONT_HERSHEY_SIMPLEX, 0.78, (0, 0, 0), 4, cv.LINE_AA)
+        cv.putText(display, command_text, (30, h - 30), cv.FONT_HERSHEY_SIMPLEX, 0.78, (235, 255, 235), 2, cv.LINE_AA)
+        cv.putText(display, f"{self._preview_fps:.1f} FPS", (w - 130, 34), cv.FONT_HERSHEY_SIMPLEX, 0.58, (0, 0, 0), 3, cv.LINE_AA)
+        cv.putText(display, f"{self._preview_fps:.1f} FPS", (w - 130, 34), cv.FONT_HERSHEY_SIMPLEX, 0.58, (255, 255, 255), 1, cv.LINE_AA)
+
+    def _draw_panel(self, frame, x, y, w, h, alpha):
+        overlay = frame.copy()
+        cv.rectangle(overlay, (x, y), (x + w, y + h), (20, 24, 28), -1)
+        cv.addWeighted(overlay, alpha, frame, 1.0 - alpha, 0, frame)
+
+    def _configure_preview_window(self):
+        if self._preview_window_configured:
+            return
+        cv.namedWindow("wheeleg_vision_bridge monitor", cv.WINDOW_NORMAL)
+        if self.presentation_window and self.presentation_fullscreen:
+            cv.setWindowProperty("wheeleg_vision_bridge monitor", cv.WND_PROP_FULLSCREEN, cv.WINDOW_FULLSCREEN)
+        self._preview_window_configured = True
 
     def _timer_cb(self):
         now = time.monotonic()
@@ -274,6 +424,7 @@ def main():
     except KeyboardInterrupt:
         pass
     finally:
+        cv.destroyAllWindows()
         node.transport.close()
         node.destroy_node()
         rclpy.shutdown()

@@ -2,7 +2,7 @@
 
 These files are layout and analysis placeholders only.
 
-Do not move any value from a `provisional_*.csv` file into the final report unless it has been replaced by measured data.
+Do not move any value from a `provisional_*.csv` or `synthetic_*.csv` file into the final report unless it has been replaced by measured data.
 
 Required replacement rule:
 
@@ -15,5 +15,5 @@ Required replacement rule:
 Final check:
 
 ```bash
-rg "provisional=true|synthetic_planning_placeholder_not_measured|PROVISIONAL" Report
+rg "provisional=true|provisional=True|synthetic_planning_placeholder_not_measured|PROVISIONAL" Report
 ```

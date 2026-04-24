@@ -1,0 +1,7 @@
+actual_gesture,STOP_OR_NONE,FORWARD,LEFT,RIGHT,JUMP,OTHER_FALSE
+NoHand,1,0,0,0,0,0
+Zero,1,0,0,0,0,0
+Five,0,1,0,0,0,0
+PointLeft,0,0,1,0,0,0
+PointRight,0,0,0,1,0,0
+Thumb_up,0,0,0,0,1,0

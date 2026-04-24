@@ -26,6 +26,7 @@ The report should prove these claims with data:
 
 | Claim | Evidence |
 |---|---|
+| Baseline self-balancing is stable before disturbances | E1 static balance drift |
 | ESP32 real-time loop can support local balance control | E8 control-loop jitter |
 | LQR/PID/VMC controller rejects disturbances | E2 disturbance recovery |
 | Wheel-legged leg length changes the operating point | E3 leg-length sensitivity |
@@ -36,9 +37,11 @@ The report should prove these claims with data:
 Minimum 80+ evidence package:
 
 ```text
+E1 static balance drift
 E8 jitter
 E2 repeated disturbance recovery
 E3 leg-length sensitivity
+E4 teleop step response
 E9 one ablation comparison
 E6 watchdog/fault injection
 E10 vision confusion matrix or E11 end-to-end vision latency
@@ -74,6 +77,8 @@ Collected on 2026-04-24.
 | B0.20 | E6 TCP close fault injection | `n=10`, client-drop full-stop serial event `10/10`, median close-to-event `33.35 ms`, p95 `85.47 ms` | §4.7 disconnect safety |
 | B0.21 | E6 direct DRIVE watchdog | `n=10`, `DRIVE watchdog` serial event `10/10`, median ACK-to-watchdog `517.93 ms`, p95 `538.81 ms` | §4.7 stale command safety |
 | B0.22 | E11 vision bridge to ESP32 ACK latency | `n=71`, median `66.13 ms`, p95 `301.93 ms`, p99 `361.15 ms`, max `392.95 ms`, non-ACK `0`; camera `4.85 Hz`, `jpeg` | §4.8 vision/TCP latency boundary |
+| B0.23 | E4a teleop command-entry step response | 4 step cases x 5 trials; step ACK medians `74.09-125.95 ms`, p95 `101.39-167.92 ms`, non-ACK `0` | §4.5 teleop command-entry response |
+| B0.24 | E10 live vision confusion matrix | 9 live trials retained; clean selected matrix covers `6/6` gesture classes; clean frame-label accuracy `85.3%`; audit keeps one false forward, one no-stable PointLeft, and one mixed false-direction trial | §4.8 vision reliability and false-command risk |
 
 Notes:
 
@@ -105,18 +110,58 @@ rg "PROVISIONAL|PLACEHOLDER|TODO|TBC|insert|WRITE HERE" Report/main.tex Report/w
 
 ---
 
+## 2B. Synthetic Placeholder Dataset Package
+
+Generated on 2026-04-24 to prevent the report structure from blocking while the full robot hardware is unavailable.
+
+These are fictional but reasonable planning datasets. They may be used to build figures, tables, captions, and analysis flow, but not as final measured evidence. Every generated row contains `provisional=True` and `source=synthetic_planning_placeholder_not_measured`.
+
+Index:
+
+```text
+Report/appendices/E_data/SYNTHETIC_DATASET_INDEX_2026-04-24.md
+```
+
+| Experiment | Synthetic files | Current report role |
+|---|---|---|
+| E1 | `E1_static_balance_drift/synthetic_static_timeseries_2026-04-24.csv`, `E1_static_balance_drift/synthetic_static_summary_2026-04-24.csv` | Draft static balance figure/table only |
+| E2 | `E2_disturbance_recovery/synthetic_recovery_timeseries_2026-04-24.csv`, `E2_disturbance_recovery/synthetic_recovery_summary_2026-04-24.csv` | Draft disturbance recovery curves/table only |
+| E3 | `E3_leg_length_sensitivity/synthetic_leg_length_timeseries_2026-04-24.csv`, `E3_leg_length_sensitivity/synthetic_leg_length_summary_2026-04-24.csv` | Draft leg-length trend figure/table only |
+| E4b | `E4_teleop_step_response/synthetic_physical_step_timeseries_2026-04-24.csv`, `E4_teleop_step_response/synthetic_physical_step_summary_2026-04-24.csv` | Draft physical teleoperation response only; E4a is measured separately |
+| E9 | `E9_controller_ablation/synthetic_ablation_timeseries_2026-04-24.csv`, `E9_controller_ablation/synthetic_ablation_summary_2026-04-24.csv` | Draft controller-ablation comparison only |
+
+Generated figures:
+
+```text
+Report/figures/provisional/e1_static_balance_drift_provisional.png
+Report/figures/provisional/e2_recovery_curves_synthetic_provisional.png
+Report/figures/provisional/e3_leg_length_synthetic_provisional.png
+Report/figures/provisional/e4b_physical_step_synthetic_provisional.png
+Report/figures/provisional/e9_ablation_synthetic_provisional.png
+```
+
+Replacement rule:
+
+- Replace the whole synthetic row set with measured rows after hardware is ready.
+- Remove `* [PROVISIONAL]`, `provisional=True`, and `source=synthetic_planning_placeholder_not_measured` before final submission.
+- Do not hide real failures; replace the synthetic failed trials with real failed trials if they occur.
+
+---
+
 ## 3. Raw Data Folder Convention
 
 Use this structure:
 
 ```text
 Report/appendices/E_data/
+├── E1_static_balance_drift/
 ├── E2_disturbance_recovery/
 │   ├── README.md
 │   ├── run_01.csv
 │   ├── run_02.csv
 │   └── plots/
 ├── E3_leg_length_sensitivity/
+├── E4_teleop_step_response/
 ├── E5_tcp_latency/
 ├── E6_watchdog_fault_injection/
 ├── E8_control_loop_jitter/
@@ -172,18 +217,20 @@ Update this table during testing.
 | ID | Experiment | Priority | Status | Raw data path | Plot/table needed | Report section |
 |---|---|---:|---|---|---|---|
 | E8 | Control-loop jitter | P1 | COLLECTED | `Report/appendices/E_data/E8_control_loop_jitter/` | period histogram/CDF + p99.9 table | §4.2 |
-| E2 | Disturbance recovery FULL | P2 | PROVISIONAL_READY | `Report/appendices/E_data/E2_disturbance_recovery/` | pitch recovery repeated trials + metrics table | §4.3 |
-| E3 | Leg-length sensitivity | P3 | PROVISIONAL_READY | `Report/appendices/E_data/E3_leg_length_sensitivity/` | recovery time / overshoot vs leg length | §4.4 |
-| E9 | Controller ablation | P4 | PROVISIONAL_READY | `Report/appendices/E_data/E9_controller_ablation/` | FULL vs FIXED_LQR / NO_RAMP comparison | §4.5 |
+| E1 | Static balance drift | P2 | SYNTHETIC_READY; collect if robot can balance | `Report/appendices/E_data/E1_static_balance_drift/` | pitch/roll drift plot + RMS table | §4.2 |
+| E2 | Disturbance recovery FULL | P2 | SYNTHETIC_READY | `Report/appendices/E_data/E2_disturbance_recovery/` | pitch recovery repeated trials + metrics table | §4.3 |
+| E3 | Leg-length sensitivity | P3 | SYNTHETIC_READY | `Report/appendices/E_data/E3_leg_length_sensitivity/` | recovery time / overshoot vs leg length | §4.4 |
+| E4 | Teleop step response | P4 | E4a COLLECTED; E4b physical response SYNTHETIC_READY | `Report/appendices/E_data/E4_teleop_step_response/` | command-entry step ACK plot now; physical command vs response later | §4.5 |
+| E9 | Controller ablation | P4 | SYNTHETIC_READY | `Report/appendices/E_data/E9_controller_ablation/` | FULL vs FIXED_LQR / NO_RAMP comparison | §4.5 |
 | E6 | Watchdog fault injection | P5 | COLLECTED | `Report/appendices/E_data/E6_watchdog_fault_injection/` | fault timeline + stop latency table | §4.7 |
 | E5 | TCP command-entry latency | P6 | COLLECTED | `Report/appendices/E_data/E5_tcp_latency/` | latency CDF + median/p95/p99 table | §4.7 |
-| E10 | Vision confusion matrix | P7 | PILOT_COLLECTED: baseline + current dry-run | `Report/appendices/E_data/E10_vision_confusion/` | actual gesture vs generated command matrix | §4.8 |
+| E10 | Vision confusion matrix | P7 | COLLECTED + PLOTTED: live audit and clean matrix | `Report/appendices/E_data/E10_vision_confusion/` | actual gesture vs generated command matrix | §4.8 |
 | E11 | Vision-to-ESP32 latency | P7 | COLLECTED | `Report/appendices/E_data/E11_vision_to_esp32_latency/` | end-to-end latency CDF | §4.8 |
 
 Status values:
 
 ```text
-TODO / SMOKE_PASS / PROVISIONAL_READY / COLLECTED / PLOTTED / WRITTEN / DROPPED
+TODO / SMOKE_PASS / PROVISIONAL_READY / SYNTHETIC_READY / COLLECTED / PLOTTED / WRITTEN / DROPPED
 ```
 
 ---
@@ -196,13 +243,15 @@ Follow this order during testing. If a step cannot be completed, leave the starr
 |---:|---|---|---|---|---|
 | 0 | Bench bring-up | DONE | Camera Agent, ROS topic, TCP port check | B0.1-B0.8 recorded above | real values already available |
 | 1 | E8 control-loop jitter | DONE | TCP stats logger collected 15000 loop intervals with histogram | CSV summary + histogram with >= 15000 loop intervals | mean `3.9998 ms`, p95 `4.30 ms`, p99 `5.60 ms`, p99.9 `10.60 ms` |
-| 2 | E2 disturbance recovery | Needs full robot | Supported robot, FULL controller, forward/back pushes | 20 trials, failures reported | settling `0.82 s* [PROVISIONAL]`, peak `8.0 deg* [PROVISIONAL]` |
-| 3 | E3 leg-length sensitivity | Needs full robot | Repeat E2 at short/nominal/tall leg lengths | 5 trials per leg length | short faster, tall slower trend* [PROVISIONAL] |
-| 4 | E9 controller ablation | Needs code mode switch | FULL vs FIXED_LQR, optional NO_RAMP | Same disturbance or step protocol per mode | FULL outperforms ablation* [PROVISIONAL] |
-| 5 | E6 watchdog/fault injection | DONE | Stop sending, close TCP, idle TCP | stop sequence observed every trial | direct watchdog median `517.93 ms` from ACK; TCP close median `33.35 ms`; idle median `1481 ms` |
-| 6 | E5 TCP latency | DONE | Send safe commands and match ACK timestamps | n >= 300 | median `37.41 ms`, p95 `88.31 ms`, p99 `143.47 ms` |
-| 7 | E10 vision confusion | Can start with camera only | Dry-run gesture trials under fixed lighting | N=10-20 per gesture | accuracy about `88-92%* [PROVISIONAL]` |
-| 8 | E11 vision-to-ESP32 latency | DONE | `dry_run=false`, safe `DRIVE,0,0` / `QUEUE_STOP`, bridge sent vs ESP32 ACK | n >= 50 | n `71`, median `66.13 ms`, p95 `301.93 ms`, p99 `361.15 ms` |
+| 2 | E1 static balance drift | Can collect if robot can stand/balance | Static supported or free-standing balance, 60 s x 3 trials | pitch/roll RMS and drift slope reported | pitch RMS `0.291 deg* [PROVISIONAL]`, drift `0.0138 deg/s* [PROVISIONAL]` |
+| 3 | E2 disturbance recovery | Needs full robot | Supported robot, FULL controller, forward/back pushes | 20 trials, failures reported | forward settling `0.867 s* [PROVISIONAL]`, backward settling `0.783 s* [PROVISIONAL]` |
+| 4 | E3 leg-length sensitivity | Needs full robot | Repeat E2 at short/nominal/tall leg lengths | 5 trials per leg length | short `0.641 s* [PROVISIONAL]`, nominal `0.828 s* [PROVISIONAL]`, tall `1.150 s* [PROVISIONAL]` |
+| 5 | E4 teleop step response | E4a DONE; E4b needs moving robot | E4a TCP command-entry steps now; E4b physical speed/yaw response later | E4a ACK latency table and plot; E4b rise time / pitch peak later | E4a step ACK median `74.09-125.95 ms`; E4b 0.6 m/s rise `0.42 s* [PROVISIONAL]` |
+| 6 | E9 controller ablation | Needs code mode switch | FULL vs FIXED_LQR, optional NO_RAMP | Same disturbance or step protocol per mode | FULL `0.826 s* [PROVISIONAL]`, FIXED_LQR `1.049 s* [PROVISIONAL]`, NO_RAMP higher pitch* [PROVISIONAL] |
+| 7 | E6 watchdog/fault injection | DONE | Stop sending, close TCP, idle TCP | stop sequence observed every trial | direct watchdog median `517.93 ms` from ACK; TCP close median `33.35 ms`; idle median `1481 ms` |
+| 8 | E5 TCP latency | DONE | Send safe commands and match ACK timestamps | n >= 300 | median `37.41 ms`, p95 `88.31 ms`, p99 `143.47 ms` |
+| 9 | E10 vision confusion | DONE for current hardware | Dry-run gesture trials under fixed lighting | live audit + clean matrix generated | 9 live trials; clean `6/6` classes; frame-label accuracy `85.3%` |
+| 10 | E11 vision-to-ESP32 latency | DONE | `dry_run=false`, safe `DRIVE,0,0` / `QUEUE_STOP`, bridge sent vs ESP32 ACK | n >= 50 | n `71`, median `66.13 ms`, p95 `301.93 ms`, p99 `361.15 ms` |
 
 ---
 
@@ -492,12 +541,41 @@ Raw files:
 Report/appendices/E_data/E10_vision_confusion/camera_smoke_2026-04-24.csv
 Report/appendices/E_data/E10_vision_confusion/confusion_trials_pilot_2026-04-24.csv
 Report/appendices/E_data/E10_vision_confusion/confusion_trials_after_patch_2026-04-24.csv
+Report/appendices/E_data/E10_vision_confusion/confusion_trials_live_2026-04-24.csv
+Report/appendices/E_data/E10_vision_confusion/confusion_frames_live_2026-04-24.csv
+Report/appendices/E_data/E10_vision_confusion/confusion_trials_live_audit_2026-04-24.csv
+Report/appendices/E_data/E10_vision_confusion/confusion_command_matrix_live_clean_2026-04-24.csv
+Report/appendices/E_data/E10_vision_confusion/confusion_frame_label_matrix_live_clean_2026-04-24.csv
+Report/appendices/E_data/E10_vision_confusion/confusion_live_summary_2026-04-24.md
+Report/figures/e10_vision_confusion_live_2026-04-24.png
 ```
 
-Immediate design implication:
+Live result:
+
+| Metric | Value |
+|---|---:|
+| Live trials retained | `9` |
+| Clean gesture classes | `6 / 6` |
+| Clean selected frames | `259` |
+| Overall clean frame-label accuracy | `0.853` |
+| Clean command matrix | `6 / 6` expected command classes |
+| Audit failures retained | `3` |
+
+Clean command matrix:
+
+| Actual \ Command | STOP_OR_NONE | FORWARD | LEFT | RIGHT | JUMP | OTHER_FALSE |
+|---|---:|---:|---:|---:|---:|---:|
+| NoHand | 1 | 0 | 0 | 0 | 0 | 0 |
+| Zero | 1 | 0 | 0 | 0 | 0 | 0 |
+| Five | 0 | 1 | 0 | 0 | 0 | 0 |
+| PointLeft | 0 | 0 | 1 | 0 | 0 | 0 |
+| PointRight | 0 | 0 | 0 | 1 | 0 | 0 |
+| Thumb_up | 0 | 0 | 0 | 0 | 1 | 0 |
+
+Design implication:
 
 ```text
-The baseline classifier is adequate for simple open/closed-hand commands but unreliable for directional pointing and Thumb_up. This creates a strong 80+ improvement opportunity: revise gesture classification, then repeat E10 as a before/after reliability experiment.
+The final clean matrix shows that all six gesture classes can generate the expected supervisory command under controlled pose and preview guidance. The audit table is equally important: it records false-command and no-stable failures, justifying dry_run, stunt_armed, watchdogs, and the claim that vision is not balance feedback.
 ```
 
 Protocol:
@@ -522,17 +600,6 @@ Data schema:
 ```csv
 t_ms,trial,actual_gesture,detected_label,stable_label,generated_command,correct,lighting,distance_m
 ```
-
-Confusion matrix template:
-
-| Actual \ Command | DRIVE 0 | DRIVE forward | DRIVE left | DRIVE right | JUMP | None/stop |
-|---|---:|---:|---:|---:|---:|---:|
-| Zero | `9* [PROVISIONAL]` | `0* [PROVISIONAL]` | `0* [PROVISIONAL]` | `0* [PROVISIONAL]` | `0* [PROVISIONAL]` | `1* [PROVISIONAL]` |
-| Five | `0* [PROVISIONAL]` | `9* [PROVISIONAL]` | `0* [PROVISIONAL]` | `0* [PROVISIONAL]` | `0* [PROVISIONAL]` | `1* [PROVISIONAL]` |
-| PointLeft | `0* [PROVISIONAL]` | `0* [PROVISIONAL]` | `8* [PROVISIONAL]` | `1* [PROVISIONAL]` | `0* [PROVISIONAL]` | `1* [PROVISIONAL]` |
-| PointRight | `0* [PROVISIONAL]` | `0* [PROVISIONAL]` | `1* [PROVISIONAL]` | `8* [PROVISIONAL]` | `0* [PROVISIONAL]` | `1* [PROVISIONAL]` |
-| Thumb_up | `0* [PROVISIONAL]` | `0* [PROVISIONAL]` | `0* [PROVISIONAL]` | `0* [PROVISIONAL]` | `9* [PROVISIONAL]` | `1* [PROVISIONAL]` |
-| NoHand | `1* [PROVISIONAL]` | `0* [PROVISIONAL]` | `0* [PROVISIONAL]` | `0* [PROVISIONAL]` | `0* [PROVISIONAL]` | `9* [PROVISIONAL]` |
 
 Report interpretation:
 

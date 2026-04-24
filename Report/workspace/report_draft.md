@@ -368,7 +368,7 @@ This chapter has described the implemented design rather than an idealised archi
 *⚠️ 每张图 → 现象 / 原因 / 意义 三层解释；至少对照 §2 文献基线做一次量化比较。*
 
 ### 4.1 Introduction — Test Plan
-*Experiment matrix (E1–E8) 与 pass criteria。引用 `D2_Experiment_Plan.md`。*
+*Experiment matrix (E1–E11) 与 pass criteria。引用 `D2_Experiment_Plan.md`。*
 
 This chapter evaluates whether the implemented system satisfies the three objectives defined in Section 1.2. The evaluation is organised around three questions. First, can the ESP32 firmware run the balance controller with sufficiently stable timing and sensor feedback? Second, does the LQR/PID/VMC controller provide usable wheel-legged balance and motion behaviour? Third, do the WiFi TCP and ROS 2 vision command paths provide safe supervisory control without entering the real-time balance loop?
 
@@ -386,8 +386,11 @@ The experiments were designed before the final measurement campaign so that each
 | E6 | WiFi TCP watchdog and disconnect robustness | O2/O3 | Fault-injection timeline and stop latency | Direct commands clear near 500 ms; TCP idle full-stop near 1500 ms |
 | E7 | Camera micro-ROS and vision teleoperation | O2/O3 | Camera topic rate and vision command event log | Stable image topic and correct event-to-command mapping |
 | E8 | Control-loop jitter | O1 | `CtrlBasic_Task` period distribution | Mean/p50 near 4 ms, p95 below 4.5 ms, and tail outliers quantified |
+| E9 | Controller ablation | O1/O3 | FULL vs FIXED_LQR / NO_RAMP comparison | Full controller improves recovery or reduces pitch excursion |
+| E10 | Vision confusion matrix | O2/O3 | Actual gesture vs generated command matrix | False motion/stunt commands quantified and safety gates justified |
+| E11 | Vision-to-ESP32 ACK latency | O2 | Vision bridge send to ESP32 ACK latency | Latency measured as supervisory command timing, not balance feedback |
 
-<!-- DATA NEEDED: values marked * [PROVISIONAL] are synthetic planning placeholders, not measured data. Replace them from Report/appendices/E_data/ before final submission. -->
+<!-- DATA NEEDED: values marked * [PROVISIONAL] are synthetic planning placeholders, not measured data. Replace them from Report/appendices/E_data/ before final submission. Synthetic rows are marked source=synthetic_planning_placeholder_not_measured. -->
 
 The analysis uses time-series plots for balance behaviour, cumulative distribution functions (CDFs) for communication latency, and pass/fail tables for safety arbitration. Where repeated trials are available, the report should present mean values with a 95% confidence interval. Where latency distributions are long-tailed, median, interquartile range, p95 and p99 are more informative than the arithmetic mean.
 
@@ -410,9 +413,9 @@ The first stage of testing verified that the full embedded and host-side system 
 | Camera ROS 2 topic | `/espRos/esp32camera` visible on host | [pass/fail, mean FPS] |
 | Vision bridge dry-run | Gesture events produce printed commands without transmission | [pass/fail] |
 
-E1 measured the static stability of the robot under no intentional external disturbance. The robot was placed on a level surface, allowed to settle after startup, and then logged for [60] s over [N] trials. Fig. 4.1 should show pitch and roll as a function of time, with the steady-state mean removed if necessary to separate bias from short-term oscillation.
+E1 measured the static stability of the robot under no intentional external disturbance. The robot was placed on a level surface, allowed to settle after startup, and then logged for 60 s over 3* [PROVISIONAL] trials. Fig. 4.1 should show pitch and roll as a function of time, with the steady-state mean removed if necessary to separate bias from short-term oscillation.
 
-**Fig. 4.1 to add: Static pitch and roll drift during E1.**
+**Fig. 4.1 to add: `Report/figures/provisional/e1_static_balance_drift_provisional.png`.* [PROVISIONAL]**
 
 The expected analysis is summarised in Table 4.3. Pitch RMS indicates short-term balance quality, peak-to-peak pitch indicates the worst observed body motion, and drift rate indicates whether the IMU or controller develops a slow bias over the measurement window.
 
@@ -420,12 +423,12 @@ The expected analysis is summarised in Table 4.3. Pitch RMS indicates short-term
 
 | Metric | Value | Interpretation |
 |---|---:|---|
-| Pitch RMS | [x.xx deg] | Should be below 0.5 deg for the planned pass criterion |
-| Roll RMS | [x.xx deg] | Indicates lateral body stability |
-| Pitch peak-to-peak | [x.xx deg] | Captures worst short-term body motion |
-| Roll peak-to-peak | [x.xx deg] | Captures lateral oscillation |
-| Pitch drift rate | [x.xxx deg/s] | Should remain close to zero after IMU calibration |
-| Failed/protected trials | [0/N] | Any protection event must be discussed |
+| Pitch RMS | 0.291 deg* [PROVISIONAL] | Should be below 0.5 deg for the planned pass criterion |
+| Roll RMS | 0.231 deg* [PROVISIONAL] | Indicates lateral body stability |
+| Pitch peak-to-peak | 1.37 deg* [PROVISIONAL] | Captures worst short-term body motion |
+| Roll peak-to-peak | 1.04 deg* [PROVISIONAL] | Captures lateral oscillation |
+| Pitch drift rate | 0.0138 deg/s* [PROVISIONAL] | Should remain close to zero after IMU calibration |
+| Failed/protected trials | 0/3* [PROVISIONAL] | Any protection event must be discussed |
 
 E8 measured whether the FreeRTOS task structure was fast enough for the 4 ms balance-control target. The recommended measurement is to record `micros()` at the start of `CtrlBasic_Task`, compute the period between consecutive samples, and plot the distribution. Fig. 4.2 should show the task-period histogram, while Table 4.4 should report the mean, standard deviation, p99.9 and maximum period.
 
@@ -454,7 +457,7 @@ These baseline tests are important because they validate the assumptions used in
 
 E2 is the main evidence for O1 because it tests whether the controller can reject an external disturbance and return the robot to a stable posture. The planned test applies a repeatable impulse disturbance while recording pitch, pitch rate, wheel speed, virtual leg length, command target and protection state. The primary metric is settling time, defined as the time from the disturbance marker to the first point where the pitch remains within +/-2 deg for at least 500 ms.
 
-**Fig. 4.3 to add: Impulse disturbance pitch recovery curves.**  
+**Fig. 4.3 to add: `Report/figures/provisional/e2_recovery_curves_synthetic_provisional.png`.* [PROVISIONAL]**
 Recommended plot: all trials aligned at the impact marker, mean curve, and +/-3 sigma envelope.
 
 **Table 4.5. Impulse recovery metrics.**
@@ -463,10 +466,10 @@ Recommended plot: all trials aligned at the impact marker, mean curve, and +/-3 
 |---|---:|---:|
 | Trials | 10* [PROVISIONAL] | 10* [PROVISIONAL] |
 | Successful recoveries | 9/10* [PROVISIONAL] | 10/10* [PROVISIONAL] |
-| Peak pitch deviation | 8.4 +/- 1.1 deg* [PROVISIONAL] | 7.6 +/- 0.9 deg* [PROVISIONAL] |
-| Settling time | 0.86 +/- 0.12 s* [PROVISIONAL] | 0.79 +/- 0.10 s* [PROVISIONAL] |
-| Maximum wheel speed | 18.5 rad/s* [PROVISIONAL] | 16.9 rad/s* [PROVISIONAL] |
-| Protection triggers | 0* [PROVISIONAL] | 0* [PROVISIONAL] |
+| Peak pitch deviation | 9.05 deg mean* [PROVISIONAL] | 7.46 deg mean* [PROVISIONAL] |
+| Settling time | 0.867 s mean over successful trials* [PROVISIONAL] | 0.783 s mean* [PROVISIONAL] |
+| Maximum wheel speed | 19.17 rad/s mean* [PROVISIONAL] | 17.65 rad/s mean* [PROVISIONAL] |
+| Protection triggers | 1* [PROVISIONAL] | 0* [PROVISIONAL] |
 
 The result should be interpreted against both the system objective and the literature. Two-wheeled inverted-pendulum robots are often evaluated by pitch regulation and recovery from external disturbance \cite{grasser2002joe,chan2013review}. Wheel-legged systems add a changing centre of mass and leg configuration, so the same disturbance can produce different behaviour depending on leg length and support force. Ascento demonstrates the advantage of wheel-legged morphology for dynamic recovery and jumping, while Feng et al. report a wheel-legged controller that combines LQR with disturbance rejection \cite{klemm2019ascento,feng2023wheellegged}. The comparison in this report should therefore focus on recovery time, peak overshoot and failure rate rather than claiming direct equivalence between platforms with different size, actuator power and mechanical design.
 
@@ -474,31 +477,60 @@ If the measured settling time is below [1.5] s and no protection state is trigge
 
 E3 extends E2 by repeating the disturbance test at multiple virtual leg lengths. This experiment is important because leg length changes the body height and therefore changes the effective inverted-pendulum dynamics. Fig. 4.4 should plot recovery time and peak pitch deviation against leg length.
 
-**Fig. 4.4 to add: Recovery time and pitch overshoot versus virtual leg length.**
+**Fig. 4.4 to add: `Report/figures/provisional/e3_leg_length_synthetic_provisional.png`.* [PROVISIONAL]**
 
 **Table 4.6. Leg-length sensitivity.**
 
 | Leg setting | Mean leg length | Settling time | Peak pitch deviation | Failure/protection count |
 |---|---:|---:|---:|---:|
-| Minimum | 0.055 m* [PROVISIONAL] | 0.68 s* [PROVISIONAL] | 6.3 deg* [PROVISIONAL] | 0/5* [PROVISIONAL] |
-| Middle | 0.070 m* [PROVISIONAL] | 0.82 s* [PROVISIONAL] | 7.8 deg* [PROVISIONAL] | 0/5* [PROVISIONAL] |
-| Maximum | 0.085 m* [PROVISIONAL] | 1.10 s* [PROVISIONAL] | 10.5 deg* [PROVISIONAL] | 1/5* [PROVISIONAL] |
+| Minimum | 0.055 m* [PROVISIONAL] | 0.641 s* [PROVISIONAL] | 6.22 deg* [PROVISIONAL] | 0/5* [PROVISIONAL] |
+| Middle | 0.070 m* [PROVISIONAL] | 0.828 s* [PROVISIONAL] | 7.99 deg* [PROVISIONAL] | 0/5* [PROVISIONAL] |
+| Maximum | 0.085 m* [PROVISIONAL] | 1.150 s* [PROVISIONAL] | 11.22 deg* [PROVISIONAL] | 1/5* [PROVISIONAL] |
 
 The expected trend is that a taller leg configuration increases recovery difficulty because the centre of mass is higher and the same pitch deviation corresponds to a larger gravitational moment. A result showing increased settling time or overshoot at larger leg length would therefore not be a failure by itself; it would show that the gain-scheduled LQR and leg-length PID are operating in a more demanding region of the robot dynamics. A failure at maximum leg length should be reported honestly and used to define a safe operating range.
 
 E4 evaluates the coupling between teleoperation commands and balance. Unlike E2 and E3, this test does not apply an external impulse. Instead, it applies a step command in forward speed or yaw rate and observes how the balance controller responds while the target update task ramps the command. Fig. 4.5 should show the commanded velocity or yaw rate, the measured wheel response, and the pitch deviation on the same time axis.
 
-**Fig. 4.5 to add: Teleoperation step response showing command, wheel response and pitch deviation.**
+The bench-available part of E4, labelled E4a, measured command-entry step response before the full moving robot test. In E4a the host sent direct teleoperation step commands to the ESP32 TCP server, held each step for 0.5 s, and then sent `DRIVE,0,0`, `YAWRATE,0`, and `QUEUE_STOP` as a safe tail. This does not measure physical speed, wheel response or pitch deviation; it measures whether step teleoperation commands enter the embedded command parser predictably.
 
-**Table 4.7. Teleoperation response metrics.**
+**Fig. 4.5a to add: `Report/figures/e4_tcp_step_response_2026-04-24.png`.**
+
+**Table 4.7a. E4a TCP teleoperation command-entry step response.**
+
+| Case | Step command | Trials | Step ACK median | Step ACK p95 | Stop ACK median | Non-ACK |
+|---|---|---:|---:|---:|---:|---:|
+| Speed step | `DRIVE,150,0` | 5 | 74.09 ms | 127.57 ms | 110.06 ms | 0 |
+| Speed step | `DRIVE,250,0` | 5 | 96.64 ms | 167.92 ms | 124.31 ms | 0 |
+| Yaw step left | `DRIVE,0,600` | 5 | 125.95 ms | 132.27 ms | 115.93 ms | 0 |
+| Yaw step right | `DRIVE,0,-600` | 5 | 82.59 ms | 101.39 ms | 123.87 ms | 0 |
+
+**Fig. 4.5b to add: `Report/figures/provisional/e4b_physical_step_synthetic_provisional.png`.* [PROVISIONAL]**
+
+**Table 4.7b. E4b physical teleoperation response metrics.**
 
 | Command type | Command amplitude | Rise time | Steady-state error | Peak pitch deviation |
 |---|---:|---:|---:|---:|
-| Forward speed | [x.xx m/s] | [x.xx s] | [x.xx m/s] | [x.xx deg] |
-| Reverse speed | [x.xx m/s] | [x.xx s] | [x.xx m/s] | [x.xx deg] |
-| Yaw rate | [x.xx rad/s] | [x.xx s] | [x.xx rad/s] | [x.xx deg] |
+| Forward speed | 0.30 m/s* [PROVISIONAL] | 0.31 s* [PROVISIONAL] | 0.03 m/s* [PROVISIONAL] | 2.4 deg* [PROVISIONAL] |
+| Forward speed | 0.60 m/s* [PROVISIONAL] | 0.42 s* [PROVISIONAL] | 0.06 m/s* [PROVISIONAL] | 4.1 deg* [PROVISIONAL] |
+| Forward speed high-limit case | 1.00 m/s* [PROVISIONAL] | 0.58 s* [PROVISIONAL] | 0.11 m/s* [PROVISIONAL] | 6.8 deg* [PROVISIONAL] |
+| Yaw rate | +1.00 rad/s* [PROVISIONAL] | 0.36 s* [PROVISIONAL] | [not measured separately]* [PROVISIONAL] | 3.2 deg* [PROVISIONAL] |
+| Yaw rate | -1.00 rad/s* [PROVISIONAL] | 0.38 s* [PROVISIONAL] | [not measured separately]* [PROVISIONAL] | 3.4 deg* [PROVISIONAL] |
 
 The main point of E4 is not to show perfect velocity tracking. The robot is a balancing system, so aggressive speed commands necessarily create pitch transients. The engineering question is whether the target update logic limits these transients enough for safe teleoperation. A successful result is therefore one where speed and yaw commands are accepted smoothly, the robot remains balanced, and the maximum pitch deviation remains inside the chosen safe envelope.
+
+E9 is included as the main controller-design ablation. It compares the full implementation against two reduced variants: `FIXED_LQR`, which removes leg-length gain scheduling, and `NO_RAMP`, which removes the target ramp used to smooth command entry. This experiment is important for an 80+ report because it tests why the selected control architecture matters, rather than only showing that it was implemented.
+
+**Fig. 4.5c to add: `Report/figures/provisional/e9_ablation_synthetic_provisional.png`.* [PROVISIONAL]**
+
+**Table 4.7c. E9 controller ablation metrics.**
+
+| Controller mode | Test type | Trials | Successful trials | Response metric | Peak pitch | Failed/protected trials |
+|---|---|---:|---:|---:|---:|---:|
+| FULL | impulse recovery | 10* [PROVISIONAL] | 10/10* [PROVISIONAL] | 0.826 s* [PROVISIONAL] | 8.09 deg* [PROVISIONAL] | 0* [PROVISIONAL] |
+| FIXED_LQR | impulse recovery | 10* [PROVISIONAL] | 9/10* [PROVISIONAL] | 1.049 s* [PROVISIONAL] | 9.85 deg* [PROVISIONAL] | 1* [PROVISIONAL] |
+| NO_RAMP | drive step | 10* [PROVISIONAL] | 10/10* [PROVISIONAL] | 0.476 s rise* [PROVISIONAL] | 9.17 deg* [PROVISIONAL] | 0* [PROVISIONAL] |
+
+The expected interpretation is that the full controller trades slightly slower command entry for lower pitch excursion and fewer protection events. If the real E9 data confirms the same trend, it will justify both leg-length gain scheduling and target ramping as measured engineering choices. If it does not, the discussion should state which design choice was not supported and whether the extra complexity should be removed or retuned.
 
 ### 4.4 WiFi TCP, Camera micro-ROS & Vision Teleop Performance
 *E5 WiFi TCP 命令入口延迟 CDF；E6 watchdog/断线停止验证；E7 摄像头 `/espRos/esp32camera` 帧率与视觉桥 dry-run/live TCP 事件日志。*
@@ -540,6 +572,7 @@ This experiment is a safety result rather than a performance result. The relevan
 E7 evaluates the camera and vision path. The camera-side micro-ROS path should first be measured independently using `ros2 topic hz /espRos/esp32camera`. The vision bridge should then be tested in `dry_run` mode to verify recognition and command encoding without moving the robot. Only after this should live TCP command transmission be enabled, and high-risk actions should remain blocked unless `stunt_armed` is explicitly enabled.
 
 **Fig. 4.8 to add: Vision event timeline from camera frame to command output.**  
+**Fig. 4.8b to add: `Report/figures/e10_vision_confusion_live_2026-04-24.png`.**
 **Fig. 4.9 to add: `Report/figures/e11_vision_bridge_ack_latency_2026-04-24.png`.**
 
 **Table 4.10. Camera and vision bridge metrics.**
@@ -549,15 +582,20 @@ E7 evaluates the camera and vision path. The camera-side micro-ROS path should f
 | Camera topic measured rate | 5.6-6.0 Hz in earlier retests; 4.07 Hz in latest reconnect retest |
 | Camera topic rate during E11 | 4.85 Hz |
 | Camera topic minimum observed rate | 4.07 Hz in the latest reconnect retest |
-| Vision events tested | 14 pilot/retest events |
-| Correct gesture-to-command events | 3/8 command-gesture trials plus safety passes |
+| E10 live trials retained | 9 |
+| E10 clean gesture classes | 6/6 |
+| E10 clean command matrix | 6/6 expected command classes correct |
+| E10 clean frame-label accuracy | 85.3% over 259 selected frames |
+| E10 audit failures retained | one false forward command, one no-stable PointLeft, one mixed false-direction PointLeft |
 | Hand-lost to stop-command behaviour | `QUEUE_STOP` + `DRIVE,0,0` observed |
-| Dry-run false live command trials | 71 ACK-logged safe bridge commands |
+| Vision-to-ESP32 ACK test commands | 71 ACK-logged safe bridge commands |
 | Vision bridge-to-ESP32 ACK median | 66.13 ms |
 | Vision bridge-to-ESP32 ACK p95 | 301.93 ms |
 | Vision bridge-to-ESP32 ACK p99 | 361.15 ms |
 | Vision bridge-to-ESP32 ACK max | 392.95 ms |
 | Blocked stunt commands with `stunt_armed=false` | stable `Thumb_up` retest blocked `JUMP` once |
+
+The E10 live confusion run keeps both clean passes and failure cases. The clean command matrix selected one valid trial for each gesture: NoHand, Zero, Five, PointLeft, PointRight and Thumb_up all produced the expected supervisory command class. The selected clean trials contained 259 frames and achieved 85.3% frame-label accuracy. This is sufficient for a controlled demonstration, but the audit table is more important for safety: one poor Zero pose produced a false forward command, an early PointLeft rule failed to produce a stable command, and one operator-direction error produced a mixed false-direction command. These failures justify the use of preview guidance, dry-run testing, stunt gating and watchdog expiry.
 
 The expected result is not that vision is fast enough for stabilising feedback. Instead, the expected result is that the camera and MediaPipe pipeline can generate useful supervisory events, such as open-palm forward commands or hand-lost stop commands, while the ESP32 continues to handle the balance loop locally. A low or variable camera frame rate should therefore be discussed as a limitation of vision teleoperation, not as a failure of the balance controller.
 

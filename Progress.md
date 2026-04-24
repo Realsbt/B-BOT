@@ -1355,3 +1355,205 @@
   - GitHub 上仍保留 `include/wifi_config.h`，满足项目配置文件进入 git 的要求
   - 本机编译时 `wifi_config.h` 会自动 include 本地配置文件
   - 远端仓库不会发布明文 WiFi password
+
+#### 2026-04-24 CST +0800 E10 camera preview tool
+- 背景：
+  - E10 live trial 中 `Zero` 手势被误识别为 `Five`
+  - 用户需要本机实时看到摄像头画面，以便确认手是否在画面中、姿势是否稳定
+- 新增：
+  - `host/tools/camera_preview.py`
+    - 订阅 `/espRos/esp32camera`
+    - OpenCV 本机窗口显示 camera preview
+    - overlay 中心线、绿色手势区域、FPS、frame age
+    - `--labels` 可叠加 MediaPipe gesture label
+    - `q` / `Esc` 退出，`s` 保存当前 frame
+- 推广到所有主要 camera 操作：
+  - `wheeleg_vision_bridge` 的 `debug_window` 升级为带 overlay 的 monitor
+  - `bridge.launch.py` 支持 `debug_window:=true`、`mode:=gesture`、`debug_events:=true` 等 launch 参数
+  - `collect_gesture_confusion.py` 支持 `--preview`
+  - `capture_compressed_image.py` 支持 `--preview`，窗口中按 `s` 保存 frame
+  - `host/README_vision.md` 和 E10 README 已记录 monitor workflow
+- Presentation 支持：
+  - `host/tools/camera_preview.py --presentation --fullscreen --mirror`
+    - 大字显示项目名、当前手势、对应机器人命令
+    - 适合演示给观众看，不显示过多 debug 细节
+  - `wheeleg_vision_bridge` 新增 `presentation_window`、`presentation_fullscreen`、`presentation_mirror`、`presentation_title`
+  - launch 示例：
+    - `ros2 launch wheeleg_vision_bridge bridge.launch.py mode:=gesture dry_run:=true presentation_window:=true presentation_fullscreen:=true presentation_mirror:=true`
+- 性能说明：
+  - 预览会增加 ROS subscriber、JPEG decode、OpenCV GUI、可选 MediaPipe 推理开销
+  - 适合 E10 调姿势和手势采集
+  - 不应在 E8 control-loop jitter 或 E11 latency 正式测量时开启
+- 验证：
+  - `python3 -m py_compile host/tools/camera_preview.py Report/appendices/E_data/E10_vision_confusion/collect_gesture_confusion.py` 通过
+  - 预览窗口成功运行约 3 分钟，camera topic FPS 约 `5.9-6.2 Hz`
+  - `colcon build --packages-select wheeleg_vision_bridge` 通过
+  - `ros2 launch wheeleg_vision_bridge bridge.launch.py mode:=idle debug_window:=false dry_run:=true` 短启动通过
+  - `ros2 launch wheeleg_vision_bridge bridge.launch.py --show-args` 确认 presentation launch 参数已暴露
+
+#### 2026-04-24 CST +0800 E1/E4 纳入当前实验执行表
+- 背景：
+  - 用户指出 E1 static balance drift 和 E4 teleop step response 也可以做
+  - 暂时做不了的实车数据继续允许用 starred/provisional placeholders 搭 report 结构
+- 更新：
+  - `Report/planning/Experiment_Data_Collection.md`
+    - Evidence strategy 加入 E1 和 E4
+    - Experiment Run Table 加入 E1/E4
+    - Ordered Execution Sheet 改为 E8 -> E1 -> E2 -> E3 -> E4 -> E9 -> E6 -> E5 -> E10 -> E11
+  - `Report/planning/Experimental_Design.md`
+    - 80+ 降级策略加入 E1/E4
+  - 新增 E1 provisional 数据目录：
+    - `Report/appendices/E_data/E1_static_balance_drift/README.md`
+    - `Report/appendices/E_data/E1_static_balance_drift/provisional_trials_2026-04-24.csv`
+  - 新增 E4 provisional 数据目录：
+    - `Report/appendices/E_data/E4_teleop_step_response/README.md`
+    - `Report/appendices/E_data/E4_teleop_step_response/provisional_trials_2026-04-24.csv`
+  - `Report/workspace/report_draft.md`
+    - Table 4.3 填入 E1 starred provisional static drift values
+    - Table 4.7 填入 E4 starred provisional teleop step values
+- 注意：
+  - E1/E4 CSV 目前全部标记 `provisional=true`
+  - `notes` 使用 `synthetic_planning_placeholder_not_measured`
+  - final report 前必须替换或删除这些 provisional values
+
+#### 2026-04-24 CST +0800 E4a teleop command-entry step response 实测
+- 背景：
+  - 用户指出 E4 现在可以先做
+  - 将 E4 拆成：
+    - E4a command-entry step response：现在可用 ESP32 TCP 实测
+    - E4b physical speed/pitch response：完整车体可移动后再测
+- 新增脚本：
+  - `Report/appendices/E_data/E4_teleop_step_response/collect_tcp_step_response.py`
+  - `Report/appendices/E_data/E4_teleop_step_response/plot_tcp_step_response.py`
+- 实测条件：
+  - ESP32 TCP host：`172.20.10.4:23`
+  - 每个 step case：`n=5`
+  - step hold：`0.5 s`
+  - 每次 trial 后安全收尾：
+    - `DRIVE,0,0`
+    - `YAWRATE,0`
+    - `QUEUE_STOP`
+  - 本实验只测 host -> ESP32 command parser ACK，不声称测到车体速度、pitch 或轮速响应
+- E4a 结果：
+  - `DRIVE,150,0`
+    - step ACK median `74.09 ms`
+    - p95 `127.57 ms`
+  - `DRIVE,250,0`
+    - step ACK median `96.64 ms`
+    - p95 `167.92 ms`
+  - `DRIVE,0,600`
+    - step ACK median `125.95 ms`
+    - p95 `132.27 ms`
+  - `DRIVE,0,-600`
+    - step ACK median `82.59 ms`
+    - p95 `101.39 ms`
+  - non-ACK count：`0`
+- 新增/更新文件：
+  - `Report/appendices/E_data/E4_teleop_step_response/tcp_step_response_2026-04-24.csv`
+  - `Report/appendices/E_data/E4_teleop_step_response/tcp_step_response_summary_2026-04-24.csv`
+  - `Report/figures/e4_tcp_step_response_2026-04-24.png`
+  - `Report/appendices/E_data/E4_teleop_step_response/README.md`
+  - `Report/planning/Experiment_Data_Collection.md`
+    - 新增 B0.23
+    - E4 状态改为 `E4a COLLECTED; E4b physical response PROVISIONAL_READY`
+  - `Report/workspace/report_draft.md`
+    - 增加 Table 4.7a E4a measured command-entry step response
+    - 原 physical response 表改为 Table 4.7b provisional E4b
+  - `Report/planning/Experimental_Design.md`
+    - E4 definition 拆分为 E4a command-entry 与 E4b physical response
+
+#### 2026-04-24 CST +0800 未实测实验 synthetic dataset 生成
+- 背景：
+  - 用户明确要求：暂时测不到的实验先填入 reasonable 虚构 dataset，实验记录中必须清楚标记，避免 report 写作被硬件进度卡住
+  - 这些数据只用于搭建图表、caption、analysis flow，后续实车数据到位后整体替换
+- 新增生成脚本：
+  - `Report/appendices/E_data/generate_synthetic_unmeasured_datasets.py`
+  - 固定随机种子，生成可复现 synthetic placeholders
+  - 每一行都包含：
+    - `provisional=True`
+    - `source=synthetic_planning_placeholder_not_measured`
+- 新增 synthetic dataset index：
+  - `Report/appendices/E_data/SYNTHETIC_DATASET_INDEX_2026-04-24.md`
+- 新增/更新数据文件：
+  - E1：
+    - `Report/appendices/E_data/E1_static_balance_drift/synthetic_static_timeseries_2026-04-24.csv`
+    - `Report/appendices/E_data/E1_static_balance_drift/synthetic_static_summary_2026-04-24.csv`
+    - `Report/figures/provisional/e1_static_balance_drift_provisional.png`
+  - E2：
+    - `Report/appendices/E_data/E2_disturbance_recovery/synthetic_recovery_timeseries_2026-04-24.csv`
+    - `Report/appendices/E_data/E2_disturbance_recovery/synthetic_recovery_summary_2026-04-24.csv`
+    - `Report/figures/provisional/e2_recovery_curves_synthetic_provisional.png`
+  - E3：
+    - `Report/appendices/E_data/E3_leg_length_sensitivity/synthetic_leg_length_timeseries_2026-04-24.csv`
+    - `Report/appendices/E_data/E3_leg_length_sensitivity/synthetic_leg_length_summary_2026-04-24.csv`
+    - `Report/figures/provisional/e3_leg_length_synthetic_provisional.png`
+  - E4b：
+    - `Report/appendices/E_data/E4_teleop_step_response/synthetic_physical_step_timeseries_2026-04-24.csv`
+    - `Report/appendices/E_data/E4_teleop_step_response/synthetic_physical_step_summary_2026-04-24.csv`
+    - `Report/figures/provisional/e4b_physical_step_synthetic_provisional.png`
+  - E9：
+    - `Report/appendices/E_data/E9_controller_ablation/synthetic_ablation_timeseries_2026-04-24.csv`
+    - `Report/appendices/E_data/E9_controller_ablation/synthetic_ablation_summary_2026-04-24.csv`
+    - `Report/figures/provisional/e9_ablation_synthetic_provisional.png`
+- 实验记录更新：
+  - `Report/appendices/E_data/PROVISIONAL_DATA_POLICY.md`
+    - 明确 `synthetic_*.csv` 与 `provisional_*.csv` 都不能直接进入 final report
+  - E1/E2/E3/E4/E9 README
+    - 列出 synthetic CSV 和 provisional figure
+    - 明确哪些文件是 fictional planning data
+  - `Report/planning/Experiment_Data_Collection.md`
+    - 新增 `2B. Synthetic Placeholder Dataset Package`
+    - Run table 状态更新为 `SYNTHETIC_READY`
+  - `Report/workspace/report_draft.md`
+    - Fig 4.1/4.3/4.4/4.5b/4.5c 指向 provisional figures
+    - Table 4.3/4.5/4.6/4.7b/4.7c 使用 synthetic summary values，并保留 `* [PROVISIONAL]`
+- 当前原则：
+  - 可以继续写 report，不因硬件未到位停下来
+  - final PDF 前必须用实测数据替换 synthetic rows，或删掉相关 claim
+
+#### 2026-04-24 CST +0800 E10 live vision confusion matrix 完成
+- 背景：
+  - 用户电脑重启后继续 E10
+  - micro-ROS agent 重新启动后，camera topic 恢复为 `/espRos/esp32camera`
+  - 摄像头模块 IP：`172.20.10.3`
+  - 主控 ESP32 IP：`172.20.10.4`
+  - 本机 IP：`172.20.10.2`
+- 分类器修正：
+  - `host/ros2_ws/src/wheeleg_vision_bridge/wheeleg_vision_bridge/mediapipe_runner.py`
+  - PointLeft/PointRight 的 folded-finger 条件从 `sum(fingers[2:]) <= 1` 放宽到 `<= 2`
+  - 原因：320x240 低分辨率下，MediaPipe 容易把收起的 ring/pinky 误估为伸出；horizontal index-finger geometry 更可靠
+  - 已执行：
+    - `python3 -m py_compile ...`
+    - `colcon build --packages-select wheeleg_vision_bridge`
+- E10 live trials：
+  - `live_01_nohand`：pass safety
+  - `live_02_zero`：fail false forward command，保留作风险证据
+  - `live_03_zero_centered`：pass，`DRIVE,0,0`
+  - `live_04_five_centered`：pass，`DRIVE,250,0`
+  - `live_05_pointleft_centered`：fail no stable expected label，保留作 pre-fix/pose evidence
+  - `live_06_pointleft_after_rule_patch`：mixed false-direction command；样张实际指向 image-right，保留为 operator pose / false-direction risk
+  - `live_07_pointleft_image_left_clean`：pass，`DRIVE,0,600`
+  - `live_08_pointright_image_right_clean`：pass，`DRIVE,0,-600`
+  - `live_09_thumb_up_clean`：pass，`JUMP` dry-run command
+- E10 summary：
+  - live trials retained：`9`
+  - clean gesture classes：`6/6`
+  - clean selected frames：`259`
+  - overall clean frame-label accuracy：`85.3%`
+  - clean command matrix：`6/6` expected command classes correct
+  - audit failures retained：`3`
+- 新增文件：
+  - `Report/appendices/E_data/E10_vision_confusion/summarize_live_confusion.py`
+  - `Report/appendices/E_data/E10_vision_confusion/confusion_trials_live_audit_2026-04-24.csv`
+  - `Report/appendices/E_data/E10_vision_confusion/confusion_command_matrix_live_clean_2026-04-24.csv`
+  - `Report/appendices/E_data/E10_vision_confusion/confusion_frame_label_matrix_live_clean_2026-04-24.csv`
+  - `Report/appendices/E_data/E10_vision_confusion/confusion_live_summary_2026-04-24.md`
+  - `Report/figures/e10_vision_confusion_live_2026-04-24.png`
+- 文档同步：
+  - `Report/appendices/E_data/E10_vision_confusion/README.md`
+  - `Report/planning/Experiment_Data_Collection.md`
+  - `Report/planning/Experimental_Design.md`
+  - `Report/workspace/report_draft.md`
+- 报告解释重点：
+  - clean matrix 支撑 presentation / supervisory gesture command 可行
+  - audit failures 更重要：它们支撑 vision 不能进入 4 ms balance loop，必须依赖 `dry_run`、`stunt_armed`、watchdog、preview guidance

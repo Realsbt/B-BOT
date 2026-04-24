@@ -90,7 +90,9 @@ class MediaPipeRunner:
         dy = index_tip[1] - wrist[1]
         index_extended = _dist(index_tip, index_mcp) > 1.25 * _dist(index_pip, index_mcp)
         horizontal = abs(dx) > 0.12 and abs(dx) > 1.2 * abs(dy)
-        other_fingers_mostly_folded = sum(fingers[2:]) <= 1
+        # At 320x240 the folded ring/pinky fingers are often estimated as raised.
+        # Keep the horizontal index geometry as the main pointing signal.
+        other_fingers_mostly_folded = sum(fingers[2:]) <= 2
 
         if not (index_extended and horizontal and other_fingers_mostly_folded):
             return None

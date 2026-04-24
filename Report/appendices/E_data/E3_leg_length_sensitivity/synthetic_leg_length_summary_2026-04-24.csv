@@ -1,0 +1,16 @@
+trial_id,leg_setting,leg_length_m,success,settling_time_s,peak_pitch_deg,protection_triggered,provisional,source
+e3_short_01,short,0.055,1,0.745,6.350,0,True,synthetic_planning_placeholder_not_measured
+e3_short_02,short,0.055,1,0.610,6.529,0,True,synthetic_planning_placeholder_not_measured
+e3_short_03,short,0.055,1,0.557,6.040,0,True,synthetic_planning_placeholder_not_measured
+e3_short_04,short,0.055,1,0.676,5.988,0,True,synthetic_planning_placeholder_not_measured
+e3_short_05,short,0.055,1,0.618,6.217,0,True,synthetic_planning_placeholder_not_measured
+e3_nominal_01,nominal,0.070,1,0.861,8.339,0,True,synthetic_planning_placeholder_not_measured
+e3_nominal_02,nominal,0.070,1,0.809,7.473,0,True,synthetic_planning_placeholder_not_measured
+e3_nominal_03,nominal,0.070,1,0.812,8.443,0,True,synthetic_planning_placeholder_not_measured
+e3_nominal_04,nominal,0.070,1,0.749,7.765,0,True,synthetic_planning_placeholder_not_measured
+e3_nominal_05,nominal,0.070,1,0.910,7.905,0,True,synthetic_planning_placeholder_not_measured
+e3_tall_01,tall,0.085,1,1.035,11.001,0,True,synthetic_planning_placeholder_not_measured
+e3_tall_02,tall,0.085,1,1.194,10.200,0,True,synthetic_planning_placeholder_not_measured
+e3_tall_03,tall,0.085,1,1.220,11.198,0,True,synthetic_planning_placeholder_not_measured
+e3_tall_04,tall,0.085,1,1.151,10.830,0,True,synthetic_planning_placeholder_not_measured
+e3_tall_05,tall,0.085,0,NA,12.871,1,True,synthetic_planning_placeholder_not_measured

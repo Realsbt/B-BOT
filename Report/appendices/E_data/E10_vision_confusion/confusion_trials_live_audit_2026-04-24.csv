@@ -1,0 +1,10 @@
+trial_id,actual_gesture,expected_command,frames,mode_label,correct_label_ratio,expected_command_count,wrong_command_count,primary_command,audit_status,selected_for_clean_matrix,notes
+live_01_nohand,NoHand,"DRIVE,0,0",54,None,1.000000,0,0,,pass_clean,True,No hand in frame; safety baseline.
+live_02_zero,Zero,"DRIVE,0,0",50,Five,0.000000,0,2,"DRIVE,250,0",fail_false_command,False,Closed fist / zero gesture under live E10 collection.
+live_03_zero_centered,Zero,"DRIVE,0,0",41,Zero,0.536585,1,0,"DRIVE,0,0",pass_clean,True,Closed fist zero gesture retest with centered hand and live preview.
+live_04_five_centered,Five,"DRIVE,250,0",46,Five,0.804348,1,0,"DRIVE,250,0",pass_clean,True,Open palm Five gesture with centered hand and live preview.
+live_05_pointleft_centered,PointLeft,"DRIVE,0,600",46,None,0.000000,0,0,,fail_no_stable_expected,False,Index finger pointing to image-left; other fingers folded as much as possible.
+live_06_pointleft_after_rule_patch,PointLeft,"DRIVE,0,600",36,PointLeft,0.500000,1,1,"DRIVE,0,-600",mixed_false_command,False,PointLeft retest after relaxed folded-finger rule; index points to image-left.
+live_07_pointleft_image_left_clean,PointLeft,"DRIVE,0,600",34,PointLeft,1.000000,1,0,"DRIVE,0,600",pass_clean,True,"Clean PointLeft retest: finger tip on image-left, wrist on image-right."
+live_08_pointright_image_right_clean,PointRight,"DRIVE,0,-600",36,PointRight,1.000000,1,0,"DRIVE,0,-600",pass_clean,True,"Clean PointRight test: finger tip on image-right, wrist on image-left."
+live_09_thumb_up_clean,Thumb_up,JUMP,48,Thumb_up,0.791667,2,0,JUMP,pass_clean,True,"Thumb_up test: thumb vertical upward, other fingers folded; dry-run data collection only."

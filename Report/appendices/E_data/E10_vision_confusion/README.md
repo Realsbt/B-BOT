@@ -6,7 +6,7 @@ Firmware commit: 70c3b17
 Controller mode: dry-run vision bridge, `mode=gesture`, `dry_run=true`, `debug_events=true`
 Hardware state: ESP32-CAM powered and connected to micro-ROS Agent; robot drive commands not sent because bridge was in dry-run mode.
 Environment: bench/lab setup, lighting not formally controlled, camera distance not formally measured in pilot.
-Trial list: see `confusion_trials_pilot_2026-04-24.csv`
+Trial list: see `confusion_trials_pilot_2026-04-24.csv`, `confusion_trials_after_patch_2026-04-24.csv`, and `confusion_trials_live_2026-04-24.csv`
 Safety notes: dry-run mode used; observed commands were log outputs only.
 
 Files:
@@ -14,9 +14,19 @@ Files:
 - `camera_smoke_2026-04-24.csv`
 - `confusion_trials_pilot_2026-04-24.csv`
 - `confusion_trials_after_patch_2026-04-24.csv`
+- `confusion_trials_live_2026-04-24.csv`
+- `confusion_frames_live_2026-04-24.csv`
+- `confusion_trials_live_audit_2026-04-24.csv`
+- `confusion_command_matrix_live_clean_2026-04-24.csv`
+- `confusion_frame_label_matrix_live_clean_2026-04-24.csv`
+- `confusion_live_summary_2026-04-24.md`
+- `collect_gesture_confusion.py`
+- `summarize_live_confusion.py`
 - `frame_check_2026-04-24.jpg`
 - `frame_check_five_2026-04-24.jpg`
 - `frame_check_pointleft_2026-04-24.jpg`
+- `live_*.jpg` sample frames
+- `Report/figures/e10_vision_confusion_live_2026-04-24.png`
 - `plots/`
 
 Pilot interpretation:
@@ -33,5 +43,51 @@ Patch/test notes:
 - A saved image initially showed the camera pointing at the ceiling/light, explaining the unstable first retest.
 - After physically aiming the camera at the hand, Five passed again.
 - The classifier was patched to use horizontal index-finger geometry for PointLeft/PointRight and to guard all stunt commands with `stunt_armed`.
-- PointLeft improved from no directional labels to intermittent PointLeft labels in one run, but did not reach a stable command. A later saved PointLeft frame showed a clear side-on pointing pose, yet the bridge still logged `None`, so the limitation is likely MediaPipe landmark robustness at low resolution/lighting.
+- PointLeft initially failed because the folded ring/pinky fingers were often estimated as raised at 320x240 resolution.
+- The PointLeft/PointRight rule was relaxed so the horizontal index-finger geometry is the main pointing signal.
+- After the rule change, clean PointLeft and PointRight trials passed. One mixed false-direction trial is retained because the sample image showed the operator pointing image-right during a PointLeft-labelled trial.
 - Default `debounce_frames` was changed from 5 to 3 because the camera runs at only about 6 Hz.
+
+Live E10 result:
+
+| Metric | Value |
+|---|---:|
+| Live trials recorded | 9 |
+| Clean gesture classes available | 6 / 6 |
+| Clean selected frames | 259 |
+| Overall clean frame-label accuracy | 0.853 |
+| Clean command matrix | 6 / 6 expected command classes correct |
+| Audit retained failures | 1 false forward command, 1 no-stable PointLeft, 1 mixed false-direction PointLeft |
+
+Selected clean trials:
+
+| Gesture | Trial | Frame accuracy | Primary command |
+|---|---|---:|---|
+| NoHand | `live_01_nohand` | 1.000 | None/stop |
+| Zero | `live_03_zero_centered` | 0.537 | `DRIVE,0,0` |
+| Five | `live_04_five_centered` | 0.804 | `DRIVE,250,0` |
+| PointLeft | `live_07_pointleft_image_left_clean` | 1.000 | `DRIVE,0,600` |
+| PointRight | `live_08_pointright_image_right_clean` | 1.000 | `DRIVE,0,-600` |
+| Thumb_up | `live_09_thumb_up_clean` | 0.792 | `JUMP` |
+
+Interpretation:
+
+- The clean command matrix supports using vision for presentation and supervisory commands.
+- The audit failures are important evidence that vision must remain outside the stabilising balance loop.
+- `Thumb_up` maps to `JUMP` in the encoder, but the live bridge blocks stunt commands unless `stunt_armed=true`.
+
+Live monitor workflow:
+
+- Standalone monitor:
+  - `python3 host/tools/camera_preview.py --labels --scale 2.0`
+- During E10 collection:
+  - add `--preview` to `collect_gesture_confusion.py`
+- During vision bridge dry-run/control:
+  - launch with `debug_window:=true`
+- During presentation/demo:
+  - standalone monitor: `python3 host/tools/camera_preview.py --presentation --fullscreen --mirror`
+  - bridge monitor: `ros2 launch wheeleg_vision_bridge bridge.launch.py mode:=gesture dry_run:=true presentation_window:=true presentation_fullscreen:=true presentation_mirror:=true`
+- During single-frame capture:
+  - add `--preview`, then press `s` in the window to save the frame
+
+The monitor should be enabled while adjusting pose and collecting E10 reliability data. It should be disabled during latency or real-time timing measurements because it adds an extra subscriber, JPEG decode, GUI drawing, and optional MediaPipe inference.

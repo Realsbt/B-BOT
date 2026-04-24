@@ -17,6 +17,10 @@ wheeleg_vision_bridge:
     mediapipe_confidence: 0.6
     frame_skip: 1
     debug_window: false
+    presentation_window: false
+    presentation_fullscreen: false
+    presentation_mirror: false
+    presentation_title: B-BOT Vision Teleoperation
     debug_events: false
     debug_event_rate_hz: 2.0
     # Safety gate for stunt mode: JUMP / CROSSLEG are ignored unless this is set

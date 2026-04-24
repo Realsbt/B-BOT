@@ -148,12 +148,12 @@ P7 E10 vision confusion matrix / E7 vision latency
 
 | 字段 | 内容 |
 |---|---|
-| 研究问题 | Xbox BLE 摇杆阶跃指令下，速度跟踪与平衡之间的耦合代价多大？ |
+| 研究问题 | 遥操作阶跃指令进入 ESP32 是否稳定？完整车体上速度跟踪与平衡之间的耦合代价多大？ |
 | 独立变量 | 阶跃幅度 ∈ {0.3, 0.6, 1.0 m/s}，转向 ∈ {0, ±1 rad/s} |
-| 因变量 | 速度跟踪延迟、稳态速度误差、阶跃过程 pitch 峰值偏移 |
+| 因变量 | E4a：host→ESP32 ACK latency、non-ACK count；E4b：速度跟踪延迟、稳态速度误差、阶跃过程 pitch 峰值偏移 |
 | 样本 | 每参数组合 N = 3 trials |
-| 协议 | 静止 → 摇杆突然推到目标值 → 保持 3 s → 归零 → 记录 |
-| 产出 | Fig.4.x：vx(t) 与 cmd_vx(t) 对比；Table：latency, steady-state error |
+| 协议 | E4a：发送 TCP `DRIVE` step → hold 0.5 s → safe stop；E4b：静止 → 摇杆/命令突然推到目标值 → 保持 3 s → 归零 → 记录 |
+| 产出 | E4a：command-entry ACK latency 图表；E4b：vx(t) 与 cmd_vx(t) 对比；Table：latency, steady-state error |
 | Pass 准则 | 速度响应上升时间 < 0.5 s；pitch 峰值偏移 < 5° |
 | Baseline | 两轮平衡车遥控响应典型值（`grasser2002joe`） |
 
@@ -279,6 +279,19 @@ NO_RAMP:
 t_ms, actual_gesture, detected_label, stable_label, command, dry_run, mode, lighting, distance_m
 ```
 
+Current live result on 2026-04-24:
+
+| Item | Result |
+|---|---|
+| Live trials retained | 9 |
+| Clean gesture classes | 6 / 6 |
+| Clean command matrix | 6 / 6 expected classes correct |
+| Clean selected frames | 259 |
+| Overall clean frame-label accuracy | 85.3% |
+| Audit failures retained | false forward command, no-stable PointLeft, mixed false-direction PointLeft |
+
+This is enough for the current report draft. For a stronger final report, repeat each gesture with N >= 10 after the camera mount and lighting are fixed.
+
 ---
 
 ### E11 — End-to-End Vision-to-ESP32 Latency  ⭐⭐  *(视觉链路端到端性能)*
@@ -390,8 +403,10 @@ Report/appendices/E_data/
 
 | 原计划 | 降级版 | 仍可支撑的论点 |
 |---|---|---|
+| E1 三次 60 s static balance | 单次 60 s static balance | baseline stability before dynamic tests |
 | E2 前后各 N=10 | 单方向 N=10 | full controller repeated recovery |
 | E3 三腿长每组 N=5 | short/tall 各 N=5 | leg length affects operating point |
+| E4 全速度/转向阶跃矩阵 | 0.6 m/s speed step + ±1 rad/s yaw step | teleop command response is quantified |
 | E9 三模式 ablation | FULL vs FIXED_LQR | gain scheduling matters |
 | E10 每手势 N=20 | 每手势 N=10 | vision reliability 初步评估 |
 | E11 完整端到端分解 | bridge sent → ESP32 ack latency | vision/TCP command path latency 上界 |

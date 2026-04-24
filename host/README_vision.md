@@ -117,6 +117,39 @@ The bridge starts in `idle` mode with `dry_run: true` — no commands are
 transmitted. `transport: tcp` and `tcp_host: wheeleg.local` are the current
 defaults (see `config/config.yaml`).
 
+Launch-time overrides are available for common experiment settings:
+
+```bash
+ros2 launch wheeleg_vision_bridge bridge.launch.py mode:=gesture debug_window:=true debug_events:=true
+```
+
+`debug_window:=true` opens a live monitor with camera framing guides, FPS, current
+label, stable label, and generated command. Use it while adjusting the camera or
+collecting E10 reliability data. Leave it off for latency or real-time timing
+measurements because it adds GUI and optional vision-processing load.
+
+For presentation/demo use, prefer the larger audience-facing overlay:
+
+```bash
+ros2 launch wheeleg_vision_bridge bridge.launch.py mode:=gesture dry_run:=true presentation_window:=true presentation_fullscreen:=true presentation_mirror:=true
+```
+
+This shows a cleaner monitor with the project title, recognised gesture, and
+generated robot command in large text. Set `dry_run:=false` only when the robot is
+physically safe to command.
+
+For a monitor that can run beside any camera experiment:
+
+```bash
+python3 /home/yahboom/Desktop/B-BOT/host/tools/camera_preview.py --labels --scale 2.0
+```
+
+Presentation-only standalone monitor:
+
+```bash
+python3 /home/yahboom/Desktop/B-BOT/host/tools/camera_preview.py --presentation --fullscreen --mirror
+```
+
 ### Mode switching
 
 ```bash
@@ -134,7 +167,7 @@ ros2 param set /wheeleg_vision_bridge mode idle
 | open palm (Five) | `DRIVE,250,0` |
 | point left | `DRIVE,0,600` |
 | point right | `DRIVE,0,-600` |
-| thumb up | `JUMP` (impulse, gated by `stunt_armed`? No — gesture sends JUMP directly) |
+| thumb up | `JUMP` (impulse, blocked unless `stunt_armed=true`) |
 
 Gesture DRIVE commands are re-sent at `command_rate_hz` (default 10 Hz) so the
 robot-side 500 ms watchdog is fed; losing the hand drops the target to
