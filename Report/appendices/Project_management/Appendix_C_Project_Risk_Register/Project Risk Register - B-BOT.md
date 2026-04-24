@@ -1,0 +1,32 @@
+# Appendix C: Project Risk Register
+
+**Project:** B-BOT: A WiFi-enabled self-balancing wheel-legged robot  
+**Student:** Botao Su  
+**Status:** final-report draft, updated 25 April 2026  
+
+This risk register records risks to successful project delivery. It is separate from the Health & Safety Risk Assessment in Appendix E, which covers hazards to the student and other people during practical work.
+
+The scale follows the project risk template:
+
+- Severity: L = 1, M = 2, H = 3
+- Potential: L = 1, M = 2, H = 3
+- Score = Severity x Potential
+
+| ID | Project delivery risk | Lifecycle trigger / review point | Severity | Potential | Score | Mitigation and management | Current status / evidence |
+| --- | --- | --- | --- | --- | ---: | --- | --- |
+| C1 | Final robot hardware, wiring or mechanical integration is delayed, limiting the time available for physical balance tests. | Initial proposal, post-exam restart, final April test planning. | H | M | 6 | Split work into bench-verifiable subsystems; bring up ESP32, camera and WiFi command path before full robot availability; prioritise E1-E4/E9 physical tests once hardware is available; keep provisional analysis clearly marked until replaced. | Managed but still active until final physical data replaces provisional rows. |
+| C2 | Balance tuning may remain unstable, causing protection events or failed repeated trials. | Control implementation, March test plan, final experiment matrix. | H | M | 6 | Use incremental gain changes, supported bench tests, low-energy trials, protection-state logging and repeatable pass criteria; report failed trials instead of hiding them; keep stabilising loop local to ESP32. | Partially controlled by implemented safety states and E8 timing evidence; final performance depends on measured trials. |
+| C3 | ESP32, CAN motor feedback, IMU calibration or firmware integration faults may block reliable testing. | Hardware bring-up and embedded integration phase. | H | M | 6 | Test IMU, CAN feedback, command parsing and motor output separately; use USB serial logs and PlatformIO builds; commit working firmware states; keep rollback points and record calibration assumptions. | Managed through staged bring-up and logged firmware experiments. |
+| C4 | WiFi TCP command latency, disconnection or host-side failure may affect teleoperation tests or demonstration reliability. | WiFi command integration and E5/E6/E11 tests. | M | M | 4 | Keep WiFi outside the balance loop; use ACK-based latency measurement, direct-command watchdog, TCP idle timeout and full-stop on disconnect; demonstrate safe fallback with manual or dry-run modes. | Reduced by measured E5/E6/E11 results and watchdog implementation. |
+| C5 | ROS 2 WiFi camera module or MediaPipe recognition may be unreliable because of frame rate, lighting, gesture ambiguity or framing. | Camera/vision bring-up and E10/E11 tests. | M | M | 4 | Use local preview, dry-run mode, gesture confusion matrix, command debouncing/gating and manual control fallback; treat vision as supervisory teleoperation only. | Managed by E10 live confusion data, E11 ACK latency and safety gates. |
+| C6 | Insufficient measured data may be available before writing, causing provisional or synthetic values to remain in the final submission. | Final report sprint and physical test replacement plan. | H | M | 6 | Maintain an explicit provisional-data policy; mark all synthetic rows; prioritise replacement of E1, E2, E3, E4 physical response and E9; avoid final claims based on provisional data. | Active high-priority risk; tracked in experiment data index and report draft. |
+| C7 | Scope creep from full autonomy, advanced navigation, complex jumping or companion-computer features may dilute the core contribution. | Literature review, Easter scope review, final architecture decision. | M | H | 6 | Freeze the final contribution around embedded balance, WiFi TCP safety and ROS 2 vision teleoperation; move Raspberry Pi/Jetson autonomy and advanced locomotion to future work; align all experiments to O1-O3. | Managed by revised objectives and report narrative. |
+| C8 | Loss of source code, experiment logs, figures or planning evidence may reduce traceability and require repeated work. | Throughout implementation and report writing. | H | M | 6 | Use Git/GitHub commits, maintain `Progress.md`, store raw CSV files under `Report/appendices/E_data/`, keep generated figures and document major decisions after each work session. | Managed by repository history, appendix data folders and progress log. |
+| C9 | Examination periods, vacation gaps and report-deadline pressure may reduce continuous progress and increase integration risk. | Christmas break, January exams, Easter break, final sprint. | M | H | 6 | Reconstruct and update the Gantt chart; reserve final sprint time for testing/report integration; narrow scope to measurable evidence; use weekly plan and deviation notes in Appendix B. | Managed by reconstructed Gantt and final-report work plan. |
+| C10 | Third-party code, libraries or reused reference material may not be clearly attributed, creating academic integrity or reproducibility risk. | Software evidence preparation and final report references. | H | M | 6 | Maintain repository README, source-attribution table, citations for libraries and algorithms, and clear distinction between original code, modified code and third-party components. | Still needs final Appendix F software evidence package before submission. |
+
+## Review Notes
+
+The main risk response during the project was scope control. The original proposal was broader and expected more direct ROS/micro-ROS integration with the robot controller. As the embedded balance and safety work became the dominant technical risk, the final architecture deliberately kept the ESP32 balance loop local and used ROS 2 vision only as a supervisory command source.
+
+The highest remaining delivery risk is C6: provisional physical balance and ablation data must be replaced before the final submission. The report draft currently treats communication, watchdog, loop-jitter and vision results as measured evidence, while static balance, disturbance recovery, leg-length sensitivity, physical teleoperation response and controller ablation results still require final hardware measurements.

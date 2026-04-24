@@ -111,7 +111,7 @@ Rendered version for preview/report integration:
 | 26 | 2026-03-30 to 2026-04-05 | Easter vacation | Reduced formal schedule; used time for catch-up, report planning, hardware review and software architecture consolidation. | Easter vacation. |
 | 27 | 2026-04-06 to 2026-04-12 | Easter vacation | Continued catch-up; refined final-report positioning around local embedded balance plus supervisory teleoperation; prepared for ROS/camera bring-up. | Easter vacation. |
 | 28 | 2026-04-13 to 2026-04-19 | Easter vacation / restart | Finalised plan to focus on measurable evidence; prepared experiment matrix, report outline and camera/host software route. | Easter vacation ended 2026-04-18. |
-| 29 | 2026-04-20 to 2026-04-25 | Final integration, testing and report sprint | Brought up Yahboom camera micro-ROS path; implemented ROS 2 `wheeleg_vision_bridge`; added WiFi TCP command safety; collected E4/E5/E6/E8/E10/E11 data; generated provisional datasets for missing physical tests; drafted Chapters 1-5 and references. | Reflected heavily in `Progress.md` and experiment data. |
+| 29 | 2026-04-20 to 2026-04-25 | Final integration, testing and report sprint | Brought up the ROS 2 WiFi camera module path; implemented ROS 2 `wheeleg_vision_bridge`; added WiFi TCP command safety; collected E4/E5/E6/E8/E10/E11 data; generated provisional datasets for missing physical tests; drafted Chapters 1-5 and references. | Reflected heavily in `Progress.md` and experiment data. |
 
 ## B.4 Key Schedule Deviations and Responses
 

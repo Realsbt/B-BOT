@@ -1859,3 +1859,296 @@
 - 原则：
   - 后续 Appendix E 写人身/实验安全风险。
   - Appendix C 写项目交付/进度/技术完成风险。
+
+#### 2026-04-25 CST +0800 Project management templates filled
+- 用户新增文件：
+  - `Report/appendices/Project_management/3rd Year Project Planning Template(1) (1).xlsx`
+  - `Report/appendices/Project_management/CPD-Template-2.docx`
+  - `Report/appendices/Project_management/Risk Register Template (1).docx`
+  - `Report/appendices/Project_management/CPD requirements.txt`
+- 生成 filled 版本，原模板未覆盖：
+  - `Report/appendices/Project_management/3rd Year Project Planning Template - B-BOT filled.xlsx`
+  - `Report/appendices/Project_management/CPD-Template-2 - B-BOT filled.docx`
+  - `Report/appendices/Project_management/Risk Register Template - B-BOT filled.docx`
+- Project Planning Excel:
+  - 根据 reconstructed Gantt 填入 W1-W12 项目工作。
+  - 内容覆盖 project scoping、proposal/H&S、CAD/PCB、PlatformIO/ESP32、CAN/motors/IMU、PID、ground detection、stand-up/protection、jump、BLE、calibration、UART2 command queue。
+  - 填入估计 project hours，并保留 Christmas reduced work 的低项目时长。
+- CPD template:
+  - Current/recent CPD 填入 4 项：
+    1. ESP32, FreeRTOS and PlatformIO embedded development
+    2. Wheel-legged balance control: PID, LQR, VMC and MATLAB code generation
+    3. ROS 2 WiFi camera module and MediaPipe vision teleoperation
+    4. Experimental design, data analysis, plotting and report preparation
+  - Planned/future CPD 填入 4 项：
+    1. Final physical balance experiment replacement
+    2. Risk register, H&S assessment and project-management appendix completion
+    3. Software evidence and repository audit
+    4. Onboard companion-computer architecture research
+- Risk Register:
+  - 按用户前面指出的方向，重点填入 practical work risks to the student/others。
+  - 风险包括 high-torque motors、falling self-balancing robot、battery/wiring/PCB fault、soldering burns/fumes、unexpected WiFi/BLE/vision motion、sharp parts、cable trip hazards、dynamic-test impact risk、fatigue/time pressure、data/version loss。
+  - 使用 L/M/H severity 和 potential，计算 score，并填入 mitigation measures。
+- 检查：
+  - `unzip -t` 检查 filled `.docx` 和 `.xlsx` 均通过。
+  - 已抽取生成后的 Word/Excel 表格文本确认内容已写入。
+- 注意：
+  - 初版生成时学生姓名未知，因此当时先保留姓名占位；后续已用用户提供的信息替换。
+
+#### 2026-04-25 CST +0800 Student identity placeholders updated locally
+- 用户提供：
+  - 姓名和学号，用于填入 management/report 模板。
+- 修改文件：
+  - `Report/appendices/Project_management/Risk Register Template - B-BOT filled.docx`
+  - `Report/appendices/Project_management/CPD-Template-2 - B-BOT filled.docx`
+  - `Report/main.tex`
+- 修改内容：
+  - Risk Register filled docx 的 student name 占位已替换。
+  - CPD filled docx 的 name 占位已替换。
+  - `main.tex` title page 的 identification number 占位已按学校模板说明和用户最终确认使用前 7 位 `1107124`。
+- 注意：
+  - 这些属于个人信息；如果之后 push 到 GitHub，需要确认仓库可见性和是否愿意公开这些信息。
+
+#### 2026-04-25 CST +0800 Management template name format adjusted
+- 用户要求：
+  - 姓名在 management filled templates 中使用英文格式 `Botao Su`。
+- 修改文件：
+  - `Report/appendices/Project_management/Risk Register Template - B-BOT filled.docx`
+  - `Report/appendices/Project_management/CPD-Template-2 - B-BOT filled.docx`
+- 修改内容：
+  - 将 previously filled Chinese name 替换为 `Botao Su`。
+  - `Report/main.tex` 的 identification number 保持不变。
+
+#### 2026-04-25 CST +0800 CPD template instruction rows removed
+- 用户要求：
+  - CPD 表格中 `Give the CPD activity a title...` 这一类模板说明行需要删除。
+- 修改文件：
+  - `Report/appendices/Project_management/CPD-Template-2 - B-BOT filled.docx`
+- 修改内容：
+  - 删除 current/recent CPD 表中的说明行：
+    - `Give the CPD activity a title...`
+  - 同时删除 planned/future CPD 表中的对应说明行：
+    - `Name of the CPD activity...`
+  - 保留原始模板 `CPD-Template-2.docx` 不变。
+
+#### 2026-04-25 CST +0800 ROS 2 WiFi camera module terminology standardised
+- 用户要求：
+  - 摄像头相关表述统一叫做 `ROS 2 WiFi camera module`。
+- 修改文件：
+  - `Report/workspace/report_draft.md`
+  - `Report/workspace/思路.md`
+  - `Report/planning/Project_Management_Gantt_and_Weekly_Log.md`
+  - `Report/appendices/Project_management/CPD-Template-2 - B-BOT filled.docx`
+- 修改内容：
+  - 将报告正文和管理材料中的 `Yahboom camera` / `micro-ROS camera path` 统一改为 `ROS 2 WiFi camera module`。
+  - 保留真正需要说明第三方来源、授权或 vendor 归属的 Yahboom 表述，不把来源信息抹掉。
+  - 明确系统边界：ESP32 底盘不是 micro-ROS node；micro-ROS 只用于 ROS 2 WiFi camera module 的图像进入 ROS 2 主机；机器人控制命令仍走 WiFi TCP。
+
+#### 2026-04-25 CST +0800 Project management appendix folder organised
+- 用户要求：
+  - 整理 `Report/appendices/Project_management/`。
+- 新目录结构：
+  - `00_requirements/`
+  - `Appendix_A_Preliminary_Proposal/`
+  - `Appendix_B_Project_Plan_Gantt/`
+  - `Appendix_C_Project_Risk_Register/`
+  - `Appendix_D_CPD_Log/`
+  - `Appendix_E_Health_and_Safety/`
+  - `source_templates/`
+- 当前 appendix 对应：
+  - Appendix A: proposal PDF。
+  - Appendix B: filled project planning spreadsheet；Gantt 源文件和渲染图仍保留在 `Report/planning/` 与 `Report/figures/`，避免破坏生成路径。
+  - Appendix C: project-delivery risk register 目前只有 README 占位，后续需要正式填入进度、数据、集成、scope、backup 等风险。
+  - Appendix D: filled CPD log。
+  - Appendix E: filled health and safety risk register。
+- 新增说明文件：
+  - `Report/appendices/Project_management/README.md`
+  - `Report/appendices/Project_management/Appendix_B_Project_Plan_Gantt/README.md`
+  - `Report/appendices/Project_management/Appendix_C_Project_Risk_Register/README.md`
+
+#### 2026-04-25 CST +0800 Appendix C project risk register completed as draft
+- 用户确认：
+  - 学校要求的 Risk Register 指的是项目交付/项目生命周期风险，不是 H&S 安全风险。
+- 新增/修改文件：
+  - `Report/appendices/Project_management/Appendix_C_Project_Risk_Register/Project Risk Register - B-BOT.md`
+  - `Report/appendices/Project_management/Appendix_C_Project_Risk_Register/Project Risk Register - B-BOT filled.docx`
+  - `Report/appendices/Project_management/Appendix_C_Project_Risk_Register/README.md`
+  - `Report/appendices/Project_management/README.md`
+  - `Report/workspace/思路.md`
+- Appendix C 内容：
+  - 使用学校 Risk Register 模板的 L/M/H severity 和 potential 评分方式。
+  - 覆盖 10 个项目交付风险：
+    1. final robot hardware/wiring/mechanical integration delay
+    2. unstable balance tuning / failed repeated trials
+    3. ESP32/CAN/IMU integration or calibration faults
+    4. WiFi TCP latency/disconnection affecting teleoperation
+    5. ROS 2 WiFi camera module / MediaPipe unreliability
+    6. insufficient measured data / provisional data not replaced
+    7. scope creep from autonomy or advanced behaviours
+    8. loss of code/logs/figures/planning evidence
+    9. exam/vacation/deadline pressure
+    10. third-party code/reference attribution risk
+- 检查：
+  - `Project Risk Register - B-BOT filled.docx` 已通过 `unzip -t`。
+  - 已抽取 Word XML 确认 project title、student name 和关键 risk 内容写入。
+
+#### 2026-04-25 CST +0800 Appendix F and G evidence indexes drafted
+- 用户要求：
+  - 继续完善 appendix。
+- 新增 Appendix F 软件仓库证据：
+  - `Report/appendices/Appendix_F_Software_Repository/README.md`
+  - `Report/appendices/Appendix_F_Software_Repository/Software Repository Evidence - B-BOT.md`
+  - `Report/appendices/Appendix_F_Software_Repository/Third Party Code and Software Attribution - B-BOT.md`
+- Appendix F 内容：
+  - 记录仓库链接 `https://github.com/Realsbt/B-BOT.git`、当前分支 `main`、当前本地基准 commit `68e40b4`。
+  - 总结 ESP32 firmware、MATLAB-generated control/kinematics support、ROS 2 vision bridge、host tools、experiment/report evidence、Progress log。
+  - 写入最小 firmware build、host ROS 2 build/run、command/safety behaviour、submission checks。
+  - 第三方归属表覆盖 Yahboom base/camera module、NimBLE-Arduino、Xbox controller support headers、ESP32 Arduino/FreeRTOS、MPU6050、ADS1X15、ROS 2、micro-ROS、OpenCV、MediaPipe、NumPy、MATLAB-generated code、Matplotlib/Python data scripts。
+- 新增/完善 Appendix G 数据证据：
+  - `Report/appendices/README.md`
+  - `Report/appendices/E_data/README.md`
+  - `Report/appendices/E_data/E7_camera_topic_bringup/README.md`
+- 其他同步：
+  - `README.md` 中的摄像头模块命名统一为 `ROS 2 WiFi camera module` / `ROS 2 WiFi 摄像头模块`，避免软件证据和 report 正文不一致。
+  - `Report/main.tex` appendix 骨架更新为 A-G：Proposal、Plan/Gantt、Project Risk Register、CPD、H&S、Software Repository、Experiment Data。
+  - `Report/main.tex` 中 repo link 改为 `https://github.com/Realsbt/B-BOT.git`，并插入 Gantt 图引用。
+- Appendix G 内容：
+  - 明确 E1/E2/E3/E9 仍是 provisional/synthetic。
+  - 明确 E4 是 mixed：TCP command-entry measured，physical response provisional。
+  - 明确 E5/E6/E8/E10/E11 已有 measured evidence。
+  - E7 作为 ROS 2 WiFi camera module topic bring-up evidence，关联 `/espRos/esp32camera`、camera smoke CSV、E10/E11 证据。
+- 重要注意：
+  - 提交前 Appendix F 需要更新最终 commit hash / release tag。
+  - 公开 GitHub 前需要确认 tracked files 没有真实 WiFi 密码或其他 secrets；当前 `include/wifi_config.h` 是 tracked file，已做一次不打印密码的快速检查，显示它像 placeholder，但最终提交前仍要复查。
+- 检查：
+  - `git diff --check` 通过。
+  - `lualatex` 首次因 LuaLaTeX 字体缓存目录不可写失败；设置 `TEXMFVAR=/tmp/texmf-var TEXMFCACHE=/tmp/texmf-cache` 后 `Report/main.tex` 成功编译，生成 `Report/main.pdf`。
+  - 当前 LaTeX 编译仍有 expected warnings：正文仍是 placeholder、参考文献需要后续跑 `biber` 并填正文。
+
+#### 2026-04-25 CST +0800 Report draft migrated to LaTeX and page-count checked
+- 用户要求：
+  - 先把 draft 迁移到 TeX 格式。
+  - 检查是否满足页数和排版规则。
+  - 判断 appendix 表格/证据是否需要转换为 PDF 或矢量图。
+- 主要修改：
+  - `Report/main.tex` 现在包含完整 report draft 正文，而不是旧的短 placeholder。
+  - `Report/main.pdf` 已重新编译生成。
+  - Title page 已补 `Botao Su`；student identification number 已按学校模板说明和用户最终确认使用前 7 位 `1107124`。
+  - Front matter 改为 roman page labels；正文从 Introduction 开始重新编号为 arabic page 1，避免 hyperref page-anchor 重复警告，也更贴近学校“35 numbered A4 pages”的统计口径。
+  - Appendix A-G 已接入 `Report/main.tex`；Appendix B 插入 Gantt 图。
+  - E1/E2/E3/E4b/E9 的 provisional 图没有放进正文，只保留正文说明和 Appendix G 路径，避免用占位图冲正文页数和证据强度。
+  - `Report/appendices/README.md` 新增 appendix export format policy，说明哪些表格类材料应导出 PDF，哪些 raw data/figure 应保留原格式或矢量图。
+  - `Report/workspace/思路.md` 同步 TeX 迁移、页数检查和 appendix 导出策略。
+- 页数/排版检查：
+  - `Report/main.pdf` 物理总页数 46 页，A4。
+  - 正文编号页为 1--33；References 从第 34 页开始；Appendix 从第 37 页开始。
+  - 学校要求正文不超过 35 numbered A4 pages；当前正文 33 页，仍有约 2 页缓冲。
+  - 字体使用 Carlito 12 pt（Calibri close equivalent），正文 1.5 spacing，A4，2.5 cm margins。
+- 编译检查：
+  - 使用 `TEXMFVAR=/tmp/texmf-var TEXMFCACHE=/tmp/texmf-cache lualatex -interaction=nonstopmode main.tex` 编译。
+  - `biber main` 已在迁移过程中运行过，当前引用正常。
+  - 最新日志无 fatal error、undefined citation、overfull hbox 或 duplicate destination warning；仅剩两个 `Underfull \hbox`。
+  - `git diff --check` 通过。
+- Appendix 导出判断：
+  - A proposal 已是 PDF，保持。
+  - B Gantt 图已有 PDF/PNG；spreadsheet 作为源证据，最终最好另导出 PDF。
+  - C risk register、D CPD log、E H&S risk assessment 是表格/模板证据，应保留 DOCX 源文件并最终导出 PDF 固定版。
+  - F software evidence 用 Markdown + report summary 即可，不需要转成图片。
+  - G raw CSV/log 保持原始文件；Python 生成线图/柱状图/矩阵图优先 PDF 矢量，摄像头截图保持 PNG/JPEG。
+  - 本机当前没有 `libreoffice` / `soffice`，暂时无法自动把 DOCX/XLSX 导出 PDF，需要之后用 Word/Excel/LibreOffice 或安装工具链处理。
+
+#### 2026-04-25 CST +0800 Report review fixes: figures, tables, appendices and software evidence
+- 用户要求：
+  - 执行 report 后续修复项 1、2、4、5、6。
+- 修复 review comment 1：figure numbering/list entries
+  - 删除/替换了正文中的手写 `Figure 3.x`、`Figure 4.x` 标题。
+  - `Report/main.tex` 中新增真正的 LaTeX `figure` + `\caption` + `\label`：
+    - Fig. 3.1 System architecture and data flow
+    - Fig. 3.2 Firmware execution and communication timing
+    - Fig. 3.3 Wheel-legged robot hardware layout
+    - Fig. 3.4 Electrical and communication block diagram
+    - Fig. 3.5 Hierarchical control block diagram
+    - Fig. 3.6 Control state and safety behaviour diagram
+    - Fig. 4.3 Vision event path from camera frame to ESP32 command acknowledgement
+  - Methods 图使用 TikZ 直接在 LaTeX 中生成矢量图，不依赖截图。
+- 修复 review comment 2：longtable numbering/list entries
+  - 给所有之前没有 caption 的 `longtable` 补了正式 caption。
+  - 最新 List of Tables 中 Chapter 3 表格连续为 3.1--3.7，不再跳号。
+- Appendix 接入改进：
+  - Appendix A-G 不再只是写文件路径。
+  - `Report/main.tex` 中每个 appendix 都加入 marker-readable summary table：
+    - A.1 proposal-to-final-project alignment
+    - B.1 project-management phase summary
+    - C.1 project risk register summary
+    - D.1 CPD activity summary
+    - E.1 H&S risk assessment summary
+    - F.1 software repository evidence summary
+    - G.1 experiment data status summary
+- 软件证据改进：
+  - `Report/appendices/Appendix_F_Software_Repository/Software Repository Evidence - B-BOT.md` 更新为 audited local base commit `68e40b4`，并写明最终提交应冻结在 final report commit 或 release tag。
+  - `Third Party Code and Software Attribution - B-BOT.md` 清理了“final report should / TODO”式措辞。
+  - `Report/main.tex` Appendix F 加入 repo、commit、firmware、host-side software、experiment evidence 和 third-party boundary 的摘要表。
+- 页数控制：
+  - 新增 Methods 矢量图后正文一度到 36 页；已压缩 Future Work。
+  - 最新 `Report/main.pdf` 总页数 50 页，A4。
+  - 正文编号页为 1--35，References 从第 36 页开始，Appendix 从第 38 页开始；满足学校 35 numbered A4 pages 上限。
+- 最新检查：
+  - `lualatex` 已重新编译成功。
+  - `Report/main.log` 无 undefined references、undefined citations、overfull hbox、fatal error 或 duplicate destination warning。
+  - 只剩 4 个 `Underfull \hbox`，属于可接受排版松散警告。
+  - `git diff --check` 通过。
+
+#### 2026-04-25 05:01:10 CST +0800 Management appendix PDF companion exports
+- 用户要求：
+  - 修复剩余第 3 项：management appendix 的 Office 表格需要有 PDF/固定版式提交证据。
+- 环境限制：
+  - 当前本机没有 `libreoffice` / `soffice` / `pandoc`，不能直接做 pixel-exact 的 Word/Excel 原版 PDF 导出。
+- 新增导出脚本：
+  - `Report/appendices/Project_management/pdf_exports/build_management_pdf_exports.py`
+  - 使用 ReportLab 生成 marker-readable PDF companion exports。
+  - C/D/E 的表格内容从现有 `.docx` XML 读取；B 使用 reconstructed Gantt/weekly log、filled spreadsheet 路径和已生成的 Gantt 图作为证据来源。
+- 新增 PDF companion exports：
+  - `Report/appendices/Project_management/pdf_exports/Appendix_B_Project_Plan_Gantt_companion.pdf`
+  - `Report/appendices/Project_management/pdf_exports/Appendix_C_Project_Risk_Register_companion.pdf`
+  - `Report/appendices/Project_management/pdf_exports/Appendix_D_CPD_Log_companion.pdf`
+  - `Report/appendices/Project_management/pdf_exports/Appendix_E_Health_and_Safety_companion.pdf`
+- 同步说明文件：
+  - `Report/appendices/Project_management/pdf_exports/README.md`
+  - `Report/appendices/Project_management/README.md`
+  - `Report/appendices/README.md`
+  - `Report/appendices/Project_management/Appendix_B_Project_Plan_Gantt/README.md`
+  - `Report/appendices/Project_management/Appendix_C_Project_Risk_Register/README.md`
+  - `Report/appendices/Project_management/Appendix_D_CPD_Log/README.md`
+  - `Report/appendices/Project_management/Appendix_E_Health_and_Safety/README.md`
+- Report / thinking 同步：
+  - `Report/main.tex` 的 Appendix B-E 文字已补充 PDF companion export 路径。
+  - `Report/workspace/思路.md` 已同步 appendix 导出策略。
+- 注意：
+  - 这些 PDF 是固定版式 companion exports，不是假装成 Office 原版导出；editable `.docx` / `.xlsx` 仍保留作为源证据。
+- 检查：
+  - `Appendix_B_Project_Plan_Gantt_companion.pdf` 生成 6 页。
+  - `Appendix_C_Project_Risk_Register_companion.pdf`、`Appendix_D_CPD_Log_companion.pdf`、`Appendix_E_Health_and_Safety_companion.pdf` 各生成 1 页。
+  - `Report/main.tex` 已重新编译成功，`Report/main.pdf` 当前 51 页 A4；正文仍为 1--35 页，References 从第 36 页开始，Appendix 从第 38 页开始。
+  - `Report/main.log` 无 fatal error、undefined citation/reference、overfull hbox、duplicate destination warning 或 rerun warning；仍只有 4 个可接受的 `Underfull \hbox`。
+  - `git diff --check` 通过。
+
+#### 2026-04-25 05:12:52 CST +0800 Report body compressed to create page buffer
+- 用户要求：
+  - 找出正文冗长部分并执行压缩，重点解决正文刚好 35 页、没有缓冲的问题。
+- 修改范围：
+  - `Report/main.tex`
+  - `Report/workspace/思路.md`
+- 压缩内容：
+  - 压缩 `4.3 Balance and Motion Control Performance` 中 E2/E3/E4b/E9 的 provisional physical-results 解释。
+  - 保留实验目的、表格、图路径、替换真实硬件数据后的判断逻辑。
+  - 压缩 `5.1 Conclusions`，避免在 objective closure table 前重复完整复述 Results。
+- 保留内容：
+  - E5/E6/E8/E10/E11 measured evidence 未删。
+  - 关键图、表、citation 和 objective closure table 未删。
+- 最新页数/编译检查：
+  - `Report/main.pdf` 当前 50 页 A4。
+  - 正文编号页为 1--34，References 从第 35 页开始，Appendix 从第 37 页开始。
+  - 当前比学校 35 numbered A4 pages 上限多出 1 页缓冲。
+  - `lualatex` 已 rerun，交叉引用 warning 已清除。
+  - `Report/main.log` 无 fatal error、undefined citation/reference、overfull hbox、duplicate destination warning 或 rerun warning；仍只有 4 个可接受的 `Underfull \hbox`。
+  - `git diff --check` 通过。
