@@ -1,0 +1,367 @@
+# source=serial_log_for_e6_tcp_close_and_direct_watchdog, provisional=false
+t_ns,line
+6053865797428,"ets Jun  8 2016 00:22:5SH�HH���0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_*M!}BOOT)"
+6053874339218,"configsip: 0, SPIWP:0xeeC�,k�E��:0x00,q_drv:0x00,d_drv:0x00,c.�����0x00,hd_drv:0x00,wp_drv:0�0"
+6053876739082,"mode:DIO, clock div:2"
+6053879394098,"load:��fff0030,len:1184"
+6053880039991,load:0x40078��bb��:13232
+6053882343303,load:0x400804�bb��:3028
+6053884848009,entry 0x400805e4
+6054430610239,指令队列系统初始化完成
+6054437256757,MPU6050 connection successful
+6054437525420,Address: 0x34
+6054641614428,WiFi command connecting to BT26
+6054695939179,IMU偏置参数已加载
+6055034096496,.
+6055036584708,WiFi command ready: 172.20.10.4:23
+6055052161150,mDNS: wheeleg.local:23
+6055056999296,WiFi TCP server listening on :23
+6055708546091,参数加载成功！
+6055709067754,Starting Xbox Bluetooth Client
+6055719896976,Auto-scan mode: Searching for 'Xbox Wireless Controller' by name
+6055720708434,Make sure your Xbox controller is in pairing mode:
+6055725504557,1. Press and hold Xbox button + Share button for 3 seconds
+6055730885486,2. Controller LED should start flashing rapidly
+6055738048850,3. The system will automatically connect when 'Xbox Wireless Controller' is detected
+6056433045456,Xbox Controller initialized. Scanning for connection...
+6056435991344,Xbox processing task started
+6056627161326,
+6056627699845,=== Strong device found ===
+6056632085037,Address: 11:5c:17:c0:1f:36
+6056632581593,RSSI: -36
+6056632767916,Name: ''
+6056635427817,Appearance: 0
+6056635778303,Service UUID: none
+6056644369397,Manufacturer Data: 0600010f20225c307639da105e39e3d85663ba80529795e32f1b5acf75
+6056646253024,===========================
+6056646321118,
+6056656723855,WiFi command client connected: 172.20.10.2
+6056685392953,"WiFi命令: DRIVE,250,0"
+6056685961009,"DRIVE set: 250 mm/s, 0 mrad/s"
+6056750153015,WiFi command disconnect (client_drop): emitting full stop
+6056753207916,"DRIVE set: 0 mm/s, 0 mrad/s"
+6056755861364,YAWRATE set: 0 mrad/s
+6056758591238,停止并清空指令队列
+6056983108546,
+6056983590828,=== Strong device found ===
+6056986153895,Address: 4a:16:03:4f:f8:e6
+6056988693430,RSSI: -35
+6056988903242,Name: ''
+6056991798874,Appearance: 0
+6056992230668,Service UUID: 0x180a
+6056996788931,Manufacturer Data: none
+6056997542996,===========================
+6056997563142,
+6057287788460,WiFi command client connected: 172.20.10.2
+6057363348449,"WiFi命令: DRIVE,250,0"
+6057366846496,"DRIVE set: 250 mm/s, 0 mrad/s"
+6057394588670,WiFi command disconnect (client_drop): emitting full stop
+6057397359817,"DRIVE set: 0 mm/s, 0 mrad/s"
+6057398895605,YAWRATE set: 0 mrad/s
+6057401622595,停止并清空指令队列
+6057982464339,WiFi command client connected: 172.20.10.2
+6058085452925,"WiFi命令: DRIVE,250,0"
+6058089072715,"DRIVE set: 250 mm/s, 0 mrad/s"
+6058115162248,WiFi command disconnect (client_drop): emitting full stop
+6058116600507,"DRIVE set: 0 mm/s, 0 mrad/s"
+6058119294645,YAWRATE set: 0 mrad/s
+6058121650589,停止并清空指令队列
+6058629890349,WiFi command client connected: 172.20.10.2
+6058724747988,"WiFi命令: DRIVE,250,0"
+6058728759867,"DRIVE set: 250 mm/s, 0 mrad/s"
+6058803786243,WiFi command disconnect (client_drop): emitting full stop
+6058806344224,"DRIVE set: 0 mm/s, 0 mrad/s"
+6058809161194,YAWRATE set: 0 mrad/s
+6058811569628,停止并清空指令队列
+6059463534336,WiFi command client connected: 172.20.10.2
+6059637010340,"WiFi命令: DRIVE,250,0"
+6059640726283,"DRIVE set: 250 mm/s, 0 mrad/s"
+6059726541738,WiFi command disconnect (client_drop): emitting full stop
+6059729493702,"DRIVE set: 0 mm/s, 0 mrad/s"
+6059731800740,YAWRATE set: 0 mrad/s
+6059735881286,停止并清空指令队列
+6060254827374,WiFi command client connected: 172.20.10.2
+6060338704469,"WiFi命令: DRIVE,250,0"
+6060345645551,"DRIVE set: 250 mm/s, 0 mrad/s"
+6060439430661,WiFi command disconnect (client_drop): emitting full stop
+6060441580559,"DRIVE set: 0 mm/s, 0 mrad/s"
+6060445396896,YAWRATE set: 0 mrad/s
+6060446523061,停止并清空指令队列
+6060551457328,
+6060551717675,=== Strong device found ===
+6060554187703,Address: 11:5c:17:c0:1f:36
+6060556971436,RSSI: -37
+6060557082517,Name: ''
+6060559500661,Appearance: 0
+6060559683011,Service UUID: none
+6060567997738,Manufacturer Data: 0600010f20225c307639da105e39e3d85663ba80529795e32f1b5acf75
+6060570007237,===========================
+6060570051640,
+6060862654555,
+6060863152981,=== Strong device found ===
+6060866024263,Address: 4a:16:03:4f:f8:e6
+6060868345299,RSSI: -36
+6060868558612,Name: ''
+6060870965668,Appearance: 0
+6060871609363,Service UUID: 0x180a
+6060873995131,Manufacturer Data: none
+6060877016675,===========================
+6060877061988,
+6060968226036,WiFi command client connected: 172.20.10.2
+6061053291512,"WiFi命令: DRIVE,250,0"
+6061057415635,"DRIVE set: 250 mm/s, 0 mrad/s"
+6061091538468,WiFi command disconnect (client_drop): emitting full stop
+6061094253101,"DRIVE set: 0 mm/s, 0 mrad/s"
+6061096987282,YAWRATE set: 0 mrad/s
+6061099688496,停止并清空指令队列
+6061668949275,WiFi command client connected: 172.20.10.2
+6061694012380,"WiFi命令: DRIVE,250,0"
+6061700057074,"DRIVE set: 250 mm/s, 0 mrad/s"
+6061773000097,WiFi command disconnect (client_drop): emitting full stop
+6061775857463,"DRIVE set: 0 mm/s, 0 mrad/s"
+6061778037294,YAWRATE set: 0 mrad/s
+6061781414249,停止并清空指令队列
+6062310072309,WiFi command client connected: 172.20.10.2
+6062383412403,"WiFi命令: DRIVE,250,0"
+6062387296250,"DRIVE set: 250 mm/s, 0 mrad/s"
+6062403595603,WiFi command disconnect (client_drop): emitting full stop
+6062406567845,"DRIVE set: 0 mm/s, 0 mrad/s"
+6062409453704,YAWRATE set: 0 mrad/s
+6062412256713,停止并清空指令队列
+6062912051906,WiFi command client connected: 172.20.10.2
+6062937029887,"WiFi命令: DRIVE,250,0"
+6062940548872,"DRIVE set: 250 mm/s, 0 mrad/s"
+6063006476683,WiFi command disconnect (client_drop): emitting full stop
+6063009164383,"DRIVE set: 0 mm/s, 0 mrad/s"
+6063011676273,YAWRATE set: 0 mrad/s
+6063014108816,停止并清空指令队列
+6063525513302,WiFi command client connected: 172.20.10.2
+6063548492283,"WiFi命令: DRIVE,250,0"
+6063553228302,"DRIVE set: 250 mm/s, 0 mrad/s"
+6064078394774,DRIVE watchdog: direct teleop stopped
+6064226977357,"WiFi命令: DRIVE,0,0"
+6064230880096,"DRIVE set: 0 mm/s, 0 mrad/s"
+6064254451333,"WiFi命令: YAWRATE,0"
+6064256944413,YAWRATE set: 0 mrad/s
+6064332796115,WiFi命令: QUEUE_STOP
+6064336697772,停止并清空指令队列
+6064355916237,WiFi command disconnect (client_drop): emitting full stop
+6064358157612,"DRIVE set: 0 mm/s, 0 mrad/s"
+6064363756351,YAWRATE set: 0 mrad/s
+6064364391931,停止并清空指令队列
+6064489501015,
+6064489808526,=== Strong device found ===
+6064492413398,Address: 11:5c:17:c0:1f:36
+6064495025669,RSSI: -37
+6064495248034,Name: ''
+6064498094701,Appearance: 0
+6064498295910,Service UUID: none
+6064506389674,Manufacturer Data: 0600010f20225c307639da105e39e3d85663ba80529795e32f1b5acf75
+6064508366913,===========================
+6064508402631,
+6064653487870,
+6064653953176,=== Strong device found ===
+6064656445707,Address: 4a:16:03:4f:f8:e6
+6064658801610,RSSI: -37
+6064658998220,Name: ''
+6064661550449,Appearance: 0
+6064661936551,Service UUID: 0x180a
+6064664626997,Manufacturer Data: none
+6064668144053,===========================
+6064668198308,
+6065054140468,WiFi command client connected: 172.20.10.2
+6065079108619,"WiFi命令: DRIVE,250,0"
+6065082833712,"DRIVE set: 250 mm/s, 0 mrad/s"
+6065628025520,DRIVE watchdog: direct teleop stopped
+6065877748362,"WiFi命令: DRIVE,0,0"
+6065884065759,"DRIVE set: 0 mm/s, 0 mrad/s"
+6065963287601,"WiFi命令: YAWRATE,0"
+6065967150798,YAWRATE set: 0 mrad/s
+6065989505316,WiFi命令: QUEUE_STOP
+6065996111803,停止并清空指令队列
+6066068151464,WiFi command disconnect (client_drop): emitting full stop
+6066071030007,"DRIVE set: 0 mm/s, 0 mrad/s"
+6066077074531,YAWRATE set: 0 mrad/s
+6066077529595,停止并清空指令队列
+6066237470004,
+6066237822438,=== Strong device found ===
+6066240130322,Address: dc:61:7f:e7:6e:ad
+6066242987432,RSSI: -44
+6066243142276,Name: ''
+6066245367166,Appearance: 0
+6066246203030,Service UUID: none
+6066248467800,Manufacturer Data: 4c0012020000
+6066253681909,===========================
+6066253730979,
+6066495862481,WiFi command client connected: 172.20.10.2
+6066579693469,"WiFi命令: DRIVE,250,0"
+6066585354606,"DRIVE set: 250 mm/s, 0 mrad/s"
+6067128379767,DRIVE watchdog: direct teleop stopped
+6067308571098,"WiFi命令: DRIVE,0,0"
+6067311409478,"DRIVE set: 0 mm/s, 0 mrad/s"
+6067394884262,"WiFi命令: YAWRATE,0"
+6067397511400,YAWRATE set: 0 mrad/s
+6067422242748,WiFi命令: QUEUE_STOP
+6067426076624,停止并清空指令队列
+6067511898595,WiFi command disconnect (client_drop): emitting full stop
+6067514545612,"DRIVE set: 0 mm/s, 0 mrad/s"
+6067517656849,YAWRATE set: 0 mrad/s
+6067520013588,停止并清空指令队列
+6068048365817,WiFi command client connected: 172.20.10.2
+6068112359404,"WiFi命令: DRIVE,250,0"
+6068116278082,"DRIVE set: 250 mm/s, 0 mrad/s"
+6068548331406,
+6068549171038,=== Strong device found ===
+6068551028098,Address: 4a:16:03:4f:f8:e6
+6068553742000,RSSI: -37
+6068553945917,Name: ''
+6068556501561,Appearance: 0
+6068559329259,Service UUID: 0x180a
+6068559773417,Manufacturer Data: none
+6068564717204,===========================
+6068564758591,
+6068628672536,DRIVE watchdog: direct teleop stopped
+6068753155380,"WiFi命令: DRIVE,0,0"
+6068754760164,"DRIVE set: 0 mm/s, 0 mrad/s"
+6068813415855,
+6068814366322,=== Strong device found ===
+6068817440168,Address: 11:5c:17:c0:1f:36
+6068818953757,RSSI: -36
+6068819844033,Name: ''
+6068821896125,Appearance: 0
+6068822241756,Service UUID: none
+6068831121605,Manufacturer Data: 0600010f20225c307639da105e39e3d85663ba80529795e32f1b5acf75
+6068832301690,===========================
+6068832323918,
+6068847755124,"WiFi命令: YAWRATE,0"
+6068850480377,YAWRATE set: 0 mrad/s
+6068935754163,WiFi命令: QUEUE_STOP
+6068938404344,停止并清空指令队列
+6068965335193,WiFi command disconnect (client_drop): emitting full stop
+6068968048739,"DRIVE set: 0 mm/s, 0 mrad/s"
+6068968892150,YAWRATE set: 0 mrad/s
+6068971965240,停止并清空指令队列
+6069472157510,WiFi command client connected: 172.20.10.2
+6069545145013,"WiFi命令: DRIVE,250,0"
+6069548601588,"DRIVE set: 250 mm/s, 0 mrad/s"
+6070078934846,DRIVE watchdog: direct teleop stopped
+6070172048976,"WiFi命令: DRIVE,0,0"
+6070176062088,"DRIVE set: 0 mm/s, 0 mrad/s"
+6070199258906,"WiFi命令: YAWRATE,0"
+6070200999880,YAWRATE set: 0 mrad/s
+6070274276985,WiFi命令: QUEUE_STOP
+6070279014102,停止并清空指令队列
+6070303670046,WiFi command disconnect (client_drop): emitting full stop
+6070306487019,"DRIVE set: 0 mm/s, 0 mrad/s"
+6070308917095,YAWRATE set: 0 mrad/s
+6070311633240,停止并清空指令队列
+6070811318665,WiFi command client connected: 172.20.10.2
+6070884770026,"WiFi命令: DRIVE,250,0"
+6070888419604,"DRIVE set: 250 mm/s, 0 mrad/s"
+6071429366416,DRIVE watchdog: direct teleop stopped
+6071504479319,"WiFi命令: DRIVE,0,0"
+6071505319802,"DRIVE set: 0 mm/s, 0 mrad/s"
+6071528732243,"WiFi命令: YAWRATE,0"
+6071531851380,YAWRATE set: 0 mrad/s
+6071604422873,WiFi命令: QUEUE_STOP
+6071608246343,停止并清空指令队列
+6071643966180,WiFi command disconnect (client_drop): emitting full stop
+6071646404548,"DRIVE set: 0 mm/s, 0 mrad/s"
+6071649067767,YAWRATE set: 0 mrad/s
+6071651698560,停止并清空指令队列
+6072140912720,WiFi command client connected: 172.20.10.2
+6072225283013,"WiFi命令: DRIVE,250,0"
+6072229989244,"DRIVE set: 250 mm/s, 0 mrad/s"
+6072540751373,
+6072541233706,=== Strong device found ===
+6072543547800,Address: 4a:16:03:4f:f8:e6
+6072546302555,RSSI: -37
+6072546466486,Name: ''
+6072549270229,Appearance: 0
+6072549636724,Service UUID: 0x180a
+6072552042821,Manufacturer Data: none
+6072555178973,===========================
+6072555279259,
+6072570722583,
+6072574720165,=== Strong device found ===
+6072575162681,Address: 11:5c:17:c0:1f:36
+6072576557185,RSSI: -37
+6072576858685,Name: ''
+6072583065773,Appearance: 0
+6072583371179,Service UUID: none
+6072587030260,Manufacturer Data: 0600010f20225c307639da105e39e3d85663ba80529795e32f1b5acf75
+6072589323457,===========================
+6072589351190,
+6072728864159,DRIVE watchdog: direct teleop stopped
+6072831715947,"WiFi命令: DRIVE,0,0"
+6072835962019,"DRIVE set: 0 mm/s, 0 mrad/s"
+6072858258698,"WiFi命令: YAWRATE,0"
+6072861415149,YAWRATE set: 0 mrad/s
+6072924777267,WiFi命令: QUEUE_STOP
+6072927911226,停止并清空指令队列
+6072953737710,WiFi command disconnect (client_drop): emitting full stop
+6072956288387,"DRIVE set: 0 mm/s, 0 mrad/s"
+6072961239673,YAWRATE set: 0 mrad/s
+6072961656535,停止并清空指令队列
+6073470898679,WiFi command client connected: 172.20.10.2
+6073548226072,"WiFi命令: DRIVE,250,0"
+6073552149922,"DRIVE set: 250 mm/s, 0 mrad/s"
+6074078943607,DRIVE watchdog: direct teleop stopped
+6074167665848,"WiFi命令: DRIVE,0,0"
+6074170532637,"DRIVE set: 0 mm/s, 0 mrad/s"
+6074204719385,"WiFi命令: YAWRATE,0"
+6074207605295,YAWRATE set: 0 mrad/s
+6074270856936,WiFi命令: QUEUE_STOP
+6074275251587,停止并清空指令队列
+6074290248451,WiFi command disconnect (client_drop): emitting full stop
+6074292963115,"DRIVE set: 0 mm/s, 0 mrad/s"
+6074295798527,YAWRATE set: 0 mrad/s
+6074298368544,停止并清空指令队列
+6074818991772,WiFi command client connected: 172.20.10.2
+6074883367236,"WiFi命令: DRIVE,250,0"
+6074888219967,"DRIVE set: 250 mm/s, 0 mrad/s"
+6075429239696,DRIVE watchdog: direct teleop stopped
+6075491967574,"WiFi命令: DRIVE,0,0"
+6075495089517,"DRIVE set: 0 mm/s, 0 mrad/s"
+6075508826434,"WiFi命令: YAWRATE,0"
+6075511374130,YAWRATE set: 0 mrad/s
+6075527169750,WiFi命令: QUEUE_STOP
+6075530379440,停止并清空指令队列
+6075596244478,WiFi command disconnect (client_drop): emitting full stop
+6075599197859,"DRIVE set: 0 mm/s, 0 mrad/s"
+6075602843945,YAWRATE set: 0 mrad/s
+6075604648677,停止并清空指令队列
+6076123809963,WiFi command client connected: 172.20.10.2
+6076207362663,"WiFi命令: DRIVE,250,0"
+6076211081328,"DRIVE set: 250 mm/s, 0 mrad/s"
+6076547931484,
+6076548459637,=== Strong device found ===
+6076550913913,Address: 4a:16:03:4f:f8:e6
+6076553425965,RSSI: -37
+6076553711810,Name: ''
+6076556396511,Appearance: 0
+6076556825176,Service UUID: 0x180a
+6076559067719,Manufacturer Data: none
+6076562502203,===========================
+6076565777173,
+6076729400947,DRIVE watchdog: direct teleop stopped
+6076749978065,
+6076750538619,=== Strong device found ===
+6076752893512,Address: 11:5c:17:c0:1f:36
+6076756254328,RSSI: -37
+6076756460829,Name: ''
+6076758208059,Appearance: 0
+6076758567134,Service UUID: none
+6076766764440,Manufacturer Data: 0600010f20225c307639da105e39e3d85663ba80529795e32f1b5acf75
+6076770982871,===========================
+6076771058230,
+6076826317689,"WiFi命令: DRIVE,0,0"
+6076829779789,"DRIVE set: 0 mm/s, 0 mrad/s"
+6076864847111,"WiFi命令: YAWRATE,0"
+6076867364410,YAWRATE set: 0 mrad/s
+6076923160751,WiFi命令: QUEUE_STOP
+6076926729997,停止并清空指令队列
+6076954094204,WiFi command disconnect (client_drop): emitting full stop
+6076956844966,"DRIVE set: 0 mm/s, 0 mrad/s"
+6076959458334,YAWRATE set: 0 mrad/s
+6076962207028,停止并清空指令队列

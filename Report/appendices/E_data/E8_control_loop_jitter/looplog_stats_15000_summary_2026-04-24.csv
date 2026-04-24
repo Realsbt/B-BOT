@@ -1,0 +1,18 @@
+# source=measured_ctrl_looplog_tcp_stats, provisional=false
+# hello_start=HELLO,13903,wheeleg_tcp,172.20.10.4:23
+# start_ack=ACK,14090,0,LOOPLOG_START,15000
+# wait_s=65.0
+# hello_stats=HELLO,79548,wheeleg_tcp,172.20.10.4:23
+# stats_begin=LOOPLOG_STATS_BEGIN,15000,unit_us,bin_width_us,100
+# stats_end=LOOPLOG_STATS_END,15000
+# stats_ack=ACK,81816,0,LOOPLOG_STATS_TCP,100
+metric,value,unit
+samples,15000,count
+mean_us,3999.810,us
+std_us,1000.214,us
+min_us,10,us
+p50_us,4000,us
+p95_us,4300,us
+p99_us,5600,us
+p99_9_us,10600,us
+max_us,53365,us

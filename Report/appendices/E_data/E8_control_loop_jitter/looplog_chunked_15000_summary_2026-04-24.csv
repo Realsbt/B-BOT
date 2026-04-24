@@ -1,0 +1,11 @@
+# source=measured_ctrl_looplog_tcp_summary, provisional=false
+metric,value,unit
+samples,3000,count
+mean,3999.1566666666668,us
+std,554.4768165777738,us
+min,10.0,us
+p50,4000.0,us
+p95,4354.250000000001,us
+p99,5895.270000000006,us
+p99_9,7702.315000000064,us
+max,17296.0,us

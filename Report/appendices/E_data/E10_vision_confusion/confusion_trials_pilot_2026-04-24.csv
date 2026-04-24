@@ -1,0 +1,9 @@
+# timestamp_source=ROS log seconds, mode=gesture, dry_run=true, debounce_frames=5, frame_skip=1
+# fw=70c3b17, date=2026-04-24, timezone=Asia/Shanghai
+trial_id,actual_gesture,expected_command,first_matching_label_s,stable_label_s,observed_stable_label,observed_command,result,notes
+pilot_01,Five,"DRIVE,250,0",1776990137.074,1776990137.773,Five,"DRIVE,250,0",pass,"Five stabilised after approx 0.70 s from first detected label; repeated dry-run forward commands followed."
+pilot_02,Zero,"DRIVE,0,0",1776990151.058,1776990151.787,Zero,"DRIVE,0,0",pass,"Zero stabilised after approx 0.73 s from first detected label; dry-run stop commands followed."
+pilot_03,PointLeft,"DRIVE,0,600",NA,NA,None,"DRIVE,0,0",fail,"First PointLeft attempt produced Zero/None labels and never generated PointLeft."
+pilot_04,PointLeft_retest,"DRIVE,0,600",NA,1776990187.909,Five,"DRIVE,250,0",fail,"Retest still produced mostly None; one false stable Five caused a false forward command."
+pilot_05,Thumb_up,JUMP,1776990192.904,NA,None,"DRIVE,0,0",fail,"Thumb_up appeared once as an unstable instantaneous label but did not pass debounce, so no JUMP command was generated."
+pilot_06,NoHand,"DRIVE,0,0 / QUEUE_STOP",1776990201.750,1776990201.750,None,"QUEUE_STOP + DRIVE,0,0",pass_safety,"When hand/frame was absent, watchdog emitted QUEUE_STOP plus DRIVE,0,0; classify as safety pass, not gesture-recognition pass."

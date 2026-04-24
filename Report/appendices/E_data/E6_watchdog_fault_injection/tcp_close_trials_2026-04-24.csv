@@ -1,0 +1,12 @@
+# source=measured_tcp_close_fault_injection, provisional=false
+trial,command,hello,ack,pc_send_ns,pc_ack_ns,pc_close_ns,serial_event_ns,close_to_client_drop_ms,event_found,event_line
+1,"DRIVE,250,0","HELLO,2314,wheeleg_tcp,172.20.10.4:23","ACK,2343,0,DRIVE,250,0",6056662906857,6056690623664,6056690631716,6056750153015,59.521299,True,WiFi command disconnect (client_drop): emitting full stop
+2,"DRIVE,250,0","HELLO,2945,wheeleg_tcp,172.20.10.4:23","ACK,3023,0,DRIVE,250,0",6057293597731,6057373998266,6057374002700,6057394588670,20.58597,True,WiFi command disconnect (client_drop): emitting full stop
+3,"DRIVE,250,0","HELLO,3637,wheeleg_tcp,172.20.10.4:23","ACK,3746,0,DRIVE,250,0",6057982843225,6058095010708,6058095014400,6058115162248,20.147848,True,WiFi command disconnect (client_drop): emitting full stop
+4,"DRIVE,250,0","HELLO,4287,wheeleg_tcp,172.20.10.4:23","ACK,4386,0,DRIVE,250,0",6058700595147,6058758217077,6058758221358,6058803786243,45.564885,True,WiFi command disconnect (client_drop): emitting full stop
+5,"DRIVE,250,0","HELLO,5120,wheeleg_tcp,172.20.10.4:23","ACK,5297,0,DRIVE,250,0",6059501597484,6059643905903,6059643909744,6059726541738,82.631994,True,WiFi command disconnect (client_drop): emitting full stop
+6,"DRIVE,250,0","HELLO,5912,wheeleg_tcp,172.20.10.4:23","ACK,5999,0,DRIVE,250,0",6060261520627,6060351638559,6060351642826,6060439430661,87.787835,True,WiFi command disconnect (client_drop): emitting full stop
+7,"DRIVE,250,0","HELLO,6625,wheeleg_tcp,172.20.10.4:23","ACK,6713,0,DRIVE,250,0",6060975976434,6061071640852,6061071645629,6061091538468,19.892839,True,WiFi command disconnect (client_drop): emitting full stop
+8,"DRIVE,250,0","HELLO,7326,wheeleg_tcp,172.20.10.4:23","ACK,7354,0,DRIVE,250,0",6061678192150,6061703891433,6061703895025,6061773000097,69.105072,True,WiFi command disconnect (client_drop): emitting full stop
+9,"DRIVE,250,0","HELLO,7967,wheeleg_tcp,172.20.10.4:23","ACK,8044,0,DRIVE,250,0",6062316892887,6062388561500,6062388564632,6062403595603,15.030971,True,WiFi command disconnect (client_drop): emitting full stop
+10,"DRIVE,250,0","HELLO,8569,wheeleg_tcp,172.20.10.4:23","ACK,8597,0,DRIVE,250,0",6062917281033,6062985330682,6062985335624,6063006476683,21.141059,True,WiFi command disconnect (client_drop): emitting full stop

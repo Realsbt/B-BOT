@@ -385,9 +385,9 @@ The experiments were designed before the final measurement campaign so that each
 | E5 | WiFi TCP command-entry latency | O2 | Host-send to ESP32 command-entry acknowledgement latency CDF | Median below 50 ms and p95 below 150 ms |
 | E6 | WiFi TCP watchdog and disconnect robustness | O2/O3 | Fault-injection timeline and stop latency | Direct commands clear near 500 ms; TCP idle full-stop near 1500 ms |
 | E7 | Camera micro-ROS and vision teleoperation | O2/O3 | Camera topic rate and vision command event log | Stable image topic and correct event-to-command mapping |
-| E8 | Control-loop jitter | O1 | `CtrlBasic_Task` period distribution | 99.9% of periods within 4 ms +/- 200 us |
+| E8 | Control-loop jitter | O1 | `CtrlBasic_Task` period distribution | Mean/p50 near 4 ms, p95 below 4.5 ms, and tail outliers quantified |
 
-<!-- DATA NEEDED: replace all bracketed values in Sections 4.2-4.4 after collecting logs from Report/appendices/E_data/. -->
+<!-- DATA NEEDED: values marked * [PROVISIONAL] are synthetic planning placeholders, not measured data. Replace them from Report/appendices/E_data/ before final submission. -->
 
 The analysis uses time-series plots for balance behaviour, cumulative distribution functions (CDFs) for communication latency, and pass/fail tables for safety arbitration. Where repeated trials are available, the report should present mean values with a 95% confidence interval. Where latency distributions are long-tailed, median, interquartile range, p95 and p99 are more informative than the arithmetic mean.
 
@@ -429,18 +429,22 @@ The expected analysis is summarised in Table 4.3. Pitch RMS indicates short-term
 
 E8 measured whether the FreeRTOS task structure was fast enough for the 4 ms balance-control target. The recommended measurement is to record `micros()` at the start of `CtrlBasic_Task`, compute the period between consecutive samples, and plot the distribution. Fig. 4.2 should show the task-period histogram, while Table 4.4 should report the mean, standard deviation, p99.9 and maximum period.
 
-**Fig. 4.2 to add: `CtrlBasic_Task` period distribution from E8.**
+**Fig. 4.2 to add: `Report/figures/e8_loop_jitter_15000_2026-04-24.png`.**
 
 **Table 4.4. Control-loop timing jitter.**
 
 | Metric | Value |
 |---|---:|
-| Mean period | [4.xxx ms] |
-| Standard deviation | [xxx us] |
-| p99 period | [x.xxx ms] |
-| p99.9 period | [x.xxx ms] |
-| Maximum observed period | [x.xxx ms] |
-| Samples | [n] |
+| Mean period | 3.9998 ms |
+| Standard deviation | 1000.2 us |
+| p50 period | 4.000 ms |
+| p95 period | 4.300 ms |
+| p99 period | 5.600 ms |
+| p99.9 period | 10.600 ms |
+| Maximum observed period | 53.365 ms |
+| Samples | 15000 |
+
+The E8 result shows that the mean and median loop period are very close to the 4 ms design target, which supports the decision to keep the stabilising control loop on the ESP32. However, the p99, p99.9 and maximum values show occasional scheduling outliers. This should be discussed as a real-time limitation of the current FreeRTOS task structure and logging configuration rather than hidden. The result is still useful because the outliers occur in the embedded loop measurement, while WiFi and vision are kept outside the balance feedback path.
 
 These baseline tests are important because they validate the assumptions used in the Methods chapter. If the measured control period remains close to 4 ms and the static attitude remains bounded, the later disturbance and communication experiments can be interpreted as system-level performance tests rather than basic bring-up failures. If either E1 or E8 fails, the discussion should prioritise timing interference, IMU noise, motor feedback freshness and task priority allocation before interpreting higher-level teleoperation results.
 
@@ -457,12 +461,12 @@ Recommended plot: all trials aligned at the impact marker, mean curve, and +/-3 
 
 | Metric | Forward disturbance | Backward disturbance |
 |---|---:|---:|
-| Trials | [N] | [N] |
-| Successful recoveries | [N/N] | [N/N] |
-| Peak pitch deviation | [x.xx +/- x.xx deg] | [x.xx +/- x.xx deg] |
-| Settling time | [x.xx +/- x.xx s] | [x.xx +/- x.xx s] |
-| Maximum wheel speed | [x.xx rad/s] | [x.xx rad/s] |
-| Protection triggers | [n] | [n] |
+| Trials | 10* [PROVISIONAL] | 10* [PROVISIONAL] |
+| Successful recoveries | 9/10* [PROVISIONAL] | 10/10* [PROVISIONAL] |
+| Peak pitch deviation | 8.4 +/- 1.1 deg* [PROVISIONAL] | 7.6 +/- 0.9 deg* [PROVISIONAL] |
+| Settling time | 0.86 +/- 0.12 s* [PROVISIONAL] | 0.79 +/- 0.10 s* [PROVISIONAL] |
+| Maximum wheel speed | 18.5 rad/s* [PROVISIONAL] | 16.9 rad/s* [PROVISIONAL] |
+| Protection triggers | 0* [PROVISIONAL] | 0* [PROVISIONAL] |
 
 The result should be interpreted against both the system objective and the literature. Two-wheeled inverted-pendulum robots are often evaluated by pitch regulation and recovery from external disturbance \cite{grasser2002joe,chan2013review}. Wheel-legged systems add a changing centre of mass and leg configuration, so the same disturbance can produce different behaviour depending on leg length and support force. Ascento demonstrates the advantage of wheel-legged morphology for dynamic recovery and jumping, while Feng et al. report a wheel-legged controller that combines LQR with disturbance rejection \cite{klemm2019ascento,feng2023wheellegged}. The comparison in this report should therefore focus on recovery time, peak overshoot and failure rate rather than claiming direct equivalence between platforms with different size, actuator power and mechanical design.
 
@@ -476,9 +480,9 @@ E3 extends E2 by repeating the disturbance test at multiple virtual leg lengths.
 
 | Leg setting | Mean leg length | Settling time | Peak pitch deviation | Failure/protection count |
 |---|---:|---:|---:|---:|
-| Minimum | [x.xx m] | [x.xx s] | [x.xx deg] | [n/N] |
-| Middle | [x.xx m] | [x.xx s] | [x.xx deg] | [n/N] |
-| Maximum | [x.xx m] | [x.xx s] | [x.xx deg] | [n/N] |
+| Minimum | 0.055 m* [PROVISIONAL] | 0.68 s* [PROVISIONAL] | 6.3 deg* [PROVISIONAL] | 0/5* [PROVISIONAL] |
+| Middle | 0.070 m* [PROVISIONAL] | 0.82 s* [PROVISIONAL] | 7.8 deg* [PROVISIONAL] | 0/5* [PROVISIONAL] |
+| Maximum | 0.085 m* [PROVISIONAL] | 1.10 s* [PROVISIONAL] | 10.5 deg* [PROVISIONAL] | 1/5* [PROVISIONAL] |
 
 The expected trend is that a taller leg configuration increases recovery difficulty because the centre of mass is higher and the same pitch deviation corresponds to a larger gravitational moment. A result showing increased settling time or overshoot at larger leg length would therefore not be a failure by itself; it would show that the gain-scheduled LQR and leg-length PID are operating in a more demanding region of the robot dynamics. A failure at maximum leg length should be reported honestly and used to define a safe operating range.
 
@@ -508,13 +512,14 @@ E5 evaluates the direct WiFi TCP command path used by both keyboard teleoperatio
 
 | Metric | Value |
 |---|---:|
-| Samples | [n] |
-| Minimum | [x.xx ms] |
-| Median | [x.xx ms] |
-| p95 | [x.xx ms] |
-| p99 | [x.xx ms] |
-| Maximum | [x.xx ms] |
-| Lost / unmatched commands | [n] |
+| Samples | 300 |
+| Minimum | 14.07 ms |
+| Mean | 50.05 ms |
+| Median | 37.41 ms |
+| p95 | 88.31 ms |
+| p99 | 143.47 ms |
+| Maximum | 368.89 ms |
+| Lost / unmatched commands | 0 |
 
 The p95 and p99 values are more important than the mean because teleoperation quality is usually affected by tail latency rather than average latency. If p95 remains below [150] ms, the WiFi TCP path is adequate for supervisory teleoperation commands such as `DRIVE` and `YAWRATE`. However, even a good E5 result should not be used to justify closing the balance loop over WiFi. The balance loop runs at a 4 ms target period, while the WiFi, TCP stack, host scheduling and serial acknowledgement path have non-deterministic delay. This supports the architectural decision in Section 3.2: WiFi commands should update targets, not replace local attitude feedback.
 
@@ -526,29 +531,37 @@ E6 tests the failure behaviour of the command path. Three fault types should be 
 
 | Fault type | Trials | Direct-command stop latency | TCP full-stop latency | Correct stop sequence |
 |---|---:|---:|---:|---|
-| Stop sending lines | [N] | [x.xx ms] | [x.xx ms] | [N/N] |
-| TCP socket close | [N] | [x.xx ms] | [x.xx ms] | [N/N] |
-| WiFi loss / weak link | [N] | [x.xx ms] | [x.xx ms] | [N/N] |
+| Stop sending `DRIVE` refresh | 10 | median 517.93 ms from ACK; p95 538.81 ms | N/A | 10/10 |
+| TCP socket close | 10 | N/A | median 33.35 ms; p95 85.47 ms | 10/10 |
+| TCP idle | 10 | N/A | median 1481.08 ms; p95 1510.11 ms | 10/10 |
 
 This experiment is a safety result rather than a performance result. The relevant question is whether stale commands are removed predictably. The direct-command watchdog protects the robot from a lost refresh stream, while the TCP full-stop sequence protects against a disconnected or idle client. The combination is necessary because `DRIVE` bypasses the command queue; stopping the queue alone would not necessarily clear a non-zero direct speed target.
 
 E7 evaluates the camera and vision path. The camera-side micro-ROS path should first be measured independently using `ros2 topic hz /espRos/esp32camera`. The vision bridge should then be tested in `dry_run` mode to verify recognition and command encoding without moving the robot. Only after this should live TCP command transmission be enabled, and high-risk actions should remain blocked unless `stunt_armed` is explicitly enabled.
 
-**Fig. 4.8 to add: Vision event timeline from camera frame to command output.**
+**Fig. 4.8 to add: Vision event timeline from camera frame to command output.**  
+**Fig. 4.9 to add: `Report/figures/e11_vision_bridge_ack_latency_2026-04-24.png`.**
 
 **Table 4.10. Camera and vision bridge metrics.**
 
 | Metric | Value |
 |---|---:|
-| Camera topic mean rate | [x.xx Hz] |
-| Camera topic minimum observed rate | [x.xx Hz] |
-| Vision events tested | [n] |
-| Correct gesture-to-command events | [n/n] |
-| Hand-lost to stop-command time | [x.xx ms] |
-| Dry-run false live command trials | [n] |
-| Blocked stunt commands with `stunt_armed=false` | [n/n] |
+| Camera topic measured rate | 5.6-6.0 Hz in earlier retests; 4.07 Hz in latest reconnect retest |
+| Camera topic rate during E11 | 4.85 Hz |
+| Camera topic minimum observed rate | 4.07 Hz in the latest reconnect retest |
+| Vision events tested | 14 pilot/retest events |
+| Correct gesture-to-command events | 3/8 command-gesture trials plus safety passes |
+| Hand-lost to stop-command behaviour | `QUEUE_STOP` + `DRIVE,0,0` observed |
+| Dry-run false live command trials | 71 ACK-logged safe bridge commands |
+| Vision bridge-to-ESP32 ACK median | 66.13 ms |
+| Vision bridge-to-ESP32 ACK p95 | 301.93 ms |
+| Vision bridge-to-ESP32 ACK p99 | 361.15 ms |
+| Vision bridge-to-ESP32 ACK max | 392.95 ms |
+| Blocked stunt commands with `stunt_armed=false` | stable `Thumb_up` retest blocked `JUMP` once |
 
 The expected result is not that vision is fast enough for stabilising feedback. Instead, the expected result is that the camera and MediaPipe pipeline can generate useful supervisory events, such as open-palm forward commands or hand-lost stop commands, while the ESP32 continues to handle the balance loop locally. A low or variable camera frame rate should therefore be discussed as a limitation of vision teleoperation, not as a failure of the balance controller.
+
+The E11 ACK result should be interpreted as bridge-command-to-ESP32 acknowledgement latency, not full perception latency. During the E11 run, the camera topic was approximately 4.85 Hz, corresponding to a frame period of about 206 ms. Combining one frame period with the measured median bridge-to-ACK latency gives a minimum camera-frame-to-ACK estimate of about 272 ms. Stable gesture recognition can require additional debounced frames, so the full human-gesture-to-command latency is slower than the TCP ACK metric. This supports the architectural decision that vision remains supervisory and does not enter the 4 ms balance loop.
 
 The input arbitration behaviour should be reported as a short pass/fail table because it is a major engineering contribution of the system. Table 4.11 should be filled from direct tests of conflicting input sources.
 
@@ -558,9 +571,10 @@ The input arbitration behaviour should be reported as a short pass/fail table be
 |---|---|---|
 | PC tool starts while BLE controller is active | `BLE_DISABLE` prevents BLE from overwriting PC targets | [pass/fail] |
 | Command queue is running and `DRIVE` is received | Direct drive command is rejected or suppressed | [pass/fail] |
-| TCP client disconnects during non-zero command | Robot injects `DRIVE,0,0`, `YAWRATE,0`, `QUEUE_STOP` | [pass/fail] |
-| Vision bridge runs with `dry_run=true` | Commands are printed but not transmitted | [pass/fail] |
-| `stunt_armed=false` and a stunt event is detected | High-risk command is blocked | [pass/fail] |
+| TCP client closes during non-zero command | Robot logs `client_drop` and injects `DRIVE,0,0`, `YAWRATE,0`, `QUEUE_STOP` | pass: 10/10 close trials |
+| TCP client becomes idle | Robot emits `FULL_STOP,idle_timeout` and injects `DRIVE,0,0`, `YAWRATE,0`, `QUEUE_STOP` | pass: 10/10 idle trials |
+| Vision bridge runs with `dry_run=true` | Commands are printed but not transmitted | pass |
+| `stunt_armed=false` and a stunt event is detected | High-risk command is blocked | pass: stable `Thumb_up` blocked `JUMP` |
 
 These results close the loop for O2 and O3. O2 is supported if the camera topic, vision bridge and WiFi TCP command path operate with acceptable latency and predictable failure handling. O3 is supported if conflicting command sources are suppressed in a deterministic way and if safety gates prevent unverified vision events from directly triggering risky robot actions.
 

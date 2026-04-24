@@ -570,6 +570,18 @@ int Serial_HandleCommandLine(const char *line) {
         sLastYawRateMs = 0;
         Serial.println("Balance DISABLED via serial");
         return 0;
+    } else if (strncmp(rxBuffer, "LOOPLOG_START", 13) == 0 ||
+               strncmp(rxBuffer, "LOOPLOG,", 8) == 0) {
+        const char *p = strchr(rxBuffer, ',');
+        uint32_t samples = p ? (uint32_t)strtoul(p + 1, NULL, 10) : 15000;
+        Ctrl_LoopLogStart(samples);
+        return 0;
+    } else if (strcmp(rxBuffer, "LOOPLOG_STOP") == 0) {
+        Ctrl_LoopLogStop();
+        return 0;
+    } else if (strcmp(rxBuffer, "LOOPLOG_DUMP") == 0) {
+        Ctrl_LoopLogDump();
+        return 0;
     } else if (strcmp(rxBuffer, "BLE_DISABLE") == 0) {
         BLE_SetInputEnabled(false);
         Serial.println("BLE input disabled via serial");

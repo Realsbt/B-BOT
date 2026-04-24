@@ -1,0 +1,8 @@
+# source=synthetic_planning_placeholder_not_measured, provisional=true
+# intended_use=end_to_end_latency_table_layout_only
+metric,value,unit,notes
+n,50,count,"requires dry_run=false and ESP32 ACK replacement"
+bridge_to_esp32_median,18,ms,"planning placeholder"
+bridge_to_esp32_p95,95,ms,"planning placeholder"
+camera_period_mean,167,ms,"derived from approximate 6 Hz camera FPS planning value"
+total_estimated_vision_to_command,260,ms,"planning placeholder"

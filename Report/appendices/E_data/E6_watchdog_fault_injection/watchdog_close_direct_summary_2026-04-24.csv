@@ -1,0 +1,14 @@
+# source=measured_e6_close_direct_summary, provisional=false
+case,metric,value,unit
+tcp_close,n,10,trials
+tcp_close,events_found,10,count
+tcp_close,median_close_to_client_drop,33.352971999999994,ms
+tcp_close,p95_close_to_client_drop,85.46770655,ms
+tcp_close,max_close_to_client_drop,87.787835,ms
+direct_drive_watchdog,n,10,trials
+direct_drive_watchdog,events_found,10,count
+direct_drive_watchdog,median_send_to_watchdog,589.880043,ms
+direct_drive_watchdog,p95_send_to_watchdog,620.6196636,ms
+direct_drive_watchdog,median_ack_to_watchdog,517.9272675,ms
+direct_drive_watchdog,p95_ack_to_watchdog,538.8050686,ms
+direct_drive_watchdog,max_send_to_watchdog,625.700754,ms

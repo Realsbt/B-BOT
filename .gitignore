@@ -6,7 +6,7 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch
-include/wifi_config.h
+include/wifi_config.local.h
 __pycache__/
 *.pyc
 host/ros2_ws/build/

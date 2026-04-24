@@ -1,0 +1,4 @@
+# date=2026-04-24, timezone=Asia/Shanghai, fw=70c3b17+local_patch
+check,target,result,notes
+tcp_connect,172.20.10.4:23,pass,"nc reported connection succeeded"
+safe_stop_send,172.20.10.4:23,no_ack,"Sent DRIVE,0,0; YAWRATE,0; QUEUE_STOP via TCP. Command server did not return ACK, so latency cannot be computed from this run."

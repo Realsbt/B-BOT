@@ -19,6 +19,170 @@ StandupState standupState = StandupState_None; // 初始状态为None，不自�
 bool balanceEnabled = false; // 平衡站立是否使能，默认关闭（需要按Y键启用）
 bool legTestMode = false; // 腿部测试模式，右扳机按住时生效
 GroundDetector groundDetector = {10, 10, true, false};	//离地检测器 默认状态为触地
+
+#define CTRL_LOOPLOG_MAX_SAMPLES 20000
+#define CTRL_LOOPLOG_HIST_BINS 256
+static uint16_t sLoopLogDtUs[CTRL_LOOPLOG_MAX_SAMPLES];
+static volatile bool sLoopLogEnabled = false;
+static volatile uint32_t sLoopLogCount = 0;
+static volatile uint32_t sLoopLogTarget = 0;
+static uint32_t sLoopLogLastUs = 0;
+
+void Ctrl_LoopLogStart(uint32_t sampleTarget) {
+    if (sampleTarget == 0 || sampleTarget > CTRL_LOOPLOG_MAX_SAMPLES) {
+        sampleTarget = CTRL_LOOPLOG_MAX_SAMPLES;
+    }
+    sLoopLogCount = 0;
+    sLoopLogTarget = sampleTarget;
+    sLoopLogLastUs = micros();
+    sLoopLogEnabled = true;
+    Serial.printf("LOOPLOG_START,%lu\n", (unsigned long)sLoopLogTarget);
+}
+
+void Ctrl_LoopLogStop(void) {
+    sLoopLogEnabled = false;
+    Serial.printf("LOOPLOG_STOP,%lu\n", (unsigned long)sLoopLogCount);
+}
+
+uint32_t Ctrl_LoopLogDumpRangeTo(Print &out, uint32_t start, uint32_t maxCount) {
+    sLoopLogEnabled = false;
+    uint32_t count = sLoopLogCount;
+    if (start > count) {
+        start = count;
+    }
+    uint32_t available = count - start;
+    uint32_t dumpCount = (maxCount == 0 || maxCount > available) ? available : maxCount;
+    uint32_t end = start + dumpCount;
+
+    out.printf("LOOPLOG_DUMP_BEGIN,%lu,unit_us,%lu,%lu\n",
+               (unsigned long)count,
+               (unsigned long)start,
+               (unsigned long)dumpCount);
+    for (uint32_t i = start; i < end; ++i) {
+        out.printf("LOOPDT,%lu,%u\n", (unsigned long)i, sLoopLogDtUs[i]);
+        if ((i % 64) == 0) {
+            vTaskDelay(1);
+        }
+    }
+    out.printf("LOOPLOG_DUMP_END,%lu,%lu,%lu\n",
+               (unsigned long)count,
+               (unsigned long)start,
+               (unsigned long)dumpCount);
+    return dumpCount;
+}
+
+void Ctrl_LoopLogDumpTo(Print &out) {
+    Ctrl_LoopLogDumpRangeTo(out, 0, 0);
+}
+
+void Ctrl_LoopLogDump(void) {
+    Ctrl_LoopLogDumpTo(Serial);
+}
+
+static uint16_t Ctrl_HistPercentile(uint32_t *hist, uint16_t binCount,
+                                    uint16_t binWidthUs, uint32_t count,
+                                    uint32_t perMille) {
+    if (count == 0) {
+        return 0;
+    }
+    uint32_t targetRank = (count * perMille + 999) / 1000;
+    uint32_t cumulative = 0;
+    for (uint16_t i = 0; i < binCount; ++i) {
+        cumulative += hist[i];
+        if (cumulative >= targetRank) {
+            return (uint16_t)(i * binWidthUs);
+        }
+    }
+    return (uint16_t)((binCount - 1) * binWidthUs);
+}
+
+void Ctrl_LoopLogStatsTo(Print &out, uint16_t binWidthUs) {
+    sLoopLogEnabled = false;
+    if (binWidthUs == 0) {
+        binWidthUs = 100;
+    }
+
+    uint32_t count = sLoopLogCount;
+    uint32_t hist[CTRL_LOOPLOG_HIST_BINS] = {0};
+    uint16_t minDt = 65535;
+    uint16_t maxDt = 0;
+    uint64_t sum = 0;
+    uint64_t sumSq = 0;
+
+    for (uint32_t i = 0; i < count; ++i) {
+        uint16_t dt = sLoopLogDtUs[i];
+        if (dt < minDt) {
+            minDt = dt;
+        }
+        if (dt > maxDt) {
+            maxDt = dt;
+        }
+        sum += dt;
+        sumSq += (uint64_t)dt * (uint64_t)dt;
+        uint32_t bin = dt / binWidthUs;
+        if (bin >= CTRL_LOOPLOG_HIST_BINS) {
+            bin = CTRL_LOOPLOG_HIST_BINS - 1;
+        }
+        hist[bin] += 1;
+    }
+
+    double mean = count ? (double)sum / (double)count : 0.0;
+    double variance = count ? ((double)sumSq / (double)count) - (mean * mean) : 0.0;
+    if (variance < 0.0) {
+        variance = 0.0;
+    }
+    double stddev = sqrt(variance);
+    uint16_t p50 = Ctrl_HistPercentile(hist, CTRL_LOOPLOG_HIST_BINS, binWidthUs, count, 500);
+    uint16_t p95 = Ctrl_HistPercentile(hist, CTRL_LOOPLOG_HIST_BINS, binWidthUs, count, 950);
+    uint16_t p99 = Ctrl_HistPercentile(hist, CTRL_LOOPLOG_HIST_BINS, binWidthUs, count, 990);
+    uint16_t p999 = Ctrl_HistPercentile(hist, CTRL_LOOPLOG_HIST_BINS, binWidthUs, count, 999);
+
+    out.printf("LOOPLOG_STATS_BEGIN,%lu,unit_us,bin_width_us,%u\n",
+               (unsigned long)count,
+               binWidthUs);
+    out.printf("LOOPSTAT,samples,%lu,count\n", (unsigned long)count);
+    out.printf("LOOPSTAT,mean_us,%.3f,us\n", mean);
+    out.printf("LOOPSTAT,std_us,%.3f,us\n", stddev);
+    out.printf("LOOPSTAT,min_us,%u,us\n", count ? minDt : 0);
+    out.printf("LOOPSTAT,p50_us,%u,us\n", p50);
+    out.printf("LOOPSTAT,p95_us,%u,us\n", p95);
+    out.printf("LOOPSTAT,p99_us,%u,us\n", p99);
+    out.printf("LOOPSTAT,p99_9_us,%u,us\n", p999);
+    out.printf("LOOPSTAT,max_us,%u,us\n", maxDt);
+    for (uint16_t i = 0; i < CTRL_LOOPLOG_HIST_BINS; ++i) {
+        if (hist[i] == 0) {
+            continue;
+        }
+        uint32_t startUs = (uint32_t)i * binWidthUs;
+        uint32_t endUs = startUs + binWidthUs;
+        out.printf("LOOPHIST,%lu,%lu,%lu\n",
+                   (unsigned long)startUs,
+                   (unsigned long)endUs,
+                   (unsigned long)hist[i]);
+    }
+    out.printf("LOOPLOG_STATS_END,%lu\n", (unsigned long)count);
+}
+
+static void Ctrl_RecordLoopPeriod(void) {
+    if (!sLoopLogEnabled) {
+        return;
+    }
+    uint32_t nowUs = micros();
+    uint32_t dtUs = nowUs - sLoopLogLastUs;
+    sLoopLogLastUs = nowUs;
+    uint32_t index = sLoopLogCount;
+    if (index < sLoopLogTarget && index < CTRL_LOOPLOG_MAX_SAMPLES) {
+        sLoopLogDtUs[index] = (dtUs > 65535UL) ? 65535 : (uint16_t)dtUs;
+        sLoopLogCount = index + 1;
+        if (sLoopLogCount >= sLoopLogTarget) {
+            sLoopLogEnabled = false;
+            Serial.printf("LOOPLOG_DONE,%lu\n", (unsigned long)sLoopLogCount);
+        }
+    } else {
+        sLoopLogEnabled = false;
+    }
+}
+
 //测试用
 #define SIN_FREQUENCY_MS 5000 // 周期，单位毫秒
 #define SIN_AMPLITUDE 0.04      // 幅度
@@ -239,6 +403,8 @@ void CtrlBasic_Task(void *arg)
 	bool increasing = true; // 角度是否在增加
     while (1)
     {
+        Ctrl_RecordLoopPeriod();
+
         // 未使能平衡站立：关闭所有电机输出并跳过控制计算
         if (!balanceEnabled)
         {

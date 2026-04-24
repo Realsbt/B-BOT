@@ -1,0 +1,17 @@
+# source=measured_vision_bridge_to_esp32_ack_summary, provisional=false
+scope,metric,value,unit
+all,n,71,samples
+all,mean,98.61291069014085,ms
+all,median,66.132361,ms
+all,p95,301.932824,ms
+all,p99,361.14893289999986,ms
+all,max,392.952847,ms
+all,min,15.484552,ms
+all,non_ack,0,count
+drive_0_0,n,68,samples
+drive_0_0,mean,100.39537305882352,ms
+drive_0_0,median,71.045916,ms
+drive_0_0,p95,304.7267672,ms
+drive_0_0,p99,362.51195778999994,ms
+drive_0_0,max,392.952847,ms
+queue_stop,n,3,samples

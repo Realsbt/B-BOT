@@ -1,0 +1,10 @@
+# date=2026-04-24, timezone=Asia/Shanghai, fw=70c3b17
+metric,value,unit,notes
+micro_ros_client_ip,172.20.10.3,,Agent session established on UDP 9999
+image_topic,/espRos/esp32camera,,sensor_msgs/msg/CompressedImage
+image_format,jpeg,,Read with explicit sensor_msgs/msg/CompressedImage type
+hz_window_1,5.873,Hz,ros2 topic hz short window
+hz_window_2,5.892,Hz,ros2 topic hz short window
+hz_window_3,6.032,Hz,ros2 topic hz short window
+hz_window_4,6.037,Hz,ros2 topic hz short window
+hz_window_5,6.025,Hz,ros2 topic hz short window

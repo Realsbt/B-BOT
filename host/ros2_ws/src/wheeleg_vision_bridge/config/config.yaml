@@ -9,7 +9,7 @@ wheeleg_vision_bridge:
     tcp_port: 23
     dry_run: true
     mode: idle
-    debounce_frames: 5
+    debounce_frames: 3
     command_rate_hz: 10.0
     watchdog_ms: 1000
     face_yaw_gain_mrad: 1500

@@ -1,0 +1,29 @@
+# E11 Vision-to-ESP32 Latency
+
+Date/time: measured on 2026-04-24, Asia/Shanghai
+Operator: user + Codex
+Firmware commit: local patch with ESP32 TCP `ACK` support and vision bridge ACK CSV logging
+Controller mode: `gesture`, `dry_run=false`, safe `DRIVE,0,0` / `QUEUE_STOP` commands only
+Hardware state: ESP32 TCP server reachable at `172.20.10.4:23`; camera topic `/espRos/esp32camera` online
+Environment: local phone hotspot `BT26`
+Trial list: measured bridge-to-ESP32 ACK latency, `n=71`
+Safety notes: no high-risk stunt commands; test ended with `DRIVE,0,0`, `YAWRATE,0`, `QUEUE_STOP`
+
+Files:
+
+- `provisional_latency_summary_2026-04-24.csv`
+- `vision_bridge_ack_latency_2026-04-24.csv`
+- `vision_bridge_ack_latency_summary_2026-04-24.csv`
+- `plot_vision_ack_latency.py`
+- `Report/figures/e11_vision_bridge_ack_latency_2026-04-24.png`
+
+Measured summary:
+
+- Camera FPS during run: about `4.85 Hz`; format `jpeg`.
+- All bridge commands: `n=71`, median `66.13 ms`, p95 `301.93 ms`, p99 `361.15 ms`, max `392.95 ms`, non-ACK `0`.
+- `DRIVE,0,0` only: `n=68`, median `71.05 ms`, p95 `304.73 ms`, p99 `362.51 ms`, max `392.95 ms`.
+- A one-frame camera period at `4.85 Hz` is about `206 ms`, so the minimum camera-frame-to-ACK estimate is approximately `272 ms` using median ACK latency. Gesture debounce adds additional frame periods before a stable command is generated.
+
+Replacement note:
+
+- Use the measured `vision_bridge_ack_latency_*` files for E11. The provisional latency summary should not be used in the final report.

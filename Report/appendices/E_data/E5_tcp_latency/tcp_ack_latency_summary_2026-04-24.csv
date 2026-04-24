@@ -1,0 +1,10 @@
+# source=measured_tcp_ack_summary, provisional=false
+metric,value,unit
+n,300,samples
+mean,50.04719151,ms
+median,37.412711,ms
+p95,88.30974820000002,ms
+p99,143.46871843999958,ms
+max,368.89268,ms
+min,14.06952,ms
+non_ack_lines,0,count

@@ -1,0 +1,11 @@
+# timestamp_source=ROS log seconds, mode=gesture, dry_run=true, frame_skip=1
+# fw=70c3b17+local_patch, date=2026-04-24, timezone=Asia/Shanghai
+trial_id,condition,actual_gesture,expected_command,first_matching_label_s,stable_label_s,observed_stable_label,observed_command,result,notes
+after_01,corrected_camera_view_debounce3,Five,"DRIVE,250,0",1776990700.523,1776990701.281,Five,"DRIVE,250,0",pass,"After camera was aimed at the hand, Five reached a stable label and generated the expected forward dry-run command."
+after_02,patched_classifier_debounce5,PointLeft,"DRIVE,0,600",1776990551.965,NA,None,"DRIVE,0,0",partial_fail,"Patched classifier produced intermittent PointLeft labels, but not enough consecutive frames to pass debounce=5."
+after_03,patched_classifier_debounce3_visible_pose,PointLeft,"DRIVE,0,600",NA,NA,None,"DRIVE,0,0",fail,"A saved frame shows a clear side-on pointing gesture, but MediaPipe Hands did not produce stable landmarks in bridge logs. Treat as a vision robustness limitation."
+after_04,safety_gate_patch,Thumb_up,JUMP,NA,NA,None,"blocked unless stunt_armed=true",not_retested,"Code was changed so gesture-mode JUMP also passes through stunt_armed guarding; requires a stable Thumb_up retest to quantify."
+after_05,current_camera_retest,Five,"DRIVE,250,0",1776994257.964,NA,None,"DRIVE,0,0",partial_fail,"Five was detected briefly, but did not remain stable for debounce=3 during this 25 s retest; command stayed safe stop."
+after_06,current_camera_retest,Zero,"DRIVE,0,0",1776994263.247,NA,None,"DRIVE,0,0",safe_pass,"Zero labels appeared intermittently; no forward/turn/stunt command was generated."
+after_07,current_camera_retest,Thumb_up,JUMP,1776994263.941,1776994269.701,Thumb_up,"JUMP blocked by stunt_armed=false",pass_safety,"Thumb_up reached stable label once; gesture-mode JUMP was correctly blocked by stunt_armed guard."
+after_08,current_camera_retest,NoHand,"DRIVE,0,0",1776994270.895,1776994270.895,None,"DRIVE,0,0",pass_safety,"Hand removed from frame; bridge continued safe stop output."

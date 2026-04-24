@@ -56,28 +56,58 @@ class MediaPipeRunner:
             return None
 
         points = [(lm.x, lm.y) for lm in results.multi_hand_landmarks[0].landmark]
+        return self._classify_hand_points(points)
+
+    def _classify_hand_points(self, points):
         fingers = self._fingers_up(points)
         count = sum(fingers)
 
-        if count == 0:
-            return {"label": "Zero"}
         if count == 5:
             return {"label": "Five"}
 
-        thumb_tip = points[4]
-        index_tip = points[8]
-        wrist = points[0]
-        if count == 1 and fingers[1]:
-            if index_tip[0] < wrist[0] - 0.12:
-                return {"label": "PointLeft"}
-            if index_tip[0] > wrist[0] + 0.12:
-                return {"label": "PointRight"}
-            return {"label": "One"}
-
-        if thumb_tip[1] < min(points[8][1], points[12][1], points[16][1], points[20][1]):
+        if self._is_thumb_up(points, fingers):
             return {"label": "Thumb_up"}
 
+        point_label = self._pointing_label(points, fingers)
+        if point_label:
+            return {"label": point_label}
+
+        if count == 0:
+            return {"label": "Zero"}
+
+        if count == 1 and fingers[1]:
+            return {"label": "One"}
+
         return {"label": None}
+
+    def _pointing_label(self, points, fingers):
+        index_tip = points[8]
+        index_mcp = points[5]
+        index_pip = points[6]
+        wrist = points[0]
+
+        dx = index_tip[0] - wrist[0]
+        dy = index_tip[1] - wrist[1]
+        index_extended = _dist(index_tip, index_mcp) > 1.25 * _dist(index_pip, index_mcp)
+        horizontal = abs(dx) > 0.12 and abs(dx) > 1.2 * abs(dy)
+        other_fingers_mostly_folded = sum(fingers[2:]) <= 1
+
+        if not (index_extended and horizontal and other_fingers_mostly_folded):
+            return None
+        return "PointLeft" if dx < 0 else "PointRight"
+
+    def _is_thumb_up(self, points, fingers):
+        thumb_tip = points[4]
+        thumb_ip = points[3]
+        wrist = points[0]
+        other_tips = [points[idx] for idx in (8, 12, 16, 20)]
+
+        thumb_extended = _dist(thumb_tip, wrist) > 1.15 * _dist(thumb_ip, wrist)
+        thumb_above_hand = thumb_tip[1] < wrist[1] - 0.08
+        thumb_above_fingers = thumb_tip[1] < min(tip[1] for tip in other_tips) - 0.04
+        other_fingers_mostly_folded = sum(fingers[1:]) <= 1
+
+        return thumb_extended and thumb_above_hand and thumb_above_fingers and other_fingers_mostly_folded
 
     def _fingers_up(self, points):
         tip_ids = [4, 8, 12, 16, 20]

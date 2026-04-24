@@ -1,4 +1,6 @@
 import time
+import os
+import csv
 
 import cv2 as cv
 import rclpy
@@ -13,6 +15,9 @@ from .command_encoder import CommandEncoder
 from .debouncer import Debouncer
 from .mediapipe_runner import MediaPipeRunner
 from .transport import TcpTransport, TransportError, UartTransport
+
+
+STUNT_COMMANDS = {"JUMP", "CROSSLEG,0,5"}
 
 
 class VisionBridge(Node):
@@ -40,6 +45,7 @@ class VisionBridge(Node):
         self.declare_parameter("debug_events", False)
         self.declare_parameter("debug_event_rate_hz", 2.0)
         self.declare_parameter("stunt_armed", False)
+        self.declare_parameter("ack_log_csv", "")
 
         self.mode = self.get_parameter("mode").value
         self.image_type = self.get_parameter("image_type").value
@@ -49,6 +55,7 @@ class VisionBridge(Node):
         self.debug_event_period = 1.0 / max(0.1, float(self.get_parameter("debug_event_rate_hz").value))
         self.dry_run = bool(self.get_parameter("dry_run").value)
         self.stunt_armed = bool(self.get_parameter("stunt_armed").value)
+        self.ack_log_csv = str(self.get_parameter("ack_log_csv").value)
         self.command_period = 1.0 / max(0.1, float(self.get_parameter("command_rate_hz").value))
         self.watchdog_s = float(self.get_parameter("watchdog_ms").value) / 1000.0
 
@@ -77,6 +84,7 @@ class VisionBridge(Node):
         self._frame_count = 0
         self._last_face_command = "YAWRATE,0"
         self._current_gesture_drive = "DRIVE,0,0"
+        self._ack_log_header_written = False
         self.timer = self.create_timer(0.2, self._timer_cb)
         self.get_logger().info(
             f"vision bridge ready: topic={self.get_parameter('image_topic').value} "
@@ -146,15 +154,12 @@ class VisionBridge(Node):
                 self._current_gesture_drive = command
             elif command:
                 # impulse command (e.g. JUMP): send once on the stabilising edge
-                self._send(command, force=True)
+                self._send_guarded(command, force=True)
         elif self.mode == "stunt":
             self._debug_event(f"stunt event={event}")
             command = self.encoder.encode_stunt(event)
             if command:
-                if command in ("JUMP", "CROSSLEG,0,5") and not self.stunt_armed:
-                    self._debug_event(f"stunt {command} blocked: stunt_armed=False")
-                else:
-                    self._send(command)
+                self._send_guarded(command)
         elif self.mode == "face":
             self._last_face_command = self.encoder.encode_face(event)
             self._debug_event(f"face event={event} command={self._last_face_command}")
@@ -197,10 +202,23 @@ class VisionBridge(Node):
             self.get_logger().info(f"dry-run command: {command}")
             return
         try:
-            self.transport.write_line(command)
-            self.get_logger().info(f"sent: {command}")
+            ack = self.transport.write_line(command)
+            if ack:
+                self._log_ack(command, ack)
+                self.get_logger().info(
+                    f"sent: {command} ack={ack.get('ack_kind')} "
+                    f"latency_ms={ack.get('ack_latency_ms'):.3f}"
+                )
+            else:
+                self.get_logger().info(f"sent: {command}")
         except (OSError, TransportError) as exc:
             self.get_logger().warning(f"transport write failed: {exc}")
+
+    def _send_guarded(self, command, force=False):
+        if command in STUNT_COMMANDS and not self.stunt_armed:
+            self.get_logger().warning(f"stunt {command} blocked: stunt_armed=False")
+            return
+        self._send(command, force=force)
 
     def _debug_event(self, text):
         if not self.debug_events:
@@ -210,6 +228,42 @@ class VisionBridge(Node):
             return
         self._last_debug_event_time = now
         self.get_logger().info(f"debug event: {text}")
+
+    def _log_ack(self, command, ack):
+        if not self.ack_log_csv:
+            return
+        directory = os.path.dirname(self.ack_log_csv)
+        if directory:
+            os.makedirs(directory, exist_ok=True)
+        write_header = not self._ack_log_header_written and not os.path.exists(self.ack_log_csv)
+        with open(self.ack_log_csv, "a", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            if write_header:
+                writer.writerow([
+                    "pc_send_ns",
+                    "pc_ack_ns",
+                    "ack_latency_ms",
+                    "command_sent",
+                    "ack_kind",
+                    "esp_ms",
+                    "rc",
+                    "ack_command",
+                    "raw_ack",
+                    "hello",
+                ])
+            writer.writerow([
+                ack.get("pc_send_ns"),
+                ack.get("pc_ack_ns"),
+                f"{ack.get('ack_latency_ms'):.6f}",
+                command,
+                ack.get("ack_kind"),
+                ack.get("esp_ms"),
+                ack.get("rc"),
+                ack.get("ack_command"),
+                ack.get("raw_ack"),
+                ack.get("hello"),
+            ])
+        self._ack_log_header_written = True
 
 
 def main():

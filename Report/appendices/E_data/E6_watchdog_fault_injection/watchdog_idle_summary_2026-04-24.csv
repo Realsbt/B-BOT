@@ -1,0 +1,8 @@
+# source=measured_tcp_idle_watchdog_summary, provisional=false
+metric,value,unit
+n,10,trials
+mean_wait_to_evt,1483.8731978,ms
+median_wait_to_evt,1481.0776489999998,ms
+p95_wait_to_evt,1510.113507,ms
+max_wait_to_evt,1510.88001,ms
+full_stop_events,10,count

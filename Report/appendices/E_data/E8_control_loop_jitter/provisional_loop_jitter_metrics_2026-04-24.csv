@@ -1,0 +1,11 @@
+# source=synthetic_planning_placeholder_not_measured, provisional=true
+# intended_use=report_table_and_plot_layout_only
+metric,value,unit,notes
+samples,15000,count,"60 s at nominal 4 ms period"
+mean_period,4.01,ms,"Replace with measured dt mean"
+std_dev,0.08,ms,"Equivalent to 80 us"
+p95,4.14,ms,"Planning placeholder"
+p99,4.25,ms,"Planning placeholder"
+p99_9,4.75,ms,"Planning placeholder"
+max,5.60,ms,"Planning placeholder"
+missed_deadline_gt_5ms,3,count,"Planning placeholder"

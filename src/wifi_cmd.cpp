@@ -5,6 +5,7 @@
 #include <WiFi.h>
 #include <ESPmDNS.h>
 #include "serial.h"
+#include "ctrl.h"
 #include "wifi_config.h"
 
 #ifndef WIFI_MDNS_HOST
@@ -24,10 +25,30 @@ static uint32_t sLastTcpLineMs = 0;
 static bool sHadTcpClient = false;
 static bool sServerStarted = false;
 
+static void sendTcpEvent(const char *event, const char *detail) {
+    if (sClient && sClient.connected()) {
+        sClient.printf("EVT,%lu,%s,%s\n",
+                       (unsigned long)millis(),
+                       event ? event : "",
+                       detail ? detail : "");
+    }
+}
+
+static void sendTcpAck(const char *line, int rc) {
+    if (sClient && sClient.connected()) {
+        sClient.printf("%s,%lu,%d,%s\n",
+                       rc >= 0 ? "ACK" : "NACK",
+                       (unsigned long)millis(),
+                       rc,
+                       line ? line : "");
+    }
+}
+
 static void fullStopOnDisconnect(const char *reason) {
     // DRIVE bypasses the queue, so QUEUE_STOP alone cannot stop a moving robot.
     // Zero both the direct teleop channel (DRIVE) and YAWRATE, then stop the queue.
     Serial.printf("WiFi command disconnect (%s): emitting full stop\n", reason);
+    sendTcpEvent("FULL_STOP", reason);
     Serial_InjectCommandLine("DRIVE,0,0");
     Serial_InjectCommandLine("YAWRATE,0");
     Serial_InjectCommandLine("QUEUE_STOP");
@@ -61,12 +82,42 @@ static bool tryConnectWiFi(void) {
 static void handleLine(char *line) {
     if (!sWifiInputEnabled) {
         Serial.println("WiFi command ignored: input disabled");
+        sendTcpAck(line, -2);
         return;
     }
 
     sLastTcpLineMs = millis();
     Serial.printf("WiFi命令: %s\n", line);
-    Serial_InjectCommandLine(line);
+    if (strncmp(line, "LOOPLOG_DUMP_TCP", 16) == 0) {
+        uint32_t start = 0;
+        uint32_t maxCount = 0;
+        if (line[16] == ',') {
+            char *endPtr = NULL;
+            start = (uint32_t)strtoul(line + 17, &endPtr, 10);
+            if (endPtr && *endPtr == ',') {
+                maxCount = (uint32_t)strtoul(endPtr + 1, NULL, 10);
+            }
+        }
+        Ctrl_LoopLogDumpRangeTo(sClient, start, maxCount);
+        sendTcpAck(line, 0);
+        sLastTcpLineMs = millis();
+        return;
+    }
+    if (strncmp(line, "LOOPLOG_STATS_TCP", 17) == 0) {
+        uint16_t binWidthUs = 100;
+        if (line[17] == ',') {
+            uint32_t parsed = (uint32_t)strtoul(line + 18, NULL, 10);
+            if (parsed > 0 && parsed <= 1000) {
+                binWidthUs = (uint16_t)parsed;
+            }
+        }
+        Ctrl_LoopLogStatsTo(sClient, binWidthUs);
+        sendTcpAck(line, 0);
+        sLastTcpLineMs = millis();
+        return;
+    }
+    int rc = Serial_InjectCommandLine(line);
+    sendTcpAck(line, rc);
 }
 
 static void WiFiCmdTask(void *arg) {
@@ -125,6 +176,10 @@ static void WiFiCmdTask(void *arg) {
                 rxBuffer[0] = '\0';
                 Serial.printf("WiFi command client connected: %s\n",
                               sClient.remoteIP().toString().c_str());
+                sClient.printf("HELLO,%lu,wheeleg_tcp,%s:%d\n",
+                               (unsigned long)millis(),
+                               WiFi.localIP().toString().c_str(),
+                               WIFI_TCP_PORT);
             }
         }
 
