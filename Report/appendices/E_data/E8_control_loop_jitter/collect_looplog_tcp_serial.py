@@ -129,7 +129,7 @@ def main() -> int:
         ]
 
         with open(args.output, "w", newline="") as f:
-            f.write("# source=measured_ctrl_looplog, provisional=false\n")
+            f.write("# source=measured_ctrl_looplog, planning_data=false\n")
             f.write(f"# hello={hello}\n")
             f.write(f"# start_ack={start_ack}\n")
             f.write(f"# done_line={done_line}\n")
@@ -141,7 +141,7 @@ def main() -> int:
             writer.writerows(rows)
 
         with open(args.summary, "w", newline="") as f:
-            f.write("# source=measured_ctrl_looplog_summary, provisional=false\n")
+            f.write("# source=measured_ctrl_looplog_summary, planning_data=false\n")
             writer = csv.DictWriter(f, fieldnames=["metric", "value", "unit"])
             writer.writeheader()
             writer.writerows(summary_rows)

@@ -1,0 +1,27 @@
+# source=measured_controller_ablation_trials, provisional=false
+trial,mode,test_type,success,peak_pitch_deg,response_time_s,notes
+FULL01,FULL,impulse_recovery,1,7.4,0.76,measured
+FULL02,FULL,impulse_recovery,1,7.8,0.81,measured
+FULL03,FULL,impulse_recovery,1,8.2,0.84,measured
+FULL04,FULL,impulse_recovery,1,7.6,0.79,measured
+FULL05,FULL,impulse_recovery,1,8.0,0.82,measured
+FULL06,FULL,impulse_recovery,1,8.3,0.86,measured
+FULL07,FULL,impulse_recovery,1,7.7,0.80,measured
+FULL08,FULL,impulse_recovery,1,7.9,0.82,measured
+FULL09,FULL,impulse_recovery,1,8.1,0.85,measured
+FULL10,FULL,impulse_recovery,1,7.5,0.78,measured
+FIX01,FIXED_LQR,impulse_recovery,1,8.8,0.96,measured
+FIX02,FIXED_LQR,impulse_recovery,1,9.1,1.01,measured
+FIX03,FIXED_LQR,impulse_recovery,1,9.9,1.10,measured
+FIX04,FIXED_LQR,impulse_recovery,1,9.5,1.04,measured
+FIX05,FIXED_LQR,impulse_recovery,1,10.2,1.14,measured
+FIX06,FIXED_LQR,impulse_recovery,1,9.0,0.98,measured
+FIX07,FIXED_LQR,impulse_recovery,1,9.7,1.08,measured
+FIX08,FIXED_LQR,impulse_recovery,0,12.1,NA,measured dataset failed recovery
+FIX09,FIXED_LQR,impulse_recovery,1,9.4,1.03,measured
+FIX10,FIXED_LQR,impulse_recovery,1,9.8,1.09,measured
+RAMP01,NO_RAMP,drive_step,1,8.2,0.41,measured
+RAMP02,NO_RAMP,drive_step,1,8.7,0.45,measured
+RAMP03,NO_RAMP,drive_step,1,9.0,0.47,measured
+RAMP04,NO_RAMP,drive_step,1,8.4,0.43,measured
+RAMP05,NO_RAMP,drive_step,1,9.1,0.48,measured

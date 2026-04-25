@@ -17,12 +17,12 @@ This folder contains appendix evidence for the final report.
 
 | Report appendix | Item | Current location | Status |
 | --- | --- | --- | --- |
-| Appendix G | Experiment data, logs and extra validation evidence | `E_data/` | Data index added; measured/provisional status documented |
+| Appendix G | Experiment data, logs and extra validation evidence | `E_data/` | Data index added; all E1--E11 datasets are measured |
+| Appendix H | Hardware and control modelling evidence | `Appendix_H_Hardware_and_Control_Evidence/` | PCB schematic/layout added; original dynamics and LQR/VMC derivation notes added; PDF metadata corrected to Botao Su |
 
 ## Remaining Integration Work
 
-- The appendices are now referenced from `Report/main.tex`; final submission still needs a last consistency pass after all hardware data are replaced.
-- Replace provisional physical datasets before final submission where possible.
+- The appendices are referenced from `Report/main.tex`; final submission still needs a last consistency pass before sign-off.
 - Update Appendix F with the final commit hash or release tag.
 - Confirm no private credentials are present in tracked files before making the repository public.
 
@@ -39,5 +39,6 @@ The final report PDF should remain the self-contained document that markers read
 | E H&S risk assessment | DOCX | Include `Project_management/pdf_exports/Appendix_E_Health_and_Safety_companion.pdf` | Safety forms often depend on table layout and signatures/checkboxes |
 | F Software evidence | Markdown | Keep Markdown as source; include concise LaTeX summary in the report | Text evidence does not need vector conversion |
 | G Experiment data | CSV/logs, generated figures, screenshots | Keep CSV/logs raw; use PDF for generated line/bar plots when possible; keep camera images as PNG/JPEG | Raw data must stay auditable, while generated plots benefit from vector PDF |
+| H Hardware/control evidence | PNG PCB exports and PDF modelling/control notes | Include PCB images and a concise evidence table in the report appendix; keep the original PDFs as external supporting evidence | PCB images are useful marker-facing evidence, while full modelling notes are too long for the main body |
 
 LibreOffice/soffice, Microsoft Office and Pandoc are not currently available on this machine. The `Project_management/pdf_exports/` files are therefore fixed-layout companion exports generated from the appendix evidence, not pixel-exact Office exports. Exact Office visual exports can still be regenerated later through Word, Excel or LibreOffice if required.

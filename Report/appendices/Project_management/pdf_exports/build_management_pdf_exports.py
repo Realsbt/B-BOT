@@ -274,7 +274,7 @@ def build_project_plan_pdf() -> Path:
         ["Mechanical and electrical build", "Oct 2025 - Mar 2026", "3D modelling, print iteration, PCB/wiring work, harness construction, motor soldering and integration cleanup."],
         ["Embedded firmware and control", "Nov 2025 - Feb 2026", "ESP32 PlatformIO firmware, CAN motor feedback, IMU processing, PID/LQR/VMC balance and safety states."],
         ["Host software, ROS 2 and vision", "Feb 2026 - Apr 2026", "Host architecture decision, micro-ROS camera bring-up, MediaPipe bridge and supervisory TCP command safety."],
-        ["Testing, data and report", "Mar 2026 - Apr 2026", "Experiment matrix, measured/provisional data policy, generated figures, LaTeX report and appendix integration."],
+        ["Testing, data and report", "Mar 2026 - Apr 2026", "Experiment matrix, measured/planning data policy, generated figures, LaTeX report and appendix integration."],
     ]
 
     story: list = [

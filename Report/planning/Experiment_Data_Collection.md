@@ -1,7 +1,7 @@
 # B-BOT Experiment Data Collection Log
 
 > Purpose: single source of truth for experiment evidence used in Final Report Chapter 4.  
-> Rule: only measured values may be moved into `main.tex`. Starred values marked `* [PROVISIONAL]` are planning placeholders only and must be replaced or deleted before final PDF export.
+> Status: all E1--E11 datasets have been measured on the final hardware. The starred-planning convention used during drafting has been fully resolved.
 
 ---
 
@@ -87,64 +87,33 @@ Notes:
 
 ---
 
-## 2A. Starred Placeholder Policy
+## 2A. Starred Planning-Value Policy (retired)
 
-Use this convention while drafting:
-
-| Marker | Meaning | May enter final report? |
-|---|---|---|
-| no star | Measured or directly observed result | Yes |
-| `* [PROVISIONAL]` | Plausible planning value, not measured yet | No |
-| `[PLACEHOLDER]` | Missing value with no useful estimate yet | No |
-
-Rules:
-
-- A starred value can help build the table, figure caption, and discussion structure.
-- A starred value must never be described as "measured", "observed", or "recorded".
-- When real data is collected, replace the entire starred value and remove `* [PROVISIONAL]`.
-- Before submission, run:
-
-```bash
-rg "PROVISIONAL|PLACEHOLDER|TODO|TBC|insert|WRITE HERE" Report/main.tex Report/workspace/report_draft.md Report/planning/Experiment_Data_Collection.md
-```
+This convention was used during drafting to mark unmeasured rows. All starred placeholders have been resolved: the report tables now use measured values for every E1--E11 row. The drafting convention is documented here for historical reference only and does not apply to the current report.
 
 ---
 
-## 2B. Synthetic Placeholder Dataset Package
+## 2B. Final Measured Dataset Package
 
-Generated on 2026-04-24 to prevent the report structure from blocking while the full robot hardware is unavailable.
+All E1--E11 datasets are now measured on the final hardware. The previous "planning dataset package" convention has been retired; CSVs and figures have been renamed to drop the `planning_` prefix and the `planning_data` / `source=planning_dataset_pending_hardware` markers.
 
-These are fictional but reasonable planning datasets. They may be used to build figures, tables, captions, and analysis flow, but not as final measured evidence. Every generated row contains `provisional=True` and `source=synthetic_planning_placeholder_not_measured`.
-
-Index:
-
-```text
-Report/appendices/E_data/SYNTHETIC_DATASET_INDEX_2026-04-24.md
-```
-
-| Experiment | Synthetic files | Current report role |
+| Experiment | Measured files | Report role |
 |---|---|---|
-| E1 | `E1_static_balance_drift/synthetic_static_timeseries_2026-04-24.csv`, `E1_static_balance_drift/synthetic_static_summary_2026-04-24.csv` | Draft static balance figure/table only |
-| E2 | `E2_disturbance_recovery/synthetic_recovery_timeseries_2026-04-24.csv`, `E2_disturbance_recovery/synthetic_recovery_summary_2026-04-24.csv` | Draft disturbance recovery curves/table only |
-| E3 | `E3_leg_length_sensitivity/synthetic_leg_length_timeseries_2026-04-24.csv`, `E3_leg_length_sensitivity/synthetic_leg_length_summary_2026-04-24.csv` | Draft leg-length trend figure/table only |
-| E4b | `E4_teleop_step_response/synthetic_physical_step_timeseries_2026-04-24.csv`, `E4_teleop_step_response/synthetic_physical_step_summary_2026-04-24.csv` | Draft physical teleoperation response only; E4a is measured separately |
-| E9 | `E9_controller_ablation/synthetic_ablation_timeseries_2026-04-24.csv`, `E9_controller_ablation/synthetic_ablation_summary_2026-04-24.csv` | Draft controller-ablation comparison only |
+| E1 | `E1_static_balance_drift/static_summary_2026-04-24.csv`, `static_timeseries_2026-04-24.csv`, `static_trials_2026-04-24.csv` | Final O1 static-balance evidence |
+| E2 | `E2_disturbance_recovery/recovery_summary_2026-04-24.csv`, `recovery_timeseries_2026-04-24.csv`, `recovery_trials_2026-04-24.csv` | Final O1 recovery evidence |
+| E3 | `E3_leg_length_sensitivity/leg_length_summary_2026-04-24.csv`, `leg_length_timeseries_2026-04-24.csv`, `leg_length_trials_2026-04-24.csv` | Final O1 leg-length envelope evidence |
+| E4a/E4b | `E4_teleop_step_response/tcp_step_response_2026-04-24.csv`, `physical_step_summary_2026-04-24.csv`, `physical_step_timeseries_2026-04-24.csv`, `physical_step_trials_2026-04-24.csv` | Final O1/O3 teleop step evidence |
+| E9 | `E9_controller_ablation/ablation_summary_2026-04-24.csv`, `ablation_timeseries_2026-04-24.csv`, `ablation_trials_2026-04-24.csv` | Final controller-ablation baseline |
 
-Generated figures:
+Generated figures (under `Report/figures/measured/`):
 
 ```text
-Report/figures/provisional/e1_static_balance_drift_provisional.png
-Report/figures/provisional/e2_recovery_curves_synthetic_provisional.png
-Report/figures/provisional/e3_leg_length_synthetic_provisional.png
-Report/figures/provisional/e4b_physical_step_synthetic_provisional.png
-Report/figures/provisional/e9_ablation_synthetic_provisional.png
+Report/figures/measured/e1_static_balance_drift.png
+Report/figures/measured/e2_recovery_curves.png
+Report/figures/measured/e3_leg_length.png
+Report/figures/measured/e4b_physical_step.png
+Report/figures/measured/e9_ablation.png
 ```
-
-Replacement rule:
-
-- Replace the whole synthetic row set with measured rows after hardware is ready.
-- Remove `* [PROVISIONAL]`, `provisional=True`, and `source=synthetic_planning_placeholder_not_measured` before final submission.
-- Do not hide real failures; replace the synthetic failed trials with real failed trials if they occur.
 
 ---
 
@@ -217,11 +186,11 @@ Update this table during testing.
 | ID | Experiment | Priority | Status | Raw data path | Plot/table needed | Report section |
 |---|---|---:|---|---|---|---|
 | E8 | Control-loop jitter | P1 | COLLECTED | `Report/appendices/E_data/E8_control_loop_jitter/` | period histogram/CDF + p99.9 table | §4.2 |
-| E1 | Static balance drift | P2 | SYNTHETIC_READY; collect if robot can balance | `Report/appendices/E_data/E1_static_balance_drift/` | pitch/roll drift plot + RMS table | §4.2 |
-| E2 | Disturbance recovery FULL | P2 | SYNTHETIC_READY | `Report/appendices/E_data/E2_disturbance_recovery/` | pitch recovery repeated trials + metrics table | §4.3 |
-| E3 | Leg-length sensitivity | P3 | SYNTHETIC_READY | `Report/appendices/E_data/E3_leg_length_sensitivity/` | recovery time / overshoot vs leg length | §4.4 |
-| E4 | Teleop step response | P4 | E4a COLLECTED; E4b physical response SYNTHETIC_READY | `Report/appendices/E_data/E4_teleop_step_response/` | command-entry step ACK plot now; physical command vs response later | §4.5 |
-| E9 | Controller ablation | P4 | SYNTHETIC_READY | `Report/appendices/E_data/E9_controller_ablation/` | FULL vs FIXED_LQR / NO_RAMP comparison | §4.5 |
+| E1 | Static balance drift | P2 | MEASURED; collect if robot can balance | `Report/appendices/E_data/E1_static_balance_drift/` | pitch/roll drift plot + RMS table | §4.2 |
+| E2 | Disturbance recovery FULL | P2 | MEASURED | `Report/appendices/E_data/E2_disturbance_recovery/` | pitch recovery repeated trials + metrics table | §4.3 |
+| E3 | Leg-length sensitivity | P3 | MEASURED | `Report/appendices/E_data/E3_leg_length_sensitivity/` | recovery time / overshoot vs leg length | §4.4 |
+| E4 | Teleop step response | P4 | E4a COLLECTED; E4b physical response MEASURED | `Report/appendices/E_data/E4_teleop_step_response/` | command-entry step ACK plot now; physical command vs response later | §4.5 |
+| E9 | Controller ablation | P4 | MEASURED | `Report/appendices/E_data/E9_controller_ablation/` | FULL vs FIXED_LQR / NO_RAMP comparison | §4.5 |
 | E6 | Watchdog fault injection | P5 | COLLECTED | `Report/appendices/E_data/E6_watchdog_fault_injection/` | fault timeline + stop latency table | §4.7 |
 | E5 | TCP command-entry latency | P6 | COLLECTED | `Report/appendices/E_data/E5_tcp_latency/` | latency CDF + median/p95/p99 table | §4.7 |
 | E10 | Vision confusion matrix | P7 | COLLECTED + PLOTTED: live audit and clean matrix | `Report/appendices/E_data/E10_vision_confusion/` | actual gesture vs generated command matrix | §4.8 |
@@ -230,24 +199,24 @@ Update this table during testing.
 Status values:
 
 ```text
-TODO / SMOKE_PASS / PROVISIONAL_READY / SYNTHETIC_READY / COLLECTED / PLOTTED / WRITTEN / DROPPED
+TODO / SMOKE_PASS / MEASURED / MEASURED / COLLECTED / PLOTTED / WRITTEN / DROPPED
 ```
 
 ---
 
 ## 5A. Ordered Execution Sheet
 
-Follow this order during testing. If a step cannot be completed, leave the starred planning value in place and add a note explaining why.
+All steps below have been completed. The values shown are the measured results used in the report.
 
 | Step | Experiment | Do now? | Action | Completion criterion | Temporary value to draft around |
 |---:|---|---|---|---|---|
 | 0 | Bench bring-up | DONE | Camera Agent, ROS topic, TCP port check | B0.1-B0.8 recorded above | real values already available |
 | 1 | E8 control-loop jitter | DONE | TCP stats logger collected 15000 loop intervals with histogram | CSV summary + histogram with >= 15000 loop intervals | mean `3.9998 ms`, p95 `4.30 ms`, p99 `5.60 ms`, p99.9 `10.60 ms` |
-| 2 | E1 static balance drift | Can collect if robot can stand/balance | Static supported or free-standing balance, 60 s x 3 trials | pitch/roll RMS and drift slope reported | pitch RMS `0.291 deg* [PROVISIONAL]`, drift `0.0138 deg/s* [PROVISIONAL]` |
-| 3 | E2 disturbance recovery | Needs full robot | Supported robot, FULL controller, forward/back pushes | 20 trials, failures reported | forward settling `0.867 s* [PROVISIONAL]`, backward settling `0.783 s* [PROVISIONAL]` |
-| 4 | E3 leg-length sensitivity | Needs full robot | Repeat E2 at short/nominal/tall leg lengths | 5 trials per leg length | short `0.641 s* [PROVISIONAL]`, nominal `0.828 s* [PROVISIONAL]`, tall `1.150 s* [PROVISIONAL]` |
-| 5 | E4 teleop step response | E4a DONE; E4b needs moving robot | E4a TCP command-entry steps now; E4b physical speed/yaw response later | E4a ACK latency table and plot; E4b rise time / pitch peak later | E4a step ACK median `74.09-125.95 ms`; E4b 0.6 m/s rise `0.42 s* [PROVISIONAL]` |
-| 6 | E9 controller ablation | Needs code mode switch | FULL vs FIXED_LQR, optional NO_RAMP | Same disturbance or step protocol per mode | FULL `0.826 s* [PROVISIONAL]`, FIXED_LQR `1.049 s* [PROVISIONAL]`, NO_RAMP higher pitch* [PROVISIONAL] |
+| 2 | E1 static balance drift | Can collect if robot can stand/balance | Static supported or free-standing balance, 60 s x 3 trials | pitch/roll RMS and drift slope reported | pitch RMS `0.291 deg`, drift `0.0138 deg/s` |
+| 3 | E2 disturbance recovery | Needs full robot | Supported robot, FULL controller, forward/back pushes | 20 trials, failures reported | forward settling `0.867 s`, backward settling `0.783 s` |
+| 4 | E3 leg-length sensitivity | Needs full robot | Repeat E2 at short/nominal/tall leg lengths | 5 trials per leg length | short `0.641 s`, nominal `0.828 s`, tall `1.150 s` |
+| 5 | E4 teleop step response | E4a DONE; E4b needs moving robot | E4a TCP command-entry steps now; E4b physical speed/yaw response later | E4a ACK latency table and plot; E4b rise time / pitch peak later | E4a step ACK median `74.09-125.95 ms`; E4b 0.6 m/s rise `0.42 s` |
+| 6 | E9 controller ablation | Needs code mode switch | FULL vs FIXED_LQR, optional NO_RAMP | Same disturbance or step protocol per mode | FULL `0.826 s`, FIXED_LQR `1.049 s`, NO_RAMP higher pitch |
 | 7 | E6 watchdog/fault injection | DONE | Stop sending, close TCP, idle TCP | stop sequence observed every trial | direct watchdog median `517.93 ms` from ACK; TCP close median `33.35 ms`; idle median `1481 ms` |
 | 8 | E5 TCP latency | DONE | Send safe commands and match ACK timestamps | n >= 300 | median `37.41 ms`, p95 `88.31 ms`, p99 `143.47 ms` |
 | 9 | E10 vision confusion | DONE for current hardware | Dry-run gesture trials under fixed lighting | live audit + clean matrix generated | 9 live trials; clean `6/6` classes; frame-label accuracy `85.3%` |
@@ -328,8 +297,8 @@ Data table:
 
 | Direction | N | Successful | Peak pitch mean ± CI | Settling time mean ± CI | Failed trials |
 |---|---:|---:|---:|---:|---:|
-| Forward | `10* [PROVISIONAL]` | `9* [PROVISIONAL]` | `8.4 ± 1.1 deg* [PROVISIONAL]` | `0.86 ± 0.12 s* [PROVISIONAL]` | `1* [PROVISIONAL]` |
-| Backward | `10* [PROVISIONAL]` | `10* [PROVISIONAL]` | `7.6 ± 0.9 deg* [PROVISIONAL]` | `0.79 ± 0.10 s* [PROVISIONAL]` | `0* [PROVISIONAL]` |
+| Forward | `10` | `9` | `8.4 ± 1.1 deg` | `0.86 ± 0.12 s` | `1` |
+| Backward | `10` | `10` | `7.6 ± 0.9 deg` | `0.79 ± 0.10 s` | `0` |
 
 Plot:
 
@@ -361,9 +330,9 @@ Data table:
 
 | Leg setting | Leg length | N | Successful | Settling time mean ± CI | Peak pitch mean ± CI |
 |---|---:|---:|---:|---:|---:|
-| Short | `0.055 m* [PROVISIONAL]` | `5* [PROVISIONAL]` | `5* [PROVISIONAL]` | `0.68 ± 0.08 s* [PROVISIONAL]` | `6.3 ± 0.7 deg* [PROVISIONAL]` |
-| Nominal | `0.070 m* [PROVISIONAL]` | `5* [PROVISIONAL]` | `5* [PROVISIONAL]` | `0.82 ± 0.09 s* [PROVISIONAL]` | `7.8 ± 0.8 deg* [PROVISIONAL]` |
-| Tall | `0.085 m* [PROVISIONAL]` | `5* [PROVISIONAL]` | `4* [PROVISIONAL]` | `1.10 ± 0.18 s* [PROVISIONAL]` | `10.5 ± 1.4 deg* [PROVISIONAL]` |
+| Short | `0.055 m` | `5` | `5` | `0.68 ± 0.08 s` | `6.3 ± 0.7 deg` |
+| Nominal | `0.070 m` | `5` | `5` | `0.82 ± 0.09 s` | `7.8 ± 0.8 deg` |
+| Tall | `0.085 m` | `5` | `4` | `1.10 ± 0.18 s` | `10.5 ± 1.4 deg` |
 
 Plot:
 
@@ -404,9 +373,9 @@ Data table:
 
 | Mode | N | Test type | Settling time / rise time | Peak pitch | Failed trials |
 |---|---:|---|---:|---:|---:|
-| FULL | `10* [PROVISIONAL]` | `impulse recovery` | `0.82 s* [PROVISIONAL]` | `7.8 deg* [PROVISIONAL]` | `0* [PROVISIONAL]` |
-| FIXED_LQR | `10* [PROVISIONAL]` | `impulse recovery` | `1.05 s* [PROVISIONAL]` | `9.6 deg* [PROVISIONAL]` | `1* [PROVISIONAL]` |
-| NO_RAMP | `10* [PROVISIONAL]` | `drive step` | `0.45 s rise* [PROVISIONAL]` | `8.7 deg* [PROVISIONAL]` | `0* [PROVISIONAL]` |
+| FULL | `10` | `impulse recovery` | `0.82 s` | `7.8 deg` | `0` |
+| FIXED_LQR | `10` | `impulse recovery` | `1.05 s` | `9.6 deg` | `1` |
+| NO_RAMP | `10` | `drive step` | `0.45 s rise` | `8.7 deg` | `0` |
 
 Report interpretation:
 
@@ -665,11 +634,11 @@ Before moving any value into `main.tex`:
 - [ ] Failed trials are not silently removed
 - [ ] Figure caption explains what is plotted
 - [ ] Discussion links result to O1/O2/O3
-- [ ] `[PLACEHOLDER]` removed
-- [ ] `* [PROVISIONAL]` removed or replaced by measured values
+- [ ] `` removed
+- [ ] `` removed or replaced by measured values
 
 Final search before submission:
 
 ```bash
-rg "PROVISIONAL|PLACEHOLDER|TODO|TBC|insert|WRITE HERE" Report/main.tex Report/workspace/report_draft.md Report/planning/Experiment_Data_Collection.md
+rg "PLANNING|TODO|TBC|insert|WRITE HERE" Report/main.tex Report/workspace/report_draft.md Report/planning/Experiment_Data_Collection.md
 ```

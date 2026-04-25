@@ -4,8 +4,7 @@ This table identifies external code, libraries, frameworks and generated code us
 
 | Item | Project use | Repository / location in B-BOT | Attribution status |
 | --- | --- | --- | --- |
-| Yahboom ESP32 wheel-legged robot base project and hardware platform | Starting point for the robot platform, motor/leg hardware context and vendor examples | Original vendor material; modified project now stored in this repository | Must be acknowledged as third-party/vendor basis where relevant |
-| Yahboom / ROS 2 WiFi camera module | Provides compressed image topic used by the host ROS 2 vision bridge | External camera module; host-side evidence uses `/espRos/esp32camera` | Must be described as an external camera module, not original robot-control code |
+| Yahboom / ROS 2 WiFi camera module | Provides the external compressed image topic used by the host ROS 2 vision bridge | External camera module; host-side evidence uses `/espRos/esp32camera` | Must be described as an external camera module, not the robot platform or original robot-control code |
 | NimBLE-Arduino | ESP32 BLE support used for Xbox controller input | `lib/NimBLE-Arduino/` | Apache License 2.0; local copy includes `LICENSE` and `library.properties` |
 | Xbox controller support headers | Xbox controller BLE parsing and HID report support | `include/XboxSeriesXControllerESP32_asukiaaa.hpp`, `include/XboxSeriesXHIDReportBuilder_asukiaaa.hpp`, `include/XboxControllerNotificationParser.h` | Requires final acknowledgement of original source/adaptation status |
 | ESP32 Arduino framework | Embedded firmware framework for the ESP32 target | PlatformIO dependency through `platformio.ini` | Cite ESP32 Arduino / PlatformIO in final references |
@@ -18,13 +17,13 @@ This table identifies external code, libraries, frameworks and generated code us
 | MediaPipe | Hand/pose/face perception for vision teleoperation | Host Python dependency used by `mediapipe_runner.py` | Cite MediaPipe references in final report |
 | NumPy | Numeric support for host-side perception and data scripts | Host Python dependency | Acknowledge as standard scientific Python dependency |
 | MATLAB-generated code | Generated leg kinematics, VMC conversion and LQR support code | `src/matlab_code/`, `include/matlab_code/` | Identify as generated support code and explain source model/derivation in Methods if needed |
-| Matplotlib / Python data scripts | Plot generation for experiment evidence | `Report/appendices/E_data/*/*.py`, `Report/appendices/E_data/make_provisional_plots.py` | Used for analysis/figures; cite only if required by report policy |
+| Matplotlib / Python data scripts | Plot generation for experiment evidence | Python plotting scripts under `Report/appendices/E_data/` | Used for analysis/figures; cite only if required by report policy |
 
 ## Attribution Checks
 
 Submission checklist:
 
 - Verify each external item has an accurate license/source statement.
-- Replace generic placeholder license metadata in ROS package files if the package is submitted publicly.
+- Replace generic license metadata in ROS package files if the package is submitted publicly.
 - Ensure the final report references separate original work, generated code, vendor examples and third-party libraries.
-- Avoid claiming the ROS 2 WiFi camera module firmware or vendor robot base as original project code.
+- Avoid claiming the ROS 2 WiFi camera module firmware as original project code; the robot mechanical platform and ESP32 controller PCB are original project work.

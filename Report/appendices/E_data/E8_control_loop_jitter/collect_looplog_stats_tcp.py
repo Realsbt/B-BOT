@@ -87,7 +87,7 @@ def main() -> int:
         raise RuntimeError(f"Expected {args.samples} samples, got {measured_samples}")
 
     with open(args.summary, "w", newline="") as f:
-        f.write("# source=measured_ctrl_looplog_tcp_stats, provisional=false\n")
+        f.write("# source=measured_ctrl_looplog_tcp_stats, planning_data=false\n")
         f.write(f"# hello_start={hello_start}\n")
         f.write(f"# start_ack={start_ack}\n")
         f.write(f"# wait_s={wait_s}\n")
@@ -100,7 +100,7 @@ def main() -> int:
         writer.writerows(stats)
 
     with open(args.histogram, "w", newline="") as f:
-        f.write("# source=measured_ctrl_looplog_tcp_histogram, provisional=false\n")
+        f.write("# source=measured_ctrl_looplog_tcp_histogram, planning_data=false\n")
         f.write(f"# bin_width_us={args.bin_width_us}\n")
         writer = csv.DictWriter(f, fieldnames=["bin_start_us", "bin_end_us", "count"])
         writer.writeheader()

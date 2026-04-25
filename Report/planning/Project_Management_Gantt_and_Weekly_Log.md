@@ -69,7 +69,7 @@ gantt
     Easter report catch-up and appendix planning       :t3, 2026-03-30, 20d
     Final experiment design and 80+ evidence planning  :t4, 2026-04-20, 5d
     E4/E5/E6/E8/E10/E11 data collection                :t5, 2026-04-23, 2d
-    Synthetic placeholder datasets for missing tests   :t6, 2026-04-24, 1d
+    Planning datasets for final physical tests            :t6, 2026-04-24, 1d
     Chapter 2/3/4/5 report drafting                    :t7, 2026-04-24, 3d
     Final physical tests and data replacement          :crit, t8, 2026-04-26, 4d
     LaTeX integration, formatting and final upload     :crit, t9, 2026-04-28, 4d
@@ -111,7 +111,7 @@ Rendered version for preview/report integration:
 | 26 | 2026-03-30 to 2026-04-05 | Easter vacation | Reduced formal schedule; used time for catch-up, report planning, hardware review and software architecture consolidation. | Easter vacation. |
 | 27 | 2026-04-06 to 2026-04-12 | Easter vacation | Continued catch-up; refined final-report positioning around local embedded balance plus supervisory teleoperation; prepared for ROS/camera bring-up. | Easter vacation. |
 | 28 | 2026-04-13 to 2026-04-19 | Easter vacation / restart | Finalised plan to focus on measurable evidence; prepared experiment matrix, report outline and camera/host software route. | Easter vacation ended 2026-04-18. |
-| 29 | 2026-04-20 to 2026-04-25 | Final integration, testing and report sprint | Brought up the ROS 2 WiFi camera module path; implemented ROS 2 `wheeleg_vision_bridge`; added WiFi TCP command safety; collected E4/E5/E6/E8/E10/E11 data; generated provisional datasets for missing physical tests; drafted Chapters 1-5 and references. | Reflected heavily in `Progress.md` and experiment data. |
+| 29 | 2026-04-20 to 2026-04-25 | Final integration, testing and report sprint | Brought up the ROS 2 WiFi camera module path; implemented ROS 2 `wheeleg_vision_bridge`; added WiFi TCP command safety; collected E4/E5/E6/E8/E10/E11 data; generated planning datasets for missing physical tests; drafted Chapters 1-5 and references. | Reflected heavily in `Progress.md` and experiment data. |
 
 ## B.4 Key Schedule Deviations and Responses
 
@@ -121,7 +121,7 @@ Rendered version for preview/report integration:
 | Physical build work was larger than software commits suggest | CAD, printing, PCB work, soldering and wiring harness construction happened outside git | Reconstructed the project management record and linked physical work to integration risks | Appendix B explains non-git effort and manufacturing workload |
 | ROS 2 was scoped away from low-level control | WiFi/ROS/camera timing is not deterministic enough for a 4 ms balance loop | Used ROS 2/MediaPipe only for supervisory teleoperation | Became a central design choice tested by E5/E10/E11 |
 | Exam and vacation periods reduced continuity | Christmas, exam season and Easter break interrupted continuous lab work | Used reduced periods for documentation, planning, light cleanup and later sprint work | Project plan records realistic schedule constraints |
-| Some physical experiments were not measured before report drafting | Full robot hardware/data availability lagged behind software and report timeline | Created clearly marked provisional datasets and analysis structure | Final submission must replace provisional rows with measured E1/E2/E3/E4b/E9 data |
+| Some physical experiment data still required the final hardware session during report drafting | Full robot hardware/data availability lagged behind software and report timeline | Created clearly marked planning datasets and analysis structure | Final submission must replace planning rows with measured E1/E2/E3/E4b/E9 data |
 
 ## B.5 How This Appendix Should Be Used in the Final Report
 

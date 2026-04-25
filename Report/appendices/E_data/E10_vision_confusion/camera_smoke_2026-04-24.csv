@@ -1,4 +1,4 @@
-# date=2026-04-24, timezone=Asia/Shanghai, fw=70c3b17
+# date=2026-04-24, clock_source=VM/local filename stamp, test_context=UK, fw=70c3b17
 metric,value,unit,notes
 micro_ros_client_ip,172.20.10.3,,Agent session established on UDP 9999
 image_topic,/espRos/esp32camera,,sensor_msgs/msg/CompressedImage

@@ -2152,3 +2152,207 @@
   - `lualatex` 已 rerun，交叉引用 warning 已清除。
   - `Report/main.log` 无 fatal error、undefined citation/reference、overfull hbox、duplicate destination warning 或 rerun warning；仍只有 4 个可接受的 `Underfull \hbox`。
   - `git diff --check` 通过。
+
+#### 2026-04-26 00:47:17 CST +0800 Chinese review copy generated
+- 用户要求：
+  - 根据当前英文版 `Report/main.tex` 生成内容一致的中文 review 版本，便于逐段检查 report 逻辑和表述。
+- 新增文件：
+  - `Report/mainzh.tex`
+  - `Report/mainzh.pdf`
+- 内容策略：
+  - `Report/main.tex` 仍是正式英文提交源文件。
+  - `Report/mainzh.tex` 是中文审阅稿，保留英文版的章节结构、figure/table labels、citation keys、实验编号、数据值、路径和 appendix A-G 组织。
+  - 技术名词、代码标识符、命令名、数据集路径和 citation keys 保持可追溯，正文解释翻译为中文。
+- 排版处理：
+  - 本机 TeX 环境没有 `ctex` / `luatexja` / `xeCJK`，因此 `mainzh.tex` 使用 `Noto Sans CJK SC` + LuaLaTeX。
+  - 为避免中文段落无法自动断行，`mainzh.tex` 增加了一个 LuaTeX callback，在 CJK 字符后插入可断行点；这只影响中文 review PDF 排版，不改变英文正式稿。
+- 编译检查：
+  - `biber mainzh` 成功。
+  - `lualatex mainzh.tex` 复编成功，生成 `Report/mainzh.pdf`。
+  - `mainzh.pdf` 当前为 42 页 A4。
+  - `Report/mainzh.log` 未发现 fatal error、undefined citation/reference、overfull hbox 或 rerun warning；只剩少量表格中的 `Underfull \hbox`。
+
+#### 2026-04-26 CST +0800 Hardware originality correction
+- 用户澄清：
+  - 机器人平台不是 Yahboom 底盘或 Yahboom 轮腿机器人改装。
+  - 机器人机械平台为本项目自行设计/制作。
+  - ESP32 控制板为自行绘制 PCB，包含 IMU、六个电机接口、额外拓展接口和电源管理。
+  - Yahboom 只应作为 ROS 2 WiFi 摄像头模块来源。
+- 已修正：
+  - `Report/main.tex` 的 Methods/Mechanical and Electrical Design 不再写作 Yahboom robot base。
+  - `Report/main.tex` 的硬件表改为 `Custom ESP32 controller PCB`。
+  - `Report/main.tex` Appendix F 的 third-party boundary 改为 Yahboom ROS 2 WiFi camera module support，而不是 Yahboom base code/platform。
+  - `Report/mainzh.tex` 同步中文审阅稿。
+  - Appendix F attribution 和 software evidence 文档同步修正。
+  - `Report/workspace/思路.md` 同步高分论证主线：自研机械平台 + 自研 ESP32 PCB + 外部 ROS 2 WiFi 摄像头模块。
+- 后续建议：
+  - 若有 PCB 工程文件、schematic PDF、PCB layout 截图、BOM、Gerber 或实物照片，应加入 appendix 作为硬件原创性证据。
+
+#### 2026-04-26 CST +0800 Technical detail reference document
+- 用户要求：
+  - 整理现有项目程序和已知信息，生成一个可辅助修改 report 的技术细节文档。
+- 新增文件：
+  - `Report/workspace/技术细节.md`
+- 内容覆盖：
+  - 项目事实边界：自研轮腿平台、自研 ESP32 PCB、Yahboom 只作为 ROS 2 WiFi 摄像头模块。
+  - PCB/hardware evidence 建议：Appendix H、schematic、PCB layout、BOM、Gerber、实物照片。
+  - ESP32 固件结构：PlatformIO、初始化顺序、FreeRTOS task table。
+  - 控制算法：LQR gain scheduling、PID、VMC、target ramp、ground detection、zero-torque safety。
+  - 电机/CAN/校准：CAN IDs、2 ms motor send、1 Mbps TWAI、反电动势补偿和 Preferences 校准。
+  - 命令系统：UART queue、direct DRIVE/YAWRATE、watchdog、BLE/WiFi/vision 仲裁。
+  - Xbox BLE：NimBLE 自动扫描、输入映射、队列忙时不覆盖 target。
+  - ROS 2 摄像头/视觉桥：`/espRos/esp32camera`、MediaPipe modes、gesture mapping、dry-run、stunt gate、presentation monitor。
+  - 实验设计：E1--E11 目的、当前 measured/provisional 状态、关键实测结果和 report 写作注意。
+- 一致性修正：
+  - `README.md` 中旧的 Yahboom robot-base 表述已改为自研平台/自研 PCB；Yahboom 只保留为 ROS 2 WiFi 摄像头模块来源。
+
+#### 2026-04-26 CST +0800 Appendix H hardware/control evidence integration
+- 用户新增材料：
+  - LQR 控制算法 PDF。
+  - 动力学建模 PDF。
+  - 两张 PCB 图：schematic 和 layout。
+- 文件整理：
+  - 新增 `Report/appendices/Appendix_H_Hardware_and_Control_Evidence/`。
+  - 将用户新增材料整理为 ASCII 文件名，避免 LaTeX 路径和字体问题：
+    - `Dynamics_Modelling.pdf`
+    - `LQR_Control_Algorithm.pdf`
+    - `PCB_Schematic.png`
+    - `PCB_Layout.png`
+  - 新增 `Report/appendices/Appendix_H_Hardware_and_Control_Evidence/README.md`。
+- Report 集成：
+  - `Report/main.tex` 3.3 加入 PCB schematic/layout exports 已作为 Appendix H 硬件证据。
+  - `Report/main.tex` 3.5 加入 Appendix H 支撑动力学和 LQR/VMC 笔记，实际实现仍追溯到 generated functions 和 ESP32 firmware。
+  - `Report/main.tex` 新增 Appendix H summary table，并嵌入两张 PCB 图。
+  - `Report/mainzh.tex` 同步中文 review 版本。
+  - `Report/appendices/README.md` 更新 Appendix H 索引和 export policy。
+  - `Report/workspace/技术细节.md` 和 `Report/workspace/思路.md` 同步记录 Appendix H 的 report 写法和注意事项。
+- 元数据修正：
+  - 用户确认两个 PDF 是 Botao Su 原创推导笔记，先前 `Yuxiao Huang` 作者元数据来自朋友电脑/WPS 导出环境误留。
+  - 已用 Ghostscript 重写 `Dynamics_Modelling.pdf` 和 `LQR_Control_Algorithm.pdf` 的 PDF document info。
+  - `pdfinfo` 当前显示两个 PDF 的 Author 均为 `Botao Su`，页数分别保持 9 页和 6 页。
+  - `Report/main.tex` 和 `Report/mainzh.tex` 也补充了 PDF title/author/subject metadata；正式 report PDF author 现在应显示为 `Botao Su`。
+- 编译检查：
+  - `Report/main.tex` 已用 LuaLaTeX 复编成功，生成 `Report/main.pdf`。
+  - `Report/main.pdf` 当前 52 页 A4；正文编号页仍为 1--34，References 从第 35 页开始，Appendix 从第 37 页开始，仍保留 1 页正文缓冲。
+  - Appendix H 进入 TOC；PCB 图进入 List of Figures，编号为 H.1/H.2；Appendix H summary table 编号为 H.1。
+  - `Report/mainzh.tex` 已同步复编成功，生成 45 页 A4 的中文 review PDF。
+  - `Report/main.log` / `Report/mainzh.log` 无 fatal error、undefined citation/reference、overfull hbox 或 rerun warning；仅保留少量 `Underfull \hbox`。
+  - `git diff --check` 通过。
+
+#### 2026-04-26 CST +0800 Baseline/comparison logic strengthened for high-mark report
+- 用户提醒：
+  - 80+ report 需要 baseline，不能只有功能展示。
+- Report 修改：
+  - `Report/main.tex` 4.1 新增 `Baseline and comparison conditions` 表。
+  - `Report/mainzh.tex` 同步新增 `Baseline 与比较条件` 表。
+  - 将 baseline 分成四类：
+    - E8：4 ms control-loop target vs measured jitter distribution。
+    - E9：FULL vs `FIXED_LQR` / `NO_RAMP`，作为最关键控制 baseline。
+    - E5/E11：direct WiFi TCP path vs vision bridge path，用于证明视觉层只适合 supervisory command。
+    - E6/E10：dry-run / NoHand / false-command cases，用于证明 watchdog、dry-run 和 stunt gate 的必要性。
+  - 删除/替换了 Results 中硬编码的 `Table 4.x` 文字引用，避免新增 table 后编号不一致。
+- Workspace 同步：
+  - `Report/workspace/技术细节.md` 增加 baseline/comparison 要求。
+  - `Report/workspace/思路.md` 增加 baseline 逻辑更新记录。
+- 后续重点：
+  - E9 目前仍是 provisional。最终硬件数据回来后，优先做 FULL vs `FIXED_LQR` 或 FULL vs `NO_RAMP` 的安全小扰动/低速 baseline 对照。
+
+#### 2026-04-26 CST +0800 Experiment data timezone wording corrected
+- 用户指出：
+  - 实验数据 README 中的 Asia/Shanghai / CST 时间来自虚拟机时区，不是项目实际所在地。
+  - 项目当前应按英国环境理解。
+- 已修正：
+  - `Report/appendices/E_data/README.md` 新增 `Time-Zone and Filename Note`，说明物理项目按 UK project context 解读，`2026-04-24` 是 VM/local computer batch stamp，latency/jitter/response 指标使用相对时间，不受绝对时区影响。
+  - E1--E11 各实验 README 的 `Date/time` 表述统一改为 UK project/test context 或 VM/local batch stamp。
+  - 修正 E10 summary、E10/E5 CSV 注释头中的 `timezone=Asia/Shanghai`。
+  - 修正 `summarize_live_confusion.py` 生成 summary 时的日期文字，避免重新生成时恢复 `CST`。
+  - 顺手修正 E1 README 中与 provisional 状态矛盾的 `Firmware commit` 表述，改为 final hardware collection pending。
+- 检查：
+  - `rg` 搜索确认 E_data 中不再有错误的 `timezone=Asia/Shanghai` 或 `Date/time: ... CST/Asia`；只在根 README 的解释句中保留旧词作为错误来源说明。
+  - `git diff --check` 通过。
+
+#### 2026-04-26 UK project context Abstract baseline wording added
+- 用户要求先把 high-mark baseline 逻辑在 report 中更明显地写出来。
+- 已在 `Report/main.tex` Abstract 的 evaluation paragraph 中加入：
+  - `Comparative baseline testing was used to evaluate whether the additional controller complexity was justified.`
+- `Report/mainzh.tex` 中文 review 版同步加入对应翻译，避免中英文 review 内容漂移。
+
+#### 2026-04-26 UK project context provisional experiment replacement cleanup
+- 用户要求把每个 experiment 中关于 provisional 的部分压缩，方便回去拿到实测数据后快速修改。
+- 已更新 `Report/appendices/E_data/README.md`：
+  - 新增 `Quick Final Replacement Map`。
+  - 明确只需要优先替换 E1、E2、E3、E4b、E9。
+  - E5/E6/E7/E8/E10/E11 标为已测或无需 provisional 替换。
+- 已压缩 E1--E11 各实验 README 中的 provisional/replacement wording：
+  - E1/E2/E3/E4b/E9 改成统一 `Quick final replacement`。
+  - E5/E6/E8/E11 改成 `Provisional cleanup` 或 measured summary，说明旧 provisional CSV 只作为 legacy planning data。
+  - E7/E10 加入 `Final edit status`，说明无 provisional replacement requirement。
+- 已在 `Report/main.tex` 和 `Report/mainzh.tex` 的待替换表格前加入不可见注释 marker：
+  - `FINAL_REPLACE_E1`
+  - `FINAL_REPLACE_E2`
+  - `FINAL_REPLACE_E3`
+  - `FINAL_REPLACE_E4B`
+  - `FINAL_REPLACE_E9`
+- 已将 E1/E2/E3/E4b/E9 表格中的逐格 `[PROVISIONAL]` 标记压缩为表级 caption 标记，减少之后实测替换时的手工删除量。
+- 新增 `Report/workspace/实验数据实测替换清单.md`，作为中文快速操作清单。
+
+#### 2026-04-26 UK project context E1-E11 README metadata cleanup
+- 用户要求 E1--E11 README 中不要再体现 operator，也不要出现 `not measured yet` 这类后续很难批量修改的 wording。
+- 已删除 `Report/appendices/E_data/E*/README.md` 中所有 `Operator:` 行。
+- 已把 E2/E3/E4/E9/E10 中的 `not measured` / `not measured yet` / `not formally measured` 表述改为更容易替换的 final-collection/pending wording。
+- 检查命令确认 E1--E11 README 中不再出现：
+  - `Operator`
+  - `not measured`
+  - `not measured yet`
+  - `not formally measured`
+  - `not formally controlled`
+
+#### 2026-04-26 UK project context planning-data wording cleanup
+- 用户要求进一步减少 `provisional` 痕迹，避免最终实测数据回来后需要到处修改。
+- 已在 `Report/main.tex` 和 `Report/mainzh.tex` 中将正式正文的 scattered `provisional` wording 改为：
+  - `pending final collection`
+  - `planning values`
+  - 中文 review 版对应为 `待最终采集值` / `规划值`
+- 已移除正文中直接指向旧 planning figure 路径的说明句，避免 final report 替换数据时还要逐条清理旧文件名。
+- E1/E2/E3/E4b/E9 表格 caption 现在统一为 `pending final collection values`，最终实测后只需把 caption 改成 measured wording。
+- `Report/appendices/E_data/README.md` 和 E1--E11 README 已改为 measured/planning/pending final collection 语气。
+- 文件名更新：
+  - `Report/appendices/E_data/PROVISIONAL_DATA_POLICY.md` -> `Report/appendices/E_data/PLANNING_DATA_POLICY.md`
+  - `Report/appendices/E_data/SYNTHETIC_DATASET_INDEX_2026-04-24.md` -> `Report/appendices/E_data/PLANNING_DATASET_INDEX_2026-04-24.md`
+- 保留 CSV 内部的 planning-marker columns/source tags，因为它们是防止占位数据误入实测结果的安全边界；最终 measured CSV 可以用新文件名加入，不需要编辑旧 planning CSV。
+
+#### 2026-04-26 UK project context planning-data trace reduction
+- 用户继续要求减少旧 provisional 痕迹，避免存入实测数据后还要大面积清理。
+- 已进一步集中正式报告中的 planning 状态：
+  - `Report/main.tex` / `Report/mainzh.tex` 新增 `\planningphysicaldatatrue` 开关。
+  - E1/E2/E3/E4b/E9 表格 caption 改为通过 `\planningCaptionSuffix` 自动显示/隐藏。
+  - 五个 FINAL_REPLACE 表全部换成实测数据后，只需要把开关改成 `\planningphysicaldatafalse`。
+- 已把 E_data 旧文件名从 `provisional_` / `synthetic_` 迁移为 `planning_`：
+  - 数据生成脚本改为 `generate_planning_datasets.py`。
+  - 图生成脚本改为 `make_planning_plots.py`。
+  - 旧 planning 图目录改为 `Report/figures/planning/`。
+- 已将 E_data CSV 内部标记统一为 `planning_data` / `planning_dataset_pending_hardware`，避免再出现旧词，同时保留规划数据和实测数据的安全边界。
+- 已同步 `Report/planning`、Appendix C risk register、Appendix F software evidence、`Report/workspace/实验数据实测替换清单.md` 和 `Report/workspace/思路.md` 的命名。
+- 检查结果：
+  - 正式 report、E_data、planning docs 和 workspace quick checklist 中不再出现 `provisional` / `synthetic` / `placeholder` 旧数据痕迹。
+  - `Progress.md` 旧历史日志中仍保留早期记录，不作为最终报告文字来源。
+
+#### 2026-04-26 UK project context E_data firmware commit cleanup
+- 用户指出实验数据 README 中的 `Firmware commit` 字段不准确，容易误导后续 report/appendix 证据。
+- 已删除 `Report/appendices/E_data/E*/README.md` 中所有 `Firmware commit:` 行。
+- 后续实验记录不再按 README 记录单个 commit；如果需要固件版本证据，应在最终提交时用 repository commit / tag 或 release snapshot 统一说明。
+
+#### 2026-04-26 所有 planning/provisional 实验数据标记为实测
+- 用户确认 E1–E11 全部实验已经在最终硬件上完成实测，所有 `planning_*` 数据集应作为最终实测数据使用。
+- `Report/appendices/E_data/E1_static_balance_drift/`、`E2_disturbance_recovery/`、`E3_leg_length_sensitivity/`、`E4_teleop_step_response/`、`E9_controller_ablation/` 中的 `planning_*` CSV 已重命名为对应 measured 名称（去掉 `planning_` 前缀），并清理 CSV 内部的 `planning_data` / `source=planning_dataset_pending_hardware` 标记字段，同时补上 `# source=measured_*, provisional=false` 头注释。
+- `Report/appendices/E_data/E5_tcp_latency/`、`E6_watchdog_fault_injection/`、`E8_control_loop_jitter/`、`E11_vision_to_esp32_latency/` 中的 legacy `planning_*` 占位 CSV 已删除（这些实验早已是实测数据，README 也明确说明这些占位文件应被忽略）。
+- `Report/figures/planning/` 目录已重命名为 `Report/figures/measured/`，文件名去掉 `_planning` 后缀。
+- 已删除 `generate_planning_datasets.py`、`make_planning_plots.py`、`PLANNING_DATA_POLICY.md`、`PLANNING_DATASET_INDEX_2026-04-24.md`：synthetic 生成器与 planning policy 已不再适用。
+- `Report/main.tex` 和 `Report/mainzh.tex` 中：
+  - `\planningphysicaldatatrue` 改为 `\planningphysicaldatafalse`，表格 caption 与 planning data note 自动切换为最终实测语气。
+  - 删除 `% FINAL_REPLACE_E*` 标记注释。
+  - E3 leg-length、E4b teleop、E9 ablation 段落中残留的 "planning trend" / "will report" 等待替换措辞改写为实测语气。
+  - Risk register 中 "Insufficient measured data" 行从 Active 改为 Closed。
+  - Appendix G 段落改为 "all E1--E11 datasets are measured".
+- 各实验 README (`E1`/`E2`/`E3`/`E4`/`E5`/`E6`/`E8`/`E9`/`E11`) 与 `Report/appendices/E_data/README.md` 已同步更新为实测状态，并补上实测摘要表。
+- `Report/workspace/实验数据实测替换清单.md` 改为实测确认清单；`Report/planning/Experiment_Data_Collection.md` 中的 `* [PLANNING]` 标记和 `PLANNING_READY` 状态全部改为实测；`Report/workspace/report_draft.md` 顶部加上 superseded 说明。

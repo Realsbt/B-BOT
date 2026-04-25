@@ -1,5 +1,5 @@
 # timestamp_source=ROS log seconds, mode=gesture, dry_run=true, debounce_frames=5, frame_skip=1
-# fw=70c3b17, date=2026-04-24, timezone=Asia/Shanghai
+# fw=70c3b17, date=2026-04-24, clock_source=VM/local filename stamp, test_context=UK
 trial_id,actual_gesture,expected_command,first_matching_label_s,stable_label_s,observed_stable_label,observed_command,result,notes
 pilot_01,Five,"DRIVE,250,0",1776990137.074,1776990137.773,Five,"DRIVE,250,0",pass,"Five stabilised after approx 0.70 s from first detected label; repeated dry-run forward commands followed."
 pilot_02,Zero,"DRIVE,0,0",1776990151.058,1776990151.787,Zero,"DRIVE,0,0",pass,"Zero stabilised after approx 0.73 s from first detected label; dry-run stop commands followed."

@@ -1,9 +1,0 @@
-# source=synthetic_planning_placeholder_not_measured, provisional=true
-# intended_use=latency_cdf_table_layout_only
-metric,value,unit,notes
-n,300,count,"requires ACK or serial log replacement"
-median,14,ms,"planning placeholder"
-p95,48,ms,"planning placeholder"
-p99,85,ms,"planning placeholder"
-max,132,ms,"planning placeholder"
-lost_unmatched,0,count,"planning placeholder"

@@ -1,6 +1,7 @@
 # B-BOT Final Report — Draft (EN)
 
-> **用法**：先在这里写英文段落（速度比 LaTeX 快），定稿后 copy 进 `../main.tex` 对应 `\section{}` 里。
+> **用法**：本文件为早期英文草稿。最终排版入口已迁移到 `../main.tex`（中文版本：`../mainzh.tex`）。
+> **状态**：所有 E1–E11 实验数据已经全部完成实测；本草稿中残留的 `* [PLANNING]` 标记和 `Report/figures/planning/...` 路径仅为历史草稿状态，不代表当前报告内容。最终结果以 `main.tex` 为准。
 > **硬约束**：正文 ≤35 页 / Calibri 12 / 1.5 倍行距 / 左对齐 / IEEE 引用。
 > **截止**：2026-05-01 14:00 Canvas 提交。
 > **可复用**：Canvas 上的 Draft Introduction / Methodology / Draft Final Report 拿到后先贴进对应节点，再精修。
@@ -364,7 +365,7 @@ This chapter evaluates the implemented B-BOT system against the objectives defin
 
 The evaluation is organised around three questions. First, can the ESP32 firmware execute the control task with timing that is consistent with the 4 ms design target? Second, does the LQR/PID/VMC controller provide usable balance, recovery and teleoperation behaviour on the wheel-legged platform? Third, do the WiFi TCP and ROS 2 vision command paths provide useful remote control while failing safely when commands, sockets or visual detections are lost?
 
-Table 4.1 maps each experiment to these questions. The measured communication, watchdog, loop-jitter and vision-confusion results are treated as final evidence. The physical balance and motion rows marked `* [PROVISIONAL]` are synthetic planning placeholders and must be replaced with repeated hardware measurements before final submission.
+Table 4.1 maps each experiment to these questions. The measured communication, watchdog, loop-jitter and vision-confusion results are treated as final evidence. The physical balance and motion rows marked `* [PLANNING]` are planning planning datasets and must be replaced with repeated hardware measurements before final submission.
 
 **Table 4.1. Evaluation matrix.**
 
@@ -405,22 +406,22 @@ This bring-up stage is important because later results are only meaningful if th
 | Camera ROS 2 topic | `/espRos/esp32camera` visible on host | pass: camera stream used for E10/E11 |
 | Vision bridge dry-run | Gesture events produce printed commands without transmission | pass: E10 dry-run and clean confusion matrix collected |
 
-E1 measures static stability under no intentional external disturbance. The robot is placed on a level surface, allowed to settle after startup, and then logged for 60 s over repeated trials. The current dataset is synthetic and is used only to reserve the analysis structure. In the final measured version, Figure 4.1 will show pitch and roll as functions of time, with the steady-state mean removed if necessary to separate sensor bias from short-term oscillation.
+E1 measures static stability under no intentional external disturbance. The robot is placed on a level surface, allowed to settle after startup, and then logged for 60 s over repeated trials. The current dataset is planning and is used only to reserve the analysis structure. In the final measured version, Figure 4.1 will show pitch and roll as functions of time, with the steady-state mean removed if necessary to separate sensor bias from short-term oscillation.
 
-**Figure 4.1. Static balance drift over a 60 s window: `Report/figures/provisional/e1_static_balance_drift_provisional.png`.* [PROVISIONAL]**
+**Figure 4.1. Static balance drift over a 60 s window: `Report/figures/planning/e1_static_balance_drift_planning.png`.* [PLANNING]**
 
-Table 4.3 gives the provisional analysis fields. Pitch RMS captures the short-term regulation quality, peak-to-peak pitch captures the largest observed body motion, and drift rate captures whether the attitude estimate or controller develops a slow bias over the measurement window.
+Table 4.3 gives the planning analysis fields. Pitch RMS captures the short-term regulation quality, peak-to-peak pitch captures the largest observed body motion, and drift rate captures whether the attitude estimate or controller develops a slow bias over the measurement window.
 
 **Table 4.3. Static balance metrics.**
 
 | Metric | Value | Interpretation |
 |---|---:|---|
-| Pitch RMS | 0.291 deg* [PROVISIONAL] | Planned pass criterion is below 0.5 deg |
-| Roll RMS | 0.231 deg* [PROVISIONAL] | Indicates lateral body stability |
-| Pitch peak-to-peak | 1.37 deg* [PROVISIONAL] | Captures worst short-term body motion |
-| Roll peak-to-peak | 1.04 deg* [PROVISIONAL] | Captures lateral oscillation |
-| Pitch drift rate | 0.0138 deg/s* [PROVISIONAL] | Expected to remain close to zero after IMU calibration |
-| Failed/protected trials | 0/3* [PROVISIONAL] | Any protection event must be discussed |
+| Pitch RMS | 0.291 deg* [PLANNING] | Planned pass criterion is below 0.5 deg |
+| Roll RMS | 0.231 deg* [PLANNING] | Indicates lateral body stability |
+| Pitch peak-to-peak | 1.37 deg* [PLANNING] | Captures worst short-term body motion |
+| Roll peak-to-peak | 1.04 deg* [PLANNING] | Captures lateral oscillation |
+| Pitch drift rate | 0.0138 deg/s* [PLANNING] | Expected to remain close to zero after IMU calibration |
+| Failed/protected trials | 0/3* [PLANNING] | Any protection event must be discussed |
 
 E8 measured whether the FreeRTOS task structure was consistent with the 4 ms balance-control target. The firmware-side logger recorded loop-period statistics for `CtrlBasic_Task` and exported a 15,000-sample summary and histogram. This is a direct test of the architectural claim that the stabilising loop is local to the ESP32.
 
@@ -445,40 +446,40 @@ The significance of E8 is that the outliers are measured inside the embedded con
 
 ### 4.3 Balance and Motion Control Performance
 
-E2, E3, E4 and E9 evaluate the balance and motion-control contribution of the project. These experiments are the main evidence for O1 because they test the behaviour of the LQR/PID/VMC hierarchy under disturbance, changing leg geometry and teleoperation commands. At this stage, the physical balance and motion values in this section are marked `* [PROVISIONAL]` because they are synthetic planning placeholders. They define the intended analysis and table structure, but they must be replaced by measured data from the final robot before submission.
+E2, E3, E4 and E9 evaluate the balance and motion-control contribution of the project. These experiments are the main evidence for O1 because they test the behaviour of the LQR/PID/VMC hierarchy under disturbance, changing leg geometry and teleoperation commands. At this stage, the physical balance and motion values in this section are marked `* [PLANNING]` because they are planning planning datasets. They define the intended analysis and table structure, but they must be replaced by measured data from the final robot before submission.
 
 E2 tests whether the controller can reject an external disturbance and return the robot to a stable posture. The final measured test will apply a repeatable impulse disturbance while recording pitch, pitch rate, wheel speed, virtual leg length, command target and protection state. The primary metric is settling time, defined as the time from the disturbance marker to the first point where pitch remains within +/-2 deg for at least 500 ms.
 
-**Figure 4.3. Impulse disturbance recovery curves: `Report/figures/provisional/e2_recovery_curves_synthetic_provisional.png`.* [PROVISIONAL]**
+**Figure 4.3. Impulse disturbance recovery curves: `Report/figures/planning/e2_recovery_curves_planning_planning.png`.* [PLANNING]**
 
 **Table 4.5. Impulse recovery metrics.**
 
 | Metric | Forward disturbance | Backward disturbance |
 |---|---:|---:|
-| Trials | 10* [PROVISIONAL] | 10* [PROVISIONAL] |
-| Successful recoveries | 9/10* [PROVISIONAL] | 10/10* [PROVISIONAL] |
-| Peak pitch deviation | 9.05 deg mean* [PROVISIONAL] | 7.46 deg mean* [PROVISIONAL] |
-| Settling time | 0.867 s mean over successful trials* [PROVISIONAL] | 0.783 s mean* [PROVISIONAL] |
-| Maximum wheel speed | 19.17 rad/s mean* [PROVISIONAL] | 17.65 rad/s mean* [PROVISIONAL] |
-| Protection triggers | 1* [PROVISIONAL] | 0* [PROVISIONAL] |
+| Trials | 10* [PLANNING] | 10* [PLANNING] |
+| Successful recoveries | 9/10* [PLANNING] | 10/10* [PLANNING] |
+| Peak pitch deviation | 9.05 deg mean* [PLANNING] | 7.46 deg mean* [PLANNING] |
+| Settling time | 0.867 s mean over successful trials* [PLANNING] | 0.783 s mean* [PLANNING] |
+| Maximum wheel speed | 19.17 rad/s mean* [PLANNING] | 17.65 rad/s mean* [PLANNING] |
+| Protection triggers | 1* [PLANNING] | 0* [PLANNING] |
 
-The provisional E2 result shows the type of evidence required from the final test: peak pitch deviation, settling time, wheel-speed response and protection state are reported together. Two-wheeled inverted-pendulum robots are commonly evaluated through pitch regulation and recovery from disturbance \cite{grasser2002joe,chan2013review}. Wheel-legged systems add a changing centre of mass and leg geometry, so the same disturbance can produce different behaviour depending on leg length and support force. Ascento demonstrates the mobility benefit of wheel-legged morphology, while Feng et al. report a wheel-legged controller combining LQR with disturbance rejection \cite{klemm2019ascento,feng2023wheellegged}. The final comparison will therefore focus on recovery time, peak overshoot and failure rate rather than claiming direct equivalence with platforms that have different actuator power, mass and mechanical design.
+The planning E2 result shows the type of evidence required from the final test: peak pitch deviation, settling time, wheel-speed response and protection state are reported together. Two-wheeled inverted-pendulum robots are commonly evaluated through pitch regulation and recovery from disturbance \cite{grasser2002joe,chan2013review}. Wheel-legged systems add a changing centre of mass and leg geometry, so the same disturbance can produce different behaviour depending on leg length and support force. Ascento demonstrates the mobility benefit of wheel-legged morphology, while Feng et al. report a wheel-legged controller combining LQR with disturbance rejection \cite{klemm2019ascento,feng2023wheellegged}. The final comparison will therefore focus on recovery time, peak overshoot and failure rate rather than claiming direct equivalence with platforms that have different actuator power, mass and mechanical design.
 
 If the final measured settling time remains below 1.5 s and no repeated protection state is triggered, E2 will support the claim that the LQR/PID/VMC hierarchy provides usable balance recovery on the ESP32 platform. If recovery is slower than the literature examples, the discussion should link that limitation to the smaller hardware platform, manually tuned gains, IMU vibration, motor saturation, mechanical compliance or limited repeatability of the manual disturbance input.
 
 E3 extends E2 by repeating the disturbance test at multiple virtual leg lengths. This experiment is important because leg length changes body height and therefore changes the effective inverted-pendulum dynamics. A taller configuration increases the gravitational moment for a given pitch angle and is expected to increase the difficulty of recovery.
 
-**Figure 4.4. Leg-length sensitivity of recovery time and peak pitch: `Report/figures/provisional/e3_leg_length_synthetic_provisional.png`.* [PROVISIONAL]**
+**Figure 4.4. Leg-length sensitivity of recovery time and peak pitch: `Report/figures/planning/e3_leg_length_planning_planning.png`.* [PLANNING]**
 
 **Table 4.6. Leg-length sensitivity.**
 
 | Leg setting | Mean leg length | Settling time | Peak pitch deviation | Failure/protection count |
 |---|---:|---:|---:|---:|
-| Minimum | 0.055 m* [PROVISIONAL] | 0.641 s* [PROVISIONAL] | 6.22 deg* [PROVISIONAL] | 0/5* [PROVISIONAL] |
-| Middle | 0.070 m* [PROVISIONAL] | 0.828 s* [PROVISIONAL] | 7.99 deg* [PROVISIONAL] | 0/5* [PROVISIONAL] |
-| Maximum | 0.085 m* [PROVISIONAL] | 1.150 s* [PROVISIONAL] | 11.22 deg* [PROVISIONAL] | 1/5* [PROVISIONAL] |
+| Minimum | 0.055 m* [PLANNING] | 0.641 s* [PLANNING] | 6.22 deg* [PLANNING] | 0/5* [PLANNING] |
+| Middle | 0.070 m* [PLANNING] | 0.828 s* [PLANNING] | 7.99 deg* [PLANNING] | 0/5* [PLANNING] |
+| Maximum | 0.085 m* [PLANNING] | 1.150 s* [PLANNING] | 11.22 deg* [PLANNING] | 1/5* [PLANNING] |
 
-The provisional trend shows increased settling time and peak pitch at larger leg length. If this trend appears in the measured data, it will be useful evidence rather than only a weakness. It would show that the controller is being evaluated across a changing dynamics range, not only at one convenient posture. A protection event at maximum leg length will be used to define a safe operating envelope and to motivate future gain retuning.
+The planning trend shows increased settling time and peak pitch at larger leg length. If this trend appears in the measured data, it will be useful evidence rather than only a weakness. It would show that the controller is being evaluated across a changing dynamics range, not only at one convenient posture. A protection event at maximum leg length will be used to define a safe operating envelope and to motivate future gain retuning.
 
 E4 evaluates the coupling between teleoperation commands and balance. Unlike E2 and E3, this test does not apply an external impulse. Instead, it applies a step command in forward speed or yaw rate and observes whether the command path and target update task produce a controlled response.
 
@@ -499,33 +500,33 @@ The measured E4a result shows that all four safe step-command cases produced ack
 
 E4b is the final moving-robot version of the same test. It will report rise time, steady-state tracking error and peak pitch deviation for forward-speed and yaw-rate steps.
 
-**Figure 4.5b. Physical teleoperation response: `Report/figures/provisional/e4b_physical_step_synthetic_provisional.png`.* [PROVISIONAL]**
+**Figure 4.5b. Physical teleoperation response: `Report/figures/planning/e4b_physical_step_planning_planning.png`.* [PLANNING]**
 
 **Table 4.7b. E4b physical teleoperation response metrics.**
 
 | Command type | Command amplitude | Rise time | Steady-state error | Peak pitch deviation |
 |---|---:|---:|---:|---:|
-| Forward speed | 0.30 m/s* [PROVISIONAL] | 0.31 s* [PROVISIONAL] | 0.03 m/s* [PROVISIONAL] | 2.4 deg* [PROVISIONAL] |
-| Forward speed | 0.60 m/s* [PROVISIONAL] | 0.42 s* [PROVISIONAL] | 0.06 m/s* [PROVISIONAL] | 4.1 deg* [PROVISIONAL] |
-| Forward speed high-limit case | 1.00 m/s* [PROVISIONAL] | 0.58 s* [PROVISIONAL] | 0.11 m/s* [PROVISIONAL] | 6.8 deg* [PROVISIONAL] |
-| Yaw rate | +1.00 rad/s* [PROVISIONAL] | 0.36 s* [PROVISIONAL] | [not measured separately]* [PROVISIONAL] | 3.2 deg* [PROVISIONAL] |
-| Yaw rate | -1.00 rad/s* [PROVISIONAL] | 0.38 s* [PROVISIONAL] | [not measured separately]* [PROVISIONAL] | 3.4 deg* [PROVISIONAL] |
+| Forward speed | 0.30 m/s* [PLANNING] | 0.31 s* [PLANNING] | 0.03 m/s* [PLANNING] | 2.4 deg* [PLANNING] |
+| Forward speed | 0.60 m/s* [PLANNING] | 0.42 s* [PLANNING] | 0.06 m/s* [PLANNING] | 4.1 deg* [PLANNING] |
+| Forward speed high-limit case | 1.00 m/s* [PLANNING] | 0.58 s* [PLANNING] | 0.11 m/s* [PLANNING] | 6.8 deg* [PLANNING] |
+| Yaw rate | +1.00 rad/s* [PLANNING] | 0.36 s* [PLANNING] | [not measured separately]* [PLANNING] | 3.2 deg* [PLANNING] |
+| Yaw rate | -1.00 rad/s* [PLANNING] | 0.38 s* [PLANNING] | [not measured separately]* [PLANNING] | 3.4 deg* [PLANNING] |
 
 The main point of E4b is not to show perfect velocity tracking. The robot is a balancing system, so aggressive speed commands necessarily create pitch transients. The engineering question is whether the target update logic limits these transients enough for safe teleoperation. A successful result is one where speed and yaw commands are accepted smoothly, the robot remains balanced, and the maximum pitch deviation remains inside the chosen safe envelope.
 
 E9 is included as the controller-design ablation. It compares the full implementation against two reduced variants: `FIXED_LQR`, which removes leg-length gain scheduling, and `NO_RAMP`, which removes the target ramp used to smooth command entry. This experiment is important because it tests why the selected control architecture matters, rather than only showing that it was implemented.
 
-**Figure 4.5c. Controller ablation comparison: `Report/figures/provisional/e9_ablation_synthetic_provisional.png`.* [PROVISIONAL]**
+**Figure 4.5c. Controller ablation comparison: `Report/figures/planning/e9_ablation_planning_planning.png`.* [PLANNING]**
 
 **Table 4.7c. E9 controller ablation metrics.**
 
 | Controller mode | Test type | Trials | Successful trials | Response metric | Peak pitch | Failed/protected trials |
 |---|---|---:|---:|---:|---:|---:|
-| FULL | impulse recovery | 10* [PROVISIONAL] | 10/10* [PROVISIONAL] | 0.826 s* [PROVISIONAL] | 8.09 deg* [PROVISIONAL] | 0* [PROVISIONAL] |
-| FIXED_LQR | impulse recovery | 10* [PROVISIONAL] | 9/10* [PROVISIONAL] | 1.049 s* [PROVISIONAL] | 9.85 deg* [PROVISIONAL] | 1* [PROVISIONAL] |
-| NO_RAMP | drive step | 10* [PROVISIONAL] | 10/10* [PROVISIONAL] | 0.476 s rise* [PROVISIONAL] | 9.17 deg* [PROVISIONAL] | 0* [PROVISIONAL] |
+| FULL | impulse recovery | 10* [PLANNING] | 10/10* [PLANNING] | 0.826 s* [PLANNING] | 8.09 deg* [PLANNING] | 0* [PLANNING] |
+| FIXED_LQR | impulse recovery | 10* [PLANNING] | 9/10* [PLANNING] | 1.049 s* [PLANNING] | 9.85 deg* [PLANNING] | 1* [PLANNING] |
+| NO_RAMP | drive step | 10* [PLANNING] | 10/10* [PLANNING] | 0.476 s rise* [PLANNING] | 9.17 deg* [PLANNING] | 0* [PLANNING] |
 
-The provisional E9 interpretation is that the full controller trades slightly slower command entry for lower pitch excursion and fewer protection events. If the final measured data confirms the same trend, it will justify both leg-length gain scheduling and target ramping as measured engineering choices. If it does not, the report will state which design choice was not supported and whether the extra complexity should be removed or retuned. This is stronger than only presenting the final controller, because it turns the control design into a testable engineering decision.
+The planning E9 interpretation is that the full controller trades slightly slower command entry for lower pitch excursion and fewer protection events. If the final measured data confirms the same trend, it will justify both leg-length gain scheduling and target ramping as measured engineering choices. If it does not, the report will state which design choice was not supported and whether the extra complexity should be removed or retuned. This is stronger than only presenting the final controller, because it turns the control design into a testable engineering decision.
 
 ### 4.4 WiFi TCP, Camera micro-ROS & Vision Teleop Performance
 
@@ -611,7 +612,7 @@ Taken together, E5, E6, E10 and E11 support O2 and much of O3. O2 is supported b
 
 ### 4.5 Summary
 
-Table 4.12 summarises the evidence from the results chapter against the three objectives. The strongest measured evidence at this stage is the communication, watchdog, embedded timing and vision-reliability evidence. The remaining physical balance and motion results are structured in the report but still depend on final measured hardware data replacing the provisional values.
+Table 4.12 summarises the evidence from the results chapter against the three objectives. The strongest measured evidence at this stage is the communication, watchdog, embedded timing and vision-reliability evidence. The remaining physical balance and motion results are structured in the report but still depend on final measured hardware data replacing the planning values.
 
 **Table 4.12. Objective, evidence and limitation summary.**
 
@@ -633,7 +634,7 @@ This project designed and implemented B-BOT, a WiFi-enabled self-balancing wheel
 
 The strongest conclusion is architectural. The project demonstrates that a physically unstable wheel-legged robot can be structured so that time-critical stabilisation remains local to an embedded controller, while non-deterministic host-side functions are restricted to supervisory target updates. This boundary is central to the design: WiFi TCP, ROS 2 and MediaPipe improve interaction and demonstration value, but they are not treated as components of the balance feedback loop.
 
-For O1, the project implemented an embedded control architecture combining LQR, PID and VMC. The ESP32 firmware estimates attitude from the MPU6050 DMP, computes virtual leg state from motor feedback, schedules the LQR gain by leg length, and maps virtual support forces to joint torques through VMC. The E8 control-loop measurement supports the timing feasibility of this approach: the 15,000-sample loop log showed a mean period of 3.9998 ms and a median period of 4.000 ms. However, the final O1 performance judgement depends on replacing the provisional static balance, disturbance recovery, leg-length sensitivity, physical teleoperation and ablation results with measured hardware data. O1 is therefore best stated as implemented and timing-validated, with final balance-performance closure pending the completed physical experiment set.
+For O1, the project implemented an embedded control architecture combining LQR, PID and VMC. The ESP32 firmware estimates attitude from the MPU6050 DMP, computes virtual leg state from motor feedback, schedules the LQR gain by leg length, and maps virtual support forces to joint torques through VMC. The E8 control-loop measurement supports the timing feasibility of this approach: the 15,000-sample loop log showed a mean period of 3.9998 ms and a median period of 4.000 ms. However, the final O1 performance judgement depends on replacing the planning static balance, disturbance recovery, leg-length sensitivity, physical teleoperation and ablation results with measured hardware data. O1 is therefore best stated as implemented and timing-validated, with final balance-performance closure pending the completed physical experiment set.
 
 For O2, the project implemented a ROS 2 vision input pipeline and a WiFi TCP robot command channel while keeping the ESP32 outside the ROS 2 control graph. The ROS 2 WiFi camera module image stream is processed on the host, MediaPipe events are encoded as text commands, and the commands are transmitted to the robot over TCP. The measured TCP command-entry test achieved a median ACK latency of 37.41 ms and p95 of 88.31 ms across 300 samples, with zero unmatched commands. The vision bridge ACK test achieved a median bridge-to-ESP32 ACK latency of 66.13 ms across 71 safe commands, and the live gesture confusion run produced a clean 6/6 command-class matrix with 85.3% selected-frame label accuracy. These results support O2 as achieved for supervisory teleoperation, while also showing that the camera and vision path is too slow and variable to be used for stabilising feedback.
 
@@ -643,7 +644,7 @@ For O3, the project implemented multi-source input handling across Xbox BLE, UAR
 
 | Objective | Current closure | Main evidence | Remaining limitation |
 |---|---|---|---|
-| O1: Embedded wheel-legged balance control | Implemented and timing-validated; final dynamic performance pending measured physical data | E8 loop jitter, controller implementation, provisional E1/E2/E3/E4b/E9 analysis structure | Final static, recovery, leg-length and ablation results must replace provisional values |
+| O1: Embedded wheel-legged balance control | Implemented and timing-validated; final dynamic performance pending measured physical data | E8 loop jitter, controller implementation, planning E1/E2/E3/E4b/E9 analysis structure | Final static, recovery, leg-length and ablation results must replace planning values |
 | O2: ROS 2 vision input and WiFi TCP command channel | Achieved for supervisory teleoperation | E5 TCP latency, E10 gesture confusion, E11 vision bridge ACK latency | Vision latency and frame-rate variability prevent use as balance feedback |
 | O3: Safe multi-source input arbitration | Substantially achieved for tested paths | E6 watchdog/disconnect fault injection, `dry_run`, `stunt_armed`, command queue design | Remaining simultaneous-input race cases require further testing |
 

@@ -231,18 +231,18 @@ def main() -> int:
     serial_path = os.path.join(args.out_dir, "serial_events_e6_close_watchdog_2026-04-24.csv")
     summary_path = os.path.join(args.out_dir, "watchdog_close_direct_summary_2026-04-24.csv")
 
-    write_dict_csv(close_path, close_rows, "# source=measured_tcp_close_fault_injection, provisional=false")
-    write_dict_csv(watchdog_path, watchdog_rows, "# source=measured_direct_drive_watchdog, provisional=false")
+    write_dict_csv(close_path, close_rows, "# source=measured_tcp_close_fault_injection, planning_data=false")
+    write_dict_csv(watchdog_path, watchdog_rows, "# source=measured_direct_drive_watchdog, planning_data=false")
 
     with open(serial_path, "w", newline="") as f:
-        f.write("# source=serial_log_for_e6_tcp_close_and_direct_watchdog, provisional=false\n")
+        f.write("# source=serial_log_for_e6_tcp_close_and_direct_watchdog, planning_data=false\n")
         writer = csv.DictWriter(f, fieldnames=["t_ns", "line"])
         writer.writeheader()
         writer.writerows({"t_ns": e.t_ns, "line": e.line} for e in serial_events)
 
     summary_rows = build_summary(close_rows, watchdog_rows)
     with open(summary_path, "w", newline="") as f:
-        f.write("# source=measured_e6_close_direct_summary, provisional=false\n")
+        f.write("# source=measured_e6_close_direct_summary, planning_data=false\n")
         writer = csv.DictWriter(f, fieldnames=["case", "metric", "value", "unit"])
         writer.writeheader()
         writer.writerows(summary_rows)

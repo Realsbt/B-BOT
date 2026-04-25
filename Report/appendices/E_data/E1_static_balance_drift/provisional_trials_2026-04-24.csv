@@ -1,4 +1,0 @@
-trial_id,controller_mode,duration_s,pitch_rms_deg,roll_rms_deg,pitch_peak_abs_deg,roll_peak_abs_deg,pitch_drift_deg_s,roll_drift_deg_s,pass,provisional,notes
-e1_p01,FULL,60,0.32,0.27,1.08,0.91,0.012,0.010,true,true,synthetic_planning_placeholder_not_measured
-e1_p02,FULL,60,0.36,0.31,1.21,0.98,0.016,0.012,true,true,synthetic_planning_placeholder_not_measured
-e1_p03,FULL,60,0.34,0.29,1.16,0.94,0.014,0.011,true,true,synthetic_planning_placeholder_not_measured

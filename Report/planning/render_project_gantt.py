@@ -52,7 +52,7 @@ TASKS = [
     ("Testing/Data/Report", "Easter report catch-up and appendix planning", "2026-03-30", "2026-04-19"),
     ("Testing/Data/Report", "Final experiment design and 80+ evidence planning", "2026-04-20", "2026-04-25"),
     ("Testing/Data/Report", "E4/E5/E6/E8/E10/E11 data collection", "2026-04-23", "2026-04-25"),
-    ("Testing/Data/Report", "Synthetic placeholder datasets for missing tests", "2026-04-24", "2026-04-25"),
+    ("Testing/Data/Report", "Planning datasets for final physical tests", "2026-04-24", "2026-04-25"),
     ("Testing/Data/Report", "Chapter 2/3/4/5 report drafting", "2026-04-24", "2026-04-27"),
     ("Testing/Data/Report", "Final physical tests and data replacement", "2026-04-26", "2026-04-30"),
     ("Testing/Data/Report", "LaTeX integration, formatting and final upload", "2026-04-28", "2026-05-02"),

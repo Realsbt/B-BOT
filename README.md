@@ -17,7 +17,7 @@
 
 ### 项目概述
 
-B-BOT 是一个基于 Yahboom ESP32 轮腿平衡小车继续改造的机器人控制项目。当前仓库包含 ESP32 固件、Xbox 蓝牙手柄控制、串口/队列命令系统、WiFi TCP 控制入口、PC 端 ROS 2 + MediaPipe 视觉桥，以及独立的 WASD WiFi 键盘控制工具。
+B-BOT 是一个自研轮腿自平衡机器人控制项目。机器人机械平台和 ESP32 控制 PCB 为本项目自行设计；Yahboom 只作为 ROS 2 WiFi 摄像头模块来源。当前仓库包含 ESP32 固件、Xbox 蓝牙手柄控制、串口/队列命令系统、WiFi TCP 控制入口、PC 端 ROS 2 + MediaPipe 视觉桥，以及独立的 WASD WiFi 键盘控制工具。
 
 这个项目当前推荐的视觉控制链路是：
 
@@ -127,12 +127,13 @@ ROS 2 WiFi 摄像头模块
 
 ### 硬件组成
 
-- ESP32 开发板，PlatformIO 配置为 `esp32doit-devkit-v1`。
+- 自研 ESP32 控制 PCB；PlatformIO 使用 `esp32doit-devkit-v1` 作为兼容 ESP32 Arduino 构建目标。
 - MPU6050 IMU，用于姿态角和角速度。
-- 6 个电机：4 个腿部关节电机 + 2 个轮毂电机，通过 CAN 总线通信。
+- 6 个电机接口：4 个腿部关节电机 + 2 个轮电机，通过 CAN 总线通信。
 - ADS1115/ADC 电压检测，用于电池电压监测和输出补偿。
+- 额外拓展接口和电源管理电路位于自研控制 PCB 上。
 - Xbox 蓝牙手柄，用作主要人工遥控器。
-- ROS 2 WiFi 摄像头模块，用于把图像通过 micro-ROS 发布到电脑。
+- Yahboom ROS 2 WiFi 摄像头模块，用于把图像通过 micro-ROS 发布到电脑。
 
 ### 软件环境
 
@@ -384,7 +385,7 @@ VISION_ENABLE
 
 ### 许可证
 
-本仓库基于 Yahboom 原始项目继续开发，并包含第三方 vendored `NimBLE-Arduino` 库。请分别遵守原始项目和第三方库的许可证要求。当前自定义部分尚未单独整理许可证文件。
+本仓库包含本项目自研机器人控制代码和第三方组件/库。Yahboom 相关部分仅用于 ROS 2 WiFi 摄像头模块；同时仓库包含第三方 vendored `NimBLE-Arduino` 库。请分别遵守摄像头模块、第三方库和相关工具链的许可证要求。当前自定义部分尚未单独整理许可证文件。
 
 <p align="right"><a href="#top">返回顶部</a></p>
 
@@ -394,7 +395,7 @@ VISION_ENABLE
 
 ### Overview
 
-B-BOT is a modified robot control workspace based on the Yahboom ESP32 wheel-leg balancing robot. This repository includes the ESP32 firmware, Xbox BLE controller support, UART/queue command handling, WiFi TCP command input, a PC-side ROS 2 + MediaPipe vision bridge, and a standalone WASD WiFi teleoperation tool.
+B-BOT is a self-designed wheel-legged self-balancing robot control project. The robot mechanical platform and ESP32 controller PCB were designed for this project; Yahboom is used only as the source of the separate ROS 2 WiFi camera module. This repository includes the ESP32 firmware, Xbox BLE controller support, UART/queue command handling, WiFi TCP command input, a PC-side ROS 2 + MediaPipe vision bridge, and a standalone WASD WiFi teleoperation tool.
 
 The recommended vision-control path is:
 
@@ -504,12 +505,13 @@ Optional UART device
 
 ### Hardware
 
-- ESP32 development board, configured as `esp32doit-devkit-v1` in PlatformIO.
+- Self-designed ESP32 controller PCB; PlatformIO uses `esp32doit-devkit-v1` as a compatible ESP32 Arduino build target.
 - MPU6050 IMU for attitude and angular velocity.
-- Six motors: four leg joint motors and two wheel motors, communicating over CAN.
+- Six motor interfaces: four leg joint motors and two wheel motors, communicating over CAN.
 - ADS1115/ADC voltage sensing for battery monitoring and output compensation.
+- Expansion interface and power-management circuitry on the custom controller PCB.
 - Xbox BLE controller as the primary manual controller.
-- ROS 2 WiFi camera module for publishing images to the PC through micro-ROS.
+- Yahboom ROS 2 WiFi camera module for publishing images to the PC through micro-ROS.
 
 ### Software Requirements
 
@@ -761,6 +763,6 @@ The project has completed initial GitHub sync, firmware build validation, camera
 
 ### License
 
-This repository continues from the original Yahboom project and includes the third-party vendored `NimBLE-Arduino` library. Follow the license requirements of the original project and third-party libraries. A separate license file for the custom additions has not been finalized yet.
+This repository contains original robot-control work plus third-party components and libraries. Yahboom-related material is limited to the ROS 2 WiFi camera module; the repository also includes the third-party vendored `NimBLE-Arduino` library. Follow the license requirements of the camera module, third-party libraries and related toolchains. A separate license file for the custom additions has not been finalized yet.
 
 <p align="right"><a href="#top">Back to top</a></p>

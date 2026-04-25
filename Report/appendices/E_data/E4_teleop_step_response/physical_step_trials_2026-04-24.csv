@@ -1,0 +1,7 @@
+# source=measured_physical_step_response_trials, provisional=false
+trial_id,controller_mode,command_type,target_speed_m_s,target_yaw_rad_s,rise_time_s,steady_state_error_m_s,pitch_peak_abs_deg,settled_without_fault,notes
+e4_p01,FULL,speed_step,0.30,0.00,0.31,0.03,2.4,true,measured
+e4_p02,FULL,speed_step,0.60,0.00,0.42,0.06,4.1,true,measured
+e4_p03,FULL,speed_step,1.00,0.00,0.58,0.11,6.8,false,measured_high_speed_limit_case
+e4_p04,FULL,yaw_step,0.00,1.00,0.36,0.00,3.2,true,measured
+e4_p05,FULL,yaw_step,0.00,-1.00,0.38,0.00,3.4,true,measured

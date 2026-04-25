@@ -107,7 +107,7 @@ def run(args) -> list[dict[str, object]]:
                     "stop_ack_rc": parsed_stop["rc"],
                     "stop_ack_command": parsed_stop["ack_command"],
                     "hold_s": args.hold_s,
-                    "provisional": False,
+                    "planning_data": False,
                     "notes": "E4a_command_entry_only_no_physical_speed_or_pitch_response",
                 })
                 time.sleep(args.inter_trial_s)

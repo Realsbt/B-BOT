@@ -12,16 +12,16 @@ This appendix identifies the version-controlled software evidence for the projec
 
 | Component | Repository path | Purpose |
 | --- | --- | --- |
-| ESP32 firmware | `src/`, `include/`, `platformio.ini` | Embedded controller, FreeRTOS tasks, motor/IMU/CAN handling, balance control, command parsing and WiFi TCP command server |
+| ESP32 firmware | `src/`, `include/`, `platformio.ini` | Firmware for the self-designed ESP32 controller PCB, including FreeRTOS tasks, motor/IMU/CAN handling, balance control, command parsing and WiFi TCP command server |
 | Generated control/kinematics support | `src/matlab_code/`, `include/matlab_code/` | MATLAB-generated leg kinematics, VMC conversion and LQR support functions used by the firmware |
 | Host ROS 2 vision bridge | `host/ros2_ws/src/wheeleg_vision_bridge/` | ROS 2 Python package subscribing to the ROS 2 WiFi camera module image topic, running MediaPipe perception and encoding robot commands |
 | Host utility tools | `host/tools/`, `host/scripts/` | WiFi keyboard control, camera preview/presentation monitor and camera micro-ROS agent quickstart script |
-| Experiment and report evidence | `Report/appendices/E_data/`, `Report/figures/`, `Report/planning/` | Raw CSV logs, provisional data policy, generated plots, Gantt evidence and experiment plans |
+| Experiment and report evidence | `Report/appendices/E_data/`, `Report/figures/`, `Report/planning/` | Raw CSV logs, planning data policy, generated plots, Gantt evidence and experiment plans |
 | Progress log | `Progress.md` | Chronological development notes, test records and decision log |
 
 ## Minimal Firmware Build
 
-The firmware is a PlatformIO project targeting an ESP32 development board:
+The firmware is a PlatformIO project for the self-designed ESP32 controller PCB:
 
 ```bash
 pio run
@@ -34,7 +34,7 @@ pio run -t upload
 pio device monitor
 ```
 
-The PlatformIO configuration is `platformio.ini`. The selected environment is `esp32doit-devkit-v1` using the Arduino framework and `ENABLE_WIFI_CMD`.
+The PlatformIO configuration is `platformio.ini`. The selected environment is `esp32doit-devkit-v1` using the Arduino framework and `ENABLE_WIFI_CMD`. This environment is used as a compatible ESP32 Arduino build target for the custom PCB, not as evidence that a commercial ESP32 development board is the robot controller.
 
 ## Minimal Host-Side Build
 
@@ -93,5 +93,5 @@ Before the repository is made public or submitted, perform this checklist:
 - Confirm `README.md` explains the project, hardware, software, installation and run steps.
 - Confirm `host/README_vision.md` explains the ROS 2 vision and camera preview workflow.
 - Confirm third-party code and libraries are listed in `Third Party Code and Software Attribution - B-BOT.md`.
-- Confirm no private WiFi passwords or local-only secrets are exposed in tracked files. At the time of this appendix draft, `include/wifi_config.h` is a tracked placeholder-style config and `include/wifi_config.local.h` is local-only, but this must be rechecked before the repository is made public.
+- Confirm no private WiFi passwords or local-only secrets are exposed in tracked files. At the time of this appendix draft, `include/wifi_config.h` is a tracked template-style config and `include/wifi_config.local.h` is local-only, but this must be rechecked before the repository is made public.
 - Confirm generated build folders such as `.pio/`, `host/ros2_ws/build/`, `host/ros2_ws/install/` and `host/ros2_ws/log/` are not submitted as evidence.

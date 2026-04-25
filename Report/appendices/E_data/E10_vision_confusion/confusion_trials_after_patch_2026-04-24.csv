@@ -1,5 +1,5 @@
 # timestamp_source=ROS log seconds, mode=gesture, dry_run=true, frame_skip=1
-# fw=70c3b17+local_patch, date=2026-04-24, timezone=Asia/Shanghai
+# fw=70c3b17+local_patch, date=2026-04-24, clock_source=VM/local filename stamp, test_context=UK
 trial_id,condition,actual_gesture,expected_command,first_matching_label_s,stable_label_s,observed_stable_label,observed_command,result,notes
 after_01,corrected_camera_view_debounce3,Five,"DRIVE,250,0",1776990700.523,1776990701.281,Five,"DRIVE,250,0",pass,"After camera was aimed at the hand, Five reached a stable label and generated the expected forward dry-run command."
 after_02,patched_classifier_debounce5,PointLeft,"DRIVE,0,600",1776990551.965,NA,None,"DRIVE,0,0",partial_fail,"Patched classifier produced intermittent PointLeft labels, but not enough consecutive frames to pass debounce=5."

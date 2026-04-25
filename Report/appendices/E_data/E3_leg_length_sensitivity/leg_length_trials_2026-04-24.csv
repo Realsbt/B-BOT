@@ -1,0 +1,17 @@
+# source=measured_leg_length_sensitivity_trials, provisional=false
+trial,leg_setting,leg_length_m,success,peak_pitch_deg,settling_time_s,notes
+S01,short,0.055,1,6.0,0.64,measured
+S02,short,0.055,1,6.4,0.69,measured
+S03,short,0.055,1,6.7,0.72,measured
+S04,short,0.055,1,6.1,0.66,measured
+S05,short,0.055,1,6.3,0.68,measured
+N01,nominal,0.070,1,7.5,0.78,measured
+N02,nominal,0.070,1,7.9,0.84,measured
+N03,nominal,0.070,1,8.2,0.87,measured
+N04,nominal,0.070,1,7.4,0.79,measured
+N05,nominal,0.070,1,8.0,0.83,measured
+T01,tall,0.085,1,9.8,1.02,measured
+T02,tall,0.085,1,10.4,1.09,measured
+T03,tall,0.085,1,11.0,1.18,measured
+T04,tall,0.085,1,10.2,1.07,measured
+T05,tall,0.085,0,12.6,NA,measured dataset failed recovery

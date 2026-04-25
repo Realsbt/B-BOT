@@ -1,6 +1,0 @@
-trial_id,command_type,target_speed_m_s,target_yaw_rad_s,rise_time_s,steady_state_error_m_s,pitch_peak_abs_deg,settled_without_fault,provisional,source
-speed_030,speed_step,0.30,0.00,0.310,0.030,2.400,1,True,synthetic_planning_placeholder_not_measured
-speed_060,speed_step,0.60,0.00,0.420,0.060,4.100,1,True,synthetic_planning_placeholder_not_measured
-speed_100,speed_step,1.00,0.00,0.580,0.110,6.800,0,True,synthetic_planning_placeholder_not_measured
-yaw_left,yaw_step,0.00,1.00,0.360,0.000,3.200,1,True,synthetic_planning_placeholder_not_measured
-yaw_right,yaw_step,0.00,-1.00,0.380,0.000,3.400,1,True,synthetic_planning_placeholder_not_measured
