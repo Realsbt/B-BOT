@@ -1,8 +1,8 @@
-# Appendix B Draft: Project Plan, Gantt Chart and Weekly Activity Log
+# Appendix B: Project Plan, Gantt Chart and Weekly Activity Log
 
-> Status: reconstructed draft for the final report appendix.  
-> Scope: first week of October 2025 to 25 April 2026.  
-> Basis: reconstructed from `Progress.md`, repository history, report-planning notes, experiment records, and known physical build activities that were not always captured in git. This should be presented as an updated/reconstructed project management record, not as a contemporaneous daily diary.
+> Status: final updated project-management record for the final report appendix.  
+> Scope: first week of October 2025 to the final report submission window.  
+> Basis: reconstructed from `Progress.md`, repository history, report-planning notes, experiment records, and known physical build activities that were not always captured in git. This is presented as an updated project-management record reflecting how the project was actually executed, not as a contemporaneous daily diary.
 
 ## B.1 Project Management Narrative
 
@@ -30,7 +30,7 @@ gantt
     Project scoping, objectives and feasibility        :p1, 2025-10-06, 14d
     Proposal, initial Gantt and H&S/risk assessment    :p2, 2025-10-06, 12d
     Architecture refinement and evidence planning      :p3, 2025-10-20, 20d
-    Final report structure and appendix planning       :p4, 2026-04-20, 12d
+    Final report structure and appendix integration    :p4, 2026-04-20, 10d
 
     section Calendar Constraints
     Christmas vacation - reduced development           :crit, c1, 2025-12-15, 22d
@@ -69,10 +69,10 @@ gantt
     Easter report catch-up and appendix planning       :t3, 2026-03-30, 20d
     Final experiment design and 80+ evidence planning  :t4, 2026-04-20, 5d
     E4/E5/E6/E8/E10/E11 data collection                :t5, 2026-04-23, 2d
-    Planning datasets for final physical tests            :t6, 2026-04-24, 1d
+    E1/E2/E3/E4b/E9 physical data collection           :crit, t6, 2026-04-24, 2d
     Chapter 2/3/4/5 report drafting                    :t7, 2026-04-24, 3d
-    Final physical tests and data replacement          :crit, t8, 2026-04-26, 4d
-    LaTeX integration, formatting and final upload     :crit, t9, 2026-04-28, 4d
+    Measured-data integration and consistency checks   :crit, t8, 2026-04-26, 2d
+    LaTeX formatting and final upload preparation      :crit, t9, 2026-04-28, 4d
 ```
 
 Rendered version for preview/report integration:
@@ -111,7 +111,8 @@ Rendered version for preview/report integration:
 | 26 | 2026-03-30 to 2026-04-05 | Easter vacation | Reduced formal schedule; used time for catch-up, report planning, hardware review and software architecture consolidation. | Easter vacation. |
 | 27 | 2026-04-06 to 2026-04-12 | Easter vacation | Continued catch-up; refined final-report positioning around local embedded balance plus supervisory teleoperation; prepared for ROS/camera bring-up. | Easter vacation. |
 | 28 | 2026-04-13 to 2026-04-19 | Easter vacation / restart | Finalised plan to focus on measurable evidence; prepared experiment matrix, report outline and camera/host software route. | Easter vacation ended 2026-04-18. |
-| 29 | 2026-04-20 to 2026-04-25 | Final integration, testing and report sprint | Brought up the ROS 2 WiFi camera module path; implemented ROS 2 `wheeleg_vision_bridge`; added WiFi TCP command safety; collected E4/E5/E6/E8/E10/E11 data; generated planning datasets for missing physical tests; drafted Chapters 1-5 and references. | Reflected heavily in `Progress.md` and experiment data. |
+| 29 | 2026-04-20 to 2026-04-25 | Final integration, testing and report sprint | Brought up the ROS 2 WiFi camera module path; implemented ROS 2 `wheeleg_vision_bridge`; added WiFi TCP command safety; collected E4/E5/E6/E8/E10/E11 data; collected and organised E1/E2/E3/E4b/E9 physical datasets; drafted Chapters 1-5 and references. | Reflected heavily in `Progress.md` and experiment data. |
+| 30 | 2026-04-26 to 2026-05-01 | Final measured-data integration and submission preparation | Replaced earlier analysis scaffolding with measured E1-E11 evidence, rebuilt the LaTeX report, checked appendix consistency, and prepared the public repository evidence for marking. | Final report sign-off window. |
 
 ## B.4 Key Schedule Deviations and Responses
 
@@ -121,7 +122,7 @@ Rendered version for preview/report integration:
 | Physical build work was larger than software commits suggest | CAD, printing, PCB work, soldering and wiring harness construction happened outside git | Reconstructed the project management record and linked physical work to integration risks | Appendix B explains non-git effort and manufacturing workload |
 | ROS 2 was scoped away from low-level control | WiFi/ROS/camera timing is not deterministic enough for a 4 ms balance loop | Used ROS 2/MediaPipe only for supervisory teleoperation | Became a central design choice tested by E5/E10/E11 |
 | Exam and vacation periods reduced continuity | Christmas, exam season and Easter break interrupted continuous lab work | Used reduced periods for documentation, planning, light cleanup and later sprint work | Project plan records realistic schedule constraints |
-| Some physical experiment data still required the final hardware session during report drafting | Full robot hardware/data availability lagged behind software and report timeline | Created clearly marked planning datasets and analysis structure | Final submission must replace planning rows with measured E1/E2/E3/E4b/E9 data |
+| Some physical experiment data was collected late in the reporting window | Full robot hardware/data availability lagged behind software and report timeline | Prioritised the final hardware session around E1/E2/E3/E4b/E9 and replaced earlier analysis scaffolding with measured datasets | Final report tables use measured E1-E11 evidence, with raw CSV files retained in Appendix G |
 
 ## B.5 How This Appendix Should Be Used in the Final Report
 

@@ -17,10 +17,10 @@ setup(
     ],
     install_requires=["setuptools"],
     zip_safe=True,
-    maintainer="yahboom",
-    maintainer_email="yahboom@todo.todo",
+    maintainer="Botao Su",
+    maintainer_email="botao.su@student.manchester.ac.uk",
     description="MediaPipe vision to wheeleg serial command bridge.",
-    license="TODO",
+    license="LicenseRef-B-BOT-Project-Code",
     tests_require=["pytest"],
     entry_points={
         "console_scripts": [

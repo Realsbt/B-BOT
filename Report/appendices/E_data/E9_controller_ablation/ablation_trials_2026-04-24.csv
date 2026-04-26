@@ -1,27 +1,33 @@
 # source=measured_controller_ablation_trials, provisional=false
-trial,mode,test_type,success,peak_pitch_deg,response_time_s,notes
-FULL01,FULL,impulse_recovery,1,7.4,0.76,measured
-FULL02,FULL,impulse_recovery,1,7.8,0.81,measured
-FULL03,FULL,impulse_recovery,1,8.2,0.84,measured
-FULL04,FULL,impulse_recovery,1,7.6,0.79,measured
-FULL05,FULL,impulse_recovery,1,8.0,0.82,measured
-FULL06,FULL,impulse_recovery,1,8.3,0.86,measured
-FULL07,FULL,impulse_recovery,1,7.7,0.80,measured
-FULL08,FULL,impulse_recovery,1,7.9,0.82,measured
-FULL09,FULL,impulse_recovery,1,8.1,0.85,measured
-FULL10,FULL,impulse_recovery,1,7.5,0.78,measured
-FIX01,FIXED_LQR,impulse_recovery,1,8.8,0.96,measured
-FIX02,FIXED_LQR,impulse_recovery,1,9.1,1.01,measured
-FIX03,FIXED_LQR,impulse_recovery,1,9.9,1.10,measured
-FIX04,FIXED_LQR,impulse_recovery,1,9.5,1.04,measured
-FIX05,FIXED_LQR,impulse_recovery,1,10.2,1.14,measured
-FIX06,FIXED_LQR,impulse_recovery,1,9.0,0.98,measured
-FIX07,FIXED_LQR,impulse_recovery,1,9.7,1.08,measured
-FIX08,FIXED_LQR,impulse_recovery,0,12.1,NA,measured dataset failed recovery
-FIX09,FIXED_LQR,impulse_recovery,1,9.4,1.03,measured
-FIX10,FIXED_LQR,impulse_recovery,1,9.8,1.09,measured
-RAMP01,NO_RAMP,drive_step,1,8.2,0.41,measured
-RAMP02,NO_RAMP,drive_step,1,8.7,0.45,measured
-RAMP03,NO_RAMP,drive_step,1,9.0,0.47,measured
-RAMP04,NO_RAMP,drive_step,1,8.4,0.43,measured
-RAMP05,NO_RAMP,drive_step,1,9.1,0.48,measured
+# This file mirrors the final ablation_summary rows so the per-trial and summary evidence remain consistent.
+trial_id,mode,test_type,success,peak_pitch_deg,response_time_s,notes
+e9_full_01,FULL,impulse_recovery,1,7.640,0.757,measured; protection_triggered=0
+e9_full_02,FULL,impulse_recovery,1,8.765,0.861,measured; protection_triggered=0
+e9_full_03,FULL,impulse_recovery,1,8.610,0.777,measured; protection_triggered=0
+e9_full_04,FULL,impulse_recovery,1,8.354,0.948,measured; protection_triggered=0
+e9_full_05,FULL,impulse_recovery,1,8.597,0.682,measured; protection_triggered=0
+e9_full_06,FULL,impulse_recovery,1,8.860,0.753,measured; protection_triggered=0
+e9_full_07,FULL,impulse_recovery,1,6.578,0.919,measured; protection_triggered=0
+e9_full_08,FULL,impulse_recovery,1,7.837,0.823,measured; protection_triggered=0
+e9_full_09,FULL,impulse_recovery,1,7.895,0.921,measured; protection_triggered=0
+e9_full_10,FULL,impulse_recovery,1,7.741,0.816,measured; protection_triggered=0
+e9_fixed_lqr_01,FIXED_LQR,impulse_recovery,1,10.648,1.055,measured; protection_triggered=0
+e9_fixed_lqr_02,FIXED_LQR,impulse_recovery,1,9.424,1.022,measured; protection_triggered=0
+e9_fixed_lqr_03,FIXED_LQR,impulse_recovery,1,9.582,1.069,measured; protection_triggered=0
+e9_fixed_lqr_04,FIXED_LQR,impulse_recovery,1,9.053,1.172,measured; protection_triggered=0
+e9_fixed_lqr_05,FIXED_LQR,impulse_recovery,1,9.595,1.023,measured; protection_triggered=0
+e9_fixed_lqr_06,FIXED_LQR,impulse_recovery,1,8.963,1.051,measured; protection_triggered=0
+e9_fixed_lqr_07,FIXED_LQR,impulse_recovery,1,9.581,0.995,measured; protection_triggered=0
+e9_fixed_lqr_08,FIXED_LQR,impulse_recovery,1,9.837,1.006,measured; protection_triggered=0
+e9_fixed_lqr_09,FIXED_LQR,impulse_recovery,1,9.414,1.047,measured; protection_triggered=0
+e9_fixed_lqr_10,FIXED_LQR,impulse_recovery,0,12.404,NA,measured failed recovery; protection_triggered=1
+e9_no_ramp_01,NO_RAMP,drive_step,1,9.739,0.457,measured; protection_triggered=0
+e9_no_ramp_02,NO_RAMP,drive_step,1,10.322,0.533,measured; protection_triggered=0
+e9_no_ramp_03,NO_RAMP,drive_step,1,9.093,0.461,measured; protection_triggered=0
+e9_no_ramp_04,NO_RAMP,drive_step,1,9.046,0.439,measured; protection_triggered=0
+e9_no_ramp_05,NO_RAMP,drive_step,1,8.558,0.510,measured; protection_triggered=0
+e9_no_ramp_06,NO_RAMP,drive_step,1,9.263,0.484,measured; protection_triggered=0
+e9_no_ramp_07,NO_RAMP,drive_step,1,9.115,0.459,measured; protection_triggered=0
+e9_no_ramp_08,NO_RAMP,drive_step,1,9.237,0.419,measured; protection_triggered=0
+e9_no_ramp_09,NO_RAMP,drive_step,1,9.566,0.476,measured; protection_triggered=0
+e9_no_ramp_10,NO_RAMP,drive_step,1,7.725,0.523,measured; protection_triggered=0

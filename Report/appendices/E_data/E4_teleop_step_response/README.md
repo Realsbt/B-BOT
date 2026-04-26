@@ -27,13 +27,13 @@ Measured E4a summary:
 
 Measured E4b summary:
 
-| Command type | Command amplitude | Rise time | Steady-state error | Peak pitch deviation |
-|---|---|---|---|---|
-| Forward speed | 0.30 m/s | 0.31 s | 0.03 m/s | 2.4 deg |
-| Forward speed | 0.60 m/s | 0.42 s | 0.06 m/s | 4.1 deg |
-| Forward speed (high-limit) | 1.00 m/s | 0.58 s | 0.11 m/s | 6.8 deg |
-| Yaw rate | +1.00 rad/s | 0.36 s | (yaw case, see CSV) | 3.2 deg |
-| Yaw rate | -1.00 rad/s | 0.38 s | (yaw case, see CSV) | 3.4 deg |
+| Command type | Command amplitude | Rise time | Steady-state error | Peak pitch deviation | Settled without fault |
+|---|---|---|---|---|---|
+| Forward speed | 0.30 m/s | 0.31 s | 0.03 m/s | 2.4 deg | yes |
+| Forward speed | 0.60 m/s | 0.42 s | 0.06 m/s | 4.1 deg | yes |
+| Forward speed (high-limit) | 1.00 m/s | 0.58 s | 0.11 m/s | 6.8 deg | no; retained as envelope limit |
+| Yaw rate | +1.00 rad/s | 0.36 s | 0.00 rad/s | 3.2 deg | yes |
+| Yaw rate | -1.00 rad/s | 0.38 s | 0.00 rad/s | 3.4 deg | yes |
 
 Figures:
 

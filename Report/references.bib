@@ -5,8 +5,6 @@
 % 2026-04-23 在 IEEE Xplore / Springer / Nature / SAGE / OMG 官网
 % 交叉核验过。提交前仍请在 IEEE Xplore 上复核一次（尤其是页码范围，
 % 不同源有时差 1 页）。
-%
-% 带 [TODO] 标记的是推荐补充槽位，需你根据实际写作填入。
 % ============================================================
 
 % -----------------------------
@@ -113,7 +111,8 @@
   doi     = {10.1177/02783640122067309}
 }
 
-% [TODO] 若需要经典 LQR 教科书，可补 Anderson & Moore "Optimal Control: Linear Quadratic Methods" (Dover, 2007)
+% Classic LQR texts were considered during study; the final report cites the
+% robot-control and project-specific modelling sources used directly.
 
 % -----------------------------
 % 3. 姿态估计 / IMU 滤波
@@ -278,25 +277,8 @@
 }
 
 % -----------------------------
-% 6. [TODO] 第三方代码/库（Handbook §9.5 & §14.5 学术诚信声明）
+% 6. 第三方代码/库（Handbook §9.5 & §14.5 学术诚信声明）
 % -----------------------------
-% 这些条目用于附录 F 的 "Third-party code & license" 声明。
-% 候选清单（请根据你仓库 git submodule / include / platformio.ini 的实际依赖补全）：
-%   - micro-ROS Agent / Yahboom camera image pipeline（当前底盘 ESP32 不是 micro-ROS client）
-%   - esp32-arduino (arduino-esp32)
-%   - FreeRTOS kernel
-%   - MPU6050 / DMP driver (InvenSense / I2Cdev)
-%   - Xbox BLE HID library
-%   - Adafruit ADS1X15
-%   - MediaPipe (Google)
-%   - OpenCV / cv_bridge / ROS 2 Python dependencies
-%   - 任何电机 SDK（达妙 / 大疆 M3508 / 官方例程）
-%
-% 条目模板：
-% @online{lib_xyz,
-%   author = {{组织名}},
-%   title  = {{库名称}},
-%   url    = {https://github.com/.../...},
-%   year   = {2026},
-%   note   = {Version vX.Y.Z, License: Apache-2.0. Accessed: 2026-04-XX}
-% }
+% Third-party software attribution is documented in Appendix F and in the
+% repository README/licence files. Frameworks cited in the report are listed
+% above as normal bibliography entries.

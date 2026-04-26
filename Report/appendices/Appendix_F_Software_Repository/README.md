@@ -9,9 +9,10 @@ Current files:
 
 The final report cites this appendix when discussing software reproducibility, repository organisation and third-party code attribution.
 
-Submission checklist:
+Submission status:
 
-- Make the repository publicly accessible if required by the handbook.
-- Record the final commit hash or release tag once the repository is frozen for submission.
-- Check that no private credentials or local-only secrets are present in tracked files.
-- Ensure the root `README.md` and `host/README_vision.md` match the final build/run workflow.
+- The final report references the public repository state submitted for marking.
+- The submitted state is identified as public `main` at commit `0e2114cfccb35874be668d403cf52bcf92e890e1`.
+- Snapshot link: https://github.com/Realsbt/B-BOT/tree/0e2114cfccb35874be668d403cf52bcf92e890e1
+- Tracked WiFi configuration files use `CHANGE_ME` placeholders; local credentials belong only in ignored `include/wifi_config.local.h`.
+- The root `README.md` and `host/README_vision.md` describe the final build/run workflow.

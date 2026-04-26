@@ -1,0 +1,8 @@
+check,status,value,evidence_note
+micro_ros_agent_connection,measured,"client 172.20.10.3 on UDP port 9999","Camera smoke evidence and final E7 bring-up record"
+ros2_topic_name,measured,"/espRos/esp32camera","Topic used by E10/E11 vision tests"
+ros2_topic_type,measured,"sensor_msgs/msg/CompressedImage","Compressed image path used by the host bridge"
+compressed_image_format,measured,"jpeg","Confirmed before vision bridge testing"
+initial_short_window_rate,measured,"5.6-6.1 Hz","Short-window topic-rate checks during bring-up"
+reconnect_rate,measured,"4.07 Hz","Latest reconnect retest minimum observed rate"
+e11_test_rate,measured,"4.85 Hz","Camera topic rate during E11 bridge-to-ESP32 ACK latency test"

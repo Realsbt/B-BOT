@@ -4,8 +4,8 @@
   <name>wheeleg_vision_bridge</name>
   <version>0.1.0</version>
   <description>MediaPipe vision to wheeleg serial command bridge.</description>
-  <maintainer email="yahboom@todo.todo">yahboom</maintainer>
-  <license>TODO</license>
+  <maintainer email="botao.su@student.manchester.ac.uk">Botao Su</maintainer>
+  <license>LicenseRef-B-BOT-Project-Code</license>
 
   <depend>rclpy</depend>
   <depend>sensor_msgs</depend>

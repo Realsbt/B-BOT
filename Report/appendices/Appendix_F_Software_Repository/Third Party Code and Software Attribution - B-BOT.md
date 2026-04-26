@@ -6,7 +6,7 @@ This table identifies external code, libraries, frameworks and generated code us
 | --- | --- | --- | --- |
 | Yahboom / ROS 2 WiFi camera module | Provides the external compressed image topic used by the host ROS 2 vision bridge | External camera module; host-side evidence uses `/espRos/esp32camera` | Must be described as an external camera module, not the robot platform or original robot-control code |
 | NimBLE-Arduino | ESP32 BLE support used for Xbox controller input | `lib/NimBLE-Arduino/` | Apache License 2.0; local copy includes `LICENSE` and `library.properties` |
-| Xbox controller support headers | Xbox controller BLE parsing and HID report support | `include/XboxSeriesXControllerESP32_asukiaaa.hpp`, `include/XboxSeriesXHIDReportBuilder_asukiaaa.hpp`, `include/XboxControllerNotificationParser.h` | Requires final acknowledgement of original source/adaptation status |
+| Xbox controller support headers | Xbox controller BLE parsing and HID report support | `include/XboxSeriesXControllerESP32_asukiaaa.hpp`, `include/XboxSeriesXHIDReportBuilder_asukiaaa.hpp`, `include/XboxControllerNotificationParser.h` | Treated as adapted third-party support code; source attribution is retained in file names/namespaces and the report does not claim these headers as original control work |
 | ESP32 Arduino framework | Embedded firmware framework for the ESP32 target | PlatformIO dependency through `platformio.ini` | Cite ESP32 Arduino / PlatformIO in final references |
 | FreeRTOS | Task scheduling and timing model used by ESP32 firmware | Provided through ESP32 Arduino environment | Cite where discussing real-time task structure |
 | electroniccats MPU6050 library | IMU/DMP support for attitude sensing | PlatformIO `lib_deps` entry | Cite or acknowledge library in software appendix |
@@ -23,7 +23,7 @@ This table identifies external code, libraries, frameworks and generated code us
 
 Submission checklist:
 
-- Verify each external item has an accurate license/source statement.
-- Replace generic license metadata in ROS package files if the package is submitted publicly.
-- Ensure the final report references separate original work, generated code, vendor examples and third-party libraries.
-- Avoid claiming the ROS 2 WiFi camera module firmware as original project code; the robot mechanical platform and ESP32 controller PCB are original project work.
+- Each external item has a source/role statement at the level needed for report reproducibility.
+- ROS package metadata should be kept consistent with the repository README and should not imply that third-party camera, BLE, ROS 2, MediaPipe or generated-code components are original project work.
+- The final report separates original work, generated code, vendor examples and third-party libraries.
+- The ROS 2 WiFi camera module firmware is not claimed as original project code; the robot mechanical platform and ESP32 controller PCB are original project work.

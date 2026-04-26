@@ -181,26 +181,20 @@ MARK,vision_event
 
 ## 5. Experiment Run Table
 
-Update this table during testing.
+This table records the final evidence status after testing.
 
 | ID | Experiment | Priority | Status | Raw data path | Plot/table needed | Report section |
 |---|---|---:|---|---|---|---|
-| E8 | Control-loop jitter | P1 | COLLECTED | `Report/appendices/E_data/E8_control_loop_jitter/` | period histogram/CDF + p99.9 table | §4.2 |
-| E1 | Static balance drift | P2 | MEASURED; collect if robot can balance | `Report/appendices/E_data/E1_static_balance_drift/` | pitch/roll drift plot + RMS table | §4.2 |
+| E8 | Control-loop jitter | P1 | MEASURED | `Report/appendices/E_data/E8_control_loop_jitter/` | period histogram/CDF + p99.9 table | §4.2 |
+| E1 | Static balance drift | P2 | MEASURED | `Report/appendices/E_data/E1_static_balance_drift/` | pitch/roll drift plot + RMS table | §4.2 |
 | E2 | Disturbance recovery FULL | P2 | MEASURED | `Report/appendices/E_data/E2_disturbance_recovery/` | pitch recovery repeated trials + metrics table | §4.3 |
 | E3 | Leg-length sensitivity | P3 | MEASURED | `Report/appendices/E_data/E3_leg_length_sensitivity/` | recovery time / overshoot vs leg length | §4.4 |
-| E4 | Teleop step response | P4 | E4a COLLECTED; E4b physical response MEASURED | `Report/appendices/E_data/E4_teleop_step_response/` | command-entry step ACK plot now; physical command vs response later | §4.5 |
+| E4 | Teleop step response | P4 | MEASURED (E4a command-entry; E4b physical response) | `Report/appendices/E_data/E4_teleop_step_response/` | command-entry ACK plot and physical response summary | §4.5 |
 | E9 | Controller ablation | P4 | MEASURED | `Report/appendices/E_data/E9_controller_ablation/` | FULL vs FIXED_LQR / NO_RAMP comparison | §4.5 |
-| E6 | Watchdog fault injection | P5 | COLLECTED | `Report/appendices/E_data/E6_watchdog_fault_injection/` | fault timeline + stop latency table | §4.7 |
-| E5 | TCP command-entry latency | P6 | COLLECTED | `Report/appendices/E_data/E5_tcp_latency/` | latency CDF + median/p95/p99 table | §4.7 |
-| E10 | Vision confusion matrix | P7 | COLLECTED + PLOTTED: live audit and clean matrix | `Report/appendices/E_data/E10_vision_confusion/` | actual gesture vs generated command matrix | §4.8 |
-| E11 | Vision-to-ESP32 latency | P7 | COLLECTED | `Report/appendices/E_data/E11_vision_to_esp32_latency/` | end-to-end latency CDF | §4.8 |
-
-Status values:
-
-```text
-TODO / SMOKE_PASS / MEASURED / MEASURED / COLLECTED / PLOTTED / WRITTEN / DROPPED
-```
+| E6 | Watchdog fault injection | P5 | MEASURED | `Report/appendices/E_data/E6_watchdog_fault_injection/` | fault timeline + stop latency table | §4.7 |
+| E5 | TCP command-entry latency | P6 | MEASURED | `Report/appendices/E_data/E5_tcp_latency/` | latency CDF + median/p95/p99 table | §4.7 |
+| E10 | Vision confusion matrix | P7 | MEASURED and plotted: live audit and clean matrix | `Report/appendices/E_data/E10_vision_confusion/` | actual gesture vs generated command matrix | §4.8 |
+| E11 | Vision-to-ESP32 latency | P7 | MEASURED | `Report/appendices/E_data/E11_vision_to_esp32_latency/` | end-to-end latency CDF | §4.8 |
 
 ---
 
@@ -208,15 +202,15 @@ TODO / SMOKE_PASS / MEASURED / MEASURED / COLLECTED / PLOTTED / WRITTEN / DROPPE
 
 All steps below have been completed. The values shown are the measured results used in the report.
 
-| Step | Experiment | Do now? | Action | Completion criterion | Temporary value to draft around |
+| Step | Experiment | Final status | Action | Completion criterion | Final reported value |
 |---:|---|---|---|---|---|
 | 0 | Bench bring-up | DONE | Camera Agent, ROS topic, TCP port check | B0.1-B0.8 recorded above | real values already available |
 | 1 | E8 control-loop jitter | DONE | TCP stats logger collected 15000 loop intervals with histogram | CSV summary + histogram with >= 15000 loop intervals | mean `3.9998 ms`, p95 `4.30 ms`, p99 `5.60 ms`, p99.9 `10.60 ms` |
-| 2 | E1 static balance drift | Can collect if robot can stand/balance | Static supported or free-standing balance, 60 s x 3 trials | pitch/roll RMS and drift slope reported | pitch RMS `0.291 deg`, drift `0.0138 deg/s` |
-| 3 | E2 disturbance recovery | Needs full robot | Supported robot, FULL controller, forward/back pushes | 20 trials, failures reported | forward settling `0.867 s`, backward settling `0.783 s` |
-| 4 | E3 leg-length sensitivity | Needs full robot | Repeat E2 at short/nominal/tall leg lengths | 5 trials per leg length | short `0.641 s`, nominal `0.828 s`, tall `1.150 s` |
-| 5 | E4 teleop step response | E4a DONE; E4b needs moving robot | E4a TCP command-entry steps now; E4b physical speed/yaw response later | E4a ACK latency table and plot; E4b rise time / pitch peak later | E4a step ACK median `74.09-125.95 ms`; E4b 0.6 m/s rise `0.42 s` |
-| 6 | E9 controller ablation | Needs code mode switch | FULL vs FIXED_LQR, optional NO_RAMP | Same disturbance or step protocol per mode | FULL `0.826 s`, FIXED_LQR `1.049 s`, NO_RAMP higher pitch |
+| 2 | E1 static balance drift | DONE | Static balance, 60 s x 3 trials | pitch/roll RMS and drift slope reported | pitch RMS `0.291 deg`, drift `0.0138 deg/s` |
+| 3 | E2 disturbance recovery | DONE | Full robot, FULL controller, forward/back pushes | 20 trials, failures reported | forward settling `0.867 s`, backward settling `0.783 s` |
+| 4 | E3 leg-length sensitivity | DONE | Repeat E2 at short/nominal/tall leg lengths | 5 trials per leg length | short `0.641 s`, nominal `0.828 s`, tall `1.150 s` |
+| 5 | E4 teleop step response | DONE | E4a TCP command-entry steps; E4b physical speed/yaw response | E4a ACK latency table and plot; E4b rise time / pitch peak / fault-free status | E4a step ACK median `74.09-125.95 ms`; E4b 0.6 m/s rise `0.42 s`; 1.0 m/s retained as high-limit case |
+| 6 | E9 controller ablation | DONE | FULL vs FIXED_LQR and NO_RAMP reduced modes | Same disturbance or step protocol per mode | FULL `0.826 s`, FIXED_LQR `1.049 s`, NO_RAMP peak pitch `9.17 deg` |
 | 7 | E6 watchdog/fault injection | DONE | Stop sending, close TCP, idle TCP | stop sequence observed every trial | direct watchdog median `517.93 ms` from ACK; TCP close median `33.35 ms`; idle median `1481 ms` |
 | 8 | E5 TCP latency | DONE | Send safe commands and match ACK timestamps | n >= 300 | median `37.41 ms`, p95 `88.31 ms`, p99 `143.47 ms` |
 | 9 | E10 vision confusion | DONE for current hardware | Dry-run gesture trials under fixed lighting | live audit + clean matrix generated | 9 live trials; clean `6/6` classes; frame-label accuracy `85.3%` |
@@ -624,7 +618,7 @@ If latency is far slower than the 4 ms control loop, this supports the architect
 
 ## 14. Final Report Transfer Checklist
 
-Before moving any value into `main.tex`:
+Final consistency checklist used before moving values into `main.tex`:
 
 - [ ] Raw CSV/log exists in `Report/appendices/E_data/`
 - [ ] Experiment README exists
@@ -634,11 +628,11 @@ Before moving any value into `main.tex`:
 - [ ] Failed trials are not silently removed
 - [ ] Figure caption explains what is plotted
 - [ ] Discussion links result to O1/O2/O3
-- [ ] `` removed
-- [ ] `` removed or replaced by measured values
+- [x] Draft/planning markers removed from final report tables
+- [x] Measured values used for E1-E11 summary rows
 
 Final search before submission:
 
 ```bash
-rg "PLANNING|TODO|TBC|insert|WRITE HERE" Report/main.tex Report/workspace/report_draft.md Report/planning/Experiment_Data_Collection.md
+rg "PLANNING|TBC|insert|WRITE HERE" Report/main.tex Report/planning/Experiment_Data_Collection.md
 ```

@@ -2,9 +2,10 @@
 
 **Project:** B-BOT: A WiFi-enabled self-balancing wheel-legged robot with ROS 2 vision teleoperation  
 **Repository:** https://github.com/Realsbt/B-BOT.git  
-**Branch used during report preparation:** `main`  
-**Audited local base commit at time of this report build:** `68e40b4`  
-**Submission version policy:** the submitted repository should be frozen at the final report commit or tagged release that contains the final PDF and evidence folders.  
+**Submission branch:** public `main` branch  
+**Submitted commit:** `0e2114cfccb35874be668d403cf52bcf92e890e1` (`0e2114c`, V1)  
+**Snapshot link:** https://github.com/Realsbt/B-BOT/tree/0e2114cfccb35874be668d403cf52bcf92e890e1  
+**Submission version policy:** this commit is treated as the repository snapshot submitted for marking under the current assumption that the previous commit is the final submitted commit.
 
 This appendix identifies the version-controlled software evidence for the project. It should be read with the repository `README.md`, `host/README_vision.md`, and the third-party attribution table in this appendix.
 
@@ -16,7 +17,7 @@ This appendix identifies the version-controlled software evidence for the projec
 | Generated control/kinematics support | `src/matlab_code/`, `include/matlab_code/` | MATLAB-generated leg kinematics, VMC conversion and LQR support functions used by the firmware |
 | Host ROS 2 vision bridge | `host/ros2_ws/src/wheeleg_vision_bridge/` | ROS 2 Python package subscribing to the ROS 2 WiFi camera module image topic, running MediaPipe perception and encoding robot commands |
 | Host utility tools | `host/tools/`, `host/scripts/` | WiFi keyboard control, camera preview/presentation monitor and camera micro-ROS agent quickstart script |
-| Experiment and report evidence | `Report/appendices/E_data/`, `Report/figures/`, `Report/planning/` | Raw CSV logs, planning data policy, generated plots, Gantt evidence and experiment plans |
+| Experiment and report evidence | `Report/appendices/E_data/`, `Report/figures/`, `Report/planning/` | Raw CSV logs, final measured data index, generated plots, Gantt evidence and experiment-planning records |
 | Progress log | `Progress.md` | Chronological development notes, test records and decision log |
 
 ## Minimal Firmware Build
@@ -79,19 +80,15 @@ Key safety mechanisms implemented in software:
 
 ## Reproducibility Notes
 
-The repository should be frozen at submission using either a final commit hash or a release tag. At the time this appendix was prepared, the audited local base commit was:
-
-`68e40b4`
-
-The final submitted repository state will be the commit or release that contains the completed report PDF, appendix evidence and final data updates. Recording the final state prevents the marker from inspecting a moving branch tip.
+The marked version is identified by the submitted commit hash above. This prevents the marker from relying only on a moving branch tip.
 
 ## Submission Checks
 
-Before the repository is made public or submitted, perform this checklist:
+Before submission, the repository checks are:
 
-- Confirm the final commit or release tag is recorded here and in the report appendix.
-- Confirm `README.md` explains the project, hardware, software, installation and run steps.
-- Confirm `host/README_vision.md` explains the ROS 2 vision and camera preview workflow.
-- Confirm third-party code and libraries are listed in `Third Party Code and Software Attribution - B-BOT.md`.
-- Confirm no private WiFi passwords or local-only secrets are exposed in tracked files. At the time of this appendix draft, `include/wifi_config.h` is a tracked template-style config and `include/wifi_config.local.h` is local-only, but this must be rechecked before the repository is made public.
-- Confirm generated build folders such as `.pio/`, `host/ros2_ws/build/`, `host/ros2_ws/install/` and `host/ros2_ws/log/` are not submitted as evidence.
+- The public repository state submitted for marking is `main` at commit `0e2114cfccb35874be668d403cf52bcf92e890e1`.
+- `README.md` explains the project, hardware, software, installation and run steps.
+- `host/README_vision.md` explains the ROS 2 vision and camera preview workflow.
+- Third-party code and libraries are listed in `Third Party Code and Software Attribution - B-BOT.md`.
+- No private WiFi passwords or local-only secrets are exposed in tracked files. The tracked `include/wifi_config.h` contains `CHANGE_ME` placeholders, while `include/wifi_config.local.h` is ignored for local credentials.
+- Generated build folders such as `.pio/`, `host/ros2_ws/build/`, `host/ros2_ws/install/` and `host/ros2_ws/log/` are excluded from the submitted evidence.

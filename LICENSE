@@ -1,0 +1,22 @@
+B-BOT Project Code License
+SPDX-License-Identifier: LicenseRef-B-BOT-Project-Code
+
+Copyright (c) 2026 Botao Su. All rights reserved.
+
+This license applies only to the original B-BOT project code,
+documentation, diagrams, and report materials authored for this
+repository, unless a file or directory states a different license.
+
+This repository also contains or references third-party software and
+hardware resources. Those components remain under their own licenses or
+terms, including the vendored NimBLE-Arduino library and Yahboom-related
+camera material.
+
+No permission is granted to use, copy, modify, merge, publish,
+distribute, sublicense, or sell the original B-BOT project materials,
+except for viewing and assessment/review purposes where this repository
+has been submitted or shared by the author, or where otherwise permitted
+by applicable law.
+
+Any reuse beyond assessment/review requires prior written permission from
+the author.

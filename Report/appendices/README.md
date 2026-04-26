@@ -8,10 +8,10 @@ This folder contains appendix evidence for the final report.
 | --- | --- | --- | --- |
 | Appendix A | Preliminary Project Proposal | `Project_management/Appendix_A_Preliminary_Proposal/` | Added |
 | Appendix B | Project Plan and Gantt Chart | `Project_management/Appendix_B_Project_Plan_Gantt/`, `Report/planning/Project_Management_Gantt_and_Weekly_Log.md`, `Report/figures/project_management_gantt.*`, `Project_management/pdf_exports/` | Added; LaTeX summary and PDF companion export completed |
-| Appendix C | Risk Register | `Project_management/Appendix_C_Project_Risk_Register/`, `Project_management/pdf_exports/` | Draft completed; PDF companion export completed |
-| Appendix D | CPD Log | `Project_management/Appendix_D_CPD_Log/`, `Project_management/pdf_exports/` | Draft completed; PDF companion export completed |
-| Appendix E | Health & Safety Risk Assessment | `Project_management/Appendix_E_Health_and_Safety/`, `Project_management/pdf_exports/` | Draft completed; PDF companion export completed |
-| Appendix F | Software repository link and README evidence | `Appendix_F_Software_Repository/` | Draft completed; final commit/tag and public access still need confirmation |
+| Appendix C | Risk Register | `Project_management/Appendix_C_Project_Risk_Register/`, `Project_management/pdf_exports/` | Final report evidence register completed; PDF companion export completed |
+| Appendix D | CPD Log | `Project_management/Appendix_D_CPD_Log/`, `Project_management/pdf_exports/` | Completed; PDF companion export completed |
+| Appendix E | Health & Safety Risk Assessment | `Project_management/Appendix_E_Health_and_Safety/`, `Project_management/pdf_exports/` | Completed; PDF companion export completed |
+| Appendix F | Software repository link and README evidence | `Appendix_F_Software_Repository/` | Software evidence completed; submitted public repository state should be frozen for marking |
 
 ## Additional Supporting Evidence
 
@@ -20,11 +20,11 @@ This folder contains appendix evidence for the final report.
 | Appendix G | Experiment data, logs and extra validation evidence | `E_data/` | Data index added; all E1--E11 datasets are measured |
 | Appendix H | Hardware and control modelling evidence | `Appendix_H_Hardware_and_Control_Evidence/` | PCB schematic/layout added; original dynamics and LQR/VMC derivation notes added; PDF metadata corrected to Botao Su |
 
-## Remaining Integration Work
+## Final Submission Checks
 
-- The appendices are referenced from `Report/main.tex`; final submission still needs a last consistency pass before sign-off.
-- Update Appendix F with the final commit hash or release tag.
-- Confirm no private credentials are present in tracked files before making the repository public.
+- The appendices are referenced from `Report/main.tex` and have a concise LaTeX summary in the final report.
+- Freeze the submitted public repository state on `main` or a release tag.
+- Confirm tracked credential files contain only template placeholders before submission.
 
 ## Export Format Policy
 

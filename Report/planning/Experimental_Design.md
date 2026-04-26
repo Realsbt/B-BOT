@@ -290,7 +290,7 @@ Current live result on 2026-04-24:
 | Overall clean frame-label accuracy | 85.3% |
 | Audit failures retained | false forward command, no-stable PointLeft, mixed false-direction PointLeft |
 
-This is enough for the current report draft. For a stronger final report, repeat each gesture with N >= 10 after the camera mount and lighting are fixed.
+This is sufficient for the current final report's controlled vision-demonstration claim. For a stronger future evaluation, repeat each gesture with N >= 10 after the camera mount and lighting are fixed.
 
 ---
 

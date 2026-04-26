@@ -123,7 +123,7 @@ ROS 2 WiFi 摄像头模块
 └── pc-wifi-keyboard-control-plan.md
 ```
 
-`include/wifi_config.h` 是本地 WiFi 密码配置文件，已经被 `.gitignore` 排除，不应该提交到 GitHub。
+`include/wifi_config.h` 是已提交的占位配置模板，默认只包含 `CHANGE_ME`。真实本地 WiFi 凭据应写入被 `.gitignore` 排除的 `include/wifi_config.local.h`。
 
 ### 硬件组成
 
@@ -161,10 +161,10 @@ ROS 2 WiFi 摄像头模块
 1. 配置本地 WiFi：
 
 ```bash
-cp include/wifi_config.example.h include/wifi_config.h
+cp include/wifi_config.example.h include/wifi_config.local.h
 ```
 
-编辑 `include/wifi_config.h`：
+编辑 `include/wifi_config.local.h`：
 
 ```c
 #define WIFI_SSID "your-wifi-ssid"
@@ -368,7 +368,7 @@ VISION_ENABLE
 - `BALANCE_ON` 会触发起立准备动作，机器人没有固定或周围不安全时不要发送。
 - 键盘/视觉控制前，确认机器人已经进入平衡状态，否则 `DRIVE` 可能没有运动效果。
 - WiFi 断开、TCP 客户端掉线或命令超时会触发停止逻辑，但物理断电/急停仍然是最后保险。
-- 不要把真实 WiFi 密码提交到 GitHub；只提交 `include/wifi_config.example.h`。
+- 不要把真实 WiFi 密码提交到 GitHub；`include/wifi_config.h` 和 `include/wifi_config.example.h` 只保留 `CHANGE_ME` 模板值，真实凭据放在本地忽略的 `include/wifi_config.local.h`。
 
 ### 更多文档
 
@@ -381,11 +381,11 @@ VISION_ENABLE
 
 ### 项目状态
 
-当前项目已经完成 GitHub 初始同步、固件编译验证、摄像头 ROS 2 图像链路验证、视觉桥 dry-run 验证、PC WiFi 键盘控制方案和工具落地。下一步更适合继续做实机台架验证：先 `dry_run` 手势/人脸，再验证 PC WiFi 控制，最后才关闭 `dry_run` 上机器人。
+当前项目已经完成固件编译验证、ESP32 WiFi TCP 控制入口、摄像头 ROS 2 图像链路、视觉桥 dry-run、PC WiFi 键盘控制、看门狗故障注入和最终报告使用的 E1-E11 实测数据整理。视觉和 PC 控制仍应按安全流程使用：先 `dry_run` 预览，再在机器人受控/已平衡状态下启用真实命令传输。
 
 ### 许可证
 
-本仓库包含本项目自研机器人控制代码和第三方组件/库。Yahboom 相关部分仅用于 ROS 2 WiFi 摄像头模块；同时仓库包含第三方 vendored `NimBLE-Arduino` 库。请分别遵守摄像头模块、第三方库和相关工具链的许可证要求。当前自定义部分尚未单独整理许可证文件。
+本仓库根目录的 `LICENSE` 定义了项目自定义代码和文档的非开源许可：`LicenseRef-B-BOT-Project-Code`。除明确另有说明的第三方组件外，本项目自定义部分保留所有权利，仅允许为课程评审/审阅目的查看，不额外授予复制、修改、分发或商业使用权限。Yahboom 相关部分仅用于 ROS 2 WiFi 摄像头模块；同时仓库包含第三方 vendored `NimBLE-Arduino` 库。请分别遵守摄像头模块、第三方库和相关工具链的许可证要求。
 
 <p align="right"><a href="#top">返回顶部</a></p>
 
@@ -501,7 +501,7 @@ Optional UART device
 └── pc-wifi-keyboard-control-plan.md
 ```
 
-`include/wifi_config.h` is the local WiFi credential file. It is ignored by `.gitignore` and should not be committed to GitHub.
+`include/wifi_config.h` is a tracked placeholder template with `CHANGE_ME` values. Real local WiFi credentials should be written to ignored `include/wifi_config.local.h`.
 
 ### Hardware
 
@@ -539,10 +539,10 @@ Host side:
 1. Configure local WiFi credentials:
 
 ```bash
-cp include/wifi_config.example.h include/wifi_config.h
+cp include/wifi_config.example.h include/wifi_config.local.h
 ```
 
-Edit `include/wifi_config.h`:
+Edit `include/wifi_config.local.h`:
 
 ```c
 #define WIFI_SSID "your-wifi-ssid"
@@ -746,7 +746,7 @@ The main validation log is in `Progress.md`. Key results include:
 - `BALANCE_ON` triggers standup preparation. Do not send it unless the robot is physically safe.
 - Before keyboard or vision control, confirm the robot is already balanced; otherwise `DRIVE` may have no visible effect.
 - WiFi disconnect, TCP client drop, and command timeout trigger stop logic, but a physical power cutoff or emergency stop remains the final safety layer.
-- Do not commit real WiFi credentials to GitHub; only commit `include/wifi_config.example.h`.
+- Do not commit real WiFi credentials to GitHub. The tracked `include/wifi_config.h` and `include/wifi_config.example.h` files keep `CHANGE_ME` template values only; real local credentials belong in ignored `include/wifi_config.local.h`.
 
 ### More Documentation
 
@@ -759,10 +759,10 @@ The main validation log is in `Progress.md`. Key results include:
 
 ### Project Status
 
-The project has completed initial GitHub sync, firmware build validation, camera ROS 2 image-link validation, vision bridge dry-run validation, and the PC WiFi keyboard control plan/tooling. The next practical step is bench validation: dry-run gestures/face first, then PC WiFi control, and only then disable `dry_run` on the robot.
+The project has completed firmware build validation, ESP32 WiFi TCP command entry, ROS 2 camera image-link validation, vision bridge dry-run validation, PC WiFi keyboard control, watchdog fault injection, and the measured E1-E11 datasets used by the final report. Vision and PC control should still follow the safety workflow: preview in `dry_run` first, then enable live command transmission only when the robot is controlled and already balanced.
 
 ### License
 
-This repository contains original robot-control work plus third-party components and libraries. Yahboom-related material is limited to the ROS 2 WiFi camera module; the repository also includes the third-party vendored `NimBLE-Arduino` library. Follow the license requirements of the camera module, third-party libraries and related toolchains. A separate license file for the custom additions has not been finalized yet.
+The root `LICENSE` defines a non-open-source license for the custom project code and documentation: `LicenseRef-B-BOT-Project-Code`. Except for third-party components that state their own licenses, the custom project additions are all rights reserved and may be viewed for assessment/review purposes only; no additional permission is granted to copy, modify, distribute, or commercially use them. Yahboom-related material is limited to the ROS 2 WiFi camera module; the repository also includes the third-party vendored `NimBLE-Arduino` library. Follow the license requirements of the camera module, third-party libraries and related toolchains.
 
 <p align="right"><a href="#top">Back to top</a></p>
