@@ -23,6 +23,7 @@ The physical project work should be interpreted in the UK project context. Some 
 | E9 controller ablation | Full controller vs reduced variants | Measured | `E9_controller_ablation/ablation_*_2026-04-24.csv` | Final baseline evidence for controller-design choices |
 | E10 vision confusion matrix | Live gesture recognition and command mapping reliability | Measured | `E10_vision_confusion/` | Final vision reliability evidence |
 | E11 vision-to-ESP32 latency | Vision bridge to ESP32 ACK latency | Measured | `E11_vision_to_esp32_latency/vision_bridge_ack_latency_2026-04-24.csv`, summary CSV | Final supervisory-vision latency evidence |
+| O3 arbitration supplement | BLE/PC gate and queue/direct-command arbitration | Measured controller-board bench evidence | `O3_arbitration_supplement/o3_arbitration_summary_2026-04-26.md` and related CSVs | Supplementary O3 multi-source arbitration evidence |
 
 ## Generated Figures
 

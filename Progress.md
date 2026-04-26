@@ -2356,3 +2356,18 @@
   - Appendix G 段落改为 "all E1--E11 datasets are measured".
 - 各实验 README (`E1`/`E2`/`E3`/`E4`/`E5`/`E6`/`E8`/`E9`/`E11`) 与 `Report/appendices/E_data/README.md` 已同步更新为实测状态，并补上实测摘要表。
 - `Report/workspace/实验数据实测替换清单.md` 改为实测确认清单；`Report/planning/Experiment_Data_Collection.md` 中的 `* [PLANNING]` 标记和 `PLANNING_READY` 状态全部改为实测；`Report/workspace/report_draft.md` 顶部加上 superseded 说明。
+
+#### 2026-04-26 O3/E9 report evidence strengthened
+- 用户要求先增强 O3 和 E9，之后再单独判断是否需要压缩正文篇幅。
+- O3：
+  - 已完成补充控制板级仲裁测试，并保留最终有效数据在 `Report/appendices/E_data/O3_arbitration_supplement/`。
+  - BLE/PC gate 使用手柄已连接状态数据：`o3_ble_pc_arbitration_2026-04-26_103947.csv`，5/5 pass，串口包含 `BLE connected: yes`。
+  - queue/direct-command arbitration 使用 `o3_queue_drive_arbitration_2026-04-26_103606.csv`，5/5 pass，关键串口证据为 `DRIVE ignored: command queue busy`。
+  - `Report/main.tex` 和 `Report/mainzh.tex` 已把 abstract 与 evaluation matrix 中的 O3-S supplement 显式化。
+- E9：
+  - 已在 E9 表后加入 `Report/figures/measured/e9_controller_ablation.png`。
+  - 正文分析从简单支持语气增强为定量比较：FULL 相对 FIXED_LQR response metric 从 1.049 s 降到 0.826 s，减少 21.3%；peak pitch 从 9.85 deg 降到 8.09 deg，减少 17.9%；同时保留 10-trial、人工扰动、NO_RAMP 协议不同等边界条件。
+- 编译/页数：
+  - `Report/main.pdf` 编译成功，总页数 53；References 仍在正文页码 34 后开始，满足 35 numbered A4 pages 限制。
+  - `Report/mainzh.pdf` 编译成功，总页数 46。
+  - 当前增强后仍有约 1 页正文缓冲；后续如果继续加内容，优先压缩 Future Work、Literature Review roadmap 和重复的 ROS 2/micro-ROS 背景段。

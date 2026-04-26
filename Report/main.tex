@@ -84,7 +84,7 @@ B-BOT is a self-balancing wheel-legged robot developed to investigate how real-t
 
 The implemented system uses an ESP32 controller running FreeRTOS tasks for motor feedback, inertial sensing, leg kinematics, target updating and balance control. The balance controller combines linear quadratic regulation for sagittal balance, PID loops for yaw, roll and leg-length regulation, and virtual model control to map virtual leg forces and torques to joint motor commands. A host-side ROS 2 vision bridge receives images from a ROS 2 WiFi camera module, runs MediaPipe-based perception, and sends supervisory commands to the robot through a WiFi TCP line protocol. Xbox BLE, UART commands, WiFi TCP commands and vision-generated commands are coordinated through shared command parsing, queue logic, watchdogs and safety gates.
 
-The system was evaluated using eleven measured experiments covering static balance, disturbance recovery, leg-length sensitivity, teleoperation step response, control-loop jitter, WiFi command-entry latency, watchdog fault injection, camera bring-up, controller ablation, live gesture recognition and vision-command latency. The measured static-balance test achieved 0.291 deg pitch RMS over three 60 s trials. Disturbance tests recovered in 9/10 forward and 10/10 backward pushes, and the full controller achieved 10/10 recovery in the controller-ablation comparison. The measured control-loop log showed a mean period of 3.9998 ms and a median period of 4.000 ms over 15,000 samples. The WiFi TCP command-entry test achieved a median acknowledgement latency of 37.41 ms and p95 of 88.31 ms across 300 samples with zero unmatched commands. The watchdog fault-injection tests cleared direct commands in all 10 watchdog trials, detected all 10 TCP close trials, and produced full-stop events in all 10 idle trials. The live vision tests produced a clean 6/6 command-class matrix, 85.3\% selected-frame label accuracy, and a median bridge-to-ESP32 acknowledgement latency of 66.13 ms across 71 safe commands. The main limitation is that the vision and WiFi layers are suitable only for supervisory teleoperation, not for closing the stabilising control loop. The project contributes a practical embedded wheel-legged balancing architecture extended with safety-aware multi-source command arbitration and ROS 2 vision teleoperation.
+The system was evaluated using eleven measured experiments and a supplementary O3 arbitration bench test covering static balance, disturbance recovery, leg-length sensitivity, teleoperation step response, control-loop jitter, WiFi command-entry latency, watchdog fault injection, camera bring-up, controller ablation, live gesture recognition, vision-command latency and command-source conflict handling. The measured static-balance test achieved 0.291 deg pitch RMS over three 60 s trials. Disturbance tests recovered in 9/10 forward and 10/10 backward pushes, and the full controller achieved 10/10 recovery in the controller-ablation comparison. The measured control-loop log stayed centred on the 4 ms target, with a mean period of 3.9998 ms and a median period of 4.000 ms over 15,000 samples, while also exposing tail outliers up to 53.365 ms. The WiFi TCP command-entry test achieved a median acknowledgement latency of 37.41 ms and p95 of 88.31 ms across 300 samples with zero unmatched commands. The watchdog fault-injection tests cleared direct commands in all 10 watchdog trials, detected all 10 TCP close trials, and produced full-stop events in all 10 idle trials. The O3 supplement passed 5/5 BLE/PC gate trials with the Xbox controller connected and 5/5 queue/direct-command suppression trials. The live vision tests produced a clean 6/6 command-class matrix, 85.3\% selected-frame label accuracy, and a median bridge-to-ESP32 acknowledgement latency of 66.13 ms across 71 safe commands. The main limitation is that the vision and WiFi layers are suitable only for supervisory teleoperation, not for closing the stabilising control loop. The project contributes a practical embedded wheel-legged balancing architecture extended with safety-aware multi-source command arbitration and ROS 2 vision teleoperation.
 
 \newpage
 \section*{Declaration of Originality}
@@ -729,7 +729,7 @@ This chapter evaluates the implemented B-BOT system against the objectives defin
 
 The evaluation is organised around three questions. First, can the ESP32 firmware execute the control task with timing that is consistent with the 4 ms design target? Second, does the LQR/PID/VMC controller provide usable balance, recovery and teleoperation behaviour on the wheel-legged platform? Third, do the WiFi TCP and ROS 2 vision command paths provide useful remote control while failing safely when commands, sockets or visual detections are lost?
 
-Table 4.1 maps each experiment to these questions. All E1--E11 datasets are measured and are used as final evidence at summary-metric level in the main report, with raw time-series and trial logs retained in Appendix G.
+Table 4.1 maps each experiment to these questions. All E1--E11 datasets are measured and are used as final evidence at summary-metric level in the main report, with raw time-series and trial logs retained in Appendix G. The physical tests are treated as engineering validation rather than population-level statistical experiments. For manually applied disturbance and ablation trials, the report therefore uses predefined pass/fail criteria, logged telemetry, retained failed trials and comparison against reduced controller variants instead of claiming statistical optimality. This keeps the evidence aligned with the hardware constraints of a final-year embedded robotics project while still exposing recovery failures, timing outliers and unsafe command cases.
 
 
 \begingroup
@@ -758,6 +758,7 @@ E8 & Control-loop jitter & O1 & \texttt{\detokenize{CtrlBasic_Task}} period dist
 E9 & Controller ablation & O1/O3 & FULL vs FIXED\_LQR / NO\_RAMP comparison & Full controller improves recovery or reduces pitch excursion \\
 E10 & Vision confusion matrix & O2/O3 & Actual gesture vs generated command matrix & False motion/stunt commands quantified and safety gates justified \\
 E11 & Vision-to-ESP32 ACK latency & O2 & Vision bridge send to ESP32 ACK latency & Latency measured as supervisory command timing, not balance feedback \\
+O3-S & Command arbitration supplement & O3 & BLE/PC gate and queue/direct-command bench tests & 5/5 BLE gate passes and 5/5 queue/direct suppression passes \\
 \bottomrule
 \end{longtable}
 \endgroup
@@ -899,7 +900,7 @@ The significance of E8 is that the outliers are measured inside the embedded con
 
 E2, E3, E4 and E9 are the physical O1 tests for the LQR/PID/VMC hierarchy. They are reported at summary-table granularity here because the raw time-series files are long and are more useful as appendix evidence than as main-text material.
 
-E2 tests whether the controller can reject a repeatable impulse disturbance while logging pitch, pitch rate, wheel speed, virtual leg length, target command and protection state. Settling time is defined as the first point after the disturbance where pitch remains within +/-2 deg for at least 500 ms.
+E2 tests whether the controller can reject a repeatable impulse disturbance while logging pitch, pitch rate, wheel speed, virtual leg length, target command and protection state. Because the impulse was applied manually, E2 is used to assess practical recovery consistency, settling behaviour and protection events rather than to estimate a statistically general disturbance-rejection probability. Settling time is defined as the first point after the disturbance where pitch remains within +/-2 deg for at least 500 ms.
 
 \begingroup
 \singlespacing
@@ -1043,7 +1044,16 @@ NO\_RAMP & drive step & 10 & 10/10 & 0.476 s rise & 9.17 deg & 0 \\
 \end{longtable}
 \endgroup
 
-The measured E9 data supports the design intent at comparison-test level. The FULL and FIXED\_LQR impulse-recovery rows are a direct comparison: the full controller recovered all 10 trials and reduced both response time and peak pitch relative to the fixed-gain variant. The NO\_RAMP row is a drive-step ablation rather than the same impulse test, so it is used more narrowly: it shows that removing target ramping increases pitch excursion during abrupt drive commands, supporting the ramping design without overstating it as a one-to-one recovery comparison.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.76\textwidth]{figures/measured/e9_controller_ablation.png}
+    \caption{E9 controller ablation comparison.}
+    \label{fig:e9-controller-ablation}
+\end{figure}
+
+The measured E9 data supports the design intent at comparison-test level. The FULL and FIXED\_LQR impulse-recovery rows are a direct comparison: the full controller recovered all 10 trials, while the fixed-gain variant recovered 9/10 and produced one protected/failed trial. The response metric improved from 1.049 s to 0.826 s, a 21.3\% reduction, and peak pitch reduced from 9.85 deg to 8.09 deg, a 17.9\% reduction. This supports the claim that leg-length gain scheduling improves the tested recovery behaviour rather than being unused complexity.
+
+The NO\_RAMP row is interpreted more narrowly. It is a drive-step ablation rather than the same impulse-recovery protocol, so it is not a one-to-one recovery comparison against FULL. Its value is that removing target ramping increased peak pitch during abrupt drive commands, supporting the ramping layer as a command-conditioning safety feature. Because each condition used 10 trials and the disturbance cases were manually applied, E9 should be read as engineering ablation evidence rather than a statistical proof of optimal control.
 
 \subsection{WiFi TCP and ROS 2 Vision Teleoperation Performance}
 
@@ -1179,7 +1189,7 @@ The intended conclusion is not that vision is fast enough for stabilising feedba
 
 E11 measured the latency from the vision bridge sending a safe command to receiving an ESP32 acknowledgement. Across 71 ACK-logged commands, the median bridge-to-ACK latency was 66.13 ms, p95 was 301.93 ms and p99 was 361.15 ms, with zero non-ACK commands. This result is not full human-gesture-to-robot latency. During the E11 run, the camera topic was approximately 4.85 Hz, corresponding to a frame period of about 206 ms. Combining one frame period with the measured median bridge-to-ACK latency gives a minimum camera-frame-to-ACK estimate of about 272 ms. Stable gesture recognition can require additional debounced frames, so the full human-gesture-to-command latency is slower than the TCP ACK metric. This supports the architectural decision that vision remains supervisory and does not enter the 4 ms balance loop.
 
-The input arbitration behaviour is reported as a short pass/fail table because it is a major engineering contribution of the system. E6 and E10/E11 cover the measured fault and vision-safety cases. Two simultaneous-input cases are retained as residual validation items because they were not separately covered by the E1--E11 logs.
+The input arbitration behaviour is reported as a short pass/fail table because it is a major engineering contribution of the system. E6 and E10/E11 cover the measured fault and vision-safety cases. A supplementary O3 controller-board bench test was then used to cover two simultaneous-input arbitration cases that were not separately captured in the E1--E11 logs.
 
 
 \begingroup
@@ -1197,8 +1207,8 @@ The input arbitration behaviour is reported as a short pass/fail table because i
 \textbf{Scenario} & \textbf{Expected behaviour} & \textbf{Result} \\
 \midrule
 \endhead
-PC tool starts while BLE controller is active & \texttt{\detokenize{BLE_DISABLE}} prevents BLE from overwriting PC targets & residual validation item; not separately measured in E1--E11 \\
-Command queue is running and \texttt{\detokenize{DRIVE}} is received & Direct drive command is rejected or suppressed & residual validation item; not separately measured in E1--E11 \\
+PC tool starts while BLE controller is active & \texttt{\detokenize{BLE_DISABLE}} prevents BLE from overwriting PC targets & pass: 5/5 supplementary O3 trials with \texttt{\detokenize{BLE connected: yes}} and input gate toggling \\
+Command queue is running and \texttt{\detokenize{DRIVE}} is received & Direct drive command is rejected or suppressed & pass: 5/5 supplementary O3 trials; serial log reported \texttt{\detokenize{DRIVE ignored: command queue busy}} \\
 TCP client closes during non-zero command & Robot logs \texttt{\detokenize{client_drop}} and injects \texttt{\detokenize{DRIVE,0,0}}, \texttt{\detokenize{YAWRATE,0}}, \texttt{\detokenize{QUEUE_STOP}} & pass: 10/10 close trials \\
 TCP client becomes idle & Robot emits \texttt{\detokenize{FULL_STOP,idle_timeout}} and injects \texttt{\detokenize{DRIVE,0,0}}, \texttt{\detokenize{YAWRATE,0}}, \texttt{\detokenize{QUEUE_STOP}} & pass: 10/10 idle trials \\
 Vision bridge runs with \texttt{\detokenize{dry_run=true}} & Commands are printed but not transmitted & pass \\
@@ -1207,7 +1217,7 @@ Vision bridge runs with \texttt{\detokenize{dry_run=true}} & Commands are printe
 \end{longtable}
 \endgroup
 
-Taken together, E5, E6, E10 and E11 support O2 and much of O3. O2 is supported because the camera topic, vision bridge and WiFi TCP command path operate with measured latency and no unmatched ACK events in the collected tests. O3 is supported by the watchdog, disconnect handling, \texttt{\detokenize{dry_run}} mode and stunt gate. The remaining O3 gap is simultaneous multi-source arbitration under live BLE and TCP input, which should be treated as a future regression test rather than a completed result.
+Taken together, E5, E6, E10, E11 and the supplementary O3 arbitration test support O2 and O3 for the implemented supervisory command paths. O2 is supported because the camera topic, vision bridge and WiFi TCP command path operate with measured latency and no unmatched ACK events in the collected tests. O3 is supported by the watchdog, disconnect handling, \texttt{\detokenize{dry_run}} mode, stunt gate, queue/direct-command suppression and the measured BLE/PC input gate. The remaining limitation is scope: these are controller-board and supervised-command tests, not exhaustive full-robot coverage of every possible simultaneous human-input race condition.
 
 \subsection{Summary}
 
@@ -1248,7 +1258,7 @@ This project implemented B-BOT, a WiFi-enabled self-balancing wheel-legged robot
 
 For O1, the ESP32 firmware combines MPU6050 attitude feedback, motor-based leg kinematics, leg-length scheduled LQR, auxiliary PID loops and VMC torque mapping. E8 supports the timing feasibility of this approach, with a 15,000-sample mean period of 3.9998 ms and median period of 4.000 ms. The measured physical tests complete the O1 judgement at practical demonstration level: E1 achieved 0.291 deg pitch RMS, E2 recovered 9/10 forward and 10/10 backward disturbances, E3 quantified the taller-leg degradation, E4b measured physical teleoperation response, and E9 supported the full controller against reduced variants.
 
-For O2 and O3, the measured communication and vision results support supervisory teleoperation rather than vision feedback control. E5 achieved 37.41 ms median TCP command-entry ACK latency and 88.31 ms p95 across 300 samples, while E11 achieved 66.13 ms median bridge-to-ESP32 ACK latency across 71 safe commands. E10 produced a clean 6/6 command-class matrix but also retained audit failures, justifying preview, debouncing, watchdog expiry and stunt gating. E6 showed full-stop behaviour in all watchdog, socket-close and idle-timeout trials, so the tested command paths are substantially safe, although simultaneous-input race cases remain a residual validation risk.
+For O2 and O3, the measured communication and vision results support supervisory teleoperation rather than vision feedback control. E5 achieved 37.41 ms median TCP command-entry ACK latency and 88.31 ms p95 across 300 samples, while E11 achieved 66.13 ms median bridge-to-ESP32 ACK latency across 71 safe commands. E10 produced a clean 6/6 command-class matrix but also retained audit failures, justifying preview, debouncing, watchdog expiry and stunt gating. E6 showed full-stop behaviour in all watchdog, socket-close and idle-timeout trials, and the supplementary O3 bench test showed 5/5 BLE/PC gate passes and 5/5 queue/direct-command suppression passes. Therefore the tested command paths are substantially safe, with the remaining limitation being non-exhaustive coverage of all possible full-robot simultaneous-input conditions.
 
 
 \begingroup
@@ -1268,7 +1278,7 @@ For O2 and O3, the measured communication and vision results support supervisory
 \endhead
 O1: Embedded wheel-legged balance control & Implemented and measured at practical demonstration level & E1 static balance, E2/E3 recovery and leg-length tests, E4b physical response, E8 loop jitter, E9 ablation & Controller tuning, state estimation and high-energy dynamic manoeuvres remain limited \\
 O2: ROS 2 vision input and WiFi TCP command channel & Achieved for supervisory teleoperation & E5 TCP latency, E10 gesture confusion, E11 vision bridge ACK latency & Vision latency and frame-rate variability prevent use as balance feedback \\
-O3: Safe multi-source input arbitration & Substantially achieved for tested paths & E6 watchdog/disconnect fault injection, \texttt{\detokenize{dry_run}}, \texttt{\detokenize{stunt_armed}}, command queue design & Remaining simultaneous-input race cases require further testing \\
+O3: Safe multi-source input arbitration & Achieved for tested supervisory command paths & E6 watchdog/disconnect fault injection, O3 BLE/PC gate and queue/direct-command bench tests, \texttt{\detokenize{dry_run}}, \texttt{\detokenize{stunt_armed}}, command queue design & Not exhaustive across every full-robot simultaneous-input condition \\
 \bottomrule
 \end{longtable}
 \endgroup
@@ -1433,11 +1443,11 @@ Wireless or vision-triggered motion & Unexpected robot command from host or came
 
 \clearpage
 \section{Software Repository Link and README}
-\textbf{Repository Link:} \url{https://github.com/Realsbt/B-BOT.git}
+\textbf{Repository Link:} \url{https://github.com/Realsbt/Y3-PROJECT}
 
-\textbf{Submitted Version:} public \texttt{\detokenize{main}} branch at commit \texttt{\detokenize{0e2114c}}; full snapshot link: \url{https://github.com/Realsbt/B-BOT/tree/0e2114cfccb35874be668d403cf52bcf92e890e1}
+\textbf{Submitted Version:} public GitHub \texttt{\detokenize{main}} branch at commit \texttt{\detokenize{68f9673}}; full submitted commit: \url{https://github.com/Realsbt/Y3-PROJECT/commit/68f9673ab6b79d5d0fc019b4bc13aaba6e5b0849}.
 
-The software evidence appendix is stored in \path{Report/appendices/Appendix_F_Software_Repository/}. It identifies the repository, implementation folders, build evidence, third-party software and the boundary between original project work and reused libraries or vendor examples. Table F.1 provides a marker-readable summary.
+The software evidence appendix is stored in \path{Report/appendices/Appendix_F_Software_Repository/}. It identifies the repository, implementation folders, build evidence, third-party software and the boundary between original project work and reused libraries or vendor examples. The GitHub repository is a software-only snapshot and does not include the report folder; experiment data and plots remain in the submitted report appendices. Table F.1 provides a marker-readable summary.
 
 \begingroup
 \singlespacing
@@ -1454,11 +1464,11 @@ The software evidence appendix is stored in \path{Report/appendices/Appendix_F_S
 \textbf{Item} & \textbf{Evidence} \\
 \midrule
 \endhead
-Repository & \url{https://github.com/Realsbt/B-BOT.git} \\
-Submission repository state & Public \texttt{\detokenize{main}} branch at commit \texttt{\detokenize{0e2114c}}; full snapshot: \url{https://github.com/Realsbt/B-BOT/tree/0e2114cfccb35874be668d403cf52bcf92e890e1} \\
+Repository & \url{https://github.com/Realsbt/Y3-PROJECT} \\
+Submission repository state & Public GitHub \texttt{\detokenize{main}} branch at commit \texttt{\detokenize{68f9673}}; full submitted commit: \url{https://github.com/Realsbt/Y3-PROJECT/commit/68f9673ab6b79d5d0fc019b4bc13aaba6e5b0849} \\
 Embedded firmware & ESP32 PlatformIO project with CAN, IMU, LQR/PID/VMC control, BLE, UART queue and WiFi TCP server \\
 Host-side software & ROS 2 camera/vision bridge, MediaPipe/OpenCV command generation and monitoring tools \\
-Experiment evidence & Raw CSV files, summaries and plots under \path{Report/appendices/E_data/} and \path{Report/figures/} \\
+Experiment evidence & Raw CSV files, summaries and plots are submitted with the report under \path{Report/appendices/E_data/} and \path{Report/figures/}; the repository contains the software snapshot only \\
 Third-party software boundary & Yahboom ROS 2 WiFi camera module support, ESP32/Arduino, FreeRTOS, ROS 2, micro-ROS, OpenCV, MediaPipe, NimBLE and sensor libraries are listed in the attribution appendix \\
 \bottomrule
 \end{longtable}

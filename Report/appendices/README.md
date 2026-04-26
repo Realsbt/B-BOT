@@ -11,7 +11,7 @@ This folder contains appendix evidence for the final report.
 | Appendix C | Risk Register | `Project_management/Appendix_C_Project_Risk_Register/`, `Project_management/pdf_exports/` | Final report evidence register completed; PDF companion export completed |
 | Appendix D | CPD Log | `Project_management/Appendix_D_CPD_Log/`, `Project_management/pdf_exports/` | Completed; PDF companion export completed |
 | Appendix E | Health & Safety Risk Assessment | `Project_management/Appendix_E_Health_and_Safety/`, `Project_management/pdf_exports/` | Completed; PDF companion export completed |
-| Appendix F | Software repository link and README evidence | `Appendix_F_Software_Repository/` | Software evidence completed; submitted public repository state should be frozen for marking |
+| Appendix F | Software repository link and README evidence | `Appendix_F_Software_Repository/` | Software evidence completed; submitted public repository commit is identified for marking |
 
 ## Additional Supporting Evidence
 
@@ -23,7 +23,7 @@ This folder contains appendix evidence for the final report.
 ## Final Submission Checks
 
 - The appendices are referenced from `Report/main.tex` and have a concise LaTeX summary in the final report.
-- Freeze the submitted public repository state on `main` or a release tag.
+- Freeze the submitted public repository state at the recorded commit.
 - Confirm tracked credential files contain only template placeholders before submission.
 
 ## Export Format Policy

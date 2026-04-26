@@ -1,11 +1,11 @@
 # Appendix F: Software Repository Evidence
 
 **Project:** B-BOT: A WiFi-enabled self-balancing wheel-legged robot with ROS 2 vision teleoperation  
-**Repository:** https://github.com/Realsbt/B-BOT.git  
+**Repository:** https://github.com/Realsbt/Y3-PROJECT  
 **Submission branch:** public `main` branch  
-**Submitted commit:** `0e2114cfccb35874be668d403cf52bcf92e890e1` (`0e2114c`, V1)  
-**Snapshot link:** https://github.com/Realsbt/B-BOT/tree/0e2114cfccb35874be668d403cf52bcf92e890e1  
-**Submission version policy:** this commit is treated as the repository snapshot submitted for marking under the current assumption that the previous commit is the final submitted commit.
+**Submitted commit:** `68f9673ab6b79d5d0fc019b4bc13aaba6e5b0849` (`68f9673`, Initial y3project submission)  
+**Commit link:** https://github.com/Realsbt/Y3-PROJECT/commit/68f9673ab6b79d5d0fc019b4bc13aaba6e5b0849  
+**Submission version policy:** this commit is treated as the frozen software snapshot submitted for marking. The GitHub repository is a software-only snapshot and intentionally excludes the `Report/` folder; experiment data, figures and report evidence remain in the submitted report appendices.  
 
 This appendix identifies the version-controlled software evidence for the project. It should be read with the repository `README.md`, `host/README_vision.md`, and the third-party attribution table in this appendix.
 
@@ -17,7 +17,7 @@ This appendix identifies the version-controlled software evidence for the projec
 | Generated control/kinematics support | `src/matlab_code/`, `include/matlab_code/` | MATLAB-generated leg kinematics, VMC conversion and LQR support functions used by the firmware |
 | Host ROS 2 vision bridge | `host/ros2_ws/src/wheeleg_vision_bridge/` | ROS 2 Python package subscribing to the ROS 2 WiFi camera module image topic, running MediaPipe perception and encoding robot commands |
 | Host utility tools | `host/tools/`, `host/scripts/` | WiFi keyboard control, camera preview/presentation monitor and camera micro-ROS agent quickstart script |
-| Experiment and report evidence | `Report/appendices/E_data/`, `Report/figures/`, `Report/planning/` | Raw CSV logs, final measured data index, generated plots, Gantt evidence and experiment-planning records |
+| Experiment and report evidence | Submitted report appendices, not the software-only GitHub repository | Raw CSV logs, final measured data index, generated plots, Gantt evidence and experiment-planning records are retained with the report submission |
 | Progress log | `Progress.md` | Chronological development notes, test records and decision log |
 
 ## Minimal Firmware Build
@@ -86,7 +86,7 @@ The marked version is identified by the submitted commit hash above. This preven
 
 Before submission, the repository checks are:
 
-- The public repository state submitted for marking is `main` at commit `0e2114cfccb35874be668d403cf52bcf92e890e1`.
+- The public GitHub repository state submitted for marking is `main` at commit `68f9673ab6b79d5d0fc019b4bc13aaba6e5b0849`.
 - `README.md` explains the project, hardware, software, installation and run steps.
 - `host/README_vision.md` explains the ROS 2 vision and camera preview workflow.
 - Third-party code and libraries are listed in `Third Party Code and Software Attribution - B-BOT.md`.

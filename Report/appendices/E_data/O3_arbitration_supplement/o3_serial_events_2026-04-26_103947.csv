@@ -1,0 +1,142 @@
+t_s,line
+1777171172.224764,ets Jun  8 201��Ғ2:57
+1777171172.230347,rs���� (POWERON_RESQU�I����0x13 (SPI_FAS�e1MH_BOOT)
+1777171172.238944,"configsZ� 0, SPIWP:0xee�,k�E���0x00,q_���0x00,d_drv:0x�b��_drv:0x00,h�E�v:0x00,wp_drv'��0"
+1777171172.241777,"mode:DIO, clock""�v:2"
+1777171172.242763,"load:0�fff0030,len:11�j"
+1777171172.244884,load:0x40078��bb���13232
+1777171172.249737,"l+��0x40080400,��:3028"
+1777171172.250147,entry 0�00805e4
+1777171172.791539,指令队列系统初始化完成
+1777171172.797923,MPU6050 connection successful
+1777171172.800825,Address: 0x34
+1777171173.002029,WiFi command connecting to BT26
+1777171173.056458,IMU偏置参数已加载
+1777171173.398720,.
+1777171173.401277,WiFi command ready: 172.20.10.4:23
+1777171173.405877,mDNS: wheeleg.local:23
+1777171173.410072,WiFi TCP server listening on :23
+1777171174.065493,参数加载成功！
+1777171174.073429,Starting Xbox Bluetooth Client
+1777171174.079225,Auto-scan mode: Searching for 'Xbox Wireless Controller' by name
+1777171174.082504,Make sure your Xbox controller is in pairing mode:
+1777171174.088019,1. Press and hold Xbox button + Share button for 3 seconds
+1777171174.096973,2. Controller LED should start flashing rapidly
+1777171174.100451,3. The system will automatically connect when 'Xbox Wireless Controller' is detected
+1777171174.798562,Xbox Controller initialized. Scanning for connection...
+1777171174.802788,Xbox processing task started
+1777171174.808325,=== Strong device found ===
+1777171174.810764,Address: 69:77:0c:31:0b:a6
+1777171174.813402,RSSI: -38
+1777171174.813499,Name: ''
+1777171174.816077,Appearance: 964
+1777171174.816266,Service UUID: 0x1812
+1777171174.821929,Manufacturer Data: feff5a4a2d54344e5f4c495445
+1777171174.824453,===========================
+1777171174.828723,*** TARGET CONTROLLER FOUND! ***
+1777171174.830072,Match reason: Appearance 964 (Gamepad) + HID Service
+1777171174.833238,Address: 69:77:0c:31:0b:a6
+1777171174.835463,Name: ''
+1777171174.838142,Attempting to connect...
+1777171174.842714,********************************
+1777171174.845346,=== Strong device found ===
+1777171174.845592,Address: 16:01:99:10:bc:1d
+1777171174.848159,RSSI: -41
+1777171174.848247,Name: ''
+1777171174.850874,Appearance: 0
+1777171174.851035,Service UUID: none
+1777171174.859449,Manufacturer Data: 0600010f20222fc60df879bc916aeb0e1fd2b733fb324af865ab3bb858
+1777171174.861828,===========================
+1777171177.131629,Xbox Controller connected successfully!
+1777171187.390106,WiFi command client connected: 172.20.10.2
+1777171187.468020,WiFi命令: BLE_STATUS
+1777171187.473214,"BLE connected: yes, input enabled: yes"
+1777171187.498108,WiFi命令: BLE_DISABLE
+1777171187.500579,BLE input disabled
+1777171187.503415,BLE input disabled via serial
+1777171187.568014,WiFi命令: BLE_STATUS
+1777171187.572557,"BLE connected: yes, input enabled: no"
+1777171187.586418,"WiFi命令: DRIVE,0,0"
+1777171187.588970,"DRIVE set: 0 mm/s, 0 mrad/s"
+1777171187.666502,WiFi命令: BLE_ENABLE
+1777171187.669482,BLE input enabled
+1777171187.671622,BLE input enabled via serial
+1777171187.686520,WiFi命令: BLE_STATUS
+1777171187.691004,"BLE connected: yes, input enabled: yes"
+1777171187.774225,WiFi command disconnect (client_drop): emitting full stop
+1777171187.777122,"DRIVE set: 0 mm/s, 0 mrad/s"
+1777171187.779666,YAWRATE set: 0 mrad/s
+1777171187.782365,停止并清空指令队列
+1777171187.793696,WiFi command client connected: 172.20.10.2
+1777171187.872035,WiFi命令: BLE_STATUS
+1777171187.875266,"BLE connected: yes, input enabled: yes"
+1777171187.889202,WiFi命令: BLE_DISABLE
+1777171187.891667,BLE input disabled
+1777171187.894534,BLE input disabled via serial
+1777171187.978660,WiFi命令: BLE_STATUS
+1777171187.982055,"BLE connected: yes, input enabled: no"
+1777171187.998179,"WiFi命令: DRIVE,0,0"
+1777171188.000736,"DRIVE set: 0 mm/s, 0 mrad/s"
+1777171188.077394,WiFi命令: BLE_ENABLE
+1777171188.079981,BLE input enabled
+1777171188.082473,BLE input enabled via serial
+1777171188.197555,WiFi命令: BLE_STATUS
+1777171188.202052,"BLE connected: yes, input enabled: yes"
+1777171188.289562,WiFi command disconnect (client_drop): emitting full stop
+1777171188.292255,"DRIVE set: 0 mm/s, 0 mrad/s"
+1777171188.294616,YAWRATE set: 0 mrad/s
+1777171188.297945,停止并清空指令队列
+1777171188.310466,WiFi command client connected: 172.20.10.2
+1777171188.511281,WiFi命令: BLE_STATUS
+1777171188.512007,"BLE connected: yes, input enabled: yes"
+1777171188.587346,WiFi命令: BLE_DISABLE
+1777171188.589723,BLE input disabled
+1777171188.592779,BLE input disabled via serial
+1777171188.607533,WiFi命令: BLE_STATUS
+1777171188.611711,"BLE connected: yes, input enabled: no"
+1777171188.700744,"WiFi命令: DRIVE,0,0"
+1777171188.703809,"DRIVE set: 0 mm/s, 0 mrad/s"
+1777171188.721848,WiFi命令: BLE_ENABLE
+1777171188.724458,BLE input enabled
+1777171188.727272,BLE input enabled via serial
+1777171188.800972,WiFi命令: BLE_STATUS
+1777171188.805545,"BLE connected: yes, input enabled: yes"
+1777171188.828084,WiFi command disconnect (client_drop): emitting full stop
+1777171188.830692,"DRIVE set: 0 mm/s, 0 mrad/s"
+1777171188.833299,YAWRATE set: 0 mrad/s
+1777171188.835933,停止并清空指令队列
+1777171188.896827,WiFi command client connected: 172.20.10.2
+1777171188.921704,WiFi命令: BLE_STATUS
+1777171188.925681,"BLE connected: yes, input enabled: yes"
+1777171189.001153,WiFi命令: BLE_DISABLE
+1777171189.003505,BLE input disabled
+1777171189.006349,BLE input disabled via serial
+1777171189.018865,WiFi命令: BLE_STATUS
+1777171189.023376,"BLE connected: yes, input enabled: no"
+1777171189.092694,"WiFi命令: DRIVE,0,0"
+1777171189.099401,"DRIVE set: 0 mm/s, 0 mrad/s"
+1777171189.112063,WiFi命令: BLE_ENABLE
+1777171189.115280,BLE input enabled
+1777171189.117325,BLE input enabled via serial
+1777171189.147767,WiFi命令: BLE_STATUS
+1777171189.156499,"BLE connected: yes, input enabled: yes"
+1777171189.211523,WiFi command disconnect (client_drop): emitting full stop
+1777171189.214476,"DRIVE set: 0 mm/s, 0 mrad/s"
+1777171189.216609,YAWRATE set: 0 mrad/s
+1777171189.219427,停止并清空指令队列
+1777171189.238324,WiFi command client connected: 172.20.10.2
+1777171189.306385,WiFi命令: BLE_STATUS
+1777171189.311294,"BLE connected: yes, input enabled: yes"
+1777171189.328861,WiFi命令: BLE_DISABLE
+1777171189.329254,BLE input disabled
+1777171189.331615,BLE input disabled via serial
+1777171189.405923,WiFi命令: BLE_STATUS
+1777171189.410342,"BLE connected: yes, input enabled: no"
+1777171189.425148,"WiFi命令: DRIVE,0,0"
+1777171189.428587,"DRIVE set: 0 mm/s, 0 mrad/s"
+1777171189.505309,WiFi命令: BLE_ENABLE
+1777171189.508180,BLE input enabled
+1777171189.510450,BLE input enabled via serial
+1777171189.534306,WiFi命令: BLE_STATUS
+1777171189.538376,"BLE connected: yes, input enabled: yes"
+1777171189.617634,WiFi command disconnect (client_drop): emitting full stop

@@ -112,7 +112,7 @@ Rendered version for preview/report integration:
 | 27 | 2026-04-06 to 2026-04-12 | Easter vacation | Continued catch-up; refined final-report positioning around local embedded balance plus supervisory teleoperation; prepared for ROS/camera bring-up. | Easter vacation. |
 | 28 | 2026-04-13 to 2026-04-19 | Easter vacation / restart | Finalised plan to focus on measurable evidence; prepared experiment matrix, report outline and camera/host software route. | Easter vacation ended 2026-04-18. |
 | 29 | 2026-04-20 to 2026-04-25 | Final integration, testing and report sprint | Brought up the ROS 2 WiFi camera module path; implemented ROS 2 `wheeleg_vision_bridge`; added WiFi TCP command safety; collected E4/E5/E6/E8/E10/E11 data; collected and organised E1/E2/E3/E4b/E9 physical datasets; drafted Chapters 1-5 and references. | Reflected heavily in `Progress.md` and experiment data. |
-| 30 | 2026-04-26 to 2026-05-01 | Final measured-data integration and submission preparation | Replaced earlier analysis scaffolding with measured E1-E11 evidence, rebuilt the LaTeX report, checked appendix consistency, and prepared the public repository evidence for marking. | Final report sign-off window. |
+| 30 | 2026-04-26 to 2026-05-01 | Final measured-data integration and submission preparation | Replaced earlier analysis scaffolding with measured E1-E11 evidence, rebuilt the LaTeX report, checked appendix consistency, and prepared the submitted software repository evidence for marking. | Final report sign-off window. |
 
 ## B.4 Key Schedule Deviations and Responses
 

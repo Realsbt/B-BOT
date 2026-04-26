@@ -11,8 +11,9 @@ The final report cites this appendix when discussing software reproducibility, r
 
 Submission status:
 
-- The final report references the public repository state submitted for marking.
-- The submitted state is identified as public `main` at commit `0e2114cfccb35874be668d403cf52bcf92e890e1`.
-- Snapshot link: https://github.com/Realsbt/B-BOT/tree/0e2114cfccb35874be668d403cf52bcf92e890e1
+- The final report references the public GitHub repository snapshot submitted for marking.
+- The submitted state is identified as public `main` at commit `68f9673ab6b79d5d0fc019b4bc13aaba6e5b0849`.
+- Commit link: https://github.com/Realsbt/Y3-PROJECT/commit/68f9673ab6b79d5d0fc019b4bc13aaba6e5b0849
+- The GitHub repository is a software-only snapshot and intentionally excludes the `Report/` folder.
 - Tracked WiFi configuration files use `CHANGE_ME` placeholders; local credentials belong only in ignored `include/wifi_config.local.h`.
 - The root `README.md` and `host/README_vision.md` describe the final build/run workflow.
