@@ -5,8 +5,8 @@ This folder contains the presentation materials for the B-BOT final presentation
 ## Files
 
 - `B-BOT_final_presentation.pptx` — PowerPoint deck for a 20-25 minute presentation.
-- `presentation_script.md` — slide-by-slide timing, demo plan and speaker script.
-- `qa_preparation.md` — likely Q&A topics and prepared answers.
+- `presentation_script.md` — bilingual slide-by-slide timing, demo plan and speaker script.
+- `qa_preparation.md` — bilingual likely Q&A topics and prepared answers.
 - `make_presentation.py` — local generator script used to build the PPTX.
 - `.deps/` — local Python dependencies installed for generating the PPTX.
 

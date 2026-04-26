@@ -148,27 +148,27 @@ def generate():
     # 1
     slide = blank_slide(prs)
     add_text(slide, "B-BOT", 0.7, 0.85, 6.0, 0.8, size=48, bold=True, color="ink")
-    add_text(slide, "A WiFi-Enabled Self-Balancing Wheel-Legged Robot\nwith ROS 2 Vision Teleoperation", 0.72, 1.78, 8.8, 0.85, size=24, color="blue")
-    add_text(slide, "Botao Su | Third Year Individual Project | University of Manchester", 0.75, 6.35, 10.5, 0.3, size=16, color="muted")
+    add_text(slide, "An Embedded Real-Time Control System\nfor a WiFi-Enabled Wheel-Legged Balancing Platform", 0.72, 1.78, 9.2, 0.85, size=24, color="blue")
+    add_text(slide, "Botao Su | Embedded Systems Individual Project | University of Manchester", 0.75, 6.35, 10.5, 0.3, size=16, color="muted")
     add_card(slide, 8.5, 1.15, 3.7, 3.9, "Core Thesis", [
-        "Balance-critical feedback stays on the ESP32.",
-        "WiFi, Xbox and ROS 2 vision send supervisory targets only.",
-        "Safety arbitration is measured, not assumed.",
+        "Robot is the validation platform.",
+        "Core work is the ESP32 embedded system.",
+        "Real-time control, I/O, communication and safety are measured.",
     ], accent="teal")
     add_footer(slide, 1)
 
     # 2
     slide = blank_slide(prs)
-    add_title(slide, "Project Problem", "An unstable robot should not depend on non-deterministic communication for balance.")
-    add_card(slide, 0.8, 1.75, 3.6, 3.7, "Wheel-Legged Challenge", [
+    add_title(slide, "Embedded Systems Problem", "A resource-constrained ESP32 must control an unstable platform while handling I/O and communication.")
+    add_card(slide, 0.8, 1.75, 3.6, 3.7, "Real-Time Control", [
         "Changing leg length changes the balance dynamics.",
         "Pitch, wheel torque and leg geometry are coupled.",
-        "A fixed simple controller is fragile across configurations.",
+        "The 4 ms control loop must remain local.",
     ], accent="blue")
-    add_card(slide, 4.85, 1.75, 3.6, 3.7, "Teleoperation Challenge", [
-        "WiFi and vision have variable latency.",
-        "Human input sources can conflict.",
-        "Unsafe stale commands must be cleared predictably.",
+    add_card(slide, 4.85, 1.75, 3.6, 3.7, "Embedded I/O Load", [
+        "IMU, CAN motors, battery, BLE, UART and WiFi.",
+        "FreeRTOS tasks share limited timing margin.",
+        "Logging and communication must not destabilise control.",
     ], accent="orange")
     add_card(slide, 8.9, 1.75, 3.6, 3.7, "Design Rule", [
         "ESP32 owns the stabilising loop.",
@@ -179,13 +179,13 @@ def generate():
 
     # 3
     slide = blank_slide(prs)
-    add_title(slide, "Objectives", "The report and evaluation are organised around three testable objectives.")
-    add_card(slide, 0.8, 1.6, 3.7, 4.3, "O1 Embedded Balance", [
+    add_title(slide, "Objectives", "The evaluation is framed around embedded control, interfaces and safety.")
+    add_card(slide, 0.8, 1.6, 3.7, 4.3, "O1 Embedded Control", [
         "LQR/PID/VMC balance control.",
+        "ESP32 real-time loop and task timing.",
         "Static stability and disturbance recovery.",
-        "4 ms local control-loop timing.",
     ], accent="blue")
-    add_card(slide, 4.8, 1.6, 3.7, 4.3, "O2 Vision + WiFi", [
+    add_card(slide, 4.8, 1.6, 3.7, 4.3, "O2 Command Interfaces", [
         "ROS 2 camera and MediaPipe bridge.",
         "WiFi TCP command-entry path.",
         "Measured supervisory latency.",
@@ -199,11 +199,11 @@ def generate():
 
     # 4 architecture
     slide = blank_slide(prs)
-    add_title(slide, "System Architecture", "Time-critical balance is separated from supervisory command generation.")
+    add_title(slide, "Embedded System Architecture", "Time-critical firmware is separated from host-side supervisory command generation.")
     layers = [
         ("Host PC / ROS 2 / MediaPipe", 0.9, 1.55, 3.4, 0.8, "teal"),
         ("Xbox BLE / UART / WiFi TCP", 5.0, 1.55, 3.4, 0.8, "orange"),
-        ("ESP32 Firmware\nFreeRTOS tasks, parser, watchdogs", 3.2, 3.0, 4.6, 0.95, "blue"),
+        ("ESP32 Embedded Firmware\nFreeRTOS tasks, parser, watchdogs", 3.2, 3.0, 4.6, 0.95, "blue"),
         ("Local Balance Control\nIMU + motor feedback, LQR/PID/VMC", 3.2, 4.55, 4.6, 0.95, "green"),
         ("Physical Robot\nwheels, legs, CAN motors, battery", 3.2, 6.0, 4.6, 0.75, "muted"),
     ]
@@ -215,6 +215,7 @@ def generate():
     connector(slide, 5.5, 5.5, 5.5, 6.0, "muted")
     add_bullets(slide, [
         "Remote layers update targets, not stabilising feedback.",
+        "The embedded system owns sensing, motor feedback and safety stops.",
         "Command loss or conflict is handled before it can become persistent motion.",
         "This boundary is tested by E5, E6, E8, E10, E11 and O3-S.",
     ], 8.6, 3.05, 3.8, 2.5, size=16)
@@ -222,9 +223,9 @@ def generate():
 
     # 5 hardware
     slide = blank_slide(prs)
-    add_title(slide, "Hardware and Firmware Implementation", "A lightweight embedded stack built around ESP32, IMU feedback and CAN motor control.")
+    add_title(slide, "Embedded Hardware and Firmware", "A lightweight ESP32 stack integrating sensing, CAN motor I/O, wireless interfaces and safety logic.")
     add_image_fit(slide, APP / "Appendix_H_Hardware_and_Control_Evidence" / "PCB_Layout.png", 0.8, 1.55, 5.2, 4.8)
-    add_card(slide, 6.35, 1.6, 5.8, 4.55, "Implementation Evidence", [
+    add_card(slide, 6.35, 1.6, 5.8, 4.55, "Embedded Implementation Evidence", [
         "Custom ESP32 controller PCB and wheel-legged platform.",
         "MPU6050 attitude feedback and CAN-connected motors.",
         "FreeRTOS tasks for CAN, IMU, motor output, balance, BLE, UART and WiFi.",
@@ -234,7 +235,7 @@ def generate():
 
     # 6 control
     slide = blank_slide(prs)
-    add_title(slide, "Balance Control Hierarchy", "LQR handles coupled sagittal balance; PID and VMC handle local regulation and leg torque mapping.")
+    add_title(slide, "Embedded Control Hierarchy", "The controller is designed to be interpretable and feasible on the ESP32.")
     boxes = [
         ("State Estimate\npitch, pitch rate,\nwheel speed, leg length", 0.8, 2.0, "blue"),
         ("Gain-Scheduled LQR\nsagittal balance", 3.6, 2.0, "teal"),
@@ -257,7 +258,7 @@ def generate():
 
     # 7 command safety
     slide = blank_slide(prs)
-    add_title(slide, "Command and Safety Architecture", "Multiple command sources are allowed, but persistent unsafe motion is not.")
+    add_title(slide, "Embedded Command and Safety Architecture", "Multiple interfaces are allowed, but persistent unsafe motion is not.")
     add_card(slide, 0.75, 1.55, 2.45, 1.45, "Command Sources", ["Xbox BLE", "UART queue", "WiFi TCP", "ROS 2 vision"], accent="orange")
     add_card(slide, 3.75, 1.55, 2.7, 1.45, "Parser + Queue", ["Shared command grammar", "Queue start/pause/stop", "Direct DRIVE/YAWRATE"], accent="blue")
     add_card(slide, 7.0, 1.55, 2.55, 1.45, "Safety Gates", ["Watchdogs", "BLE disable", "dry_run", "stunt_armed"], accent="teal")
@@ -275,7 +276,7 @@ def generate():
 
     # 8 eval strategy
     slide = blank_slide(prs)
-    add_title(slide, "Evaluation Strategy", "Eleven measured experiments plus O3 arbitration supplement.")
+    add_title(slide, "Evaluation Strategy", "Measured evidence for embedded timing, physical control, interfaces and safety.")
     add_card(slide, 0.75, 1.6, 3.7, 4.4, "O1 Evidence", [
         "E1 static balance: 0.291 deg pitch RMS.",
         "E2 recovery: 9/10 forward, 10/10 backward.",
@@ -383,11 +384,12 @@ def generate():
 
     # 15 limitations
     slide = blank_slide(prs)
-    add_title(slide, "Limitations and Future Work", "The report is strongest when the boundaries are explicit.")
+    add_title(slide, "Limitations and Future Work", "The embedded-system boundaries are explicit.")
     add_card(slide, 0.8, 1.6, 5.4, 4.6, "Current Limitations", [
         "Manual gain tuning and manually applied disturbances.",
         "Small-sample physical trials.",
         "IMU vibration, mechanical compliance and actuator saturation.",
+        "Measured timing tail outliers under shared workload.",
         "WiFi/vision latency prevents use as balance feedback.",
     ], accent="red")
     add_card(slide, 6.95, 1.6, 5.4, 4.6, "Next Technical Steps", [
@@ -400,9 +402,10 @@ def generate():
 
     # 16 conclusion
     slide = blank_slide(prs)
-    add_title(slide, "Conclusion", "B-BOT demonstrates a practical embedded balance architecture with safe supervisory teleoperation.")
-    add_card(slide, 0.9, 1.55, 11.3, 4.6, "Main Contribution", [
+    add_title(slide, "Conclusion", "B-BOT demonstrates a practical ESP32 embedded control system on a challenging physical platform.")
+    add_card(slide, 0.9, 1.55, 11.3, 4.6, "Main Embedded Systems Contribution", [
         "ESP32 owns the balance-critical feedback loop.",
+        "Firmware integrates IMU, CAN motors, FreeRTOS tasks, BLE, UART and WiFi.",
         "LQR/PID/VMC control is implemented and physically evaluated.",
         "WiFi, Xbox and ROS 2 vision are integrated as supervisory command sources.",
         "Watchdogs, dry-run, stunt gates and command arbitration are measured.",
